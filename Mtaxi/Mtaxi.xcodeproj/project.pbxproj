@@ -74,10 +74,10 @@
 		76C5EC9817482E7A00F87A75 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		76C5EC9917482E7A00F87A75 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		76C5EC9A17482E7A00F87A75 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
-		76C5EC9B17482E7A00F87A75 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
-		76C5EC9C17482E7A00F87A75 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
-		76C5EC9D17482E7A00F87A75 /* MEUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEUser.h; sourceTree = "<group>"; };
-		76C5EC9E17482E7A00F87A75 /* MEUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEUser.m; sourceTree = "<group>"; };
+		76C5EC9B17482E7A00F87A75 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogInViewController.h; path = Mtaxi/LogInViewController.h; sourceTree = "<group>"; };
+		76C5EC9C17482E7A00F87A75 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogInViewController.m; path = Mtaxi/LogInViewController.m; sourceTree = "<group>"; };
+		76C5EC9D17482E7A00F87A75 /* MEUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MEUser.h; path = Mtaxi/MEUser.h; sourceTree = "<group>"; };
+		76C5EC9E17482E7A00F87A75 /* MEUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MEUser.m; path = Mtaxi/MEUser.m; sourceTree = "<group>"; };
 		76C5EC9F17482E7A00F87A75 /* PassengerInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassengerInfoViewController.h; sourceTree = "<group>"; };
 		76C5ECA017482E7B00F87A75 /* PassengerInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassengerInfoViewController.m; sourceTree = "<group>"; };
 		76C5ECA317482E7B00F87A75 /* PassengerSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassengerSignUpViewController.h; sourceTree = "<group>"; };
@@ -125,6 +125,70 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F4071AA1748317B00D429FE /* Driver */ = {
+			isa = PBXGroup;
+			children = (
+				76C5EC8617482E7A00F87A75 /* Car.h */,
+				76C5EC8717482E7A00F87A75 /* Car.m */,
+				76C5EC8817482E7A00F87A75 /* CarTypeViewController.h */,
+				76C5EC8917482E7A00F87A75 /* CarTypeViewController.m */,
+				76C5EC8017482E7A00F87A75 /* ActiveStatus.h */,
+				76C5EC8117482E7A00F87A75 /* ActiveStatus.m */,
+				76C5EC8C17482E7A00F87A75 /* DriverInfoViewController.h */,
+				76C5EC8D17482E7A00F87A75 /* DriverInfoViewController.m */,
+				76C5EC8E17482E7A00F87A75 /* DriverSignUpViewController.h */,
+				76C5EC8F17482E7A00F87A75 /* DriverSignUpViewController.m */,
+			);
+			name = Driver;
+			sourceTree = "<group>";
+		};
+		2F4071AB1748353D00D429FE /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				76C5EC8A17482E7A00F87A75 /* CurrentSession.h */,
+				76C5EC8B17482E7A00F87A75 /* CurrentSession.m */,
+				76C5EC8417482E7A00F87A75 /* CallResult.h */,
+				76C5EC8517482E7A00F87A75 /* CallResult.m */,
+				76C5EC9517482E7A00F87A75 /* Helper.h */,
+				76C5EC9617482E7A00F87A75 /* Helper.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		2F4071AD1748359400D429FE /* Passenger */ = {
+			isa = PBXGroup;
+			children = (
+				76C5EC9F17482E7A00F87A75 /* PassengerInfoViewController.h */,
+				76C5ECA017482E7B00F87A75 /* PassengerInfoViewController.m */,
+				76C5ECA317482E7B00F87A75 /* PassengerSignUpViewController.h */,
+				76C5ECA417482E7B00F87A75 /* PassengerSignUpViewController.m */,
+			);
+			name = Passenger;
+			sourceTree = "<group>";
+		};
+		2F4071AE174835B400D429FE /* Commom */ = {
+			isa = PBXGroup;
+			children = (
+				76C5EC9717482E7A00F87A75 /* Location.h */,
+				76C5EC9817482E7A00F87A75 /* Location.m */,
+				76C5EC9917482E7A00F87A75 /* LocationViewController.h */,
+				76C5EC9A17482E7A00F87A75 /* LocationViewController.m */,
+			);
+			name = Commom;
+			sourceTree = "<group>";
+		};
+		2F4071AF174835D900D429FE /* User */ = {
+			isa = PBXGroup;
+			children = (
+				76C5EC9D17482E7A00F87A75 /* MEUser.h */,
+				76C5EC9E17482E7A00F87A75 /* MEUser.m */,
+				76C5EC9B17482E7A00F87A75 /* LogInViewController.h */,
+				76C5EC9C17482E7A00F87A75 /* LogInViewController.m */,
+			);
+			name = User;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		76C5EC9017482E7A00F87A75 /* en.lproj */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,37 +231,14 @@
 		76E885A7174827DB00694D65 /* Mtaxi */ = {
 			isa = PBXGroup;
 			children = (
-				76C5EC8017482E7A00F87A75 /* ActiveStatus.h */,
-				76C5EC8117482E7A00F87A75 /* ActiveStatus.m */,
 				76C5EC8217482E7A00F87A75 /* AppDelegate.h */,
 				76C5EC8317482E7A00F87A75 /* AppDelegate.m */,
-				76C5EC8417482E7A00F87A75 /* CallResult.h */,
-				76C5EC8517482E7A00F87A75 /* CallResult.m */,
-				76C5EC8617482E7A00F87A75 /* Car.h */,
-				76C5EC8717482E7A00F87A75 /* Car.m */,
-				76C5EC8817482E7A00F87A75 /* CarTypeViewController.h */,
-				76C5EC8917482E7A00F87A75 /* CarTypeViewController.m */,
-				76C5EC8A17482E7A00F87A75 /* CurrentSession.h */,
-				76C5EC8B17482E7A00F87A75 /* CurrentSession.m */,
-				76C5EC8C17482E7A00F87A75 /* DriverInfoViewController.h */,
-				76C5EC8D17482E7A00F87A75 /* DriverInfoViewController.m */,
-				76C5EC8E17482E7A00F87A75 /* DriverSignUpViewController.h */,
-				76C5EC8F17482E7A00F87A75 /* DriverSignUpViewController.m */,
+				2F4071AF174835D900D429FE /* User */,
+				2F4071AE174835B400D429FE /* Commom */,
+				2F4071AD1748359400D429FE /* Passenger */,
+				2F4071AB1748353D00D429FE /* Utils */,
+				2F4071AA1748317B00D429FE /* Driver */,
 				76C5EC9017482E7A00F87A75 /* en.lproj */,
-				76C5EC9517482E7A00F87A75 /* Helper.h */,
-				76C5EC9617482E7A00F87A75 /* Helper.m */,
-				76C5EC9717482E7A00F87A75 /* Location.h */,
-				76C5EC9817482E7A00F87A75 /* Location.m */,
-				76C5EC9917482E7A00F87A75 /* LocationViewController.h */,
-				76C5EC9A17482E7A00F87A75 /* LocationViewController.m */,
-				76C5EC9B17482E7A00F87A75 /* LogInViewController.h */,
-				76C5EC9C17482E7A00F87A75 /* LogInViewController.m */,
-				76C5EC9D17482E7A00F87A75 /* MEUser.h */,
-				76C5EC9E17482E7A00F87A75 /* MEUser.m */,
-				76C5EC9F17482E7A00F87A75 /* PassengerInfoViewController.h */,
-				76C5ECA017482E7B00F87A75 /* PassengerInfoViewController.m */,
-				76C5ECA317482E7B00F87A75 /* PassengerSignUpViewController.h */,
-				76C5ECA417482E7B00F87A75 /* PassengerSignUpViewController.m */,
 				76E885A8174827DB00694D65 /* Supporting Files */,
 			);
 			path = Mtaxi;

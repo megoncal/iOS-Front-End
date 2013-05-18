@@ -71,18 +71,13 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         dispatch_async(dispatch_get_main_queue(), ^{
             if (!error) {
                 
-                
                 [self populateFields:meUser];
-                
                 //logged user info is displayed so prepare navigattion bar buttons
-                
                 //prepare navigation bar button
                 self.cancelLeftBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelPressed)];
                 
-                
                 //add buttons to the navigation bar
                 self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
                 
             }else{
 

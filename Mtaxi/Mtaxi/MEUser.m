@@ -397,8 +397,7 @@
     
         
         NSLog(@"Returned String: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-        
-        [NSThread sleepForTimeInterval:10];
+
         
         //Process the data received from the server
         if ([data length] > 0 && callError == nil){
@@ -430,9 +429,6 @@
     }
     
 }
-
-
-
 
 
 
