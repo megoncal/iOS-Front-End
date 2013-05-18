@@ -1,13 +1,10 @@
 //
 //  AppDelegate.h
-//  Mtaxi
+//  BackendProject
 //
-//  Created by Eduardo Goncalves on 5/18/13.
-//  Copyright (c) 2013 Moovt. All rights reserved.
+//  Created by Marcos Vilela on 08/02/13.
+//  Copyright (c) 2013 Marcos Vilela. All rights reserved.
 //
-//  eduardo
-//marcos teste
-
 
 #import <UIKit/UIKit.h>
 

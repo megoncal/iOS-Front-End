@@ -7,17 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		76C5ECA517482E7B00F87A75 /* ActiveStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8117482E7A00F87A75 /* ActiveStatus.m */; };
+		76C5ECA617482E7B00F87A75 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8317482E7A00F87A75 /* AppDelegate.m */; };
+		76C5ECA717482E7B00F87A75 /* CallResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8517482E7A00F87A75 /* CallResult.m */; };
+		76C5ECA817482E7B00F87A75 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8717482E7A00F87A75 /* Car.m */; };
+		76C5ECA917482E7B00F87A75 /* CarTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8917482E7A00F87A75 /* CarTypeViewController.m */; };
+		76C5ECAA17482E7B00F87A75 /* CurrentSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8B17482E7A00F87A75 /* CurrentSession.m */; };
+		76C5ECAB17482E7B00F87A75 /* DriverInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8D17482E7A00F87A75 /* DriverInfoViewController.m */; };
+		76C5ECAC17482E7B00F87A75 /* DriverSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8F17482E7A00F87A75 /* DriverSignUpViewController.m */; };
+		76C5ECAD17482E7B00F87A75 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 76C5EC9117482E7A00F87A75 /* InfoPlist.strings */; };
+		76C5ECAE17482E7B00F87A75 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76C5EC9317482E7A00F87A75 /* MainStoryboard.storyboard */; };
+		76C5ECAF17482E7B00F87A75 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC9617482E7A00F87A75 /* Helper.m */; };
+		76C5ECB017482E7B00F87A75 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC9817482E7A00F87A75 /* Location.m */; };
+		76C5ECB117482E7B00F87A75 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC9A17482E7A00F87A75 /* LocationViewController.m */; };
+		76C5ECB217482E7B00F87A75 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC9C17482E7A00F87A75 /* LogInViewController.m */; };
+		76C5ECB317482E7B00F87A75 /* MEUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC9E17482E7A00F87A75 /* MEUser.m */; };
+		76C5ECB417482E7B00F87A75 /* PassengerInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5ECA017482E7B00F87A75 /* PassengerInfoViewController.m */; };
+		76C5ECB617482E7B00F87A75 /* PassengerSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5ECA417482E7B00F87A75 /* PassengerSignUpViewController.m */; };
 		76E885A2174827DB00694D65 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E885A1174827DB00694D65 /* UIKit.framework */; };
 		76E885A4174827DB00694D65 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E885A3174827DB00694D65 /* Foundation.framework */; };
 		76E885A6174827DB00694D65 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E885A5174827DB00694D65 /* CoreGraphics.framework */; };
 		76E885AC174827DB00694D65 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 76E885AA174827DB00694D65 /* InfoPlist.strings */; };
 		76E885AE174827DB00694D65 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E885AD174827DB00694D65 /* main.m */; };
-		76E885B2174827DB00694D65 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E885B1174827DB00694D65 /* AppDelegate.m */; };
 		76E885B4174827DB00694D65 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E885B3174827DB00694D65 /* Default.png */; };
 		76E885B6174827DB00694D65 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E885B5174827DB00694D65 /* Default@2x.png */; };
 		76E885B8174827DB00694D65 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E885B7174827DB00694D65 /* Default-568h@2x.png */; };
-		76E885BB174827DB00694D65 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76E885B9174827DB00694D65 /* MainStoryboard.storyboard */; };
-		76E885BE174827DB00694D65 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E885BD174827DB00694D65 /* ViewController.m */; };
 		76E885C6174827DB00694D65 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E885C5174827DB00694D65 /* SenTestingKit.framework */; };
 		76E885C7174827DB00694D65 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E885A1174827DB00694D65 /* UIKit.framework */; };
 		76E885C8174827DB00694D65 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E885A3174827DB00694D65 /* Foundation.framework */; };
@@ -36,6 +50,38 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		76C5EC8017482E7A00F87A75 /* ActiveStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveStatus.h; sourceTree = "<group>"; };
+		76C5EC8117482E7A00F87A75 /* ActiveStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveStatus.m; sourceTree = "<group>"; };
+		76C5EC8217482E7A00F87A75 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		76C5EC8317482E7A00F87A75 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		76C5EC8417482E7A00F87A75 /* CallResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallResult.h; sourceTree = "<group>"; };
+		76C5EC8517482E7A00F87A75 /* CallResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallResult.m; sourceTree = "<group>"; };
+		76C5EC8617482E7A00F87A75 /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
+		76C5EC8717482E7A00F87A75 /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Car.m; sourceTree = "<group>"; };
+		76C5EC8817482E7A00F87A75 /* CarTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarTypeViewController.h; sourceTree = "<group>"; };
+		76C5EC8917482E7A00F87A75 /* CarTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarTypeViewController.m; sourceTree = "<group>"; };
+		76C5EC8A17482E7A00F87A75 /* CurrentSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentSession.h; sourceTree = "<group>"; };
+		76C5EC8B17482E7A00F87A75 /* CurrentSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentSession.m; sourceTree = "<group>"; };
+		76C5EC8C17482E7A00F87A75 /* DriverInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverInfoViewController.h; sourceTree = "<group>"; };
+		76C5EC8D17482E7A00F87A75 /* DriverInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverInfoViewController.m; sourceTree = "<group>"; };
+		76C5EC8E17482E7A00F87A75 /* DriverSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverSignUpViewController.h; sourceTree = "<group>"; };
+		76C5EC8F17482E7A00F87A75 /* DriverSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverSignUpViewController.m; sourceTree = "<group>"; };
+		76C5EC9217482E7A00F87A75 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		76C5EC9417482E7A00F87A75 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		76C5EC9517482E7A00F87A75 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
+		76C5EC9617482E7A00F87A75 /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
+		76C5EC9717482E7A00F87A75 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		76C5EC9817482E7A00F87A75 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		76C5EC9917482E7A00F87A75 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		76C5EC9A17482E7A00F87A75 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		76C5EC9B17482E7A00F87A75 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
+		76C5EC9C17482E7A00F87A75 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
+		76C5EC9D17482E7A00F87A75 /* MEUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEUser.h; sourceTree = "<group>"; };
+		76C5EC9E17482E7A00F87A75 /* MEUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEUser.m; sourceTree = "<group>"; };
+		76C5EC9F17482E7A00F87A75 /* PassengerInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassengerInfoViewController.h; sourceTree = "<group>"; };
+		76C5ECA017482E7B00F87A75 /* PassengerInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassengerInfoViewController.m; sourceTree = "<group>"; };
+		76C5ECA317482E7B00F87A75 /* PassengerSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassengerSignUpViewController.h; sourceTree = "<group>"; };
+		76C5ECA417482E7B00F87A75 /* PassengerSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassengerSignUpViewController.m; sourceTree = "<group>"; };
 		76E8859E174827DB00694D65 /* Mtaxi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mtaxi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76E885A1174827DB00694D65 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		76E885A3174827DB00694D65 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -44,14 +90,9 @@
 		76E885AB174827DB00694D65 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		76E885AD174827DB00694D65 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		76E885AF174827DB00694D65 /* Mtaxi-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mtaxi-Prefix.pch"; sourceTree = "<group>"; };
-		76E885B0174827DB00694D65 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		76E885B1174827DB00694D65 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		76E885B3174827DB00694D65 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		76E885B5174827DB00694D65 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		76E885B7174827DB00694D65 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		76E885BA174827DB00694D65 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		76E885BC174827DB00694D65 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		76E885BD174827DB00694D65 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		76E885C4174827DB00694D65 /* MtaxiTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MtaxiTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		76E885C5174827DB00694D65 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		76E885CD174827DB00694D65 /* MtaxiTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MtaxiTests-Info.plist"; sourceTree = "<group>"; };
@@ -84,6 +125,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		76C5EC9017482E7A00F87A75 /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				76C5EC9117482E7A00F87A75 /* InfoPlist.strings */,
+				76C5EC9317482E7A00F87A75 /* MainStoryboard.storyboard */,
+			);
+			path = en.lproj;
+			sourceTree = "<group>";
+		};
 		76E88595174827DB00694D65 = {
 			isa = PBXGroup;
 			children = (
@@ -117,11 +167,37 @@
 		76E885A7174827DB00694D65 /* Mtaxi */ = {
 			isa = PBXGroup;
 			children = (
-				76E885B0174827DB00694D65 /* AppDelegate.h */,
-				76E885B1174827DB00694D65 /* AppDelegate.m */,
-				76E885B9174827DB00694D65 /* MainStoryboard.storyboard */,
-				76E885BC174827DB00694D65 /* ViewController.h */,
-				76E885BD174827DB00694D65 /* ViewController.m */,
+				76C5EC8017482E7A00F87A75 /* ActiveStatus.h */,
+				76C5EC8117482E7A00F87A75 /* ActiveStatus.m */,
+				76C5EC8217482E7A00F87A75 /* AppDelegate.h */,
+				76C5EC8317482E7A00F87A75 /* AppDelegate.m */,
+				76C5EC8417482E7A00F87A75 /* CallResult.h */,
+				76C5EC8517482E7A00F87A75 /* CallResult.m */,
+				76C5EC8617482E7A00F87A75 /* Car.h */,
+				76C5EC8717482E7A00F87A75 /* Car.m */,
+				76C5EC8817482E7A00F87A75 /* CarTypeViewController.h */,
+				76C5EC8917482E7A00F87A75 /* CarTypeViewController.m */,
+				76C5EC8A17482E7A00F87A75 /* CurrentSession.h */,
+				76C5EC8B17482E7A00F87A75 /* CurrentSession.m */,
+				76C5EC8C17482E7A00F87A75 /* DriverInfoViewController.h */,
+				76C5EC8D17482E7A00F87A75 /* DriverInfoViewController.m */,
+				76C5EC8E17482E7A00F87A75 /* DriverSignUpViewController.h */,
+				76C5EC8F17482E7A00F87A75 /* DriverSignUpViewController.m */,
+				76C5EC9017482E7A00F87A75 /* en.lproj */,
+				76C5EC9517482E7A00F87A75 /* Helper.h */,
+				76C5EC9617482E7A00F87A75 /* Helper.m */,
+				76C5EC9717482E7A00F87A75 /* Location.h */,
+				76C5EC9817482E7A00F87A75 /* Location.m */,
+				76C5EC9917482E7A00F87A75 /* LocationViewController.h */,
+				76C5EC9A17482E7A00F87A75 /* LocationViewController.m */,
+				76C5EC9B17482E7A00F87A75 /* LogInViewController.h */,
+				76C5EC9C17482E7A00F87A75 /* LogInViewController.m */,
+				76C5EC9D17482E7A00F87A75 /* MEUser.h */,
+				76C5EC9E17482E7A00F87A75 /* MEUser.m */,
+				76C5EC9F17482E7A00F87A75 /* PassengerInfoViewController.h */,
+				76C5ECA017482E7B00F87A75 /* PassengerInfoViewController.m */,
+				76C5ECA317482E7B00F87A75 /* PassengerSignUpViewController.h */,
+				76C5ECA417482E7B00F87A75 /* PassengerSignUpViewController.m */,
 				76E885A8174827DB00694D65 /* Supporting Files */,
 			);
 			path = Mtaxi;
@@ -235,7 +311,8 @@
 				76E885B4174827DB00694D65 /* Default.png in Resources */,
 				76E885B6174827DB00694D65 /* Default@2x.png in Resources */,
 				76E885B8174827DB00694D65 /* Default-568h@2x.png in Resources */,
-				76E885BB174827DB00694D65 /* MainStoryboard.storyboard in Resources */,
+				76C5ECAD17482E7B00F87A75 /* InfoPlist.strings in Resources */,
+				76C5ECAE17482E7B00F87A75 /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,8 +348,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				76E885AE174827DB00694D65 /* main.m in Sources */,
-				76E885B2174827DB00694D65 /* AppDelegate.m in Sources */,
-				76E885BE174827DB00694D65 /* ViewController.m in Sources */,
+				76C5ECA517482E7B00F87A75 /* ActiveStatus.m in Sources */,
+				76C5ECA617482E7B00F87A75 /* AppDelegate.m in Sources */,
+				76C5ECA717482E7B00F87A75 /* CallResult.m in Sources */,
+				76C5ECA817482E7B00F87A75 /* Car.m in Sources */,
+				76C5ECA917482E7B00F87A75 /* CarTypeViewController.m in Sources */,
+				76C5ECAA17482E7B00F87A75 /* CurrentSession.m in Sources */,
+				76C5ECAB17482E7B00F87A75 /* DriverInfoViewController.m in Sources */,
+				76C5ECAC17482E7B00F87A75 /* DriverSignUpViewController.m in Sources */,
+				76C5ECAF17482E7B00F87A75 /* Helper.m in Sources */,
+				76C5ECB017482E7B00F87A75 /* Location.m in Sources */,
+				76C5ECB117482E7B00F87A75 /* LocationViewController.m in Sources */,
+				76C5ECB217482E7B00F87A75 /* LogInViewController.m in Sources */,
+				76C5ECB317482E7B00F87A75 /* MEUser.m in Sources */,
+				76C5ECB417482E7B00F87A75 /* PassengerInfoViewController.m in Sources */,
+				76C5ECB617482E7B00F87A75 /* PassengerSignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,20 +385,28 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		76C5EC9117482E7A00F87A75 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				76C5EC9217482E7A00F87A75 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		76C5EC9317482E7A00F87A75 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				76C5EC9417482E7A00F87A75 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
 		76E885AA174827DB00694D65 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				76E885AB174827DB00694D65 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		76E885B9174827DB00694D65 /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				76E885BA174827DB00694D65 /* en */,
-			);
-			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 		76E885CE174827DB00694D65 /* InfoPlist.strings */ = {
@@ -453,6 +551,7 @@
 				76E885D8174827DB00694D65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		76E885D9174827DB00694D65 /* Build configuration list for PBXNativeTarget "MtaxiTests" */ = {
 			isa = XCConfigurationList;
@@ -461,6 +560,7 @@
 				76E885DB174827DB00694D65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
