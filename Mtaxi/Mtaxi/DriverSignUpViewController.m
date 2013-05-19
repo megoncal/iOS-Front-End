@@ -218,8 +218,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 
 
-
-
 - (void)locationSelected:(Location *)location atViewControler:(LocationViewController *)viewController{
     self.taxiStandLocation = location;
     self.taxiStand.text = location.locationName;
