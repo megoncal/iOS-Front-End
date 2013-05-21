@@ -111,4 +111,31 @@
     
 }
 
+- (NSMutableDictionary *)locationDictionary{
+    
+    NSMutableDictionary *location = [[NSMutableDictionary alloc]init];
+    
+    [location setObject:self.locationName forKey:@"locationName"];
+    [location setObject:self.politicalName forKey:@"politicalName"];
+    [location setObject:[NSNumber numberWithDouble:self.latitude] forKey:@"latitude"];
+    [location setObject:[NSNumber numberWithDouble:self.longitude] forKey:@"longitude"];
+    [location setObject:self.locationType forKey:@"locationType"];
+    
+    return location;
+}
+
++ (Location *)locationObject:(NSMutableDictionary *)locationDictionary{
+    
+    Location *location = [[Location alloc]init];
+    
+    location.locationName = [locationDictionary objectForKey:@"locationName"];
+    location.politicalName = [locationDictionary objectForKey:@"politicalName"];
+    location.latitude = [[locationDictionary objectForKey:@"latitude"] doubleValue];
+    location.longitude = [[locationDictionary objectForKey:@"longitude"] doubleValue];
+    location.locationType =[locationDictionary objectForKey:@"locationType"];
+    
+    return location;
+}
+
+
 @end

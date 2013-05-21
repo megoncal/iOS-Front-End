@@ -337,7 +337,8 @@
 }
 
 
-+ (void)marshallObject:(NSDictionary *)callResultDictionary callResultObject:(CallResult *)callResultObject {
++ (void)marshallObject:(NSDictionary *)callResultDictionary callResultObject:(CallResult *)callResultObject
+{
     callResultObject.type = [callResultDictionary objectForKey:@"type"];
     callResultObject.code = [callResultDictionary objectForKey:@"code"];
     callResultObject.message = [callResultDictionary objectForKey:@"message"];

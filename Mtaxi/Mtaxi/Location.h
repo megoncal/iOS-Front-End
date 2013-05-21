@@ -18,6 +18,12 @@
 @property (strong, nonatomic) NSString *locationType;
 
 
+
+- (NSMutableDictionary *)locationDictionary;
+
++ (Location *) locationObject: (NSMutableDictionary *)locationDictionary;
+
+
 + (void) searchLocations:(NSString*)enteredLocation completionHandler:(void (^)(NSError* error, NSArray *))handler;
 
 @end
