@@ -67,7 +67,7 @@
 
 +(void)retrieveLoggedUserDetails: (void (^)(MEUser *meUser, NSError* error))handler;
 
-+(void)updateLoggedUserDetails:(MEUser *)user completionHandler: (void (^)(MEUser *meUser, NSError* error, NSString *))handler;
++(void)updateLoggedUserDetails:(MEUser *)user completionHandler: (void (^)(MEUser *meUser, NSError* result))handler;
 
 
 @end

@@ -19,69 +19,6 @@
             </objects>
             <point key="canvasLocation" x="-1480" y="-2134"/>
         </scene>
-        <!--User View Controller - User-->
-        <scene sceneID="WR9-t6-3DS">
-            <objects>
-                <tableViewController restorationIdentifier="User" storyboardIdentifier="User" id="2w9-Xo-QWM" customClass="UserViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="YrV-bc-AxY">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <sections>
-                            <tableViewSection headerTitle="Account" id="MHa-PF-RNO">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AccountCells" id="f8R-4L-3kJ">
-                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username" textAlignment="right" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0i-v8-nol">
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="67" id="Imn-K3-Cni"/>
-                                                        <constraint firstAttribute="height" constant="16" id="soF-jI-HCj"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                                    <color key="textColor" red="0.32156862749999998" green="0.40000000000000002" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="AEJ-2C-kfw">
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="197" id="hW1-H6-WPg"/>
-                                                        <constraint firstAttribute="height" constant="19" id="ybJ-KY-uX1"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="rZv-Sa-mxY" id="8gO-U3-4H6"/>
-                                                    </connections>
-                                                </textField>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstAttribute="centerY" secondItem="AEJ-2C-kfw" secondAttribute="centerY" type="user" id="APG-2A-PYa"/>
-                                            <constraint firstItem="q0i-v8-nol" firstAttribute="leading" secondItem="f8R-4L-3kJ" secondAttribute="leading" constant="34" id="Fx2-QK-heH"/>
-                                            <constraint firstItem="AEJ-2C-kfw" firstAttribute="baseline" secondItem="q0i-v8-nol" secondAttribute="baseline" type="default" id="R31-Di-oce"/>
-                                            <constraint firstItem="AEJ-2C-kfw" firstAttribute="leading" secondItem="f8R-4L-3kJ" secondAttribute="leading" constant="104" id="ltT-3S-jNO"/>
-                                            <constraint firstAttribute="centerY" secondItem="q0i-v8-nol" secondAttribute="centerY" type="user" id="uJS-0i-HIp"/>
-                                        </constraints>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="2w9-Xo-QWM" id="RPs-aA-IS4"/>
-                            <outlet property="delegate" destination="2w9-Xo-QWM" id="Yu0-z5-Emi"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="User" id="AQm-bb-ZAu"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KIo-He-6rG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-621" y="-1882"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Xk0-88-dbF">
             <objects>
@@ -510,7 +447,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="rZv-Sa-mxY" kind="relationship" relationship="rootViewController" id="Lal-C4-GLu"/>
+                        <segue destination="rZv-Sa-mxY" kind="relationship" relationship="rootViewController" id="Peo-v2-tNQ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QGY-CN-8X6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1858,9 +1795,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="phoneNumber" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="username" candidateClass="UITextField"/>
             </relationships>
-        </class>
-        <class className="UserViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -151,10 +151,10 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         self.meUser.activeStatus.code = @"DISABLED";
 
     
-    [MEUser updateLoggedUserDetails:self.meUser completionHandler:^(MEUser *meUser, NSError *error, NSString *successMessage) {
+    [MEUser updateLoggedUserDetails:self.meUser completionHandler:^(MEUser *meUser, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (!error) {
-                [Helper showSuccessMEUser:successMessage];
+                [Helper showMessage:error];
             }
         });
 

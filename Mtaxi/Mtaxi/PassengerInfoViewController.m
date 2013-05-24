@@ -103,12 +103,14 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     
     [self populateUser];
     
-    [MEUser updateLoggedUserDetails:self.meUser completionHandler:^(MEUser *meUser, NSError *error, NSString *message) {
+    [MEUser updateLoggedUserDetails:self.meUser completionHandler:^(MEUser *meUser, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (!error) {
+    
+            if (error.code == 0) {
                 [self populateFields:meUser];
             }
-            [Helper showSuccessMEUser:message];
+            [Helper showMessage:error];
+            
         });
     }];
     
