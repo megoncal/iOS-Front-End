@@ -32,7 +32,7 @@
                                          latitude: (double) latitude
                                         longitude: (double) longitude
                                      locationType: (NSString *) locationType;
-
+ 
 
 +(Car *) createCarObject:(NSMutableDictionary *) car;
 
