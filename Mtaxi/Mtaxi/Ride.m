@@ -16,56 +16,20 @@
 
 - (void)createRideOnTheServer:(void (^)(NSError *, CallResult *))handler{
     
-    NSError *error;
+    NSURL *url = createRideURL;
     
     NSMutableDictionary *createRideDictionary = self.createRideDictionary;
     
-    NSData *bodyData = [NSJSONSerialization dataWithJSONObject:createRideDictionary options:NSJSONWritingPrettyPrinted error:&error];
-    
-    NSURL *url = createRideURL;
-        
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
-    
-    NSLog(@"Input String: %@", [[NSString alloc] initWithData:bodyData encoding:NSUTF8StringEncoding]);
-    
-    [request setHTTPMethod:@"POST"];
-    
-    [request setValue:@"application/json" forHTTPHeaderField:@"content-type"];
-    
-    [request setHTTPBody:bodyData];
-    
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    
-    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+    [Helper callServerWithURLAsync:url inputDictionary:createRideDictionary completionHandler:^(NSDictionary *outputDictionay, NSError *error) {
         
         CallResult *callResultObject;
         
-        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+        if (error == nil) {
+            callResultObject = [CallResult marshallObject:outputDictionay];
+        }
         
-        if ([data length] > 0 && error == nil){
-            
-            NSLog(@"Http response status code: %i",httpResponse.statusCode);
-            
-            if (httpResponse.statusCode == 200) {
-                
-                //convert json data to NSDictionary
-                NSDictionary *callResultDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                if (error == nil) {
-                   
-                   callResultObject = [CallResult marshallObject:callResultDictionary];
-                }
-                
-            }
-            else{
-                error = [Helper createErrorForMEUserClass:@"Unexpected error."];
-            }
-        }else if ([data length] == 0 && error == nil){
-            //empty replay
-        }
-        else if (error != nil){
-            error = [Helper createErrorForMEUserClass:error.localizedDescription];
-        }
         handler(error,callResultObject);
+        
     }];
 }
 
@@ -80,6 +44,8 @@
     [createRideDictionary setObject:self.dropOffLocation.locationDictionary forKey:@"dropOffLocation"];
 
     [createRideDictionary setObject:self.stringPickUpDate forKey:@"pickupDateTime"];
+    
+    [createRideDictionary setObject:self.car.code forKey:@"carType"];
     
     return createRideDictionary;
 

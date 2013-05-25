@@ -218,21 +218,39 @@
              //The following code is called upon completion of the async request
              NSDictionary *outputDictionary;
              NSError *callError;
+             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
              
              //[NSThread sleepForTimeInterval:5];
              NSLog(@"Returned String: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-             
+          
              
              //Process the data received from the server
              if ([data length] > 0 && error == nil){
                  
                  NSError *serializationError = NULL;
                  
-                 outputDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&serializationError];
-             } else {
+                 NSLog(@"Http response status code: %i",httpResponse.statusCode);
+                 
+                 if (httpResponse.statusCode == 200) {
+                     outputDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&serializationError];
+                     callError = serializationError;
+                     
+                 } else if (httpResponse.statusCode == 403){
+                     //TODO: Not authorized error
+                 }else{
+                     callError = [Helper createErrorForMEUserClass:@"Unexpected error."];
+                 }
+             }
+             
+             else if (error != nil){
+                 callError = [Helper createErrorForMEUserClass:error.localizedDescription];
+             }
+             
+             
+             else {
                  callError = [Helper createErrorForMEUserClass:@"Unexpected error."];
              }
-             //TODO: Not authorized error
+             
              handler(outputDictionary, callError);
              
          }];
