@@ -2024,7 +2024,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="ConfirmRideViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ConfirmRideViewController.h"/>
             <relationships>
-                <relationship kind="action" name="donePressed:"/>
                 <relationship kind="outlet" name="carType" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="dropOffLocation" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="messageToTheDriver" candidateClass="UITextField"/>

@@ -13,9 +13,7 @@
 @end
 
 @implementation DriverSignUpViewController{
-    
     CGFloat animatedDistance;
-    
 }
 
 static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
@@ -212,7 +210,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     [viewController dismissViewControllerAnimated:YES completion:nil];
     
 }
-
 
 
 - (void)locationSelected:(Location *)location atViewControler:(LocationViewController *)viewController{
