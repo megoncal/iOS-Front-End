@@ -12,4 +12,16 @@
 
 //CallResult
 
++ (CallResult *)marshallObject:(NSDictionary *)callResultDictionary{
+    
+    CallResult *callResultObject = [[CallResult alloc] init];
+    
+    callResultObject.type = [callResultDictionary objectForKey:@"type"];
+    callResultObject.code = [callResultDictionary objectForKey:@"code"];
+    callResultObject.message = [callResultDictionary objectForKey:@"message"];
+    
+    return callResultObject;
+}
+
+
 @end

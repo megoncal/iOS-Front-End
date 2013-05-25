@@ -48,13 +48,15 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     gestureRecognizer.cancelsTouchesInView = NO;
     [self.tableView addGestureRecognizer:gestureRecognizer];
     
-    [self retrievePassengerInformation];
+    
     
 
    
 }
 
-
+- (void)viewWillAppear:(BOOL)animated{
+    [self retrievePassengerInformation];
+}
 
 - (void)populateFields:(MEUser *)meUser {
     self.email.text = meUser.email;

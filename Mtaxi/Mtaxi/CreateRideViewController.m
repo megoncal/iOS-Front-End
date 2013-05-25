@@ -19,21 +19,29 @@
 
 - (Ride *) ride{
     if (_ride == nil) {
-        return [[Ride alloc]init];
+        _ride = [[Ride alloc]init];
     }
     return _ride;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    NSLog(@"%@", [self.delegate description]);
+
+    
 }
+
+
 
 
 - (void)didReceiveMemoryWarning
@@ -101,4 +109,22 @@
 }
 
 
+   
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    
+    if([segue.identifier isEqualToString:@"RideConfirmation"]){
+        self.ride.pickUpDate = self.datePicker.date;
+        ConfirmRideViewController *confirmRideViewController = segue.destinationViewController;
+        confirmRideViewController.ride = self.ride;
+    }
+}
+
+
+
+- (IBAction)cancelPressed:(id)sender {
+    
+    [[self delegate] createRideViewControllerWasCancelled:self];
+    
+}
 @end

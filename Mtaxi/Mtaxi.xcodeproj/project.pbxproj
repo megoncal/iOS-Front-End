@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2F4071B317483EC900D429FE /* Ride.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4071B217483EC900D429FE /* Ride.m */; };
 		2F4071B71748526200D429FE /* CreateRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4071B51748410C00D429FE /* CreateRideViewController.m */; };
+		2FFB0E02174971F9008049A1 /* ConfirmRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB0E01174971F9008049A1 /* ConfirmRideViewController.m */; };
+		2FFB0E051749798E008049A1 /* RidesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB0E041749798E008049A1 /* RidesListViewController.m */; };
 		76C5ECA517482E7B00F87A75 /* ActiveStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8117482E7A00F87A75 /* ActiveStatus.m */; };
 		76C5ECA617482E7B00F87A75 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8317482E7A00F87A75 /* AppDelegate.m */; };
 		76C5ECA717482E7B00F87A75 /* CallResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8517482E7A00F87A75 /* CallResult.m */; };
@@ -209,6 +211,10 @@
 				2F4071B217483EC900D429FE /* Ride.m */,
 				2F4071B41748410C00D429FE /* CreateRideViewController.h */,
 				2F4071B51748410C00D429FE /* CreateRideViewController.m */,
+				2FFB0E00174971F9008049A1 /* ConfirmRideViewController.h */,
+				2FFB0E01174971F9008049A1 /* ConfirmRideViewController.m */,
+				2FFB0E031749798E008049A1 /* RidesListViewController.h */,
+				2FFB0E041749798E008049A1 /* RidesListViewController.m */,
 			);
 			name = Ride;
 			sourceTree = "<group>";

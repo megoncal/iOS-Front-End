@@ -14,4 +14,8 @@
 @property (strong, nonatomic) NSString *code;
 @property (strong,nonatomic) NSString *message;
 
+
+
++ (CallResult *)marshallObject:(NSDictionary *)callResultDictionary;
+
 @end

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Location.h"
 #import "Car.h"
+#import "CallResult.h"
 
 @interface Ride : NSObject
 
@@ -18,6 +19,18 @@
 @property (strong, nonatomic) Car *car;
 
 @property (strong,nonatomic) NSDate *pickUpDate;
+
+@property (strong,nonatomic) NSString *messageToTheDriver;
+
+
+
+- (void) createRideOnTheServer:(void (^)(NSError *, CallResult *))handler;
+
+- (NSMutableDictionary *)createRideDictionary;
+
+- (NSString *)stringPickUpDate;
+
+- (NSString *)stringFullFormatPickUpDate;
 
 
 @end
