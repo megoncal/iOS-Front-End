@@ -222,6 +222,39 @@
             </objects>
             <point key="canvasLocation" x="-3657" y="-2096"/>
         </scene>
+        <!--User View Controller-->
+        <scene sceneID="rIX-v6-RDK">
+            <objects>
+                <tableViewController id="Hwx-Qq-Beo" customClass="UserViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="tva-yu-uMG">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Account" id="eRl-1d-W1J">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="GcZ-WJ-Tzh">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Hwx-Qq-Beo" id="W5q-KL-SWt"/>
+                            <outlet property="delegate" destination="Hwx-Qq-Beo" id="1Y7-j9-a60"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cm3-pr-eek" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3284" y="-1091"/>
+        </scene>
         <!--Passenger Sign Up View Controller - Passenger-->
         <scene sceneID="ZFP-gn-haM">
             <objects>
@@ -1716,6 +1749,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="CreateRideViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CreateRideViewController.h"/>
             <relationships>
+                <relationship kind="action" name="cancelPressed:"/>
                 <relationship kind="outlet" name="carType" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="carTypeCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
@@ -1795,6 +1829,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="phoneNumber" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="username" candidateClass="UITextField"/>
             </relationships>
+        </class>
+        <class className="UserViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
