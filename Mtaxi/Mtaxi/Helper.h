@@ -27,18 +27,6 @@
 
 +(void)showSuccessMEUser: (NSString *) message;
 
-+(NSMutableDictionary *) createLocationDictionary: (NSString *) locationName
-                                    politicalName: (NSString *) politicalName
-                                         latitude: (double) latitude
-                                        longitude: (double) longitude
-                                     locationType: (NSString *) locationType;
- 
-
-+(Car *) createCarObject:(NSMutableDictionary *) car;
-
-+(Location *) createLocationObject: (NSMutableDictionary *) location;
-
-+(ActiveStatus *) createActiveStatusObject:(NSMutableDictionary *) activeStatus;
 
 +(void)showSuccessMessage: (NSString *) message;
 +(void)showErrorMessage: (NSString *) message;
@@ -47,6 +35,7 @@
 +(NSError *)createNSError:(CallResult *)callResultObject;
 + (void)callServerWithURLAsync:(NSURL *) url inputDictionary:(NSMutableDictionary *) inputDictionary completionHandler:(void (^)(NSDictionary *, NSError *))handler;
 + (BOOL)callServerWithURLSync:(NSURL *) url inputDictionary:(NSMutableDictionary *) inputDictionary outputDictionary:(NSDictionary**) outputDictionary myerror:(NSError **)myerror;
+
 
 
 @end

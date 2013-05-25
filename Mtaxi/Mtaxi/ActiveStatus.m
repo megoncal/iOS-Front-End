@@ -13,6 +13,12 @@
 
 
 
++ (ActiveStatus *)createActiveStatusObject:(NSMutableDictionary *)activeStatus{
+    ActiveStatus *object = [[ActiveStatus alloc]init];
+    object.code = [activeStatus objectForKey:@"code"];
+    object.description = [activeStatus objectForKey:@"description"];
+    return object;
+}
 
 
 

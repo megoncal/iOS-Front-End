@@ -137,5 +137,18 @@
     return location;
 }
 
++ (Location *)createLocationObject:(NSMutableDictionary *)location{
+    Location *object = [[Location alloc]init];
+    object.locationName = [location objectForKey:@"locationName"];
+    object.politicalName = [location objectForKey:@"politicalName"];
+    object.latitude = [[location objectForKey:@"latitude"] doubleValue];
+    object.longitude = [[location objectForKey:@"longitude"] doubleValue];
+    object.locationType =[location objectForKey:@"locationType"];
+    
+    return object;
+}
+
+
+
 
 @end

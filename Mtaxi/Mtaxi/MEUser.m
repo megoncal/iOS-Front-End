@@ -209,8 +209,8 @@
     
     [driverExtraInformation setObject:carType.code forKey:@"carType"];
     
-    NSMutableDictionary *servedLocation = [Helper createLocationDictionary:location.locationName politicalName:location.politicalName latitude:location.latitude longitude:location.longitude locationType:location.locationType];
-    
+    NSMutableDictionary *servedLocation = [location locationDictionary];
+  
     [driverExtraInformation setObject:servedLocation forKey:@"servedLocation"];
     
     [driverExtraInformation setObject:activeStatus forKey:@"activeStatus"];
@@ -321,18 +321,18 @@
         
         //servedLocation
         NSMutableDictionary *driverServedLocation = [driverExtraInformation objectForKey:@"servedLocation"];
-        userObject.servedLocation = [Helper createLocationObject:driverServedLocation];
+        userObject.servedLocation = [Location locationObject:driverServedLocation];
         
         
         //activeStatus
         NSMutableDictionary *activeStatus = [driverExtraInformation objectForKey:@"activeStatus"];
-        userObject.activeStatus = [Helper createActiveStatusObject:activeStatus];
-        
-        
+        userObject.activeStatus = [ActiveStatus createActiveStatusObject:activeStatus];
+     
         
         //carType
         NSMutableDictionary *carType = [driverExtraInformation objectForKey:@"carType"];
-        userObject.carType = [Helper createCarObject:carType];
+        userObject.carType = [Car createCarObject:carType];
+
         
     }
     else{
@@ -351,10 +351,12 @@
 
 
 + (void)marshallDictionary:(MEUser *)user updateLoggedUser:(NSMutableDictionary *)updateLoggedUser {
+   
     [updateLoggedUser setObject:user.version forKey:@"version"];
     [updateLoggedUser setObject:user.firstName forKey:@"firstName"];
     [updateLoggedUser setObject:user.lastName forKey:@"lastName"];
     [updateLoggedUser setObject:user.phone forKey:@"phone"];
+   
     //TODO: Discuss this with Marcos
     //    [updateLoggedUser setObject:user.username forKey:@"username"];
     //    [updateLoggedUser setObject:user.version forKey:@"password"];
@@ -365,11 +367,12 @@
     if ([user.userType isEqualToString:@"driver"]) {
         NSMutableDictionary *driverInfo = [[NSMutableDictionary alloc] init];
         [driverInfo setObject:user.carType.code forKey:@"carType"];
-        NSMutableDictionary *servedLocation = [Helper createLocationDictionary:user.servedLocation.locationName politicalName:user.servedLocation.politicalName latitude:user.servedLocation.latitude longitude:user.servedLocation.longitude locationType:user.servedLocation.locationType];
+        NSMutableDictionary *servedLocation = [user.servedLocation locationDictionary];
         [driverInfo setObject:servedLocation forKey:@"servedLocation"];
         [driverInfo setObject:user.activeStatus.code forKey:@"activeStatus"];
         [updateLoggedUser setObject:driverInfo forKey:@"driver"];
     }
+
 }
 
 

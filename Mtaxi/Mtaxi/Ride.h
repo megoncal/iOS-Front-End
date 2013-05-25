@@ -24,7 +24,7 @@
 
 
 
-- (void) createRideOnTheServer:(void (^)(NSError *, CallResult *))handler;
+- (void) createRideOnTheServer:(void (^)(Ride *, NSError *))handler;
 
 - (NSMutableDictionary *)createRideDictionary;
 

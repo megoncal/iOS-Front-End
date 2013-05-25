@@ -18,4 +18,8 @@
 //retrieve a list of car types from the server
 +(void)retrieverCarTypes: (void (^)(NSArray *carTypes, NSError* error))handler;
 
+
++(Car *) createCarObject:(NSMutableDictionary *) car;
+
+
 @end

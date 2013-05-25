@@ -15,6 +15,6 @@
 @property (strong,nonatomic) NSString *code;
 @property (strong,nonatomic) NSString *description;
 
-
++(ActiveStatus *) createActiveStatusObject:(NSMutableDictionary *) activeStatus;
 
 @end
