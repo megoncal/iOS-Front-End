@@ -2084,9 +2084,22 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="action" name="cancelPressed:"/>
             </relationships>
         </class>
+        <class className="ConfirmRideViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConfirmRideViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="donePressed:"/>
+                <relationship kind="outlet" name="carType" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="dropOffLocation" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="messageToTheDriver" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="pickUpDate" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="pickUpLocation" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="pickUpLocationComplement" candidateClass="UITextField"/>
+            </relationships>
+        </class>
         <class className="CreateRideViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CreateRideViewController.h"/>
             <relationships>
+                <relationship kind="action" name="cancelPressed:"/>
                 <relationship kind="outlet" name="carType" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="carTypeCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>

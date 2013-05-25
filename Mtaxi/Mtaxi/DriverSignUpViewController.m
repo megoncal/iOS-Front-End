@@ -187,6 +187,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
     }else if ([self.tableView cellForRowAtIndexPath:indexPath] == self.carCell){
+        
         CarTypeViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CarTypeList"];
         controller.delegate = self;
         [self presentViewController:controller animated:YES completion:nil];
