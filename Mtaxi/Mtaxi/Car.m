@@ -69,4 +69,14 @@
 }
 
 
+
++ (Car *)createCarObject:(NSMutableDictionary *)car{
+    Car *object = [[Car alloc]init];
+    object.code = [car objectForKey:@"code"];
+    object.description = [car objectForKey:@"description"];
+    return object;
+}
+
+
+
 @end

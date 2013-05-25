@@ -14,7 +14,7 @@
 @implementation Ride
 
 
-- (void)createRideOnTheServer:(void (^)(NSError *, CallResult *))handler{
+- (void)createRideOnTheServer:(void (^)(Ride * , NSError *))handler{
     
     NSURL *url = createRideURL;
     
@@ -23,12 +23,17 @@
     [Helper callServerWithURLAsync:url inputDictionary:createRideDictionary completionHandler:^(NSDictionary *outputDictionay, NSError *error) {
         
         CallResult *callResultObject;
-        
-        if (error == nil) {
+        Ride *ride;
+        if (error.code == 0) {
             callResultObject = [CallResult marshallObject:outputDictionay];
+            //TODO: Marshall returned ride and result;
+             error = [Helper createNSError:callResultObject];
         }
         
-        handler(error,callResultObject);
+        //Create an error from the call Result - This maybe success or not
+       
+        
+        handler(ride,error);
         
     }];
 }

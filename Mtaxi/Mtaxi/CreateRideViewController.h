@@ -38,8 +38,6 @@
 
 
 
-
-
 @end
 
 @protocol CreateRideViewControllerDelegate <NSObject>

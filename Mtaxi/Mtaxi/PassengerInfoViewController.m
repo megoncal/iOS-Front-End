@@ -48,10 +48,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     gestureRecognizer.cancelsTouchesInView = NO;
     [self.tableView addGestureRecognizer:gestureRecognizer];
     
-    [self retrievePassengerInformation];
-    
-    
-
+     
    
 }
 

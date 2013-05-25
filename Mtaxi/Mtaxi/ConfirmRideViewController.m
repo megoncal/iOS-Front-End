@@ -142,15 +142,12 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (IBAction)donePressed:(id)sender {
     
-    [self.ride createRideOnTheServer:^(NSError *error, CallResult *result) {
+    [self.ride createRideOnTheServer:^(Ride *ride, NSError *error) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (!error) {
-                NSLog(@"%@", result.message);
-            }
-            else{
-                [Helper showErrorMEUserWithError:error];
-            }
+            
+        [Helper showMessage:error];
+    
             
         });
     }];
