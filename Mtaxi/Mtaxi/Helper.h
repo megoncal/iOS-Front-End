@@ -10,7 +10,8 @@
 #import "Location.h"
 #import "Car.h"
 #import "ActiveStatus.h"
-
+#import "CallResult.h"
+#import "CurrentSession.h"
 
 @class Car;
 @class Radius;
@@ -31,13 +32,21 @@
                                          latitude: (double) latitude
                                         longitude: (double) longitude
                                      locationType: (NSString *) locationType;
-
+ 
 
 +(Car *) createCarObject:(NSMutableDictionary *) car;
 
 +(Location *) createLocationObject: (NSMutableDictionary *) location;
 
 +(ActiveStatus *) createActiveStatusObject:(NSMutableDictionary *) activeStatus;
+
++(void)showSuccessMessage: (NSString *) message;
++(void)showErrorMessage: (NSString *) message;
++(void)showMessage: (NSError *) error;
++(NSError *)createNSError:(int) code message:(NSString *) message;
++(NSError *)createNSError:(CallResult *)callResultObject;
++ (void)callServerWithURLAsync:(NSURL *) url inputDictionary:(NSMutableDictionary *) inputDictionary completionHandler:(void (^)(NSDictionary *, NSError *))handler;
++ (BOOL)callServerWithURLSync:(NSURL *) url inputDictionary:(NSMutableDictionary *) inputDictionary outputDictionary:(NSDictionary**) outputDictionary myerror:(NSError **)myerror;
 
 
 @end

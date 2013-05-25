@@ -6,11 +6,15 @@
 //  Copyright (c) 2013 Marcos Vilela. All rights reserved.
 //
 
+//#define loggedUserDetails [NSURL URLWithString:@"http://localhost:8080/moovt/user/retrieveLoggedUserDetails"]
+//#define signInURL [NSURL URLWithString:@"http://localhost:8080/moovt/login/authenticateUser"]
+//#define signUpURL [NSURL URLWithString:@"http://localhost:8080/moovt/user/createUser"]
+//#define updateLoggedUserURL [NSURL URLWithString:@"http://localhost:8080/moovt/user/updateLoggedUser"]
+
 #define loggedUserDetails [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/user/retrieveLoggedUserDetails"]
 #define signInURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/login/authenticateUser"]
 #define signUpURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/user/createUser"]
 #define updateLoggedUserURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/user/updateLoggedUser"]
-
 
 
 
@@ -342,7 +346,7 @@
     callResultObject.type = [callResultDictionary objectForKey:@"type"];
     callResultObject.code = [callResultDictionary objectForKey:@"code"];
     callResultObject.message = [callResultDictionary objectForKey:@"message"];
-  
+    
 }
 
 
@@ -369,139 +373,66 @@
 }
 
 
-//Calls a REST/JSON service with a dictionary and returns a dictionary
-
-+ (void)callServerWithURL:(NSURL *) url inputDictionary:(NSMutableDictionary *) inputDictionary outputDictionary:(NSDictionary**) outputDictionary callStatus:(NSError **)error {
-    
-    //Convert the Dictionary to the data that will go into the body of the message
-    NSError *inputSerializationError = NULL;
-    NSData *bodyData = [NSJSONSerialization dataWithJSONObject:inputDictionary options:NSJSONWritingPrettyPrinted error:&inputSerializationError];
-    
-    //Checks if the bodyData was generated successfully
-    if (!inputSerializationError) {
-        
-        //Call server
-        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
-        
-        [request setHTTPMethod:@"POST"];
-        [request setHTTPBody:bodyData];
-        [request setValue:@"application/json" forHTTPHeaderField:@"content-type"];
-        NSString *jsessiond = [CurrentSession currentSessionInformation].jsessionID;
-        [request setValue:[NSString stringWithFormat:@"JSESSIONID=%@",jsessiond] forHTTPHeaderField:@"Cookie"];
-        
-        NSHTTPURLResponse *responseCode = NULL;
-        NSError *callError = NULL;
-        
-        NSLog(@"Input String: %@", [[NSString alloc] initWithData:bodyData encoding:NSUTF8StringEncoding]);
-
-        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&callError];
-    
-        
-        NSLog(@"Returned String: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-
-        
-        //Process the data received from the server
-        if ([data length] > 0 && callError == nil){
-            
-            if (responseCode.statusCode == 200) {
-                //convert json data to NSDictionary that was passed as a reference
-                
-                NSError *serializationError = NULL;
-                
-                *outputDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&serializationError];
-            }
-            else if (responseCode.statusCode == 403){
-                
-                // TODO: Is this really possible
-                *error = [Helper createErrorForMEUserClass:@"Unauthorized access."];
-                
-                
-            }
-            else{
-                *error = [Helper createErrorForMEUserClass:@"Unexpected error."];
-            }
-        }else if ([data length] == 0 && error == nil){
-            //TODO: Is this possible
-        }
-        else if (*error != NULL){
-            *error = [Helper createErrorForMEUserClass:callError.localizedDescription];
-        }
-        
-    }
-    
-}
-
-
-
-+ (void)getErrorAndMessage:(NSString **)message_p error_p:(NSError **)error_p callResultObject:(CallResult *)callResultObject {
-    if ([callResultObject.code isEqualToString:@"SUCCESS"]) {
-        *message_p = callResultObject.message;
-    } else {
-        if ([callResultObject.type isEqualToString:@"USER"]) {
-            *error_p = [Helper createErrorForMEUserClass:*message_p];
-            *message_p = callResultObject.message;
-        } else {
-            *error_p = [Helper createErrorForMEUserClass:@"Unexpected error. Please try again."];
-            *message_p = @"Unexpected error. Please try again.";
-        }
-    }
-}
-
-
 +(void)retrieveLoggedUserDetails:(void (^)(MEUser *, NSError *))handler{
     
-    NSError *error;
     MEUser *userObject=[[MEUser alloc] init];
     
     //The server call to retrieve the logged user details contains a blank message (i.e. {})
     NSMutableDictionary *bodyDictionary = [[NSMutableDictionary alloc] init];
-    NSDictionary *outputDictionary;
     
-    [self callServerWithURL:loggedUserDetails inputDictionary:bodyDictionary outputDictionary:&outputDictionary callStatus:&error];
+    //[self callServerWithURLSync:loggedUserDetails inputDictionary:bodyDictionary outputDictionary:&outputDictionary callStatus:&error];
     
-    //If not error set the handler object
-    //TODO: What if there is an error
-    if (!error) {
-        NSDictionary *userDictionary = [outputDictionary objectForKey:@"user"];
-        [MEUser marshallObject:userDictionary userObject:userObject];
-        handler(userObject,error);
-    }
-    
+    [Helper callServerWithURLAsync:loggedUserDetails inputDictionary:bodyDictionary completionHandler:^(NSDictionary *outputDictionary, NSError *error)
+     {
+         //If not error set the handler object
+         //TODO: What if there is an error
+         if (!error) {
+             NSDictionary *userDictionary = [outputDictionary objectForKey:@"user"];
+             [MEUser marshallObject:userDictionary userObject:userObject];
+             handler(userObject,error);
+         }
+         
+     }];
     
 }
 
-+(void)updateLoggedUserDetails:(MEUser *)user completionHandler:(void (^)(MEUser *, NSError *, NSString *))handler{
+//TODO: Make this synchronous starting at the ViewController?
++(void)updateLoggedUserDetails:(MEUser *)user completionHandler:(void (^)(MEUser *, NSError *))handler{
     
-    NSError *error;
-    MEUser *userObject=[[MEUser alloc] init];
-    CallResult *callResultObject=[[CallResult alloc] init];
-    
-    
+    NSError *myerror = [[NSError alloc] init];
     NSMutableDictionary *userDictionary = [[NSMutableDictionary alloc] init];
+    NSDictionary *callResultDictionary;
+    NSDictionary *outputDictionary;
+    
     
     [MEUser marshallDictionary:user updateLoggedUser:userDictionary];
     
-    NSDictionary *outputDictionary;
-
-    [MEUser callServerWithURL:updateLoggedUserURL inputDictionary:userDictionary outputDictionary:&outputDictionary callStatus:&error];
-
-    //TODO: What if there is an error
-    if (!error) {
-        NSDictionary *userDictionary = [outputDictionary objectForKey:@"user"];
-        //TODO: Test this once the server code is adjusted
-        NSDictionary *callResultDictionary = [outputDictionary objectForKey:@"result"];
-        [MEUser marshallObject:userDictionary userObject:userObject];
-        [MEUser marshallObject:callResultDictionary callResultObject:callResultObject];
-        //handler(userObject,error);
+    
+    
+    BOOL success = [Helper callServerWithURLSync:updateLoggedUserURL inputDictionary:userDictionary outputDictionary:&outputDictionary myerror:&myerror];
+    
+    if (!success) {
+        handler (NULL,myerror);
+        return;
         
-        NSString *message;
-        [self getErrorAndMessage:&message error_p:&error callResultObject:callResultObject];
-        
-        NSLog(@"TEST %@",message);
-
-        handler(userObject, error, message);
     }
+    
+    //Obtain specific dictionaries from the outputDictionary
+    userDictionary = [outputDictionary objectForKey:@"user"];
+    callResultDictionary = [outputDictionary objectForKey:@"result"];
+    
+    //Marshal the objects
+    MEUser *userObject=[[MEUser alloc] init];
+    CallResult *callResultObject=[[CallResult alloc] init];
+    
+    [MEUser marshallObject:userDictionary userObject:userObject];
+    [MEUser marshallObject:callResultDictionary callResultObject:callResultObject];
+    
+    //Create an error from the call Result - This maybe success or not
+    myerror = [Helper createNSError:callResultObject];
+    handler(userObject, myerror);
 }
+
 
 
 
