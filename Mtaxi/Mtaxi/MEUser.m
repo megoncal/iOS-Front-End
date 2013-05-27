@@ -6,15 +6,15 @@
 //  Copyright (c) 2013 Marcos Vilela. All rights reserved.
 //
 
-#define loggedUserDetails [NSURL URLWithString:@"http://localhost:8080/moovt/user/retrieveLoggedUserDetails"]
-#define signInURL [NSURL URLWithString:@"http://localhost:8080/moovt/login/authenticateUser"]
-#define signUpURL [NSURL URLWithString:@"http://localhost:8080/moovt/user/createUser"]
-#define updateLoggedUserURL [NSURL URLWithString:@"http://localhost:8080/moovt/user/updateLoggedUser"]
+//#define loggedUserDetails [NSURL URLWithString:@"http://localhost:8080/moovt/user/retrieveLoggedUserDetails"]
+//#define signInURL [NSURL URLWithString:@"http://localhost:8080/moovt/login/authenticateUser"]
+//#define signUpURL [NSURL URLWithString:@"http://localhost:8080/moovt/user/createUser"]
+//#define updateLoggedUserURL [NSURL URLWithString:@"http://localhost:8080/moovt/user/updateLoggedUser"]
 
-//#define loggedUserDetails [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/user/retrieveLoggedUserDetails"]
-//#define signInURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/login/authenticateUser"]
-//#define signUpURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/user/createUser"]
-//#define updateLoggedUserURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/user/updateLoggedUser"]
+#define loggedUserDetails [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/user/retrieveLoggedUserDetails"]
+#define signInURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/login/authenticateUser"]
+#define signUpURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/user/createUser"]
+#define updateLoggedUserURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/user/updateLoggedUser"]
 
 
 
@@ -389,9 +389,11 @@
      {
          //If not error set the handler object
          //TODO: What if there is an error
-         if (!error) {
+         if (error.code == 0) {
              NSDictionary *userDictionary = [outputDictionary objectForKey:@"user"];
              [MEUser marshallObject:userDictionary userObject:userObject];
+             handler(userObject,error);
+         }else{
              handler(userObject,error);
          }
          

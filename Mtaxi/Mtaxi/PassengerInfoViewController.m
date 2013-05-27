@@ -69,7 +69,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     [MEUser retrieveLoggedUserDetails:^(MEUser *meUser, NSError *error) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (!error) {
+            if (error.code == 0) {
                 
                 [self populateFields:meUser];
                 //logged user info is displayed so prepare navigattion bar buttons
@@ -81,7 +81,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
                 
             }else{
 
-                [Helper showErrorMEUserWithError:error];
+                [Helper showMessage:error];
             }
             
         });

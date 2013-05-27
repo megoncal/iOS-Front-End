@@ -14,30 +14,62 @@
 @implementation Ride
 
 
-- (void)createRideOnTheServer:(void (^)(Ride * , NSError *))handler{
+- (Ride *)createNewRideOnTheServer:(NSError *__autoreleasing *)error{
     
     NSURL *url = createRideURL;
     
+    Ride *createdRide;
+    
     NSMutableDictionary *createRideDictionary = self.createRideDictionary;
     
-    [Helper callServerWithURLAsync:url inputDictionary:createRideDictionary completionHandler:^(NSDictionary *outputDictionay, NSError *error) {
-        
-        CallResult *callResultObject;
-        Ride *ride;
-        if (error.code == 0) {
-            callResultObject = [CallResult marshallObject:outputDictionay];
-            //TODO: Marshall returned ride and result;
-             error = [Helper createNSError:callResultObject];
-        }
-        
-        //Create an error from the call Result - This maybe success or not
-       
-        
-        handler(ride,error);
-        
-    }];
+    NSMutableDictionary *outputDictionary;
+   
+    [Helper callServerWithURLSync:url inputDictionary:createRideDictionary outputDictionary:&outputDictionary myerror:error];
+
+    //Create an error from the call Result - This maybe success or not
+    *error = [Helper createNSError:[CallResult marshallObject:outputDictionary]];
+
+    return createdRide;
 }
 
+
+
++ (Ride *) rideObject : (NSDictionary *) rideDictionary{
+    
+    Ride *ride = [[Ride alloc] init];
+    
+    ride.rideId = [[rideDictionary objectForKey:@"id"] intValue];
+    
+    ride.version = [[rideDictionary objectForKey:@"version"] intValue];
+
+    ride.rideStatus = [RideStatus rideStatusObject:[rideDictionary objectForKey:@"rideStatus"]];
+    
+    //TODO: Implement driver and passenger
+    //driver
+    //passenger
+    
+    NSString *pickUpDateString = [rideDictionary objectForKey:@"pickupDateTime"];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+     
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    
+     NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+    
+    [dateFormatter setTimeZone:gmt];
+    
+    ride.pickUpDate = [dateFormatter dateFromString:pickUpDateString];
+    
+    ride.pickUpLocation = [Location locationObject:[rideDictionary objectForKey:@"pickUpAddress"]];
+    
+    ride.dropOffLocation = [Location locationObject:[rideDictionary objectForKey:@"dropOffAddress"]];
+    
+    ride.rating = [rideDictionary objectForKey:@"rating"];
+    
+    ride.comments = [rideDictionary objectForKey:@"comments"];
+    
+    return ride;
+}
 
 - (NSMutableDictionary *) createRideDictionary{
     
@@ -63,7 +95,6 @@
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     
-    
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     
     [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
@@ -71,6 +102,7 @@
     stringDate = [dateFormatter stringFromDate:self.pickUpDate];
     
     return stringDate;
+
 }
 
 
@@ -90,6 +122,7 @@
     
     return stringDate;
 }
+
 
 
 

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2F383939175148F700DF3E25 /* ConfirmRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F383936175148F700DF3E25 /* ConfirmRideViewController.m */; };
 		2F38393A175148F700DF3E25 /* RidesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F383938175148F700DF3E25 /* RidesListViewController.m */; };
+		2F38393D1752E25200DF3E25 /* RideStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F38393C1752E25200DF3E25 /* RideStatus.m */; };
 		2F4071B317483EC900D429FE /* Ride.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4071B217483EC900D429FE /* Ride.m */; };
 		2F4071B71748526200D429FE /* CreateRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4071B51748410C00D429FE /* CreateRideViewController.m */; };
 		76C5ECA517482E7B00F87A75 /* ActiveStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8117482E7A00F87A75 /* ActiveStatus.m */; };
@@ -59,6 +60,8 @@
 		2F383936175148F700DF3E25 /* ConfirmRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmRideViewController.m; sourceTree = "<group>"; };
 		2F383937175148F700DF3E25 /* RidesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RidesListViewController.h; sourceTree = "<group>"; };
 		2F383938175148F700DF3E25 /* RidesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RidesListViewController.m; sourceTree = "<group>"; };
+		2F38393B1752E25100DF3E25 /* RideStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RideStatus.h; sourceTree = "<group>"; };
+		2F38393C1752E25200DF3E25 /* RideStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RideStatus.m; sourceTree = "<group>"; };
 		2F4071B117483EC900D429FE /* Ride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ride.h; sourceTree = "<group>"; };
 		2F4071B217483EC900D429FE /* Ride.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ride.m; sourceTree = "<group>"; };
 		2F4071B41748410C00D429FE /* CreateRideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateRideViewController.h; sourceTree = "<group>"; };
@@ -219,6 +222,8 @@
 				2F4071B51748410C00D429FE /* CreateRideViewController.m */,
 				2F383935175148F700DF3E25 /* ConfirmRideViewController.h */,
 				2F383936175148F700DF3E25 /* ConfirmRideViewController.m */,
+				2F38393B1752E25100DF3E25 /* RideStatus.h */,
+				2F38393C1752E25200DF3E25 /* RideStatus.m */,
 			);
 			name = Ride;
 			sourceTree = "<group>";
@@ -439,6 +444,7 @@
 				76DE98CB17502EA100E6072B /* UserViewController.m in Sources */,
 				2F383939175148F700DF3E25 /* ConfirmRideViewController.m in Sources */,
 				2F38393A175148F700DF3E25 /* RidesListViewController.m in Sources */,
+				2F38393D1752E25200DF3E25 /* RideStatus.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

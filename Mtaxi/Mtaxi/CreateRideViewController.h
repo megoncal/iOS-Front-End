@@ -14,7 +14,7 @@
 #import "ConfirmRideViewController.h"
 
 
-@protocol CreateRideViewControllerDelegate;
+
 
 @interface CreateRideViewController : UITableViewController <LocationViewControllerDelegate, CarTypeViewControllerDelegate>
 
@@ -30,8 +30,6 @@
 
 @property (strong, nonatomic) Ride *ride;
 
-@property (nonatomic, assign) id<CreateRideViewControllerDelegate>delegate;
-
 
 - (IBAction)cancelPressed:(id)sender;
 
@@ -40,8 +38,4 @@
 
 @end
 
-@protocol CreateRideViewControllerDelegate <NSObject>
 
-- (void) createRideViewControllerWasCancelled: (CreateRideViewController *) viewController;
-
-@end

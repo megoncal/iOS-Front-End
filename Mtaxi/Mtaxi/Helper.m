@@ -56,7 +56,7 @@
     } else {
         [self showErrorMessage:error.localizedDescription];
     }
-} 
+}
 
 +(NSError *)createNSError:(int) code message:(NSString *) message{
     NSMutableDictionary* details = [[NSMutableDictionary alloc] initWithCapacity:1];
@@ -165,25 +165,33 @@
     
     
     
-    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *callError)
      {
          //The following code is called upon completion of the async request
          NSError *serializationError;
          NSDictionary *outputDictionary;
-         NSError *callError;
+         NSError *error;
          NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
          
          //[NSThread sleepForTimeInterval:5];
          NSLog(@"Returned String: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
          
          
-        if ((callError) || ([data length] == 0)) {
+         if ((callError) || ([data length] == 0)) {
              error = [Helper createNSError:1 message:[NSString stringWithFormat:@"Error calling server (%@)", callError.localizedDescription]] ;
+             
+             handler(outputDictionary, error);
+             
+             return;
              
          }
          
          if (httpResponse.statusCode != 200) {
              error = [Helper createNSError:1 message:[NSString stringWithFormat:@"Server returned an unexpected status code (%d)", httpResponse.statusCode]];
+             
+             handler(outputDictionary, error);
+             
+             return;
          }
          
          //TODO:Handle 403 error (NOT AUTHORIZED)
@@ -192,12 +200,15 @@
          
          if (serializationError) {
              error = [Helper createNSError:1 message:@"Input Searilization Error"] ;
+             
+             handler(outputDictionary, error);
+             return;
          }
          
          error = [Helper createNSError:0 message:@"Synchronous call to server was successful"] ;
          
          
-         handler(outputDictionary, callError);
+         handler(outputDictionary, error);
          
      }];
 }

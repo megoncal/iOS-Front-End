@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "CreateRideViewController.h"
 
-@interface RidesListViewController : UITableViewController <CreateRideViewControllerDelegate>
+@interface RidesListViewController : UITableViewController
+
+
+@property (strong,nonatomic) NSMutableArray *rides;
 
 - (IBAction)addRidePressed:(id)sender;
 

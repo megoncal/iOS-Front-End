@@ -14,7 +14,7 @@
 
 @implementation ConfirmRideViewController{
     CGFloat animatedDistance;
-
+    
 }
 
 
@@ -29,7 +29,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     
     //capture every time the tableView is touched and call method hideKeyboard
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
@@ -38,7 +38,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
@@ -131,7 +131,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     [self.messageToTheDriver resignFirstResponder];
     
     [self.pickUpLocationComplement resignFirstResponder];
-
+    
 }
 - (void)hideKeyboard{
     [self.messageToTheDriver resignFirstResponder];
@@ -141,16 +141,15 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 }
 
 - (IBAction)donePressed:(id)sender {
-    
-    [self.ride createRideOnTheServer:^(Ride *ride, NSError *error) {
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-        [Helper showMessage:error];
+    NSError *error;
     
-            
-        });
-    }];
+    [self.ride createNewRideOnTheServer:&error];
+    
+    [Helper showMessage:error];
+    
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 

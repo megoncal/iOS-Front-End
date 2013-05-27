@@ -38,9 +38,6 @@
     
 }
 
-
-
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -120,8 +117,10 @@
 
 
 - (IBAction)cancelPressed:(id)sender {
-    
-    [[self delegate] createRideViewControllerWasCancelled:self];
-    
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:Nil];
 }
+
+
+
+
 @end

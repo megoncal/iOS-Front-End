@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Ride.h"
 
+
+
+
 @interface ConfirmRideViewController : UITableViewController
 
 @property (strong,nonatomic) Ride *ride;
@@ -24,4 +27,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *messageToTheDriver;
 
 
+
+
 @end
+
