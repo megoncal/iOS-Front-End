@@ -28,7 +28,7 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 
@@ -86,6 +86,10 @@
     status.text = ride.rideStatus.description;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+    
+    [dateFormatter setTimeZone:gmt];
     
     [dateFormatter setDateFormat:@"HH:mm"];
     
