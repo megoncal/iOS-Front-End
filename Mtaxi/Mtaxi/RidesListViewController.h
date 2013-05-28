@@ -13,6 +13,9 @@
 
 
 @property (strong,nonatomic) NSMutableArray *rides;
+//sectioned rides
+//every array position has a nsdictionary with key as date and an array of ride as value
+@property (strong, nonatomic) NSMutableArray *sectionedRides;
 
 - (IBAction)addRidePressed:(id)sender;
 

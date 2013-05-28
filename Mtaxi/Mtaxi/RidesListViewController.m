@@ -46,17 +46,62 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+
+    self.sectionedRides = [[NSMutableArray alloc]init];
     
-    //TODO: implement a logic to add sections in the table according to the date of the ride;
+    NSMutableDictionary *sectionsDictionary = [[NSMutableDictionary alloc]init];
+    
+    NSMutableArray *ridesForSection;
+    
+    
+    for (Ride *ride in self.rides) {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+        [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+        NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+        [dateFormatter setTimeZone:gmt];
+        
+        NSString *date = [dateFormatter stringFromDate:ride.pickUpDate];
+        NSLog(@"Date: %@",date);
+        
+        ridesForSection = [sectionsDictionary objectForKey:date];
+        if (ridesForSection == nil) {
+            ridesForSection = [[NSMutableArray alloc]init];
+            [ridesForSection addObject:ride];
+            [sectionsDictionary setObject:ridesForSection forKey:date];
+                        
+        }else{
+            [ridesForSection addObject:ride];
+        }
+    }
+    
+    NSArray *sectionedRidesTemp = [sectionsDictionary allKeys];
+    //populate the sectionedRides;
+    for (NSString *date in sectionedRidesTemp) {
+        NSMutableDictionary *tempDictionary = [[NSMutableDictionary alloc]init];
+        [tempDictionary setValue:[sectionsDictionary objectForKey:date] forKey:date];
+        [self.sectionedRides addObject:tempDictionary];
+    }
     
     // Return the number of sections.
-    return 1;
+    return self.sectionedRides.count;
 }
+
+
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
+    NSDictionary *ridesDictionary = [self.sectionedRides objectAtIndex:section];
     // Return the number of rows in the section.
-    return self.rides.count;
+    return [[[ridesDictionary allValues] objectAtIndex:0] count];;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    
+    NSDictionary *ridesDictionary = [self.sectionedRides objectAtIndex:section];
+    NSString *sectionHeader = [[ridesDictionary allKeys] objectAtIndex:0];
+    return sectionHeader;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -68,29 +113,24 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
+
     UITextField *from = (UITextField *)[cell viewWithTag:100];
-    
     UITextField *to = (UITextField *)[cell viewWithTag:101];
-    
     UITextField *time = (UITextField *)[cell viewWithTag:102];
-    
     UITextField *status = (UITextField *)[cell viewWithTag:103];
     
-    Ride *ride = [self.rides objectAtIndex:indexPath.row];
+    
+    NSDictionary *ridesDictionary = [self.sectionedRides objectAtIndex:indexPath.section];
+    NSArray *ridesArray = [[ridesDictionary allValues] objectAtIndex:0];
+    Ride *ride = [ridesArray objectAtIndex:indexPath.row];
     
     from.text = ride.pickUpLocation.locationName;
-    
     to.text = ride.dropOffLocation.locationName;
-    
     status.text = ride.rideStatus.description;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    
     NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
-    
     [dateFormatter setTimeZone:gmt];
-    
     [dateFormatter setDateFormat:@"HH:mm"];
     
     time.text = [dateFormatter stringFromDate:ride.pickUpDate];
