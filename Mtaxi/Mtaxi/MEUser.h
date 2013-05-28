@@ -6,19 +6,22 @@
 //  Copyright (c) 2013 Marcos Vilela. All rights reserved.
 //
 
+
+
 #import "Helper.h"
 #import "Car.h"
 #import "CurrentSession.h"
 #import "Location.h"
 #import "ActiveStatus.h"
 #import "CallResult.h"
+#import "Marshaller.h"
 
 
 @interface MEUser : NSObject
 
 
 @property (strong, nonatomic) NSString *userType; //driver or passenger
-@property (strong, nonatomic) NSString *userId;
+@property (strong, nonatomic) NSString *id;
 @property (strong, nonatomic) NSString *version;
 @property (strong, nonatomic) NSString *username;
 

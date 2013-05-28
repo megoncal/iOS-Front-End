@@ -12,6 +12,7 @@
 		2F38393D1752E25200DF3E25 /* RideStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F38393C1752E25200DF3E25 /* RideStatus.m */; };
 		2F4071B317483EC900D429FE /* Ride.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4071B217483EC900D429FE /* Ride.m */; };
 		2F4071B71748526200D429FE /* CreateRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4071B51748410C00D429FE /* CreateRideViewController.m */; };
+		76A0E33917544689009D18CB /* Marshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A0E33817544689009D18CB /* Marshaller.m */; };
 		76C5ECA517482E7B00F87A75 /* ActiveStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8117482E7A00F87A75 /* ActiveStatus.m */; };
 		76C5ECA617482E7B00F87A75 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8317482E7A00F87A75 /* AppDelegate.m */; };
 		76C5ECA717482E7B00F87A75 /* CallResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8517482E7A00F87A75 /* CallResult.m */; };
@@ -70,6 +71,8 @@
 		7696CE70174FE8DA00AB736A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "pt-BR"; path = "pt-BR.lproj/MainStoryboard.storyboard"; sourceTree = "<group>"; };
 		7696CE71174FE8DA00AB736A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		7696CE72174FE8DA00AB736A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		76A0E33717544689009D18CB /* Marshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Marshaller.h; sourceTree = "<group>"; };
+		76A0E33817544689009D18CB /* Marshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Marshaller.m; sourceTree = "<group>"; };
 		76C5EC8017482E7A00F87A75 /* ActiveStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveStatus.h; sourceTree = "<group>"; };
 		76C5EC8117482E7A00F87A75 /* ActiveStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveStatus.m; sourceTree = "<group>"; };
 		76C5EC8217482E7A00F87A75 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -173,6 +176,8 @@
 				76C5EC8517482E7A00F87A75 /* CallResult.m */,
 				76C5EC9517482E7A00F87A75 /* Helper.h */,
 				76C5EC9617482E7A00F87A75 /* Helper.m */,
+				76A0E33717544689009D18CB /* Marshaller.h */,
+				76A0E33817544689009D18CB /* Marshaller.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -445,6 +450,7 @@
 				2F383939175148F700DF3E25 /* ConfirmRideViewController.m in Sources */,
 				2F38393A175148F700DF3E25 /* RidesListViewController.m in Sources */,
 				2F38393D1752E25200DF3E25 /* RideStatus.m in Sources */,
+				76A0E33917544689009D18CB /* Marshaller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
