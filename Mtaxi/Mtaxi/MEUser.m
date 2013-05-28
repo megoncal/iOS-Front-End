@@ -210,7 +210,7 @@
     [driverExtraInformation setObject:carType.code forKey:@"carType"];
     
     NSMutableDictionary *servedLocation = [location locationDictionary];
-  
+    
     [driverExtraInformation setObject:servedLocation forKey:@"servedLocation"];
     
     [driverExtraInformation setObject:activeStatus forKey:@"activeStatus"];
@@ -303,78 +303,6 @@
 }
 
 
-+ (void)marshallObject:(NSDictionary *)userDictionary userObject:(MEUser *)userObject {
-    userObject.userId = [userDictionary objectForKey:@"id"];
-    userObject.version = [userDictionary objectForKey:@"version"];
-    userObject.username = [userDictionary objectForKey:@"username"];
-    userObject.firstName = [userDictionary objectForKey:@"firstName"];
-    userObject.lastName = [userDictionary objectForKey:@"lastName"];
-    userObject.phone = [userDictionary objectForKey:@"phone"];
-    userObject.email = [userDictionary objectForKey:@"email"];
-    id driver = [userDictionary objectForKey:@"driver"];
-    if (driver) {
-        userObject.userType = @"driver";
-        //to-do
-        //buscar informações do driver....
-        
-        NSDictionary *driverExtraInformation = driver;
-        
-        //servedLocation
-        NSMutableDictionary *driverServedLocation = [driverExtraInformation objectForKey:@"servedLocation"];
-        userObject.servedLocation = [Location locationObject:driverServedLocation];
-        
-        
-        //activeStatus
-        NSMutableDictionary *activeStatus = [driverExtraInformation objectForKey:@"activeStatus"];
-        userObject.activeStatus = [ActiveStatus createActiveStatusObject:activeStatus];
-     
-        
-        //carType
-        NSMutableDictionary *carType = [driverExtraInformation objectForKey:@"carType"];
-        userObject.carType = [Car createCarObject:carType];
-
-        
-    }
-    else{
-        userObject.userType = @"passenger";
-    }
-}
-
-
-+ (void)marshallObject:(NSDictionary *)callResultDictionary callResultObject:(CallResult *)callResultObject
-{
-    callResultObject.type = [callResultDictionary objectForKey:@"type"];
-    callResultObject.code = [callResultDictionary objectForKey:@"code"];
-    callResultObject.message = [callResultDictionary objectForKey:@"message"];
-    
-}
-
-
-+ (void)marshallDictionary:(MEUser *)user updateLoggedUser:(NSMutableDictionary *)updateLoggedUser {
-   
-    [updateLoggedUser setObject:user.version forKey:@"version"];
-    [updateLoggedUser setObject:user.firstName forKey:@"firstName"];
-    [updateLoggedUser setObject:user.lastName forKey:@"lastName"];
-    [updateLoggedUser setObject:user.phone forKey:@"phone"];
-   
-    //TODO: Discuss this with Marcos
-    //    [updateLoggedUser setObject:user.username forKey:@"username"];
-    //    [updateLoggedUser setObject:user.version forKey:@"password"];
-    
-    [updateLoggedUser setObject:user.email forKey:@"email"];
-    
-    
-    if ([user.userType isEqualToString:@"driver"]) {
-        NSMutableDictionary *driverInfo = [[NSMutableDictionary alloc] init];
-        [driverInfo setObject:user.carType.code forKey:@"carType"];
-        NSMutableDictionary *servedLocation = [user.servedLocation locationDictionary];
-        [driverInfo setObject:servedLocation forKey:@"servedLocation"];
-        [driverInfo setObject:user.activeStatus.code forKey:@"activeStatus"];
-        [updateLoggedUser setObject:driverInfo forKey:@"driver"];
-    }
-
-}
-
 
 +(void)retrieveLoggedUserDetails:(void (^)(MEUser *, NSError *))handler{
     
@@ -391,7 +319,10 @@
          //TODO: What if there is an error
          if (error.code == 0) {
              NSDictionary *userDictionary = [outputDictionary objectForKey:@"user"];
-             [MEUser marshallObject:userDictionary userObject:userObject];
+             //[MEUser marshallObject:userDictionary userObject:userObject];
+             [Marshaller marshallObject: userObject dictionary:userDictionary];
+             //TODO: Need to handle userType better
+             userObject.userType = @"passenger";
              handler(userObject,error);
          }else{
              handler(userObject,error);
@@ -410,7 +341,7 @@
     NSDictionary *outputDictionary;
     
     
-    [MEUser marshallDictionary:user updateLoggedUser:userDictionary];
+    [Marshaller marshallDictionary:userDictionary object:user];
     
     
     
@@ -430,8 +361,12 @@
     MEUser *userObject=[[MEUser alloc] init];
     CallResult *callResultObject=[[CallResult alloc] init];
     
-    [MEUser marshallObject:userDictionary userObject:userObject];
-    [MEUser marshallObject:callResultDictionary callResultObject:callResultObject];
+    //[MEUser marshallObject:userDictionary userObject:userObject];
+    [Marshaller marshallObject:userObject dictionary:userDictionary];
+    //TODO: Need to handle userType better
+    userObject.userType = @"passenger";
+    
+    [Marshaller marshallObject:callResultObject dictionary:callResultDictionary];
     
     //Create an error from the call Result - This maybe success or not
     myerror = [Helper createNSError:callResultObject];
