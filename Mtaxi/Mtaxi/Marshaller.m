@@ -101,8 +101,6 @@
     objc_property_t *properties = class_copyPropertyList(c, &outCount);
     for (i = 0; i < outCount; i++) {
         objc_property_t property = properties[i];
-        fprintf(stdout, "%s %s\n", property_getName(property), property_getAttributes(property));
-        
         //Property Name
         const char * propertyNameAux = property_getName(property);
         NSString *propertyName = [[NSString alloc] initWithUTF8String:propertyNameAux];
@@ -112,18 +110,51 @@
         NSString * typeString = [NSString stringWithUTF8String:attributesAux];
         NSArray * attributes = [typeString componentsSeparatedByString:@","];
         NSString * typeAttribute = [attributes objectAtIndex:0];
+        typeAttribute = [typeAttribute stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+        typeAttribute = [typeAttribute stringByReplacingOccurrencesOfString:@"@" withString:@""];
+        typeAttribute = [typeAttribute substringFromIndex:1];
+        
         
         //TODO: Add if for the additional types that we have in our code
-        if ([typeAttribute isEqualToString:@"T@\"NSString\""]) {
+        if ([typeAttribute isEqualToString:@"NSString"]) {
             NSString * value = [object valueForKey:propertyName];
-            NSLog(@"About to add value %@ to key %@", value, propertyName);
+            if (value == nil) {
+                value = [[NSString alloc] init];
+            }
+            NSLog(@"About to add NSString ->%@<- to key ->%@<-", value, propertyName);
+            [dictionary setObject:value forKey:propertyName];
+        } else if ([typeAttribute isEqualToString:@"NSDate"]) {
+            NSDate * dateValue = [object valueForKey:propertyName];
+            if (dateValue == nil) {
+                dateValue = [[NSDate alloc] init];
+            }
+            
+            //TODO: Review this with Marcos
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+            NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+            [dateFormatter setTimeZone:gmt];
+            
+            NSString * value = [dateFormatter stringFromDate:dateValue ];
+            
+            NSLog(@"About to add NSDate/NSString ->%@<- to key ->%@<-", value, propertyName);
+            [dictionary setObject:value forKey:propertyName];
+        } else if ([typeAttribute isEqualToString:@"i"]) {
+            int intValue = [[object valueForKey:propertyName] integerValue];
+            NSNumber *value = [NSNumber numberWithInt:intValue];
+            NSLog(@"About to add int %@ to key %@", value, propertyName);
+            [dictionary setObject:value forKey:propertyName];
+        } else if ([typeAttribute isEqualToString:@"d"]) {
+            float floatValue = [[object valueForKey:propertyName] floatValue];
+            NSNumber *value = [NSNumber numberWithFloat:floatValue];
+            NSLog(@"About to add float %@ to key %@", value, propertyName);
             [dictionary setObject:value forKey:propertyName];
         } else {
-            id innerObject = [[NSClassFromString(propertyName) alloc] init];
+            id innerObject = [object valueForKey:propertyName];
             if (innerObject){
                 NSMutableDictionary *innerDictionary = [[NSMutableDictionary alloc] init];
                 [self marshallDictionary:innerDictionary object:innerObject];
-                NSLog(@"About to add value %@ to key %@", innerDictionary, propertyName);
+                NSLog(@"About to add innerDictionary %@ to key %@", innerDictionary, propertyName);
                 [dictionary setObject:innerDictionary forKey:propertyName];
             }
         }

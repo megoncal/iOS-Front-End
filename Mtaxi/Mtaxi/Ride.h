@@ -16,7 +16,7 @@
 
 
 
-@property int rideId;
+@property int id;
 @property int version;
 
 
