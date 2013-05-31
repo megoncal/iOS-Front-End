@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MEUser.h"
+#import "User.h"
 #import "CarTypeViewController.h"
 #import "LocationViewController.h"
-#import "Car.h"
+#import "CarType.h"
 #import "Location.h"
+#import "UserServerController.h"
 
 @interface DriverInfoViewController : UITableViewController <UITextFieldDelegate, CarTypeViewControllerDelegate,LocationViewControllerDelegate, UIGestureRecognizerDelegate>
 
@@ -31,9 +32,9 @@
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *servedLocationCell;
 
-@property (strong, nonatomic) MEUser *meUser;
+@property (strong, nonatomic) User *user;
 
-@property (strong, nonatomic)   Car *car;
+@property (strong, nonatomic)   CarType *car;
 @property (strong, nonatomic)   Location *location;
 
 

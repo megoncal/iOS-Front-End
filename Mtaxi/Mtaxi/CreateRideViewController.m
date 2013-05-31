@@ -75,7 +75,7 @@
     [viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)carTypeSelected:(Car *)car AtViewController:(CarTypeViewController *)viewController{
+- (void)carTypeSelected:(CarType *)car AtViewController:(CarTypeViewController *)viewController{
     self.ride.car = car;
     self.carType.text = car.description;
     [viewController dismissViewControllerAnimated:YES completion:nil];

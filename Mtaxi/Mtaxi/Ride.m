@@ -43,13 +43,13 @@
     
     NSMutableDictionary *createRideDictionary = [[NSMutableDictionary alloc] init];
     
-    [Marshaller marshallDictionary:createRideDictionary object:self];
+    [Marshaller marshallDictionary:createRideDictionary object:self error:error];
     //
     //NSMutableDictionary *createRideDictionary = self.createRideDictionary;
     
     NSMutableDictionary *outputDictionary;
    
-    [Helper callServerWithURLSync:url inputDictionary:createRideDictionary outputDictionary:&outputDictionary myerror:error];
+    [Helper callServerWithURLSync:url inputDictionary:createRideDictionary outputDictionary:&outputDictionary error:error];
 
     //Create an error from the call Result - This maybe success or not
     *error = [Helper createNSError:[CallResult marshallObject:outputDictionary]];

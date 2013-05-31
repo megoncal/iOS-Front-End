@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Car.h"
+#import "CarType.h"
 #import "Helper.h"
 
 

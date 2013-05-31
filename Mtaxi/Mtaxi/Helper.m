@@ -79,10 +79,19 @@
     return error;
 }
 
++(NSError *)createNSError:(NSString *) code type:(NSString *) type message:(NSString *) message {
+    CallResult *callResult = [[CallResult alloc] init];
+    callResult.type = type;
+    callResult.message = message;
+    callResult.code = code;
+    return [self createNSError:callResult];
+ 
+}
 
-//Calls a REST/JSON service with a dictionary and returns a dictionary
+//Calls a REST/JSON service with a dictionary and returns a dictionar
 
-+ (BOOL)callServerWithURLSync:(NSURL *) url inputDictionary:(NSMutableDictionary *) inputDictionary outputDictionary:(NSDictionary**) outputDictionary myerror:(NSError **)myerror {
+
++ (BOOL)callServerWithURLSync:(NSURL *) url inputDictionary:(NSMutableDictionary *) inputDictionary outputDictionary:(NSDictionary**) outputDictionary error:(NSError **)error {
     
     //Convert the Dictionary to the data that will go into the body of the message
     NSError *serializationError = NULL;
@@ -90,7 +99,7 @@
     
     //Checks if the bodyData was generated successfully
     if (serializationError) {
-        *myerror = [Helper createNSError:1 message:@"Input Searilization Error"] ;
+        *error = [Helper createNSError:1 message:@"Input Searilization Error"] ;
         return NO;
     }
     
@@ -114,23 +123,23 @@
     
     //TODO: correct
     if ((callError) && ([data length] > 0)) {
-        *myerror = [Helper createNSError:1 message:[NSString stringWithFormat:@"Error calling server (%@)", callError.localizedDescription]] ;
+        *error = [Helper createNSError:1 message:[NSString stringWithFormat:@"Error calling server (%@)", callError.localizedDescription]] ;
         return NO;
     }
     
     if (responseCode.statusCode != 200) {
-        *myerror = [Helper createNSError:1 message:[NSString stringWithFormat:@"Server returned an unexpected status code (%d)", responseCode.statusCode]] ;
+        *error = [Helper createNSError:1 message:[NSString stringWithFormat:@"Server returned an unexpected status code (%d)", responseCode.statusCode]] ;
         return NO;
     }
     
     *outputDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&serializationError];
     
     if (serializationError) {
-        *myerror = [Helper createNSError:1 message:@"Input Searilization Error"] ;
+        *error = [Helper createNSError:1 message:@"Input Searilization Error"] ;
         return NO;
     }
     
-    *myerror = [Helper createNSError:0 message:@"Synchronous call to server was successful"] ;
+    *error = [Helper createNSError:0 message:@"Synchronous call to server was successful"] ;
     return YES;
     
 }

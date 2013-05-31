@@ -66,28 +66,28 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 #pragma mark - retrieveData
 - (void)retrieveDriverInformation{
     
-    [MEUser retrieveLoggedUserDetails:^(MEUser *meUser, NSError *error) {
+    [UserServerController retrieveLoggedUserDetails:^(User *user, NSError *error) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (!error) {
                 
-                self.meUser = meUser;
+                self.user = user;
             
-                self.email.text = meUser.email;
-                self.firstName.text = meUser.firstName;
-                self.lastName.text = meUser.lastName;
-                self.phone.text = meUser.phone;
+                self.email.text = user.email;
+                self.firstName.text = user.firstName;
+                self.lastName.text = user.lastName;
+                self.phone.text = user.phone;
                 
                 //driver
-                self.servedLocation.text = meUser.servedLocation.locationName;
+                self.servedLocation.text = user.driver.servedLocation.locationName;
                 
-                if ([meUser.activeStatus.code isEqualToString:@"ENABLED"]) {
+                if ([user.driver.activeStatus.code isEqualToString:@"ENABLED"]) {
                     self.activeStatus.on = TRUE;
                 }else{
                     self.activeStatus.on = FALSE;
                 }
                 
-                self.carDescription.text = meUser.carType.description;
+                self.carDescription.text = user.driver.carType.description;
  
                 
                 //logged user info is displayed so prepare navigattion bar buttons
@@ -102,7 +102,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
                 
             }else{
                 
-                [Helper showErrorMEUserWithError:error];
+                [Helper showMessage:error];
             }
             
         });
@@ -116,42 +116,42 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     
 
     if (self.email.text) {
-        self.meUser.email = self.email.text;
+        self.user.email = self.email.text;
     }
     
     if (self.firstName.text) {
-        self.meUser.firstName = self.firstName.text;
+        self.user.firstName = self.firstName.text;
     }
     
     if( self.lastName.text){
-        self.meUser.lastName = self.lastName.text;
+        self.user.lastName = self.lastName.text;
     }
     
     
     if(self.phone.text){
-        self.meUser.phone = self.phone.text;
+        self.user.phone = self.phone.text;
     }
     
     if (self.car) {
-        self.meUser.carType = self.car;
+        self.user.driver.carType = self.car;
     }
     
     if (self.location) {
-        self.meUser.servedLocation = self.location;
+        self.user.driver.servedLocation = self.location;
     }
     
     
     //to-do
-    //self.meUser.servedLocation = self.location;
+    //self.user.servedLocation = self.location;
     
     
     if(self.activeStatus.on)
-        self.meUser.activeStatus.code = @"ENABLED";
+        self.user.driver.activeStatus.code = @"ENABLED";
     else
-        self.meUser.activeStatus.code = @"DISABLED";
+        self.user.driver.activeStatus.code = @"DISABLED";
 
     
-    [MEUser updateLoggedUserDetails:self.meUser completionHandler:^(MEUser *meUser, NSError *error) {
+    [UserServerController updateLoggedUserDetails:self.user completionHandler:^(User *user, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (!error) {
                 [Helper showMessage:error];
@@ -330,7 +330,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     [viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)carTypeSelected:(Car *)car AtViewController:(CarTypeViewController *)viewController{
+- (void)carTypeSelected:(CarType *)car AtViewController:(CarTypeViewController *)viewController{
     self.car = car;
     self.carDescription.text = car.description;
     [viewController dismissViewControllerAnimated:YES completion:nil];

@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Marcos Vilela. All rights reserved.
 //
 
-#import "Car.h"
+#import "CarType.h"
 
 //#define carTypeURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/driver/getCarTypeEnum"]
 #define carTypeURL [NSURL URLWithString:@"http://localhost:8080/moovt/driver/getCarTypeEnum"]
 
 
-@implementation Car
+@implementation CarType
 
 
 + (void)retrieverCarTypes:(void (^)(NSArray *, NSError *))handler{
@@ -46,7 +46,7 @@
                     carTypes = [[NSMutableArray alloc] init];
                     
                     for (NSDictionary *dictionary in returnedArray) {
-                        Car* car = [[Car alloc]init];
+                        CarType* car = [[CarType alloc]init];
                         car.code = [dictionary objectForKey:@"code"];
                         car.description = [dictionary objectForKey:@"description"];
                         [carTypes addObject:car];
@@ -71,8 +71,8 @@
 
 
 
-+ (Car *)createCarObject:(NSMutableDictionary *)car{
-    Car *object = [[Car alloc]init];
++ (CarType *)createCarObject:(NSMutableDictionary *)car{
+    CarType *object = [[CarType alloc]init];
     object.code = [car objectForKey:@"code"];
     object.description = [car objectForKey:@"description"];
     return object;

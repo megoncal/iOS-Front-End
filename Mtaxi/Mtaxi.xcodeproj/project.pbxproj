@@ -12,11 +12,15 @@
 		2F38393D1752E25200DF3E25 /* RideStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F38393C1752E25200DF3E25 /* RideStatus.m */; };
 		2F4071B317483EC900D429FE /* Ride.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4071B217483EC900D429FE /* Ride.m */; };
 		2F4071B71748526200D429FE /* CreateRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4071B51748410C00D429FE /* CreateRideViewController.m */; };
+		764A936917584E60004BA822 /* SignInResultToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 764A936817584E60004BA822 /* SignInResultToken.m */; };
+		76A04ED11756FAD80012481B /* Passenger.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A04ED01756FAD80012481B /* Passenger.m */; };
+		76A04ED41756FB020012481B /* Driver.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A04ED31756FB020012481B /* Driver.m */; };
+		76A04ED71756FDE10012481B /* SignInToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A04ED61756FDE10012481B /* SignInToken.m */; };
 		76A0E33917544689009D18CB /* Marshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A0E33817544689009D18CB /* Marshaller.m */; };
 		76C5ECA517482E7B00F87A75 /* ActiveStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8117482E7A00F87A75 /* ActiveStatus.m */; };
 		76C5ECA617482E7B00F87A75 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8317482E7A00F87A75 /* AppDelegate.m */; };
 		76C5ECA717482E7B00F87A75 /* CallResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8517482E7A00F87A75 /* CallResult.m */; };
-		76C5ECA817482E7B00F87A75 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8717482E7A00F87A75 /* Car.m */; };
+		76C5ECA817482E7B00F87A75 /* CarType.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8717482E7A00F87A75 /* CarType.m */; };
 		76C5ECA917482E7B00F87A75 /* CarTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8917482E7A00F87A75 /* CarTypeViewController.m */; };
 		76C5ECAA17482E7B00F87A75 /* CurrentSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8B17482E7A00F87A75 /* CurrentSession.m */; };
 		76C5ECAB17482E7B00F87A75 /* DriverInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8D17482E7A00F87A75 /* DriverInfoViewController.m */; };
@@ -27,7 +31,7 @@
 		76C5ECB017482E7B00F87A75 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC9817482E7A00F87A75 /* Location.m */; };
 		76C5ECB117482E7B00F87A75 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC9A17482E7A00F87A75 /* LocationViewController.m */; };
 		76C5ECB217482E7B00F87A75 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC9C17482E7A00F87A75 /* LogInViewController.m */; };
-		76C5ECB317482E7B00F87A75 /* MEUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC9E17482E7A00F87A75 /* MEUser.m */; };
+		76C5ECB317482E7B00F87A75 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC9E17482E7A00F87A75 /* User.m */; };
 		76C5ECB417482E7B00F87A75 /* PassengerInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5ECA017482E7B00F87A75 /* PassengerInfoViewController.m */; };
 		76C5ECB617482E7B00F87A75 /* PassengerSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5ECA417482E7B00F87A75 /* PassengerSignUpViewController.m */; };
 		76DE98CB17502EA100E6072B /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DE98CA17502EA100E6072B /* UserViewController.m */; };
@@ -44,6 +48,7 @@
 		76E885C8174827DB00694D65 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E885A3174827DB00694D65 /* Foundation.framework */; };
 		76E885D0174827DB00694D65 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 76E885CE174827DB00694D65 /* InfoPlist.strings */; };
 		76E885D3174827DB00694D65 /* MtaxiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E885D2174827DB00694D65 /* MtaxiTests.m */; };
+		76F692071755B36A000F9434 /* UserServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F692061755B36A000F9434 /* UserServerController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,10 +72,18 @@
 		2F4071B217483EC900D429FE /* Ride.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ride.m; sourceTree = "<group>"; };
 		2F4071B41748410C00D429FE /* CreateRideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateRideViewController.h; sourceTree = "<group>"; };
 		2F4071B51748410C00D429FE /* CreateRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateRideViewController.m; sourceTree = "<group>"; };
+		764A936717584E60004BA822 /* SignInResultToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInResultToken.h; sourceTree = "<group>"; };
+		764A936817584E60004BA822 /* SignInResultToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInResultToken.m; sourceTree = "<group>"; };
 		7696CE6F174FE8DA00AB736A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		7696CE70174FE8DA00AB736A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "pt-BR"; path = "pt-BR.lproj/MainStoryboard.storyboard"; sourceTree = "<group>"; };
 		7696CE71174FE8DA00AB736A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		7696CE72174FE8DA00AB736A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		76A04ECF1756FAD80012481B /* Passenger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Passenger.h; sourceTree = "<group>"; };
+		76A04ED01756FAD80012481B /* Passenger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Passenger.m; sourceTree = "<group>"; };
+		76A04ED21756FB020012481B /* Driver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Driver.h; sourceTree = "<group>"; };
+		76A04ED31756FB020012481B /* Driver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Driver.m; sourceTree = "<group>"; };
+		76A04ED51756FDE10012481B /* SignInToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInToken.h; sourceTree = "<group>"; };
+		76A04ED61756FDE10012481B /* SignInToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInToken.m; sourceTree = "<group>"; };
 		76A0E33717544689009D18CB /* Marshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Marshaller.h; sourceTree = "<group>"; };
 		76A0E33817544689009D18CB /* Marshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Marshaller.m; sourceTree = "<group>"; };
 		76C5EC8017482E7A00F87A75 /* ActiveStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveStatus.h; sourceTree = "<group>"; };
@@ -79,8 +92,8 @@
 		76C5EC8317482E7A00F87A75 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		76C5EC8417482E7A00F87A75 /* CallResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallResult.h; sourceTree = "<group>"; };
 		76C5EC8517482E7A00F87A75 /* CallResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallResult.m; sourceTree = "<group>"; };
-		76C5EC8617482E7A00F87A75 /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
-		76C5EC8717482E7A00F87A75 /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Car.m; sourceTree = "<group>"; };
+		76C5EC8617482E7A00F87A75 /* CarType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarType.h; sourceTree = "<group>"; };
+		76C5EC8717482E7A00F87A75 /* CarType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarType.m; sourceTree = "<group>"; };
 		76C5EC8817482E7A00F87A75 /* CarTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarTypeViewController.h; sourceTree = "<group>"; };
 		76C5EC8917482E7A00F87A75 /* CarTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarTypeViewController.m; sourceTree = "<group>"; };
 		76C5EC8A17482E7A00F87A75 /* CurrentSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentSession.h; sourceTree = "<group>"; };
@@ -99,8 +112,8 @@
 		76C5EC9A17482E7A00F87A75 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		76C5EC9B17482E7A00F87A75 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogInViewController.h; path = Mtaxi/LogInViewController.h; sourceTree = "<group>"; };
 		76C5EC9C17482E7A00F87A75 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogInViewController.m; path = Mtaxi/LogInViewController.m; sourceTree = "<group>"; };
-		76C5EC9D17482E7A00F87A75 /* MEUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MEUser.h; path = Mtaxi/MEUser.h; sourceTree = "<group>"; };
-		76C5EC9E17482E7A00F87A75 /* MEUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MEUser.m; path = Mtaxi/MEUser.m; sourceTree = "<group>"; };
+		76C5EC9D17482E7A00F87A75 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Mtaxi/User.h; sourceTree = "<group>"; };
+		76C5EC9E17482E7A00F87A75 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Mtaxi/User.m; sourceTree = "<group>"; };
 		76C5EC9F17482E7A00F87A75 /* PassengerInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassengerInfoViewController.h; sourceTree = "<group>"; };
 		76C5ECA017482E7B00F87A75 /* PassengerInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassengerInfoViewController.m; sourceTree = "<group>"; };
 		76C5ECA317482E7B00F87A75 /* PassengerSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassengerSignUpViewController.h; sourceTree = "<group>"; };
@@ -124,6 +137,8 @@
 		76E885CF174827DB00694D65 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		76E885D1174827DB00694D65 /* MtaxiTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MtaxiTests.h; sourceTree = "<group>"; };
 		76E885D2174827DB00694D65 /* MtaxiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MtaxiTests.m; sourceTree = "<group>"; };
+		76F692051755B36A000F9434 /* UserServerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserServerController.h; sourceTree = "<group>"; };
+		76F692061755B36A000F9434 /* UserServerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserServerController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,8 +168,8 @@
 		2F4071AA1748317B00D429FE /* Driver */ = {
 			isa = PBXGroup;
 			children = (
-				76C5EC8617482E7A00F87A75 /* Car.h */,
-				76C5EC8717482E7A00F87A75 /* Car.m */,
+				76C5EC8617482E7A00F87A75 /* CarType.h */,
+				76C5EC8717482E7A00F87A75 /* CarType.m */,
 				76C5EC8817482E7A00F87A75 /* CarTypeViewController.h */,
 				76C5EC8917482E7A00F87A75 /* CarTypeViewController.m */,
 				76C5EC8017482E7A00F87A75 /* ActiveStatus.h */,
@@ -207,8 +222,18 @@
 		2F4071AF174835D900D429FE /* User */ = {
 			isa = PBXGroup;
 			children = (
-				76C5EC9D17482E7A00F87A75 /* MEUser.h */,
-				76C5EC9E17482E7A00F87A75 /* MEUser.m */,
+				76C5EC9D17482E7A00F87A75 /* User.h */,
+				76C5EC9E17482E7A00F87A75 /* User.m */,
+				76A04ED51756FDE10012481B /* SignInToken.h */,
+				76A04ED61756FDE10012481B /* SignInToken.m */,
+				764A936717584E60004BA822 /* SignInResultToken.h */,
+				764A936817584E60004BA822 /* SignInResultToken.m */,
+				76A04ED21756FB020012481B /* Driver.h */,
+				76A04ED31756FB020012481B /* Driver.m */,
+				76A04ECF1756FAD80012481B /* Passenger.h */,
+				76A04ED01756FAD80012481B /* Passenger.m */,
+				76F692051755B36A000F9434 /* UserServerController.h */,
+				76F692061755B36A000F9434 /* UserServerController.m */,
 				76C5EC9B17482E7A00F87A75 /* LogInViewController.h */,
 				76C5EC9C17482E7A00F87A75 /* LogInViewController.m */,
 			);
@@ -433,7 +458,7 @@
 				76C5ECA517482E7B00F87A75 /* ActiveStatus.m in Sources */,
 				76C5ECA617482E7B00F87A75 /* AppDelegate.m in Sources */,
 				76C5ECA717482E7B00F87A75 /* CallResult.m in Sources */,
-				76C5ECA817482E7B00F87A75 /* Car.m in Sources */,
+				76C5ECA817482E7B00F87A75 /* CarType.m in Sources */,
 				76C5ECA917482E7B00F87A75 /* CarTypeViewController.m in Sources */,
 				76C5ECAA17482E7B00F87A75 /* CurrentSession.m in Sources */,
 				76C5ECAB17482E7B00F87A75 /* DriverInfoViewController.m in Sources */,
@@ -442,7 +467,7 @@
 				76C5ECB017482E7B00F87A75 /* Location.m in Sources */,
 				76C5ECB117482E7B00F87A75 /* LocationViewController.m in Sources */,
 				76C5ECB217482E7B00F87A75 /* LogInViewController.m in Sources */,
-				76C5ECB317482E7B00F87A75 /* MEUser.m in Sources */,
+				76C5ECB317482E7B00F87A75 /* User.m in Sources */,
 				76C5ECB417482E7B00F87A75 /* PassengerInfoViewController.m in Sources */,
 				76C5ECB617482E7B00F87A75 /* PassengerSignUpViewController.m in Sources */,
 				2F4071B317483EC900D429FE /* Ride.m in Sources */,
@@ -451,6 +476,11 @@
 				2F38393A175148F700DF3E25 /* RidesListViewController.m in Sources */,
 				2F38393D1752E25200DF3E25 /* RideStatus.m in Sources */,
 				76A0E33917544689009D18CB /* Marshaller.m in Sources */,
+				76F692071755B36A000F9434 /* UserServerController.m in Sources */,
+				76A04ED11756FAD80012481B /* Passenger.m in Sources */,
+				76A04ED41756FB020012481B /* Driver.m in Sources */,
+				76A04ED71756FDE10012481B /* SignInToken.m in Sources */,
+				764A936917584E60004BA822 /* SignInResultToken.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

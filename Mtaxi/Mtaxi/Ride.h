@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MEUser.h"
+#import "User.h"
 #import "Location.h"
-#import "Car.h"
+#import "CarType.h"
 #import "CallResult.h"
 #import "RideStatus.h"
+#import "Marshaller.h"
+
 @interface Ride : NSObject
 
 
@@ -21,8 +23,8 @@
 
 
 @property (strong,nonatomic) RideStatus *rideStatus;
-@property (strong, nonatomic) MEUser *driver;
-@property (strong, nonatomic) MEUser *passenger;
+@property (strong, nonatomic) User *driver;
+@property (strong, nonatomic) User *passenger;
 @property (strong,nonatomic) NSDate *pickUpDate;
 
 @property (strong,nonatomic) Location *pickUpLocation;
@@ -32,7 +34,7 @@
 @property (strong,nonatomic) NSString *comments;
 
 
-@property (strong, nonatomic) Car *car;
+@property (strong, nonatomic) CarType *car;
 
 //TODO: to be implemented on the server side
 @property (strong, nonatomic) NSString *addressComplement;

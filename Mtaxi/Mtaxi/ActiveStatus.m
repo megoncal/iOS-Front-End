@@ -10,16 +10,11 @@
 
 @implementation ActiveStatus
 
-
-
-
-+ (ActiveStatus *)createActiveStatusObject:(NSMutableDictionary *)activeStatus{
-    ActiveStatus *object = [[ActiveStatus alloc]init];
-    object.code = [activeStatus objectForKey:@"code"];
-    object.description = [activeStatus objectForKey:@"description"];
-    return object;
+-(id) initWithCode: (NSString *)code {
+    if (self == [super init]) {
+        self.code = code;
+    }
+    return self;
 }
-
-
 
 @end

@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 
 #import <UIKit/UIKit.h>
-#import "MEUser.h"
+#import "User.h"
 #import "CarTypeViewController.h"
-#import "Car.h"
+#import "CarType.h"
 #import "LocationViewController.h"
 #import "Location.h"
+#import "UserServerController.h"
 
 @protocol DriverSignUpViewControllerDelegate;
 
@@ -36,7 +37,7 @@
 
 
 @property (strong, nonatomic) Location *taxiStandLocation;
-@property (strong,nonatomic) Car *car;
+@property (strong,nonatomic) CarType *car;
 @property (strong,nonatomic) Radius *radius; //radius served
 
 @property (nonatomic, assign) id<DriverSignUpViewControllerDelegate>delegate;

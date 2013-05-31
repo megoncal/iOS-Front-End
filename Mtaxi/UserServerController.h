@@ -1,0 +1,70 @@
+//
+//  UserServerController.h
+//  Mtaxi
+//
+//  Created by Eduardo Goncalves on 5/28/13.
+//  Copyright (c) 2013 Moovt. All rights reserved.
+//
+
+#define loggedUserDetails [NSURL URLWithString:@"http://localhost:8080/moovt/user/retrieveLoggedUserDetails"]
+#define signInURL [NSURL URLWithString:@"http://localhost:8080/moovt/login/authenticateUser"]
+#define signUpURL [NSURL URLWithString:@"http://localhost:8080/moovt/user/createUser"]
+#define updateLoggedUserURL [NSURL URLWithString:@"http://localhost:8080/moovt/user/updateLoggedUser"]
+
+//#define loggedUserDetails [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/user/retrieveLoggedUserDetails"]
+//#define signInURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/login/authenticateUser"]
+//#define signUpURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/user/createUser"]
+//#define updateLoggedUserURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/user/updateLoggedUser"]
+
+
+#import <Foundation/Foundation.h>
+#import "Helper.h"
+#import "CarType.h"
+#import "CurrentSession.h"
+#import "Location.h"
+#import "ActiveStatus.h"
+#import "CallResult.h"
+#import "Marshaller.h"
+#import "User.h"
+#import "SignInToken.h"
+#import "SignInResultToken.h"
+
+@interface UserServerController : NSObject
+
+//logIn methods
+
+
++(BOOL)signIn: (SignInToken *) token
+     userType: (NSString **) userType
+        error: (NSError **) error;
+
++ (BOOL)signUpUser:(User *) user error:(NSError **) error;
+
+//+(NSError *)signUpWithUsername: (NSString *)username
+//                      Password: (NSString *)password
+//                    TenantName: (NSString *)tenantName
+//                         Email: (NSString *)email
+//                     FirstName: (NSString *)firstName
+//                      LastName: (NSString *)lastName
+//                   PhoneNumber: (NSString *)phoneNumber
+//                        Locale: (NSString *)locale;
+//
+//+(NSError *)signUpWithDriverUsername: (NSString *)username
+//                            Password: (NSString *)password
+//                          TenantName: (NSString *)tenantName
+//                               Email: (NSString *)email
+//                           FirstName: (NSString *)firstName
+//                            LastName: (NSString *)lastName
+//                         PhoneNumber: (NSString *)phoneNumber
+//                              Locale: (NSString *)locale
+//                             CarType: (CarType *)carType
+//                      ServedLocation: (Location *)location
+//                        ActiveStatus: (NSString *)activeStatus
+//                        RadiusServed: (Radius *)radiusServed;
+
++(void)retrieveLoggedUserDetails: (void (^)(User *meUser, NSError* error))handler;
+
++(void)updateLoggedUserDetails:(User *)user completionHandler: (void (^)(User *user, NSError* result))handler;
+
+
+@end

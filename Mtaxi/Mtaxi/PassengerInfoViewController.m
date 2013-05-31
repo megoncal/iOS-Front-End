@@ -56,22 +56,22 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     [self retrievePassengerInformation];
 }
 
-- (void)populateFields:(MEUser *)meUser {
-    self.email.text = meUser.email;
-    self.firstName.text = meUser.firstName;
-    self.lastName.text = meUser.lastName;
-    self.phone.text = meUser.phone;
-    self.meUser = meUser;
+- (void)populateFields:(User *)user {
+    self.email.text = user.email;
+    self.firstName.text = user.firstName;
+    self.lastName.text = user.lastName;
+    self.phone.text = user.phone;
+    self.user = user;
 }
 
 - (void)retrievePassengerInformation{
     
-    [MEUser retrieveLoggedUserDetails:^(MEUser *meUser, NSError *error) {
+    [UserServerController retrieveLoggedUserDetails:^(User *user, NSError *error) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error.code == 0) {
                 
-                [self populateFields:meUser];
+                [self populateFields:user];
                 //logged user info is displayed so prepare navigattion bar buttons
                 //prepare navigation bar button
                 self.cancelLeftBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelPressed)];
@@ -92,22 +92,22 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 
 - (void)populateUser {
-    self.meUser.email = self.email.text;
-    self.meUser.firstName = self.firstName.text;
-    self.meUser.lastName = self.lastName.text;
-    self.meUser.phone = self.phone.text;
-    //Other fields of the meUser are not needed
+    self.user.email = self.email.text;
+    self.user.firstName = self.firstName.text;
+    self.user.lastName = self.lastName.text;
+    self.user.phone = self.phone.text;
+    //Other fields of the user are not needed
 }
 
 - (void)updatePassengerInformation{
     
     [self populateUser];
     
-    [MEUser updateLoggedUserDetails:self.meUser completionHandler:^(MEUser *meUser, NSError *error) {
+    [UserServerController updateLoggedUserDetails:self.user completionHandler:^(User *user, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
     
             if (error.code == 0) {
-                [self populateFields:meUser];
+                [self populateFields:user];
             }
             [Helper showMessage:error];
             

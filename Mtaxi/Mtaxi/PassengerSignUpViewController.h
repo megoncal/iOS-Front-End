@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MEUser.h"
-
+#import "User.h"
+#import "UserServerController.h"
 
 
 @protocol PassengerSignUpViewControllerDelegate;
