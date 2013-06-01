@@ -42,27 +42,28 @@
         } else {
             dictionaryPropertyName = propertyName;
         }
-
+        
         NSString * dictValue = [dictionary objectForKey:dictionaryPropertyName];
         
         if ([typeAttribute isEqualToString:@"NSString"]) {
-            NSString * value = [dictionary objectForKey:propertyName];
-            if (value == NULL) {
-                value = [[NSString alloc]init];
+            NSString * value;
+            if (dictValue == nil) {
+                value = [[NSString alloc] init];
+            } else {
+                value = dictValue;
             }
             NSLog(@"About to set the property (NSString) %@ with the value %@",propertyName, value);
             [object setValue:value forKey:propertyName];
         } else if ([typeAttribute isEqualToString:@"NSDate"]) {
-            NSString * dictionaryValue = [dictionary objectForKey:propertyName];
-            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-            NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
-            [dateFormatter setTimeZone:gmt];
             NSDate *value;
-            if (dictionaryValue == NULL) {
-                value = [[NSDate alloc]init];
-            }else{
-                value = [dateFormatter dateFromString:dictionaryValue];
+            if (dictValue == nil) {
+                value = [[NSDate alloc] init];
+            } else {
+                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+                NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+                [dateFormatter setTimeZone:gmt];
+                value = [dateFormatter dateFromString:dictValue];
             }
             NSLog(@"About to set the property (NSDate) %@ with the value %@",propertyName, value);
             [object setValue:value forKey:propertyName];
@@ -89,14 +90,18 @@
             
         } else {
             //Check if the type is an class, obtain the sub dictionary, and if the subdictionary exists marshal the object.
-            NSDictionary * subDictionary = [dictionary objectForKey:propertyName];
-            if (subDictionary) {
+            
+            id subDictionary = [dictionary objectForKey:propertyName];
+   
+            if (![subDictionary isKindOfClass:[NSNull class]] ) {
+                
                 id innerObject = [[NSClassFromString(typeAttribute) alloc] init];
                 if (innerObject){
                     NSLog(@"About to set the property %@ with the value %@",propertyName, innerObject);
                     [self marshallObject:innerObject dictionary:subDictionary error:error];
                     [object setValue:innerObject forKey:propertyName];
                 }
+                
                 
             }
         }
@@ -126,12 +131,12 @@
         typeAttribute = [typeAttribute stringByReplacingOccurrencesOfString:@"@" withString:@""];
         typeAttribute = [typeAttribute substringFromIndex:1];
         
-
+        
         id value = [object valueForKey:propertyName];
         if (!value) {
             continue;
         }
-
+        
         NSString * dictionaryPropertyName;
         
         if ([propertyName isEqualToString:@"uid" ]) {
@@ -143,7 +148,7 @@
         if ([typeAttribute isEqualToString:@"NSString"]) {
             NSLog(@"About to add NSString ->%@<- to key ->%@<-", value, propertyName);
             [dictionary setObject:(NSString *)value forKey:dictionaryPropertyName];
-
+            
         } else if ([typeAttribute isEqualToString:@"NSDate"]) {
             NSDate * dateValue = (NSDate *) value;
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -157,7 +162,7 @@
         } else if ([typeAttribute isEqualToString:@"i"]) {
             int intValue = [value integerValue];
             NSNumber *numberValue = [NSNumber numberWithInt:intValue];
-
+            
             NSLog(@"About to add int %@ to key %@", value, propertyName);
             [dictionary setObject:numberValue forKey:dictionaryPropertyName];
         } else if ([typeAttribute isEqualToString:@"d"]) {
