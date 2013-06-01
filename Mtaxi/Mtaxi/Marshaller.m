@@ -51,7 +51,7 @@
                 value = [[NSString alloc] init];
             } else {
                 value = dictValue;
-            }
+            } 
             NSLog(@"About to set the property (NSString) %@ with the value %@",propertyName, value);
             [object setValue:value forKey:propertyName];
         } else if ([typeAttribute isEqualToString:@"NSDate"]) {
