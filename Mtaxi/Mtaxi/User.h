@@ -19,7 +19,6 @@
 
 @property (assign, nonatomic) int uid;
 @property (assign, nonatomic) int version;
-@property (strong, nonatomic) NSString *userType; //DRIVER or PASSENGER
 @property (strong, nonatomic) NSString *username;
 @property (strong, nonatomic) NSString *password;
 @property (strong, nonatomic) NSString *tenantname;
@@ -34,5 +33,7 @@
 @property (strong, nonatomic) Passenger *passenger;
 
 - (id) initWithUsername: (NSString *) userName andPassword: (NSString *) password andFirstName: (NSString *) firstName andLastName: (NSString *) lastName andPhone: (NSString *) phone andEmail: (NSString *) email  andDriver: (Driver *) driver andPassenger: (Passenger *) passenger;
+
+- (id) initWithUid: (int) uid andVersion: (int) version andFirstName: (NSString *) firstName andLastName: (NSString *) lastName andPhone: (NSString *) phone andEmail: (NSString *) email;
 
 @end

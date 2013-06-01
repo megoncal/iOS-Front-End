@@ -14,7 +14,8 @@
 
 @property (strong,nonatomic) User *user;
 
-
+@property (assign, nonatomic) int uid;
+@property (assign, nonatomic) int version;
 @property (weak, nonatomic) IBOutlet UITextField *email;
 @property (weak, nonatomic) IBOutlet UITextField *firstName;
 @property (weak, nonatomic) IBOutlet UITextField *lastName;
