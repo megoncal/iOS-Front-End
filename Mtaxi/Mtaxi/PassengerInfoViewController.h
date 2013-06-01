@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MEUser.h"
-
+#import "User.h"
+#import "UserServerController.h"
 
 @interface PassengerInfoViewController : UITableViewController <UITextFieldDelegate>
 
-@property (strong,nonatomic) MEUser *meUser;
+@property (strong,nonatomic) User *user;
 
 
 @property (weak, nonatomic) IBOutlet UITextField *email;

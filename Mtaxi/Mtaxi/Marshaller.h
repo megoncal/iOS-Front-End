@@ -11,7 +11,7 @@
 
 @interface Marshaller : NSObject
 
-+ (void) marshallObject:(NSObject *) object dictionary:(NSDictionary *)dictionary;
-+ (void)marshallDictionary:(NSMutableDictionary *)dictionary object: (NSObject *)object;
++ (BOOL) marshallObject:(NSObject *) object dictionary:(NSDictionary *)dictionary error: (NSError **) error;
++ (BOOL) marshallDictionary:(NSMutableDictionary *)dictionary object: (NSObject *)object error: (NSError **) error;
 
 @end

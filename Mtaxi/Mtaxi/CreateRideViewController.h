@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Ride.h"
 #import "LocationViewController.h"
-#import "Car.h"
+#import "CarType.h"
 #import "CarTypeViewController.h"
 #import "ConfirmRideViewController.h"
 

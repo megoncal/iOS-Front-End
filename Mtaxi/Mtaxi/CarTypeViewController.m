@@ -20,7 +20,7 @@
 {
     [super viewDidLoad];
     
-    [Car retrieverCarTypes:^(NSArray *carTypes, NSError *error) {
+    [CarType retrieverCarTypes:^(NSArray *carTypes, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (!error) {
                 self.carTypeArray = carTypes;
@@ -78,7 +78,7 @@
     
     // Configure the cell...
     
-    cell.textLabel.text = [(Car*)[self.carTypeArray objectAtIndex:indexPath.row] description];
+    cell.textLabel.text = [(CarType*)[self.carTypeArray objectAtIndex:indexPath.row] description];
     
     return cell;
 }

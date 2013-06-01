@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MEUser.h"
+#import "User.h"
+#import "UserServerController.h"
+#import "SignInToken.h"
 #import "PassengerSignUpViewController.h"
 #import "DriverSignUpViewController.h"
 

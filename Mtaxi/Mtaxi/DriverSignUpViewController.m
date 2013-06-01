@@ -35,14 +35,14 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-//    self.username.text = @"";
-//    self.password.text = @"";
-//    self.email.text = @"";
-//    self.firstName.text = @"";
-//    self.lastName.text = @"";
-//    self.phoneNumber.text = @"";
-//    self.carType.text = @"";
-//    self.servedMetro.text = @"";
+    //    self.username.text = @"";
+    //    self.password.text = @"";
+    //    self.email.text = @"";
+    //    self.firstName.text = @"";
+    //    self.lastName.text = @"";
+    //    self.phoneNumber.text = @"";
+    //    self.carType.text = @"";
+    //    self.servedMetro.text = @"";
 }
 
 - (void)didReceiveMemoryWarning
@@ -160,42 +160,42 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
             activeStatus = @"DISABLED";
         }
         
-        error = [MEUser signUpWithDriverUsername:self.username.text
-                                        Password:self.password.text
-                                      TenantName:@"WorldTaxi"
-                                           Email:self.email.text
-                                       FirstName:self.firstName.text
-                                        LastName:self.lastName.text
-                                     PhoneNumber:self.phoneNumber.text
-                                          Locale:@"en_US"
-                                         CarType:self.car
-                                  ServedLocation:self.taxiStandLocation
-                                    ActiveStatus:activeStatus
-                                    RadiusServed:self.radius];
-        
-        if (!error){
-           
-            UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"InitDriver" ];
+        if ([self.tableView cellForRowAtIndexPath:indexPath] == self.signUpCell) {
+            
+            ActiveStatus *activeStatus = [ActiveStatus alloc];
+            if (self.activeStatus.on) {
+                activeStatus = [activeStatus initWithCode:@"ENABLED"];
+            }else{
+                activeStatus = [activeStatus initWithCode:@"ENABLED"];
+            }
+            
+            Driver *driver = [[Driver alloc] initWithStatus:activeStatus andCarType:self.car andServedLocation: self.taxiStandLocation];
+            User *user = [[User alloc] initWithUsername:self.username.text andPassword: self.password.text andFirstName: self.firstName.text andLastName: self.lastName.text andPhone: self.phoneNumber.text andEmail: self.email.text andDriver: driver andPassenger: nil];
+            
+            BOOL success = [UserServerController signUpUser:user error:&error];
+            
+            if (!success) {
+                [Helper showMessage: error];
+            } else {
+                UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"InitDriver" ];
+                [self presentViewController:controller animated:YES completion:nil];
+            }
+            
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            
+        } else if ([self.tableView cellForRowAtIndexPath:indexPath] == self.carCell){
+            
+            CarTypeViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CarTypeList"];
+            controller.delegate = self;
             [self presentViewController:controller animated:YES completion:nil];
             
-        }else{
-            [Helper showErrorMEUserWithError:error];
+        } else if ([self.tableView cellForRowAtIndexPath:indexPath] == self.taxiStandCell){
+            LocationViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Location"];
+            controller.delegate = self;
+            [self presentViewController:controller animated:YES completion:nil];
         }
         
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        
-    }else if ([self.tableView cellForRowAtIndexPath:indexPath] == self.carCell){
-        
-        CarTypeViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CarTypeList"];
-        controller.delegate = self;
-        [self presentViewController:controller animated:YES completion:nil];
-        
-    }else if ([self.tableView cellForRowAtIndexPath:indexPath] == self.taxiStandCell){
-        LocationViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Location"];
-        controller.delegate = self;
-        [self presentViewController:controller animated:YES completion:nil];
     }
-
 }
 
 
@@ -205,7 +205,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     [viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)carTypeSelected:(Car *)car AtViewController:(CarTypeViewController *)viewController{
+- (void)carTypeSelected:(CarType *)car AtViewController:(CarTypeViewController *)viewController{
     self.car = car;
     self.carDescription.text = car.description;
     [viewController dismissViewControllerAnimated:YES completion:nil];

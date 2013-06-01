@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Helper.h"
 
-@interface Car : NSObject
+@interface CarType : NSObject
 
 @property (strong,nonatomic) NSString *code;
 @property (strong,nonatomic) NSString *description;
@@ -19,7 +19,7 @@
 +(void)retrieverCarTypes: (void (^)(NSArray *carTypes, NSError* error))handler;
 
 
-+(Car *) createCarObject:(NSMutableDictionary *) car;
++(CarType *) createCarObject:(NSMutableDictionary *) car;
 
 
 @end

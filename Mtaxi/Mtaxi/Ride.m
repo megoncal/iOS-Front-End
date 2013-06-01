@@ -10,21 +10,46 @@
 #import "Ride.h"
 
 #define createRideURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/ride/createRide"]
+//#define createRideURL [NSURL URLWithString:@"http://localhost:8080/moovt/ride/createRide"]
+
 
 @implementation Ride
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.id = 0;
+        self.version = 0;
+        self.rideStatus = nil;
+        self.driver = nil;
+        self.passenger = nil;
+        self.pickUpDate = nil;
+        self.pickUpLocation = nil;
+        self.dropOffLocation = nil;
+        self.rating =@"";
+        self.comments=@"";
+        self.car = nil;
+        self.addressComplement = @"";
+        self.messageToTheDriver = @"";
+    }
+    return self;
+}
 
-- (Ride *)createNewRideOnTheServer:(NSError *__autoreleasing *)error{
+- (Ride *)createOnTheServer:(NSError *__autoreleasing *)error{
     
     NSURL *url = createRideURL;
     
     Ride *createdRide;
     
-    NSMutableDictionary *createRideDictionary = self.createRideDictionary;
+    NSMutableDictionary *createRideDictionary = [[NSMutableDictionary alloc] init];
+    
+    [Marshaller marshallDictionary:createRideDictionary object:self error:error];
+    //
+    //NSMutableDictionary *createRideDictionary = self.createRideDictionary;
     
     NSMutableDictionary *outputDictionary;
    
-    [Helper callServerWithURLSync:url inputDictionary:createRideDictionary outputDictionary:&outputDictionary myerror:error];
+    [Helper callServerWithURLSync:url inputDictionary:createRideDictionary outputDictionary:&outputDictionary error:error];
 
     //Create an error from the call Result - This maybe success or not
     *error = [Helper createNSError:[CallResult marshallObject:outputDictionary]];
@@ -38,7 +63,7 @@
     
     Ride *ride = [[Ride alloc] init];
     
-    ride.rideId = [[rideDictionary objectForKey:@"id"] intValue];
+    ride.id = [[rideDictionary objectForKey:@"id"] intValue];
     
     ride.version = [[rideDictionary objectForKey:@"version"] intValue];
 
