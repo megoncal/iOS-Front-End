@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Ride.h"
+#import "DateHelper.h"
 
 @interface RideDetailViewController : UITableViewController
 

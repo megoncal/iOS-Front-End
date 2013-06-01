@@ -16,14 +16,16 @@
 
 @interface Ride : NSObject
 
-@property int id;
+
+
+@property int uid;
 @property int version;
 
 
 @property (strong,nonatomic) RideStatus *rideStatus;
 
-@property (strong, nonatomic) MEUser *driver;
-@property (strong, nonatomic) MEUser *passenger;
+@property (strong, nonatomic) User *driver;
+@property (strong, nonatomic) User *passenger;
 @property (strong,nonatomic) NSDate *pickUpDate;
 
 @property (strong,nonatomic) Location *pickUpLocation;
@@ -40,15 +42,15 @@
 @property (strong,nonatomic) NSString *messageToTheDriver;
 
 
-+ (Ride *) rideObject: (NSDictionary *) rideDictionary;
-
-- (Ride *) createNewRideOnTheServer: (NSError **)error;
-
-- (NSMutableDictionary *)createRideDictionary;
-
-- (NSString *)stringPickUpDate;
-
-- (NSString *)stringFullFormatPickUpDate;
+//+ (Ride *) rideObject: (NSDictionary *) rideDictionary;
+//
+//- (Ride *) createNewRideOnTheServer: (NSError **)error;
+//
+//- (NSMutableDictionary *)createRideDictionary;
+//
+//- (NSString *)stringPickUpDate;
+//
+//- (NSString *)stringFullFormatPickUpDate;
 
 
 @end

@@ -33,34 +33,9 @@
 
 //logIn methods
 
++(BOOL)signIn: (SignInToken *) token userType: (NSString **) userType error: (NSError **) error;
 
-+(BOOL)signIn: (SignInToken *) token
-     userType: (NSString **) userType
-        error: (NSError **) error;
-
-+ (BOOL)signUpUser:(User *) user error:(NSError **) error;
-
-//+(NSError *)signUpWithUsername: (NSString *)username
-//                      Password: (NSString *)password
-//                    TenantName: (NSString *)tenantName
-//                         Email: (NSString *)email
-//                     FirstName: (NSString *)firstName
-//                      LastName: (NSString *)lastName
-//                   PhoneNumber: (NSString *)phoneNumber
-//                        Locale: (NSString *)locale;
-//
-//+(NSError *)signUpWithDriverUsername: (NSString *)username
-//                            Password: (NSString *)password
-//                          TenantName: (NSString *)tenantName
-//                               Email: (NSString *)email
-//                           FirstName: (NSString *)firstName
-//                            LastName: (NSString *)lastName
-//                         PhoneNumber: (NSString *)phoneNumber
-//                              Locale: (NSString *)locale
-//                             CarType: (CarType *)carType
-//                      ServedLocation: (Location *)location
-//                        ActiveStatus: (NSString *)activeStatus
-//                        RadiusServed: (Radius *)radiusServed;
++(BOOL)signUpUser:(User *) user error:(NSError **) error;
 
 +(void)retrieveLoggedUserDetails: (void (^)(User *meUser, NSError* error))handler;
 

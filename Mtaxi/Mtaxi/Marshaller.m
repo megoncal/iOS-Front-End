@@ -38,6 +38,9 @@
         //TODO: Add if for the additional types that we have in our code
         if ([typeAttribute isEqualToString:@"NSString"]) {
             NSString * value = [dictionary objectForKey:propertyName];
+            if (value == NULL) {
+                value = [[NSString alloc]init];
+            }
             NSLog(@"About to set the property (NSString) %@ with the value %@",propertyName, value);
             [object setValue:value forKey:propertyName];
         } else if ([typeAttribute isEqualToString:@"NSDate"]) {
@@ -46,7 +49,12 @@
             [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
             NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
             [dateFormatter setTimeZone:gmt];
-            NSDate *value = [dateFormatter dateFromString:dictionaryValue];
+            NSDate *value;
+            if (dictionaryValue == NULL) {
+                value = [[NSDate alloc]init];
+            }else{
+                value = [dateFormatter dateFromString:dictionaryValue];
+            }
             NSLog(@"About to set the property (NSDate) %@ with the value %@",propertyName, value);
             [object setValue:value forKey:propertyName];
         } else if ([typeAttribute isEqualToString:@"i"]) {
@@ -74,12 +82,13 @@
             //Check if the type is an class, obtain the sub dictionary, and if the subdictionary exists marshal the object.
             NSDictionary * subDictionary = [dictionary objectForKey:propertyName];
             if (subDictionary) {
-                id innerObject = [[NSClassFromString(propertyName) alloc] init];
+                id innerObject = [[NSClassFromString(typeAttribute) alloc] init];
                 if (innerObject){
                     NSLog(@"About to set the property %@ with the value %@",propertyName, innerObject);
                     [self marshallObject:innerObject dictionary:subDictionary error:error];
                     [object setValue:innerObject forKey:propertyName];
                 }
+                
             }
         }
     }

@@ -204,32 +204,51 @@
 - (void) retrievePassengerRides{
     
     
-    NSURL *url = retrieveAllRidesURL;
+    [RideServerController retrievePassengerRides:^(NSMutableArray *rides, NSError *error) {
+         dispatch_async(dispatch_get_main_queue(), ^{
     
-    NSMutableDictionary *inputDictionary = [[NSMutableDictionary alloc]init];
+             if (error.code == 0) {
+                 self.rides = rides;
+                 [self.tableView reloadData];
+             }else{
+                 [Helper showMessage:error];
+             }
+             
+             
+             
     
-    self.rides = Nil;
+         });
     
-    [Helper callServerWithURLAsync:url inputDictionary:inputDictionary completionHandler:^(NSDictionary *outputDictionary, NSError *error) {
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            self.rides = [[NSMutableArray alloc] init];
-            NSArray *ridesArray;
-            
-            if (error.code == 0) {
-                ridesArray = [outputDictionary objectForKey:@"rides"];
-                for (NSDictionary *rideDictionary in ridesArray) {
-                    Ride *ride = [Ride  rideObject:rideDictionary];
-                    [self.rides addObject:ride];
-                }
-                [self.tableView reloadData];
-            }else{
-                [Helper showMessage:error];
-            }
-            
-        });
+    
     }];
+
+    
+//    NSURL *url = retrieveAllRidesURL;
+//    
+//    NSMutableDictionary *inputDictionary = [[NSMutableDictionary alloc]init];
+//    
+//    self.rides = Nil;
+//    
+//    [Helper callServerWithURLAsync:url inputDictionary:inputDictionary completionHandler:^(NSDictionary *outputDictionary, NSError *error) {
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            
+//            self.rides = [[NSMutableArray alloc] init];
+//            NSArray *ridesArray;
+//            
+//            if (error.code == 0) {
+//                ridesArray = [outputDictionary objectForKey:@"rides"];
+//                for (NSDictionary *rideDictionary in ridesArray) {
+//                    Ride *ride = [Ride  rideObject:rideDictionary];
+//                    [self.rides addObject:ride];
+//                }
+//                [self.tableView reloadData];
+//            }else{
+//                [Helper showMessage:error];
+//            }
+//            
+//        });
+//    }];
     
 }
 

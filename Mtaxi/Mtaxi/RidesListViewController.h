@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "CreateRideViewController.h"
 #import "RideDetailViewController.h"
+#import "RideServerController.h"
+
+
 @interface RidesListViewController : UITableViewController
 
 
