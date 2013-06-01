@@ -56,12 +56,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-{
-    return YES;
-}
-
-
 
 #pragma mark - retrieveData
 - (void)retrieveDriverInformation{
@@ -239,8 +233,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 #pragma mark - table view delegate
 
-
-//
 //////set all table rows to a non editable state
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     return NO;
@@ -293,9 +285,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         //add cancel button to the navigation bar
         self.addedNavigationItem.leftBarButtonItem = self.cancelLeftBarButton;
         
-        //to-do
-        //add some look n feel into the edit mode screen
-        
+        //TODO: add some look n feel into the edit mode screen
+      
     }
     else {
         self.firstName.enabled = NO;

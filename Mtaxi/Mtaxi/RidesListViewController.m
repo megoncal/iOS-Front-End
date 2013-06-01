@@ -61,7 +61,7 @@
         [dateFormatter setTimeZone:gmt];
         
         NSString *date = [dateFormatter stringFromDate:ride.pickUpDate];
-        NSLog(@"Date: %@",date);
+      
         
         ridesForSection = [sectionsDictionary objectForKey:date];
         if (ridesForSection == nil) {
@@ -85,8 +85,6 @@
     // Return the number of sections.
     return self.sectionedRides.count;
 }
-
-
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -120,9 +118,7 @@
     UITextField *status = (UITextField *)[cell viewWithTag:103];
     
     
-    NSDictionary *ridesDictionary = [self.sectionedRides objectAtIndex:indexPath.section];
-    NSArray *ridesArray = [[ridesDictionary allValues] objectAtIndex:0];
-    Ride *ride = [ridesArray objectAtIndex:indexPath.row];
+    Ride *ride = [self retrieveRideFrom:self.sectionedRides atPosition:indexPath];
     
     from.text = ride.pickUpLocation.locationName;
     to.text = ride.dropOffLocation.locationName;
@@ -181,13 +177,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    //instantiate the navigationController
+    RideDetailViewController *rideDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RideDetailView"];
+    
+    rideDetailViewController.ride = [self retrieveRideFrom:self.sectionedRides atPosition:indexPath];
+    
+    [self.navigationController pushViewController:rideDetailViewController animated:YES];
 }
 
 
@@ -238,6 +233,13 @@
 }
 
 
+#pragma mark retrieve ride from sectioned rides using indexPath
 
+-  (Ride *)retrieveRideFrom: (NSArray *)sectionedRides atPosition:(NSIndexPath *)indexPath{
+   
+    NSDictionary *ridesDictionary = [sectionedRides objectAtIndex:indexPath.section];
+    NSArray *ridesArray = [[ridesDictionary allValues] objectAtIndex:0];
+    return [ridesArray objectAtIndex:indexPath.row];
+}
 
 @end

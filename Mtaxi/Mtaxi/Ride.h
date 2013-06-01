@@ -12,15 +12,16 @@
 #import "Car.h"
 #import "CallResult.h"
 #import "RideStatus.h"
+#import "Marshaller.h"
+
 @interface Ride : NSObject
-
-
 
 @property int rideId;
 @property int version;
 
 
 @property (strong,nonatomic) RideStatus *rideStatus;
+
 @property (strong, nonatomic) MEUser *driver;
 @property (strong, nonatomic) MEUser *passenger;
 @property (strong,nonatomic) NSDate *pickUpDate;
@@ -35,7 +36,7 @@
 @property (strong, nonatomic) Car *car;
 
 //TODO: to be implemented on the server side
-@property (strong, nonatomic) NSString *addressComplement;
+@property (strong, nonatomic) NSString *pickUpLocationComplement;
 @property (strong,nonatomic) NSString *messageToTheDriver;
 
 

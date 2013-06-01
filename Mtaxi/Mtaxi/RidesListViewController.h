@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CreateRideViewController.h"
-
+#import "RideDetailViewController.h"
 @interface RidesListViewController : UITableViewController
 
 
