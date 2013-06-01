@@ -35,7 +35,16 @@
         typeAttribute = [typeAttribute substringFromIndex:1];
         
         
-        //TODO: Add if for the additional types that we have in our code
+        //Because of id being a keyword in Objective C we changed it to uid.
+        NSString *dictionaryPropertyName;
+        if ([propertyName isEqualToString:@"uid" ]) {
+            dictionaryPropertyName = @"id";
+        } else {
+            dictionaryPropertyName = propertyName;
+        }
+
+        NSString * dictValue = [dictionary objectForKey:dictionaryPropertyName];
+        
         if ([typeAttribute isEqualToString:@"NSString"]) {
             NSString * value = [dictionary objectForKey:propertyName];
             if (value == NULL) {
@@ -58,23 +67,23 @@
             NSLog(@"About to set the property (NSDate) %@ with the value %@",propertyName, value);
             [object setValue:value forKey:propertyName];
         } else if ([typeAttribute isEqualToString:@"i"]) {
-            //Because of id being a keyword in Objective C we changed it to uid.
-            NSString *dictionaryPropertyName;
-            if ([propertyName isEqualToString:@"uid" ]) {
-                dictionaryPropertyName = @"id";
+            int intValue;
+            if (dictValue == nil) {
+                intValue = 0;
             } else {
-                dictionaryPropertyName = propertyName;
+                intValue = [dictValue integerValue];
             }
-            NSString * dictionaryValue = [dictionary objectForKey:dictionaryPropertyName];
-            int intValue = [dictionaryValue integerValue];
             
             NSLog(@"About to set the property (int) %@ with the value %i",propertyName, intValue);
             [object setValue:[NSNumber numberWithInt:intValue] forKey:propertyName];
             
         } else if ([typeAttribute isEqualToString:@"d"]) {
-            NSString * dictionaryValue = [dictionary objectForKey:propertyName];
-            float floatValue = [dictionaryValue floatValue];
-            
+            float floatValue;
+            if (dictValue == nil) {
+                floatValue = 0;
+            } else {
+                floatValue = [dictValue floatValue];
+            }
             NSLog(@"About to set the property (float) %@ with the value %f",propertyName, floatValue);
             [object setValue:[NSNumber numberWithFloat:floatValue] forKey:propertyName];
             
@@ -94,42 +103,6 @@
     }
     return YES;
 }
-//+ (void)marshallObject:(NSDictionary *)userDictionary userObject:(MEUser *)userObject {
-//    userObject.userId = [userDictionary objectForKey:@"id"];
-//    userObject.version = [userDictionary objectForKey:@"version"];
-//    userObject.username = [userDictionary objectForKey:@"username"];
-//    userObject.firstName = [userDictionary objectForKey:@"firstName"];
-//    userObject.lastName = [userDictionary objectForKey:@"lastName"];
-//    userObject.phone = [userDictionary objectForKey:@"phone"];
-//    userObject.email = [userDictionary objectForKey:@"email"];
-//    id driver = [userDictionary objectForKey:@"driver"];
-//    if (driver) {
-//        userObject.userType = @"driver";
-//        //to-do
-//        //buscar informações do driver....
-//
-//        NSDictionary *driverExtraInformation = driver;
-//
-//        //servedLocation
-//        NSMutableDictionary *driverServedLocation = [driverExtraInformation objectForKey:@"servedLocation"];
-//        userObject.servedLocation = [Location locationObject:driverServedLocation];
-//
-//
-//        //activeStatus
-//        NSMutableDictionary *activeStatus = [driverExtraInformation objectForKey:@"activeStatus"];
-//        userObject.activeStatus = [ActiveStatus createActiveStatusObject:activeStatus];
-//
-//
-//        //carType
-//        NSMutableDictionary *carType = [driverExtraInformation objectForKey:@"carType"];
-//        userObject.carType = [Car createCarObject:carType];
-//
-//
-//    }
-//    else{
-//        userObject.userType = @"passenger";
-//    }
-//}
 
 
 + (BOOL)marshallDictionary:(NSMutableDictionary *)dictionary object: (NSObject *)object error: (NSError **) error {
@@ -153,55 +126,52 @@
         typeAttribute = [typeAttribute stringByReplacingOccurrencesOfString:@"@" withString:@""];
         typeAttribute = [typeAttribute substringFromIndex:1];
         
+
+        id value = [object valueForKey:propertyName];
+        if (!value) {
+            continue;
+        }
+
+        NSString * dictionaryPropertyName;
         
-        //TODO: Add if for the additional types that we have in our code
+        if ([propertyName isEqualToString:@"uid" ]) {
+            dictionaryPropertyName = @"id";
+        } else {
+            dictionaryPropertyName = propertyName;
+        }
+        
         if ([typeAttribute isEqualToString:@"NSString"]) {
-            NSString * value = [object valueForKey:propertyName];
-            if (value == nil) {
-                value = [[NSString alloc] init];
-            }
             NSLog(@"About to add NSString ->%@<- to key ->%@<-", value, propertyName);
-            [dictionary setObject:value forKey:propertyName];
+            [dictionary setObject:(NSString *)value forKey:dictionaryPropertyName];
+
         } else if ([typeAttribute isEqualToString:@"NSDate"]) {
-            NSDate * dateValue = [object valueForKey:propertyName];
-            if (dateValue == nil) {
-                dateValue = [[NSDate alloc] init];
-            }
-            
-            //TODO: Review this with Marcos
+            NSDate * dateValue = (NSDate *) value;
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
             NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
             [dateFormatter setTimeZone:gmt];
+            NSString * stringValue = [dateFormatter stringFromDate:dateValue ];
+            NSLog(@"About to add NSDate/NSString ->%@<- to key ->%@<-", stringValue, propertyName);
+            [dictionary setObject:stringValue forKey:dictionaryPropertyName];
             
-            NSString * value = [dateFormatter stringFromDate:dateValue ];
-            
-            NSLog(@"About to add NSDate/NSString ->%@<- to key ->%@<-", value, propertyName);
-            [dictionary setObject:value forKey:propertyName];
         } else if ([typeAttribute isEqualToString:@"i"]) {
-            NSString * dictionaryPropertyName;
-            if ([propertyName isEqualToString:@"uid" ]) {
-                dictionaryPropertyName = @"id";
-            } else {
-                dictionaryPropertyName = propertyName;
-            }
-            int intValue = [[object valueForKey:propertyName] integerValue];
-            NSNumber *value = [NSNumber numberWithInt:intValue];
+            int intValue = [value integerValue];
+            NSNumber *numberValue = [NSNumber numberWithInt:intValue];
+
             NSLog(@"About to add int %@ to key %@", value, propertyName);
-            [dictionary setObject:value forKey:dictionaryPropertyName];
+            [dictionary setObject:numberValue forKey:dictionaryPropertyName];
         } else if ([typeAttribute isEqualToString:@"d"]) {
-            float floatValue = [[object valueForKey:propertyName] floatValue];
-            NSNumber *value = [NSNumber numberWithFloat:floatValue];
+            
+            float floatValue = [value floatValue];
+            NSNumber *numberValue = [NSNumber numberWithFloat:floatValue];
             NSLog(@"About to add float %@ to key %@", value, propertyName);
-            [dictionary setObject:value forKey:propertyName];
+            [dictionary setObject:numberValue forKey:dictionaryPropertyName];
         } else {
-            id innerObject = [object valueForKey:propertyName];
-            if (innerObject){
-                NSMutableDictionary *innerDictionary = [[NSMutableDictionary alloc] init];
-                [self marshallDictionary:innerDictionary object:innerObject error:error];
-                NSLog(@"About to add innerDictionary %@ to key %@", innerDictionary, propertyName);
-                [dictionary setObject:innerDictionary forKey:propertyName];
-            }
+            
+            NSMutableDictionary *innerDictionary = [[NSMutableDictionary alloc] init];
+            [self marshallDictionary:innerDictionary object:value error:error];
+            NSLog(@"About to add innerDictionary %@ to key %@", innerDictionary, propertyName);
+            [dictionary setObject:innerDictionary forKey:dictionaryPropertyName];
         }
     }
     

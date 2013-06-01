@@ -110,7 +110,7 @@
              [Marshaller marshallObject: userObject dictionary:userDictionary error:&error];
              
              //TODO: Need to handle userType better
-             userObject.userType = @"passenger";
+             //userObject.userType = @"passenger";
              
              handler(userObject,error);
          }else{
@@ -161,7 +161,7 @@
     }
     
     //TODO: Need to handle userType better
-    userObject.userType = @"passenger";
+    //userObject.userType = @"passenger";
     
     
     success = [Marshaller marshallObject:callResultObject dictionary:callResultDictionary error:&error];

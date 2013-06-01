@@ -25,4 +25,22 @@
     }
     return self;
 }
+
+- (id) initWithUid: (int) uid andVersion: (int) version andFirstName: (NSString *) firstName andLastName: (NSString *) lastName andPhone: (NSString *) phone andEmail: (NSString *) email  {
+    if (self == [super init]) {
+        self.uid = uid;
+        self.version = uid;
+        self.username = nil;
+        self.password = nil;
+        self.firstName = firstName;
+        self.lastName = lastName;
+        self.phone = phone;
+        self.email = email;
+        self.tenantname = nil;
+        self.driver = nil;
+        self.passenger = nil;
+    }
+    return self;
+}
+
 @end

@@ -48,8 +48,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     gestureRecognizer.cancelsTouchesInView = NO;
     [self.tableView addGestureRecognizer:gestureRecognizer];
     
-     
-   
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -57,6 +55,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 }
 
 - (void)populateFields:(User *)user {
+    self.uid = user.uid;
+    self.version = user.version;
     self.email.text = user.email;
     self.firstName.text = user.firstName;
     self.lastName.text = user.lastName;
@@ -92,11 +92,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 
 - (void)populateUser {
-    self.user.email = self.email.text;
-    self.user.firstName = self.firstName.text;
-    self.user.lastName = self.lastName.text;
-    self.user.phone = self.phone.text;
-    //Other fields of the user are not needed
+    [self.user initWithUid: self.uid andVersion: self.version andFirstName:self.firstName.text andLastName:self.lastName.text andPhone:self.phone.text andEmail:self.email.text];
 }
 
 - (void)updatePassengerInformation{
