@@ -18,13 +18,14 @@
 
 @interface CreateRideViewController : UITableViewController <LocationViewControllerDelegate, CarTypeViewControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableViewCell *fromCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *toCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *carTypeCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *pickUpLocation;
 
-@property (weak, nonatomic) IBOutlet UITextField *pickUpLocation;
-@property (weak, nonatomic) IBOutlet UITextField *dropOffLocation;
-@property (weak, nonatomic) IBOutlet UITextField *carType;
+@property (weak, nonatomic) IBOutlet UITableViewCell *dropOffLocation;
+
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *carType;
+
+
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 

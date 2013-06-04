@@ -48,14 +48,11 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 }
 
 - (void) populateInitialFields{
-    self.pickUpLocation.text = self.ride.pickUpLocation.locationName;
     
-    self.dropOffLocation.text = self.ride.dropOffLocation.locationName;
-    
-    self.pickUpDate.text = [DateHelper stringFullFormatOfLocalDateAndTime:self.ride.pickUpDate];
-    //self.ride.stringFullFormatPickUpDate;
-    
-    self.carType.text = self.ride.car.description;
+    self.pickUpLocation.detailTextLabel.text = self.ride.pickUpAddress.locationName;
+    self.dropOffLocation.detailTextLabel.text = self.ride.dropOffAddress.locationName;
+    self.pickUpDate.detailTextLabel.text = [DateHelper stringFullFormatOfLocalDateAndTime:self.ride.pickupDateTime];
+    self.carType.detailTextLabel.text = self.ride.carType.description;
 }
 
 - (void)didReceiveMemoryWarning
@@ -144,13 +141,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 - (IBAction)donePressed:(id)sender {
     
     NSError *error;
-    
     [RideServerController createRide:self.ride error:&error];
-    
     [Helper showMessage:error];
-    
-    // [self.ride createNewRideOnTheServer:&error];
-    
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     
 }

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Ride.h"
 #import "DateHelper.h"
+#import "DateHelper.h"
 
 @interface RideDetailViewController : UITableViewController
 
@@ -16,22 +17,19 @@
 
 @property (strong,nonatomic) Ride *ride;
 
-@property (weak, nonatomic) IBOutlet UITextField *pickUpLocation;
-@property (weak, nonatomic) IBOutlet UITextField *dropOffLocation;
-@property (weak, nonatomic) IBOutlet UITextField *pickUpDate;
-@property (weak, nonatomic) IBOutlet UITextField *driverName;
 
-@property (weak, nonatomic) IBOutlet UITextField *pickUpLocationComplement;
-@property (weak, nonatomic) IBOutlet UITextField *messageToTheDriver;
-
-@property (weak, nonatomic) IBOutlet UISlider *rating;
+@property (weak, nonatomic) IBOutlet UITableViewCell *status;
 
 
-@property (weak, nonatomic) IBOutlet UITextField *comments;
+@property (weak, nonatomic) IBOutlet UITableViewCell *from;
+@property (weak, nonatomic) IBOutlet UITableViewCell *to;
+@property (weak, nonatomic) IBOutlet UITableViewCell *date;
+@property (weak, nonatomic) IBOutlet UITableViewCell *driver;
+@property (weak, nonatomic) IBOutlet UITableViewCell *pickUpLocationComplement;
+@property (weak, nonatomic) IBOutlet UITableViewCell *message;
 
-@property (weak, nonatomic) IBOutlet UITextField *status;
 
-
+@property double rating;
 
 
 @end

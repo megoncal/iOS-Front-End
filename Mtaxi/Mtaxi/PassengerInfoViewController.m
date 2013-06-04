@@ -1,4 +1,4 @@
-    //
+//
 //  PassengerInfoViewController.m
 //  BackendProject
 //
@@ -54,7 +54,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     [self retrievePassengerInformation];
 }
 
-- (void)populateFields:(User *)user {
+- (void)populateScreenFields:(User *)user {
     self.uid = user.uid;
     self.version = user.version;
     self.email.text = user.email;
@@ -64,14 +64,14 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     self.user = user;
 }
 
+
 - (void)retrievePassengerInformation{
     
     [UserServerController retrieveLoggedUserDetails:^(User *user, NSError *error) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error.code == 0) {
-                
-                [self populateFields:user];
+                [self populateScreenFields:user];
                 //logged user info is displayed so prepare navigattion bar buttons
                 //prepare navigation bar button
                 self.cancelLeftBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelPressed)];
@@ -80,7 +80,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
                 self.navigationItem.rightBarButtonItem = self.editButtonItem;
                 
             }else{
-
+                
                 [Helper showMessage:error];
             }
             
@@ -92,7 +92,12 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 
 - (void)populateUser {
-    [self.user initWithUid: self.uid andVersion: self.version andFirstName:self.firstName.text andLastName:self.lastName.text andPhone:self.phone.text andEmail:self.email.text];
+    self.user = [self.user initWithUid:self.uid
+                andVersion:self.version
+              andFirstName:self.firstName.text
+               andLastName:self.lastName.text
+                  andPhone:self.phone.text
+                  andEmail:self.email.text];
 }
 
 - (void)updatePassengerInformation{
@@ -101,9 +106,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     
     [UserServerController updateLoggedUserDetails:self.user completionHandler:^(User *user, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-    
+            
             if (error.code == 0) {
-                [self populateFields:user];
+                [self populateScreenFields:user];
             }
             [Helper showMessage:error];
             
@@ -196,7 +201,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 //
 //////set all table rows to a non editable state
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-   return NO;
+    return NO;
 }
 
 
@@ -214,11 +219,14 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 - (void)setEditing:(BOOL)flag animated:(BOOL)animated{
     
     [super setEditing:flag animated:animated];
+    
+
     if (flag == YES){
         // Change views to edit mode.
         self.firstName.enabled = YES;
         self.lastName.enabled = YES;
         self.phone.enabled = YES;
+        
         
         
         //add cancel button to the navigation bar
@@ -249,7 +257,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         self.navigationItem.leftBarButtonItem = self.menuLeftBarButton;
         cancelPressed = NO;
     }
+  
+    
 }
 
- 
+
 @end

@@ -52,14 +52,14 @@
     
     selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     
-    if ( selectedCell == self.fromCell ||
-         selectedCell == self.toCell) {
+    if ( selectedCell == self.pickUpLocation ||
+         selectedCell == self.dropOffLocation) {
         
         LocationViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Location"];
         controller.delegate = self;
         [self presentViewController:controller animated:YES completion:nil];
         
-    }else if (selectedCell == self.carTypeCell){
+    }else if (selectedCell == self.carType){
         CarTypeViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CarTypeList"];
         controller.delegate = self;
         [self presentViewController:controller animated:YES completion:nil];
@@ -76,8 +76,8 @@
 }
 
 - (void)carTypeSelected:(CarType *)car AtViewController:(CarTypeViewController *)viewController{
-    self.ride.car = car;
-    self.carType.text = car.description;
+    self.ride.carType = car;
+    self.carType.detailTextLabel.text = car.description;
     [viewController dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -86,14 +86,14 @@
 - (void)locationSelected:(Location *)location atViewControler:(LocationViewController *)viewController{
    
     //do something
-    if (selectedCell == self.fromCell){
+    if (selectedCell == self.pickUpLocation){
         
-        self.ride.pickUpLocation = location;
-        self.pickUpLocation.text = location.locationName;
+        self.ride.pickUpAddress = location;
+        self.pickUpLocation.detailTextLabel.text = location.locationName;
         
-    }else if (selectedCell == self.toCell){
-        self.ride.dropOffLocation = location;
-        self.dropOffLocation.text = location.locationName;
+    }else if (selectedCell == self.dropOffLocation){
+        self.ride.dropOffAddress = location;
+        self.dropOffLocation.detailTextLabel.text = location.locationName;
     }
     [viewController dismissViewControllerAnimated:YES completion:nil];
 }
@@ -108,7 +108,7 @@
     
     
     if([segue.identifier isEqualToString:@"RideConfirmation"]){
-        self.ride.pickUpDate = self.datePicker.date;
+        self.ride.pickupDateTime = self.datePicker.date;
         ConfirmRideViewController *confirmRideViewController = segue.destinationViewController;
         confirmRideViewController.ride = self.ride;
     }

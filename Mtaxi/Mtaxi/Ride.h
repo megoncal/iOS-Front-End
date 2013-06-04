@@ -26,16 +26,18 @@
 
 @property (strong, nonatomic) User *driver;
 @property (strong, nonatomic) User *passenger;
-@property (strong,nonatomic) NSDate *pickUpDate;
 
-@property (strong,nonatomic) Location *pickUpLocation;
-@property (strong,nonatomic) Location *dropOffLocation;
+//TODO:pickupDateTime should be pickUpDateTime
+@property (strong,nonatomic) NSDate *pickupDateTime;
+
+@property (strong,nonatomic) Location *pickUpAddress;
+@property (strong,nonatomic) Location *dropOffAddress;
 
 @property (strong,nonatomic) NSString *rating;
 @property (strong,nonatomic) NSString *comments;
 
 
-@property (strong, nonatomic) CarType *car;
+@property (strong, nonatomic) CarType *carType;
 
 //TODO: to be implemented on the server side
 @property (strong, nonatomic) NSString *pickUpLocationComplement;

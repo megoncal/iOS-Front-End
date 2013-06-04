@@ -23,12 +23,12 @@
         self.rideStatus = nil;
         self.driver = nil;
         self.passenger = nil;
-        self.pickUpDate = nil;
-        self.pickUpLocation = nil;
-        self.dropOffLocation = nil;
+        self.pickupDateTime = nil;
+        self.pickUpAddress = nil;
+        self.dropOffAddress = nil;
         self.rating =@"";
         self.comments=@"";
-        self.car = nil;
+        self.carType = nil;
         self.pickUpLocationComplement = @"";
         self.messageToTheDriver = @"";
     }

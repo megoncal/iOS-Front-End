@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Location.h"
 #import "Helper.h"
+#import "LocationServerController.h"
 
 
 @protocol LocationViewControllerDelegate;
