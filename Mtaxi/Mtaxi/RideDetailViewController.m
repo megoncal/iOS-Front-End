@@ -45,17 +45,17 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void) populateScreenFields{
  
-    self.pickUpLocation.text = self.ride.pickUpLocation.locationName;
-    self.dropOffLocation.text = self.ride.dropOffLocation.locationName;
-    self.pickUpDate.text = [DateHelper stringFullFormatOfLocalDateAndTime:self.ride.pickUpDate];
-    self.driverName.text = self.ride.driver.firstName;
-    self.status.text = self.ride.rideStatus.description;
-    self.pickUpLocationComplement.text = self.ride.pickUpLocationComplement;
-    self.messageToTheDriver.text = self.ride.messageToTheDriver;
-    
+    self.status.detailTextLabel.text = self.ride.rideStatus.description;
+    self.from.detailTextLabel.text = self.ride.pickUpAddress.locationName;
+    self.to.detailTextLabel.text = self.ride.dropOffAddress.locationName;
+    self.driver.detailTextLabel.text = self.ride.driver.firstName;
+    self.date.detailTextLabel.text = [DateHelper stringFullFormatOfLocalDateAndTime:self.ride.pickupDateTime];
+    self.pickUpLocationComplement.detailTextLabel.text = self.ride.pickUpLocationComplement;
+    self.message.detailTextLabel.text = self.ride.messageToTheDriver;
+
     //TODO: rating...
     
-//    self.comments.text = self.ride.comments;
+   //self.comments.text = self.ride.comments;
     
     
     
@@ -140,11 +140,11 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    [self.comments resignFirstResponder];
+    [self.message resignFirstResponder];
     
 }
 - (void)hideKeyboard{
-    [self.comments resignFirstResponder];
+    [self.message resignFirstResponder];
 }
 
 

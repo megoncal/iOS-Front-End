@@ -86,7 +86,7 @@
                     return;
                 }
                 
-                NSLog(@"ride pickuplocation: %@", ride.pickUpLocation.locationName);
+                NSLog(@"ride pickuplocation: %@", ride.pickUpAddress.locationName);
                 [ridesArray addObject:ride];
             }
             

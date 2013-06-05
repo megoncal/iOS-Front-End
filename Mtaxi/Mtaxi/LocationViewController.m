@@ -32,9 +32,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.bookmark = [[NSMutableArray alloc] initWithObjects:@"rua gabriel santos 151", @"rua major lopes 55", nil];
-    self.zeroLocations = [[NSArray alloc] initWithObjects:@"", nil];
-    self.searchedLocations = self.zeroLocations;
+    //self.bookmark = [[NSMutableArray alloc] initWithObjects:@"rua gabriel santos 151", @"rua major lopes 55", nil];
+    
+    [self retrieveMostFrequentLocations];
+    
+    [self prepareSearchedLocationsArray];
 
 }   
 
@@ -43,6 +45,30 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void) prepareSearchedLocationsArray{
+    self.zeroLocations = [[NSArray alloc] initWithObjects:@"", nil];
+    self.searchedLocations = self.zeroLocations;
+}
+
+- (void) retrieveMostFrequentLocations{
+    
+    [LocationServerController retrieveMostFrequentLocations:^(NSMutableArray *locations, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+    
+            if (error.code == 0) {
+                self.bookmark = locations;
+                [self.mainTableView reloadData];
+            }else{
+                [Helper showMessage:error];
+            }
+            
+        });
+
+    }];
+    
+}
+
 
 
 
@@ -61,8 +87,7 @@
         
     }else{
         
-        //to-do
-        //implementar retorno de bookmarked address
+       [self.delegate locationSelected:[self.bookmark objectAtIndex:indexPath.row] atViewControler:self];
         
     }
     
@@ -105,7 +130,9 @@
         }
     }
     else{
-        cell.textLabel.text = [self.bookmark objectAtIndex:indexPath.row];
+        Location *location = [self.bookmark objectAtIndex:indexPath.row];
+        cell.textLabel.text = location.locationName;
+        cell.detailTextLabel.text = location.politicalName;
     }
     
     return cell;

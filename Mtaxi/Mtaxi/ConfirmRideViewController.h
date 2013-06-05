@@ -17,13 +17,22 @@
 
 @property (strong,nonatomic) Ride *ride;
 
-@property (weak, nonatomic) IBOutlet UITextField *pickUpLocation;
 
-@property (weak, nonatomic) IBOutlet UITextField *dropOffLocation;
-@property (weak, nonatomic) IBOutlet UITextField *pickUpDate;
-@property (weak, nonatomic) IBOutlet UITextField *carType;
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *pickUpLocation;
+
+
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *dropOffLocation;
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *pickUpDate;
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *carType;
+
+
+
+
 @property (weak, nonatomic) IBOutlet UITextField *pickUpLocationComplement;
-
 
 @property (weak, nonatomic) IBOutlet UITextField *messageToTheDriver;
 

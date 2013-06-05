@@ -61,7 +61,7 @@
         NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
         [dateFormatter setTimeZone:gmt];
         
-        NSString *date = [dateFormatter stringFromDate:ride.pickUpDate];
+        NSString *date = [dateFormatter stringFromDate:ride.pickupDateTime];
       
         
         ridesForSection = [sectionsDictionary objectForKey:date];
@@ -121,8 +121,8 @@
     
     Ride *ride = [self retrieveRideFrom:self.sectionedRides atPosition:indexPath];
     
-    from.text = ride.pickUpLocation.locationName;
-    to.text = ride.dropOffLocation.locationName;
+    from.text = ride.pickUpAddress.locationName;
+    to.text = ride.dropOffAddress.locationName;
     status.text = ride.rideStatus.description;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -130,7 +130,7 @@
     [dateFormatter setTimeZone:gmt];
     [dateFormatter setDateFormat:@"HH:mm"];
     
-    time.text = [dateFormatter stringFromDate:ride.pickUpDate];
+    time.text = [dateFormatter stringFromDate:ride.pickupDateTime];
     
     return cell;
 }
@@ -213,50 +213,17 @@
              }else{
                  [Helper showMessage:error];
              }
-             
-             
-             
-    
-         });
-    
-    
-    }];
 
-    
-//    NSURL *url = retrieveAllRidesURL;
-//    
-//    NSMutableDictionary *inputDictionary = [[NSMutableDictionary alloc]init];
-//    
-//    self.rides = Nil;
-//    
-//    [Helper callServerWithURLAsync:url inputDictionary:inputDictionary completionHandler:^(NSDictionary *outputDictionary, NSError *error) {
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            
-//            self.rides = [[NSMutableArray alloc] init];
-//            NSArray *ridesArray;
-//            
-//            if (error.code == 0) {
-//                ridesArray = [outputDictionary objectForKey:@"rides"];
-//                for (NSDictionary *rideDictionary in ridesArray) {
-//                    Ride *ride = [Ride  rideObject:rideDictionary];
-//                    [self.rides addObject:ride];
-//                }
-//                [self.tableView reloadData];
-//            }else{
-//                [Helper showMessage:error];
-//            }
-//            
-//        });
-//    }];
-    
+         });
+
+    }];
+ 
 }
 
 
 #pragma mark retrieve ride from sectioned rides using indexPath
 
 -  (Ride *)retrieveRideFrom: (NSArray *)sectionedRides atPosition:(NSIndexPath *)indexPath{
-   
     NSDictionary *ridesDictionary = [sectionedRides objectAtIndex:indexPath.section];
     NSArray *ridesArray = [[ridesDictionary allValues] objectAtIndex:0];
     return [ridesArray objectAtIndex:indexPath.row];
