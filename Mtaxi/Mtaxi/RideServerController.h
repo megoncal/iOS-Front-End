@@ -9,8 +9,8 @@
 #define createRideURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/ride/createRide"]
 #define retrieveAllRidesURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/ride/retrievePassengerRides"]
 
-#define createRideURL [NSURL URLWithString:@"http://localhost:8080/moovt/ride/createRide"]
-#define retrieveAllRidesURL [NSURL URLWithString:@"http://localhost:8080/moovt/ride/retrievePassengerRides"]
+//#define createRideURL [NSURL URLWithString:@"http://localhost:8080/moovt/ride/createRide"]
+//#define retrieveAllRidesURL [NSURL URLWithString:@"http://localhost:8080/moovt/ride/retrievePassengerRides"]
 
 #import <Foundation/Foundation.h>
 #import "Ride.h"

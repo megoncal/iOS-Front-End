@@ -55,7 +55,7 @@
     currentSession.jsessionID = [additionalInfoDictionary objectForKey:@"JSESSIONID"];
     *userType = [additionalInfoDictionary objectForKey:@"userType"];
     [CurrentSession writeCurrentSessionInformationToPlistFile:currentSession];
-    
+    *error = [Helper createNSError:callResult];
     
     return YES;
 }
