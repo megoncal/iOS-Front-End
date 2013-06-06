@@ -88,11 +88,11 @@
     //do something
     if (selectedCell == self.pickUpLocation){
         
-        self.ride.pickUpAddress = location;
+        self.ride.pickUpLocation = location;
         self.pickUpLocation.detailTextLabel.text = location.locationName;
         
     }else if (selectedCell == self.dropOffLocation){
-        self.ride.dropOffAddress = location;
+        self.ride.dropOffLocation = location;
         self.dropOffLocation.detailTextLabel.text = location.locationName;
     }
     [viewController dismissViewControllerAnimated:YES completion:nil];
@@ -108,7 +108,7 @@
     
     
     if([segue.identifier isEqualToString:@"RideConfirmation"]){
-        self.ride.pickupDateTime = self.datePicker.date;
+        self.ride.pickUpDateTime = self.datePicker.date;
         ConfirmRideViewController *confirmRideViewController = segue.destinationViewController;
         confirmRideViewController.ride = self.ride;
     }

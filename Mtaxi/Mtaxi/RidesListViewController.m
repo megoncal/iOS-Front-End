@@ -61,7 +61,7 @@
         NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
         [dateFormatter setTimeZone:gmt];
         
-        NSString *date = [dateFormatter stringFromDate:ride.pickupDateTime];
+        NSString *date = [dateFormatter stringFromDate:ride.pickUpDateTime];
       
         
         ridesForSection = [sectionsDictionary objectForKey:date];
@@ -121,8 +121,8 @@
     
     Ride *ride = [self retrieveRideFrom:self.sectionedRides atPosition:indexPath];
     
-    from.text = ride.pickUpAddress.locationName;
-    to.text = ride.dropOffAddress.locationName;
+    from.text = ride.pickUpLocation.locationName;
+    to.text = ride.dropOffLocation.locationName;
     status.text = ride.rideStatus.description;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -130,7 +130,7 @@
     [dateFormatter setTimeZone:gmt];
     [dateFormatter setDateFormat:@"HH:mm"];
     
-    time.text = [dateFormatter stringFromDate:ride.pickupDateTime];
+    time.text = [dateFormatter stringFromDate:ride.pickUpDateTime];
     
     return cell;
 }

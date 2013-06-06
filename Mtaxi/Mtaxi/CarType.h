@@ -15,11 +15,7 @@
 @property (strong,nonatomic) NSString *description;
 
 
-//retrieve a list of car types from the server
-+(void)retrieverCarTypes: (void (^)(NSArray *carTypes, NSError* error))handler;
-
-
-+(CarType *) createCarObject:(NSMutableDictionary *) car;
+//+(CarType *) createCarObject:(NSMutableDictionary *) car;
 
 
 @end

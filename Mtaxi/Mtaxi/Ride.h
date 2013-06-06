@@ -28,10 +28,10 @@
 @property (strong, nonatomic) User *passenger;
 
 //TODO:pickupDateTime should be pickUpDateTime
-@property (strong,nonatomic) NSDate *pickupDateTime;
+@property (strong,nonatomic) NSDate *pickUpDateTime;
 
-@property (strong,nonatomic) Location *pickUpAddress;
-@property (strong,nonatomic) Location *dropOffAddress;
+@property (strong,nonatomic) Location *pickUpLocation;
+@property (strong,nonatomic) Location *dropOffLocation;
 
 @property (strong,nonatomic) NSString *rating;
 @property (strong,nonatomic) NSString *comments;

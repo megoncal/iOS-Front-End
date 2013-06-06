@@ -122,8 +122,8 @@
     NSLog(@"Returned String: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     
     //TODO: correct
-    if ((callError) && ([data length] > 0)) {
-        *error = [Helper createNSError:1 message:[NSString stringWithFormat:@"Error calling server (%@)", callError.localizedDescription]] ;
+    if ((callError) || ([data length] == 0)) {
+        *error = [Helper createNSError:1 message:callError.localizedDescription] ;
         return NO;
     }
     
@@ -187,7 +187,7 @@
          
          
          if ((callError) || ([data length] == 0)) {
-             error = [Helper createNSError:1 message:[NSString stringWithFormat:@"Error calling server (%@)", callError.localizedDescription]] ;
+             error = [Helper createNSError:1 message:callError.localizedDescription] ;
              
              handler(outputDictionary, error);
              

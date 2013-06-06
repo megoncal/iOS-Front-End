@@ -7,10 +7,6 @@
 //
 
 
-#define createRideURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/ride/createRide"]
-#define retrieveAllRidesURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/ride/retrievePassengerRides"]
-
-
 #import "RideServerController.h"
 
 
@@ -23,7 +19,8 @@
     
     NSMutableDictionary *rideDictionary = [[NSMutableDictionary alloc] init];
     
-    NSMutableDictionary *callResulDictionary;
+    NSMutableDictionary *callResultDictionary;
+    NSMutableDictionary *outputDictionary;
     
     //marshal the ride dictionary from the ride object
     BOOL success = [Marshaller marshallDictionary:rideDictionary object:ride error:error];
@@ -33,15 +30,16 @@
     }
     
     //call server sync passing the rideDictionary
-    success = [Helper callServerWithURLSync:url inputDictionary:rideDictionary outputDictionary:&callResulDictionary error:error];
+    success = [Helper callServerWithURLSync:url inputDictionary:rideDictionary outputDictionary:&outputDictionary error:error];
     
     if (!success) {
         return NO;
     }
     
+    callResultDictionary = [outputDictionary objectForKey:@"result"];
     CallResult *callResult = [[CallResult alloc]init];
     
-    success = [Marshaller marshallObject:callResult dictionary:callResulDictionary error:error];
+    success = [Marshaller marshallObject:callResult dictionary:callResultDictionary error:error];
     
     if (!success) {
         return NO;
@@ -86,7 +84,7 @@
                     return;
                 }
                 
-                NSLog(@"ride pickuplocation: %@", ride.pickUpAddress.locationName);
+                NSLog(@"ride pickuplocation: %@", ride.pickUpLocation.locationName);
                 [ridesArray addObject:ride];
             }
             

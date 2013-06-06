@@ -7,8 +7,8 @@
 //
 
 #import "Location.h"
-#define locationSearchURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/location/search"]
-//#define locationSearchURL [NSURL URLWithString:@"http://localhost:8080/moovt/location/search"]
+//#define locationSearchURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/location/search"]
+#define locationSearchURL [NSURL URLWithString:@"http://localhost:8080/moovt/location/search"]
 
 
 

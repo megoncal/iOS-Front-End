@@ -20,9 +20,9 @@
 {
     [super viewDidLoad];
     
-    [CarType retrieverCarTypes:^(NSArray *carTypes, NSError *error) {
+    [CarTypeServerController retrieverCarTypes:^(NSArray *carTypes, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (!error) {
+            if (error.code == 0) {
                 self.carTypeArray = carTypes;
                 [self.tableView reloadData];
             }else{

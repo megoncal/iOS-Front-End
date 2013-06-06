@@ -15,7 +15,7 @@
         error: (NSError **) error {
     
     NSMutableDictionary *signInTokenDictionary = [[NSMutableDictionary alloc] init];
-    NSDictionary *signInReturnDictionary;
+    NSDictionary *outputDictionary;
     
     BOOL success = [Marshaller marshallDictionary:signInTokenDictionary object:token error:error];
 
@@ -23,31 +23,37 @@
         return NO;
     }
 
-    success = [Helper callServerWithURLSync:signInURL inputDictionary:signInTokenDictionary outputDictionary:&signInReturnDictionary error:error];
+    success = [Helper callServerWithURLSync:signInURL inputDictionary:signInTokenDictionary outputDictionary:&outputDictionary error:error];
     
     if (!success) {
-        //error has been assigned already, just return NO
         return NO;
     }
     
     //Marshal the objects
-    SignInResultToken *signInResultToken=[[SignInResultToken alloc] init];
+    CallResult *callResult=[[CallResult alloc] init];
     
-    success = [Marshaller marshallObject:signInResultToken dictionary:signInReturnDictionary error:error];
+    //Obtain result dictionary from the outputDictionary
+    NSDictionary *callResultDictionary = [outputDictionary objectForKey:@"result"];
+    
+    
+    success = [Marshaller marshallObject:callResult dictionary:callResultDictionary error:error];
 
     if (!success) {
         return NO;
     }
     
-    if ([signInResultToken.code isEqualToString:@"ERROR"]){
-        *error = [Helper createNSError:signInResultToken.code type: signInResultToken.type message:signInResultToken.message];
+    if ([callResult.code isEqualToString:@"ERROR"]){
+        *error = [Helper createNSError:callResult];
         return NO;
     }
     
     
     CurrentSession *currentSession = [[CurrentSession alloc] init];
-    currentSession.jsessionID = signInResultToken.JSESSIONID;
-    *userType = signInResultToken.userType;
+    
+    //Obtain additionalInfo from the outputDictionary
+    NSDictionary *additionalInfoDictionary = [outputDictionary objectForKey:@"additionalInfo"];
+    currentSession.jsessionID = [additionalInfoDictionary objectForKey:@"JSESSIONID"];
+    *userType = [additionalInfoDictionary objectForKey:@"userType"];
     [CurrentSession writeCurrentSessionInformationToPlistFile:currentSession];
     
     

@@ -23,9 +23,9 @@
         self.rideStatus = nil;
         self.driver = nil;
         self.passenger = nil;
-        self.pickupDateTime = nil;
-        self.pickUpAddress = nil;
-        self.dropOffAddress = nil;
+        self.pickUpDateTime = nil;
+        self.pickUpLocation = nil;
+        self.dropOffLocation = nil;
         self.rating =@"";
         self.comments=@"";
         self.carType = nil;
