@@ -12,6 +12,7 @@
 #import "LocationServerController.h"
 
 
+
 @protocol LocationViewControllerDelegate;
 
 @interface LocationViewController : UIViewController <UISearchBarDelegate>

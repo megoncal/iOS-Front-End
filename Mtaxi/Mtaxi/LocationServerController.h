@@ -14,6 +14,7 @@
 
 + (void) retrieveMostFrequentLocations: (void (^)(NSMutableArray *locations, NSError *error)) handler;
 
++ (void)searchLocations:(NSString *)enteredLocation completionHandler:(void (^)(NSArray *, NSError *))handler;
 
 
 @end

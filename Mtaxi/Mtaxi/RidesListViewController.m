@@ -99,9 +99,39 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     
     NSDictionary *ridesDictionary = [self.sectionedRides objectAtIndex:section];
+    
     NSString *sectionHeader = [[ridesDictionary allKeys] objectAtIndex:0];
+    
+    
     return sectionHeader;
 }
+
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//    // create the parent view that will hold header Label
+//	UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 300.0, 44.0)];
+//	
+//	// create the button object
+//	UILabel * headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+//	headerLabel.backgroundColor = [UIColor clearColor];
+//	headerLabel.opaque = NO;
+//	headerLabel.textColor = [UIColor blackColor];
+//	headerLabel.highlightedTextColor = [UIColor whiteColor];
+//	headerLabel.font = [UIFont boldSystemFontOfSize:15];
+//	headerLabel.frame = CGRectMake(0.0, 0.0, 300.0, 44.0);
+//    headerLabel.textAlignment = NSTextAlignmentRight;
+//    
+//	// If you want to align the header text as centered
+//	// headerLabel.frame = CGRectMake(150.0, 0.0, 300.0, 44.0);
+//    
+//    NSDictionary *ridesDictionary = [self.sectionedRides objectAtIndex:section];
+//    NSString *sectionHeaderText = [[ridesDictionary allKeys] objectAtIndex:0];
+//    
+//	headerLabel.text = sectionHeaderText; // i.e. array element
+//	[customView addSubview:headerLabel];
+//    
+//	return customView;
+//}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -224,8 +254,11 @@
 #pragma mark retrieve ride from sectioned rides using indexPath
 
 -  (Ride *)retrieveRideFrom: (NSArray *)sectionedRides atPosition:(NSIndexPath *)indexPath{
+   
     NSDictionary *ridesDictionary = [sectionedRides objectAtIndex:indexPath.section];
+    
     NSArray *ridesArray = [[ridesDictionary allValues] objectAtIndex:0];
+    
     return [ridesArray objectAtIndex:indexPath.row];
 }
 

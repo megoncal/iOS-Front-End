@@ -171,12 +171,15 @@
     self.searchedLocations = self.zeroLocations;
     [self.searchDisplayController.searchResultsTableView reloadData];
     
-    [Location searchLocations:searchBar.text completionHandler:^(NSError *error, NSArray *locations) {
+    
+    
+    [LocationServerController searchLocations:searchBar.text completionHandler:^(NSArray *locationsArray, NSError *error) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (!error) {
-                if (locations.count > 0) {
-                    self.searchedLocations = locations;
+            
+            if (error.code == 0) {
+                if (locationsArray.count > 0) {
+                    self.searchedLocations = locationsArray;
                     searchingLocation = NO;
                     [self.searchDisplayController.searchResultsTableView reloadData];
                 }else{
@@ -184,13 +187,15 @@
                     searchingLocation = NO;
                     [self.searchDisplayController.searchResultsTableView reloadData];
                 }
-                
             }else{
-                [Helper showErrorMEUserWithError:error];
+                [Helper showMessage:error];
             }
             
         });
+
+        
     }];
+    
 }
 
 - (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar{

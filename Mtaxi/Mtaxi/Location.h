@@ -19,13 +19,13 @@
 
 
 
-- (NSMutableDictionary *)locationDictionary;
+//- (NSMutableDictionary *)locationDictionary;
 
 
-+(Location *) createLocationObject: (NSMutableDictionary *) location;
+//+(Location *) createLocationObject: (NSMutableDictionary *) location;
+//
+//+ (Location *) locationObject: (NSMutableDictionary *)locationDictionary;
 
-+ (Location *) locationObject: (NSMutableDictionary *)locationDictionary;
-
-+ (void) searchLocations:(NSString*)enteredLocation completionHandler:(void (^)(NSError* error, NSArray *))handler;
+//+ (void) searchLocations:(NSString*)enteredLocation completionHandler:(void (^)(NSError* error, NSArray *))handler;
 
 @end

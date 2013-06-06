@@ -10,6 +10,9 @@
 #define getMostFrequentLocations [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/location/getMostFrequentLocations"]
 //#define getMostFrequentLocations [NSURL URLWithString:@"http://localhost:8080/moovt/location/getMostFrequentLocations"]
 
+#define locationSearchURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/location/search"]
+//#define locationSearchURL [NSURL URLWithString:@"http://localhost:8080/moovt/location/search"]
+
 
 #import "LocationServerController.h"
 
@@ -31,9 +34,9 @@
             
             NSMutableArray *locationsArray = [[NSMutableArray alloc]init];
             
-            NSMutableArray *returnedRidesArray = [outputDictionary objectForKey:@"locations"];
+            NSMutableArray *returnedLocationsArray = [outputDictionary objectForKey:@"locations"];
             
-            for (NSDictionary *locationDictionary in returnedRidesArray) {
+            for (NSDictionary *locationDictionary in returnedLocationsArray) {
                 Location *location = [[Location alloc] init];
                 
                 BOOL success = [Marshaller marshallObject:location dictionary:locationDictionary error:&error];
@@ -54,13 +57,48 @@
             handler(NULL,error);
         }
     }];
-
-
-    
     
 }
 
 
++ (void)searchLocations:(NSString *)enteredLocation completionHandler:(void (^)(NSArray *, NSError *))handler{
+
+    NSURL *url = locationSearchURL;
+    
+    NSMutableDictionary *inputDictionary = [[NSMutableDictionary alloc] init];
+
+    [inputDictionary setObject:enteredLocation forKey:@"location"];
+    
+    [Helper callServerWithURLAsync:url inputDictionary:inputDictionary completionHandler:^(NSDictionary *outputDictionary, NSError *error){
+        
+        if (error.code == 0) {
+            
+            NSMutableArray *locationsArray = [[NSMutableArray alloc]init];
+            
+            NSMutableArray *returnedLocationsArray = [outputDictionary objectForKey:@"locations"];
+            
+            for (NSDictionary *locationDictionary in returnedLocationsArray) {
+                
+                Location *location = [[Location alloc] init];
+                
+                BOOL success = [Marshaller marshallObject:location dictionary:locationDictionary error:&error];
+                
+                if (!success) {
+                    handler(NULL, error);
+                    return;
+                }
+                
+                [locationsArray addObject:location];
+            }
+            
+            handler(locationsArray,error);
+            
+            
+        }else{
+            handler(NULL,error);
+        }
+    }];
+}
 
 
 @end
