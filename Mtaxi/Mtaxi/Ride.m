@@ -26,8 +26,8 @@
         self.pickUpDateTime = nil;
         self.pickUpLocation = nil;
         self.dropOffLocation = nil;
-        self.rating =@"";
-        self.comments=@"";
+        self.rating =0;
+        self.comment=@"";
         self.carType = nil;
         self.pickUpLocationComplement = @"";
         self.messageToTheDriver = @"";

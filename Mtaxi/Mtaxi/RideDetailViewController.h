@@ -10,6 +10,7 @@
 #import "Ride.h"
 #import "DateHelper.h"
 #import "DateHelper.h"
+#import "RateRideViewController.h"
 
 @interface RideDetailViewController : UITableViewController
 

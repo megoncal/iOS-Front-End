@@ -48,41 +48,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 
-    self.sectionedRides = [[NSMutableArray alloc]init];
-    
-    NSMutableDictionary *sectionsDictionary = [[NSMutableDictionary alloc]init];
-    
-    NSMutableArray *ridesForSection;
-    
-    
-    for (Ride *ride in self.rides) {
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-        [dateFormatter setDateStyle:NSDateFormatterShortStyle];
-        NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
-        [dateFormatter setTimeZone:gmt];
         
-        NSString *date = [dateFormatter stringFromDate:ride.pickUpDateTime];
-      
-        
-        ridesForSection = [sectionsDictionary objectForKey:date];
-        if (ridesForSection == nil) {
-            ridesForSection = [[NSMutableArray alloc]init];
-            [ridesForSection addObject:ride];
-            [sectionsDictionary setObject:ridesForSection forKey:date];
-                        
-        }else{
-            [ridesForSection addObject:ride];
-        }
-    }
-    
-    NSArray *sectionedRidesTemp = [sectionsDictionary allKeys];
-    //populate the sectionedRides;
-    for (NSString *date in sectionedRidesTemp) {
-        NSMutableDictionary *tempDictionary = [[NSMutableDictionary alloc]init];
-        [tempDictionary setValue:[sectionsDictionary objectForKey:date] forKey:date];
-        [self.sectionedRides addObject:tempDictionary];
-    }
-    
     // Return the number of sections.
     return self.sectionedRides.count;
 }
@@ -101,7 +67,6 @@
     NSDictionary *ridesDictionary = [self.sectionedRides objectAtIndex:section];
     
     NSString *sectionHeader = [[ridesDictionary allKeys] objectAtIndex:0];
-    
     
     return sectionHeader;
 }
@@ -240,15 +205,26 @@
              if (error.code == 0) {
                  self.rides = rides;
                  
-                 [self.rides sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-                     
-                     NSDate *date1 = [(Ride *)obj1 pickUpDateTime];
-                     NSDate *date2 = [(Ride *)obj2 pickUpDateTime];
-                     
-                     NSComparisonResult result = [date2 compare:date1];
-                     
-                     return result;
-                 }];
+//                 [self.rides sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+//                     
+//                     NSDate *date1 = [(Ride *)obj1 pickUpDateTime];
+//                     
+//                     NSDate *date2 = [(Ride *)obj2 pickUpDateTime];
+//                     
+//                     if (date1 > date2) {
+//                         return NSOrderedDescending;
+//                     } else if (date1 < date2) {
+//                         return NSOrderedAscending;
+//                     } else {
+//                         return NSOrderedSame;
+//                     }
+//                 }];
+//                 
+//                 for (Ride *ride in self.rides) {
+//                     NSLog(@"Rides date: %@", [ride.pickUpDateTime description]);
+//                 }
+//
+                 [self splitRidesInSections];
                  
                  [self.tableView reloadData];
              }else{
@@ -259,6 +235,46 @@
 
     }];
  
+}
+
+
+- (void) splitRidesInSections{
+ 
+    self.sectionedRides = [[NSMutableArray alloc]init];
+    
+    NSMutableDictionary *sectionsDictionary = [[NSMutableDictionary alloc]init];
+    
+    NSMutableArray *ridesForSection;
+    
+    for (Ride *ride in self.rides) {
+       
+        NSString *status = ride.rideStatus.description;
+        
+        ridesForSection = [sectionsDictionary objectForKey:status];
+        
+        if (ridesForSection == nil) {
+            
+            ridesForSection = [[NSMutableArray alloc]init];
+            
+            [ridesForSection addObject:ride];
+            
+            [sectionsDictionary setObject:ridesForSection forKey:status];
+            
+        }else{
+            [ridesForSection addObject:ride];
+        }
+    }
+    
+    NSArray *sectionedRidesTemp = [sectionsDictionary allKeys];
+    //populate the sectionedRides;
+    for (NSString *date in sectionedRidesTemp) {
+        NSMutableDictionary *tempDictionary = [[NSMutableDictionary alloc]init];
+        [tempDictionary setValue:[sectionsDictionary objectForKey:date] forKey:date];
+        [self.sectionedRides addObject:tempDictionary];
+    }
+
+    
+    
 }
 
 

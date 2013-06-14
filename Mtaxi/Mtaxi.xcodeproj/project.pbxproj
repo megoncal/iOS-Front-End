@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2F02E80E176150BD007ACDB6 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F02E807176150BD007ACDB6 /* MainStoryboard.storyboard */; };
-		2F02E80F176150BD007ACDB6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2F02E80A176150BD007ACDB6 /* InfoPlist.strings */; };
 		2F02E810176150BD007ACDB6 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F02E80C176150BD007ACDB6 /* MainStoryboard.storyboard */; };
 		2F37C3E0175585C20033D552 /* RideDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F37C3DF175585C20033D552 /* RideDetailViewController.m */; };
 		2F383939175148F700DF3E25 /* ConfirmRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F383936175148F700DF3E25 /* ConfirmRideViewController.m */; };
@@ -17,6 +16,7 @@
 		2F4071B317483EC900D429FE /* Ride.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4071B217483EC900D429FE /* Ride.m */; };
 		2F4071B71748526200D429FE /* CreateRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4071B51748410C00D429FE /* CreateRideViewController.m */; };
 		2F50CED4175D7B1700DF9B47 /* LocationServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F50CED3175D7B1700DF9B47 /* LocationServerController.m */; };
+		2F5E2899176ABB9D00FD2BB8 /* RateRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5E2898176ABB9D00FD2BB8 /* RateRideViewController.m */; };
 		2F9372751759748100F2DDC2 /* UserServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F692061755B36A000F9434 /* UserServerController.m */; };
 		2F937276175974A600F2DDC2 /* SignInToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A04ED61756FDE10012481B /* SignInToken.m */; };
 		2F937278175974B000F2DDC2 /* Driver.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A04ED31756FB020012481B /* Driver.m */; };
@@ -69,7 +69,6 @@
 
 /* Begin PBXFileReference section */
 		2F02E808176150BD007ACDB6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		2F02E80B176150BD007ACDB6 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = InfoPlist.strings; sourceTree = "<group>"; };
 		2F02E80D176150BD007ACDB6 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "pt-BR"; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		2F37C3DE175585C20033D552 /* RideDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RideDetailViewController.h; sourceTree = "<group>"; };
 		2F37C3DF175585C20033D552 /* RideDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RideDetailViewController.m; sourceTree = "<group>"; };
@@ -85,6 +84,8 @@
 		2F4071B51748410C00D429FE /* CreateRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateRideViewController.m; sourceTree = "<group>"; };
 		2F50CED2175D7B1700DF9B47 /* LocationServerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationServerController.h; sourceTree = "<group>"; };
 		2F50CED3175D7B1700DF9B47 /* LocationServerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationServerController.m; sourceTree = "<group>"; };
+		2F5E2897176ABB9D00FD2BB8 /* RateRideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateRideViewController.h; sourceTree = "<group>"; };
+		2F5E2898176ABB9D00FD2BB8 /* RateRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateRideViewController.m; sourceTree = "<group>"; };
 		2F93727A17599D0300F2DDC2 /* RideServerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RideServerController.h; sourceTree = "<group>"; };
 		2F93727B17599D0300F2DDC2 /* RideServerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RideServerController.m; sourceTree = "<group>"; };
 		2F93727D17599D6800F2DDC2 /* DateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateHelper.h; sourceTree = "<group>"; };
@@ -183,7 +184,6 @@
 		2F02E809176150BD007ACDB6 /* pt-BR.lproj */ = {
 			isa = PBXGroup;
 			children = (
-				2F02E80A176150BD007ACDB6 /* InfoPlist.strings */,
 				2F02E80C176150BD007ACDB6 /* MainStoryboard.storyboard */,
 			);
 			name = "pt-BR.lproj";
@@ -285,6 +285,8 @@
 				2F4071B51748410C00D429FE /* CreateRideViewController.m */,
 				2F383935175148F700DF3E25 /* ConfirmRideViewController.h */,
 				2F383936175148F700DF3E25 /* ConfirmRideViewController.m */,
+				2F5E2897176ABB9D00FD2BB8 /* RateRideViewController.h */,
+				2F5E2898176ABB9D00FD2BB8 /* RateRideViewController.m */,
 				2F38393B1752E25100DF3E25 /* RideStatus.h */,
 				2F38393C1752E25200DF3E25 /* RideStatus.m */,
 			);
@@ -453,7 +455,6 @@
 				76E885B8174827DB00694D65 /* Default-568h@2x.png in Resources */,
 				76C5ECAD17482E7B00F87A75 /* InfoPlist.strings in Resources */,
 				2F02E80E176150BD007ACDB6 /* MainStoryboard.storyboard in Resources */,
-				2F02E80F176150BD007ACDB6 /* InfoPlist.strings in Resources */,
 				2F02E810176150BD007ACDB6 /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,6 +522,7 @@
 				2F93727F17599D6800F2DDC2 /* DateHelper.m in Sources */,
 				2F50CED4175D7B1700DF9B47 /* LocationServerController.m in Sources */,
 				7665CA6F175EE8CD00784090 /* CarTypeServerController.m in Sources */,
+				2F5E2899176ABB9D00FD2BB8 /* RateRideViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,14 +551,6 @@
 				2F02E808176150BD007ACDB6 /* en */,
 			);
 			name = MainStoryboard.storyboard;
-			sourceTree = "<group>";
-		};
-		2F02E80A176150BD007ACDB6 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2F02E80B176150BD007ACDB6 /* pt-BR */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		2F02E80C176150BD007ACDB6 /* MainStoryboard.storyboard */ = {

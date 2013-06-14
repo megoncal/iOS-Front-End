@@ -33,8 +33,8 @@
 @property (strong,nonatomic) Location *pickUpLocation;
 @property (strong,nonatomic) Location *dropOffLocation;
 
-@property (strong,nonatomic) NSString *rating;
-@property (strong,nonatomic) NSString *comments;
+@property float rating;
+@property (strong,nonatomic) NSString *comment;
 
 
 @property (strong, nonatomic) CarType *carType;

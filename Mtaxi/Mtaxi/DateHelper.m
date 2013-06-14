@@ -29,8 +29,8 @@
     
     NSString *stringDate;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    [dateFormatter setDateStyle:NSDateFormatterShortStyle];
-    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    [dateFormatter setDateStyle:NSDateFormatterFullStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterFullStyle];
     [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
     stringDate = [dateFormatter stringFromDate:date];
     

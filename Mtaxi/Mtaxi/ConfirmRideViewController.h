@@ -29,9 +29,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *carType;
 
-
-
-
 @property (weak, nonatomic) IBOutlet UITextField *pickUpLocationComplement;
 
 @property (weak, nonatomic) IBOutlet UITextField *messageToTheDriver;

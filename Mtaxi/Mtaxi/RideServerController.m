@@ -98,7 +98,50 @@
     
 }
 
++(BOOL)rateRide:(Ride *)ride error:(NSError *__autoreleasing *)error{
+    
+    NSURL *url = rateRideURL;
+    
+    NSMutableDictionary *rateRideDictionary = [[NSMutableDictionary alloc] init];
+    
+    [rateRideDictionary setObject:[NSNumber numberWithInt:ride.uid] forKey:@"id"];
+    [rateRideDictionary setObject:[NSNumber numberWithInt:ride.version] forKey:@"version"];
+    [rateRideDictionary setObject:[NSNumber numberWithDouble:ride.rating] forKey:@"rating"];
+    [rateRideDictionary setObject:ride.comment forKey:@"comment"];
+    
+    
+    NSMutableDictionary *callResultDictionary;
+    
+    NSMutableDictionary *outputDictionary;
+    
 
+
+    
+    //call server sync passing the rideDictionary
+   BOOL success = [Helper callServerWithURLSync:url inputDictionary:rateRideDictionary outputDictionary:&outputDictionary error:error];
+    
+    if (!success) {
+        return NO;
+    }
+    
+    callResultDictionary = [outputDictionary objectForKey:@"result"];
+    
+    CallResult *callResult = [[CallResult alloc]init];
+    
+    success = [Marshaller marshallObject:callResult dictionary:callResultDictionary error:error];
+    
+    if (!success) {
+        return NO;
+    }
+    
+    //Create an error from the call Result - This maybe success or not
+    *error = [Helper createNSError:callResult];
+    
+    if ([callResult.code isEqualToString:@"ERROR"]) {
+        return NO;
+    }
+    return YES;
+}
 
 
 
