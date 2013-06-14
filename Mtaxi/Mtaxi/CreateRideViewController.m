@@ -108,8 +108,11 @@
     
     
     if([segue.identifier isEqualToString:@"RideConfirmation"]){
+        
         self.ride.pickUpDateTime = self.datePicker.date;
+        
         ConfirmRideViewController *confirmRideViewController = segue.destinationViewController;
+        
         confirmRideViewController.ride = self.ride;
     }
 }

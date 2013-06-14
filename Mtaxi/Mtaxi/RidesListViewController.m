@@ -239,6 +239,17 @@
     
              if (error.code == 0) {
                  self.rides = rides;
+                 
+                 [self.rides sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                     
+                     NSDate *date1 = [(Ride *)obj1 pickUpDateTime];
+                     NSDate *date2 = [(Ride *)obj2 pickUpDateTime];
+                     
+                     NSComparisonResult result = [date2 compare:date1];
+                     
+                     return result;
+                 }];
+                 
                  [self.tableView reloadData];
              }else{
                  [Helper showMessage:error];

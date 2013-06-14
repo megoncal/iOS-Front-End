@@ -150,13 +150,18 @@
             [dictionary setObject:(NSString *)value forKey:dictionaryPropertyName];
             
         } else if ([typeAttribute isEqualToString:@"NSDate"]) {
-            NSDate * dateValue = (NSDate *) value;
-            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-            NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
-            [dateFormatter setTimeZone:gmt];
-            NSString * stringValue = [dateFormatter stringFromDate:dateValue ];
+            
+//            NSDate * dateValue = (NSDate *) value;
+//            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+//            NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+//            [dateFormatter setTimeZone:gmt];
+//            NSString * stringValue = [dateFormatter stringFromDate:dateValue ];
+            
+            NSString *stringValue = [DateHelper stringFormatOfLocalDateAndTime:(NSDate *)value];
+            
             NSLog(@"About to add NSDate/NSString ->%@<- to key ->%@<-", stringValue, propertyName);
+            
             [dictionary setObject:stringValue forKey:dictionaryPropertyName];
             
         } else if ([typeAttribute isEqualToString:@"i"]) {
