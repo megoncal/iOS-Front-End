@@ -115,21 +115,15 @@
     UITextField *from = (UITextField *)[cell viewWithTag:100];
     UITextField *to = (UITextField *)[cell viewWithTag:101];
     UITextField *time = (UITextField *)[cell viewWithTag:102];
-    UITextField *status = (UITextField *)[cell viewWithTag:103];
+    UITextField *date = (UITextField *)[cell viewWithTag:103];
     
     
     Ride *ride = [self retrieveRideFrom:self.sectionedRides atPosition:indexPath];
     
     from.text = ride.pickUpLocation.locationName;
     to.text = ride.dropOffLocation.locationName;
-    status.text = ride.rideStatus.description;
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
-    [dateFormatter setTimeZone:gmt];
-    [dateFormatter setDateFormat:@"HH:mm"];
-    
-    time.text = [dateFormatter stringFromDate:ride.pickUpDateTime];
+    time.text = [DateHelper descriptionTime:ride.pickUpDateTime];
+    date.text = [DateHelper descriptionDate:ride.pickUpDateTime];
     
     return cell;
 }
@@ -274,7 +268,10 @@
         
         
         NSArray *tempArray = [sectionsDictionary objectForKey:statusCode];
+       
         if (tempArray) {
+            
+            
             NSMutableDictionary *tempDictionary = [[NSMutableDictionary alloc] init];
             NSString *tempKey = [(Ride *)[tempArray objectAtIndex:0] rideStatus].description;
             [tempDictionary setObject:tempArray forKey:tempKey];

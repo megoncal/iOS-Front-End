@@ -13,7 +13,7 @@
 
 
 
-+ (NSString *) stringFormatOfLocalDateAndTime: (NSDate *)date{
++ (NSString *) descriptionFormatOfLocalDateAndTime: (NSDate *)date{
     
     NSString *stringDate;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
@@ -25,16 +25,41 @@
 }
 
 
-+ (NSString *)stringFullFormatOfLocalDateAndTime: (NSDate *) date {
++ (NSString *)descriptionFullFormatOfLocalDateAndTime: (NSDate *) date {
     
     NSString *stringDate;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateStyle:NSDateFormatterFullStyle];
-    [dateFormatter setTimeStyle:NSDateFormatterFullStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
     stringDate = [dateFormatter stringFromDate:date];
     
     return stringDate;
+}
+
++ (NSString *)descriptionTime: (NSDate *) date{
+   
+    NSString *time;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+    [dateFormatter setTimeZone:gmt];
+    [dateFormatter setDateFormat:@"HH:mm"];
+    
+    time = [dateFormatter stringFromDate:date];
+    
+    return time;
+}
+
++ (NSString *)descriptionDate: (NSDate *) date{
+    NSString *dateDescription;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+    [dateFormatter setTimeZone:gmt];
+    [dateFormatter setDateStyle:NSDateFormatterFullStyle];
+    
+    dateDescription = [dateFormatter stringFromDate:date];
+    
+    return dateDescription;
 }
 
 

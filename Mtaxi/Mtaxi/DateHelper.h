@@ -11,10 +11,12 @@
 @interface DateHelper : NSObject
 
 
-+ (NSString *) stringFormatOfLocalDateAndTime: (NSDate *)date;
++ (NSString *) descriptionFormatOfLocalDateAndTime: (NSDate *)date;
 
-+ (NSString *)stringFullFormatOfLocalDateAndTime: (NSDate *) date;
++ (NSString *) descriptionFullFormatOfLocalDateAndTime: (NSDate *) date;
 
++ (NSString *) descriptionTime: (NSDate *) date;
 
++ (NSString *) descriptionDate: (NSDate *) date;
 
 @end

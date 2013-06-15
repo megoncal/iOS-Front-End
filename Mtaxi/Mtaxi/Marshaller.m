@@ -158,7 +158,7 @@
 //            [dateFormatter setTimeZone:gmt];
 //            NSString * stringValue = [dateFormatter stringFromDate:dateValue ];
             
-            NSString *stringValue = [DateHelper stringFormatOfLocalDateAndTime:(NSDate *)value];
+            NSString *stringValue = [DateHelper descriptionFormatOfLocalDateAndTime:(NSDate *)value];
             
             NSLog(@"About to add NSDate/NSString ->%@<- to key ->%@<-", stringValue, propertyName);
             

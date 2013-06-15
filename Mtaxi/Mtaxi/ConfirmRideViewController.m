@@ -51,7 +51,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     
     self.pickUpLocation.detailTextLabel.text = self.ride.pickUpLocation.locationName;
     self.dropOffLocation.detailTextLabel.text = self.ride.dropOffLocation.locationName;
-    self.pickUpDate.detailTextLabel.text = [DateHelper stringFullFormatOfLocalDateAndTime:self.ride.pickUpDateTime];
+    self.pickUpDate.detailTextLabel.text = [DateHelper descriptionFullFormatOfLocalDateAndTime:self.ride.pickUpDateTime];
     self.carType.detailTextLabel.text = self.ride.carType.description;
 }
 
