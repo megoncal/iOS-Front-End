@@ -270,13 +270,10 @@
         NSArray *tempArray = [sectionsDictionary objectForKey:statusCode];
        
         if (tempArray) {
-            
-            
             NSMutableDictionary *tempDictionary = [[NSMutableDictionary alloc] init];
             NSString *tempKey = [(Ride *)[tempArray objectAtIndex:0] rideStatus].description;
             [tempDictionary setObject:tempArray forKey:tempKey];
             [self.sectionedRides addObject:tempDictionary];
-       
         }
         
     }
