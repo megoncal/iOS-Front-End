@@ -20,6 +20,8 @@
 //every array position has a nsdictionary with key as date and an array of ride as value
 @property (strong, nonatomic) NSMutableArray *sectionedRides;
 
+@property (strong,nonatomic) NSArray *listOfStatusCode;
+
 - (IBAction)addRidePressed:(id)sender;
 
 

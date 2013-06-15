@@ -25,6 +25,10 @@
 {
     [super viewDidLoad];
     
+    self.listOfStatusCode = [[NSArray alloc] initWithObjects:@"UNASSIGNED", @"ASSIGNED", @"COMPLETED", nil];
+    
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -239,7 +243,7 @@
 
 
 - (void) splitRidesInSections{
- 
+
     self.sectionedRides = [[NSMutableArray alloc]init];
     
     NSMutableDictionary *sectionsDictionary = [[NSMutableDictionary alloc]init];
@@ -248,9 +252,9 @@
     
     for (Ride *ride in self.rides) {
        
-        NSString *status = ride.rideStatus.description;
+        NSString *statusCode = ride.rideStatus.code;
         
-        ridesForSection = [sectionsDictionary objectForKey:status];
+        ridesForSection = [sectionsDictionary objectForKey:statusCode];
         
         if (ridesForSection == nil) {
             
@@ -258,20 +262,42 @@
             
             [ridesForSection addObject:ride];
             
-            [sectionsDictionary setObject:ridesForSection forKey:status];
+            [sectionsDictionary setObject:ridesForSection forKey:statusCode];
             
         }else{
             [ridesForSection addObject:ride];
         }
     }
     
-    NSArray *sectionedRidesTemp = [sectionsDictionary allKeys];
-    //populate the sectionedRides;
-    for (NSString *date in sectionedRidesTemp) {
-        NSMutableDictionary *tempDictionary = [[NSMutableDictionary alloc]init];
-        [tempDictionary setValue:[sectionsDictionary objectForKey:date] forKey:date];
-        [self.sectionedRides addObject:tempDictionary];
+    
+    for (NSString *statusCode in self.listOfStatusCode) {
+        
+        
+        NSArray *tempArray = [sectionsDictionary objectForKey:statusCode];
+        if (tempArray) {
+            NSMutableDictionary *tempDictionary = [[NSMutableDictionary alloc] init];
+            NSString *tempKey = [(Ride *)[tempArray objectAtIndex:0] rideStatus].description;
+            [tempDictionary setObject:tempArray forKey:tempKey];
+            [self.sectionedRides addObject:tempDictionary];
+       
+        }
+        
     }
+    
+    
+//    //get all keys (status) from the sectionsDictionary
+//    NSArray *allKeysFromSectionsDictionary = [sectionsDictionary allKeys];
+//    
+//    //populate the sectionedRides;
+//    for (NSString *key in allKeysFromSectionsDictionary) {
+//        
+//        NSMutableDictionary *tempDictionary = [[NSMutableDictionary alloc]init];
+//        
+//        [tempDictionary setValue:[sectionsDictionary objectForKey:key] forKey:key];
+//        
+//        [self.sectionedRides addObject:tempDictionary];
+//    
+//    }
 
     
     
@@ -283,9 +309,7 @@
 -  (Ride *)retrieveRideFrom: (NSArray *)sectionedRides atPosition:(NSIndexPath *)indexPath{
    
     NSDictionary *ridesDictionary = [sectionedRides objectAtIndex:indexPath.section];
-    
     NSArray *ridesArray = [[ridesDictionary allValues] objectAtIndex:0];
-    
     return [ridesArray objectAtIndex:indexPath.row];
 }
 

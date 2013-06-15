@@ -115,8 +115,6 @@
     NSMutableDictionary *outputDictionary;
     
 
-
-    
     //call server sync passing the rideDictionary
    BOOL success = [Helper callServerWithURLSync:url inputDictionary:rateRideDictionary outputDictionary:&outputDictionary error:error];
     
