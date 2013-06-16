@@ -67,12 +67,9 @@
     //The server call to retrieve the logged user details contains a blank message (i.e. {})
     [Helper callServerWithURLAsync:url inputDictionary:inputDictionary completionHandler:^(NSDictionary *outputDictionary, NSError *error) {
         
-        
-        
         if (error.code == 0) {
         
             NSMutableArray *ridesArray = [[NSMutableArray alloc]init];
-            
             NSMutableArray *returnedRidesArray = [outputDictionary objectForKey:@"rides"];
             
             for (NSDictionary *rideDictionary in returnedRidesArray) {
@@ -104,19 +101,23 @@
     
     NSMutableDictionary *rateRideDictionary = [[NSMutableDictionary alloc] init];
     
-    [rateRideDictionary setObject:[NSNumber numberWithInt:ride.uid] forKey:@"id"];
-    [rateRideDictionary setObject:[NSNumber numberWithInt:ride.version] forKey:@"version"];
-    [rateRideDictionary setObject:[NSNumber numberWithDouble:ride.rating] forKey:@"rating"];
-    [rateRideDictionary setObject:ride.comment forKey:@"comment"];
+    RateRideToken *rateRideToken = [[RateRideToken alloc] initWithUid:ride.uid version:ride.version rating:ride.rating andComment:ride.comment];
     
+    
+    BOOL success = [Marshaller marshallDictionary:rateRideDictionary object:rateRideToken error:error];
+    
+    NSLog(@"%@",[rateRideDictionary description]);
+    
+    if (!success) {
+        return NO;
+    }
     
     NSMutableDictionary *callResultDictionary;
-    
     NSMutableDictionary *outputDictionary;
     
 
     //call server sync passing the rideDictionary
-   BOOL success = [Helper callServerWithURLSync:url inputDictionary:rateRideDictionary outputDictionary:&outputDictionary error:error];
+    success = [Helper callServerWithURLSync:url inputDictionary:rateRideDictionary outputDictionary:&outputDictionary error:error];
     
     if (!success) {
         return NO;

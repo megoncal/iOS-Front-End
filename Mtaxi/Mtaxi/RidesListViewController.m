@@ -270,6 +270,15 @@
         NSArray *tempArray = [sectionsDictionary objectForKey:statusCode];
        
         if (tempArray) {
+            
+            tempArray = [tempArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                
+                NSDate *date1 = [(Ride *)obj1 pickUpDateTime];
+                NSDate *date2 = [(Ride *) obj2 pickUpDateTime];
+                return [date1 compare:date2];
+                
+            }];
+            
             NSMutableDictionary *tempDictionary = [[NSMutableDictionary alloc] init];
             NSString *tempKey = [(Ride *)[tempArray objectAtIndex:0] rideStatus].description;
             [tempDictionary setObject:tempArray forKey:tempKey];

@@ -10,6 +10,7 @@
 #import "Ride.h"
 #import "RideServerController.h"
 
+
 @interface RateRideViewController : UITableViewController
 
 @property (strong,nonatomic) Ride *ride;

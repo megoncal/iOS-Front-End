@@ -17,6 +17,7 @@
 #import "Ride.h"    
 #import "Marshaller.h"
 #import "CallResult.h"
+#import "RateRideToken.h"
 
 @interface RideServerController : NSObject
 
