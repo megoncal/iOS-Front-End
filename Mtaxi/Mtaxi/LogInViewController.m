@@ -18,7 +18,7 @@
 @implementation LogInViewController
 
 - (void)viewWillAppear:(BOOL)animated{
-    self.userName.text = @"jgoodrider";
+    self.userName.text = @"jgoodarm";
     self.password.text = @"Welcome!1";
 }
 
@@ -31,7 +31,7 @@
     gestureRecognizer.cancelsTouchesInView = NO;
     [self.tableView addGestureRecognizer:gestureRecognizer];
     
-    self.userName.text = @"jgoodrider";
+    self.userName.text = @"jgoodarm";
     self.password.text = @"Welcome!1";
    
 

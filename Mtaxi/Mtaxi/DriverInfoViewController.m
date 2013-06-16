@@ -44,18 +44,20 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 {
     [super viewDidLoad];
     
-    //retrieve logged driver info
-    [self retrieveDriverInformation];
-    
     
     //capture every time the tableView is touched and call method hideKeyboard
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     gestureRecognizer.cancelsTouchesInView = NO;
     [self.tableView addGestureRecognizer:gestureRecognizer];
     
-    
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    //retrieve logged driver info
+    [self retrieveDriverInformation];
+    
+
+}
 
 #pragma mark - retrieveData
 - (void)retrieveDriverInformation{

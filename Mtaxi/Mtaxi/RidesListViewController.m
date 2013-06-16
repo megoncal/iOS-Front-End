@@ -203,25 +203,6 @@
              if (error.code == 0) {
                  self.rides = rides;
                  
-//                 [self.rides sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-//                     
-//                     NSDate *date1 = [(Ride *)obj1 pickUpDateTime];
-//                     
-//                     NSDate *date2 = [(Ride *)obj2 pickUpDateTime];
-//                     
-//                     if (date1 > date2) {
-//                         return NSOrderedDescending;
-//                     } else if (date1 < date2) {
-//                         return NSOrderedAscending;
-//                     } else {
-//                         return NSOrderedSame;
-//                     }
-//                 }];
-//                 
-//                 for (Ride *ride in self.rides) {
-//                     NSLog(@"Rides date: %@", [ride.pickUpDateTime description]);
-//                 }
-//
                  [self splitRidesInSections];
                  
                  [self.tableView reloadData];

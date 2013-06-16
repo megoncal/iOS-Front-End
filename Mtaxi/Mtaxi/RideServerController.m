@@ -60,7 +60,7 @@
 + (void) retrievePassengerRides: (void (^)(NSMutableArray *rides, NSError *error)) handler{
     
     
-    NSURL *url = retrieveAllRidesURL;
+    NSURL *url = allRidesURL;
     
     NSMutableDictionary *inputDictionary = [[NSMutableDictionary alloc]init];
     
@@ -142,6 +142,40 @@
     return YES;
 }
 
-
++ (void)retrieveUnassignedRidesInServedArea:(void (^)(NSMutableArray *, NSError *))handler{
+    
+    NSURL *url = unassignedRidesUrl;
+    
+    NSMutableDictionary *inputDictionary = [[NSMutableDictionary alloc]init];
+    
+    //The server call to retrieve the logged user details contains a blank message (i.e. {})
+    [Helper callServerWithURLAsync:url inputDictionary:inputDictionary completionHandler:^(NSDictionary *outputDictionary, NSError *error) {
+        
+        if (error.code == 0) {
+            
+            NSMutableArray *ridesArray = [[NSMutableArray alloc]init];
+            NSMutableArray *returnedRidesArray = [outputDictionary objectForKey:@"rides"];
+            
+            for (NSDictionary *rideDictionary in returnedRidesArray) {
+                Ride *ride = [[Ride alloc] init];
+                NSLog(@"ride dictionary: %@", [rideDictionary description]);
+                BOOL success = [Marshaller marshallObject:ride dictionary:rideDictionary error:&error];
+                if (!success) {
+                    handler(NULL, error);
+                    return;
+                }
+                
+                NSLog(@"ride pickuplocation: %@", ride.pickUpLocation.locationName);
+                [ridesArray addObject:ride];
+            }
+            
+            handler(ridesArray,error);
+            
+            
+        }else{
+            handler(NULL,error);
+        }
+    }];
+}
 
 @end
