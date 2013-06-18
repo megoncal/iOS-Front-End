@@ -10,6 +10,7 @@
 #import "Ride.h"
 #import "DateHelper.h"
 #import "RideServerController.h"
+#import "PassengerDetailViewController.h"
 
 @interface DriverRideDetailViewController : UITableViewController
 

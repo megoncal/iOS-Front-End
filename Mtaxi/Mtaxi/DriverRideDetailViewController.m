@@ -60,14 +60,13 @@
 }
 
 - (IBAction)takePressed:(id)sender {
-    
     NSError *error;
-    
     [RideServerController assignRide:self.ride error:&error];
-    
     [Helper showMessage:error];
-    
     [self.navigationController popToRootViewControllerAnimated:YES];
-    
 }
+
+
+
+
 @end
