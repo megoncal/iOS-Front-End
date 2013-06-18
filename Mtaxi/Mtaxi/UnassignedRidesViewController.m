@@ -14,14 +14,7 @@
 
 @implementation UnassignedRidesViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+
 
 - (void)viewDidLoad
 {
@@ -92,19 +85,24 @@
     return self.unassignedRides.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 65.0f;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"RideCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+ 
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    UITextField *from = (UITextField *)[cell viewWithTag:100];
-    UITextField *to = (UITextField *)[cell viewWithTag:101];
-    UITextField *time = (UITextField *)[cell viewWithTag:102];
-    UITextField *date = (UITextField *)[cell viewWithTag:103];
+    UILabel *from = (UILabel *)[cell viewWithTag:100];
+    UILabel *to = (UILabel *)[cell viewWithTag:101];
+    UILabel *time = (UILabel *)[cell viewWithTag:102];
+    UILabel *date = (UILabel *)[cell viewWithTag:103];
     
     
     Ride *ride = [self.unassignedRides objectAtIndex:indexPath.row];
@@ -160,13 +158,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    
+    Ride *ride = [self.unassignedRides objectAtIndex:indexPath.row];
+    
+    DriverRideDetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DriverRideDetailView"];
+    
+    detailViewController.ride = ride;
+    
+    // Pass the selected object to the new view controller.
+    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 @end

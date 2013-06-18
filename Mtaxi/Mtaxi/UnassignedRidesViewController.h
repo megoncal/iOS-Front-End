@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RideServerController.h"
 #import "DateHelper.h"
+#import "DriverRideDetailViewController.h"
 
 @interface UnassignedRidesViewController : UITableViewController
 

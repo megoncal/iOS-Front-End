@@ -53,13 +53,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     self.pickUpLocationComplement.detailTextLabel.text = self.ride.pickUpLocationComplement;
     self.message.detailTextLabel.text = self.ride.messageToTheDriver;
 
-    //TODO: rating...
-    
-   //self.comments.text = self.ride.comments;
-    
-    
-    
-    
 }
 
 #pragma mark - configure textField

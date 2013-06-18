@@ -149,20 +149,11 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    //SignUp
-    if ([self.tableView cellForRowAtIndexPath:indexPath] == self.signUpCell) {
-        
-        NSError *error;
-        NSString *activeStatus;
-        if (self.activeStatus.on) {
-            activeStatus = @"ENABLED";
-        }else{
-            activeStatus = @"DISABLED";
-        }
-        
+       
         if ([self.tableView cellForRowAtIndexPath:indexPath] == self.signUpCell) {
             
-            ActiveStatus *activeStatus = [ActiveStatus alloc];
+            NSError *error;
+            ActiveStatus *activeStatus = [[ActiveStatus alloc]init];
             if (self.activeStatus.on) {
                 activeStatus = [activeStatus initWithCode:@"ENABLED"];
             }else{
@@ -170,6 +161,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
             }
             
             Driver *driver = [[Driver alloc] initWithStatus:activeStatus andCarType:self.car andServedLocation: self.taxiStandLocation];
+            
             User *user = [[User alloc] initWithUsername:self.username.text andPassword: self.password.text andFirstName: self.firstName.text andLastName: self.lastName.text andPhone: self.phoneNumber.text andEmail: self.email.text andDriver: driver andPassenger: nil];
             
             BOOL success = [UserServerController signUpUser:user error:&error];
@@ -195,8 +187,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
             [self presentViewController:controller animated:YES completion:nil];
         }
         
-    }
 }
+
 
 
 #pragma mark - implemented protocols

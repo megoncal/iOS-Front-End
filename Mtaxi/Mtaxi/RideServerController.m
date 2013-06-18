@@ -142,6 +142,57 @@
     return YES;
 }
 
+
++(BOOL)assignRide:(Ride *)ride error:(NSError *__autoreleasing *)error{
+    
+    NSURL *url = assignRideUrl;
+    
+    NSMutableDictionary *assignRideDictionary = [[NSMutableDictionary alloc] init];
+    
+    AssignRideToken *assignRideToken = [[AssignRideToken alloc] initWithUid:ride.uid version:ride.version];
+    
+    
+    BOOL success = [Marshaller marshallDictionary:assignRideDictionary object:assignRideToken error:error];
+
+    
+    if (!success) {
+        return NO;
+    }
+    
+    NSMutableDictionary *callResultDictionary;
+    NSMutableDictionary *outputDictionary;
+    
+    
+    //call server sync passing the rideDictionary
+    success = [Helper callServerWithURLSync:url inputDictionary:assignRideDictionary outputDictionary:&outputDictionary error:error];
+    
+    if (!success) {
+        return NO;
+    }
+    
+    callResultDictionary = [outputDictionary objectForKey:@"result"];
+    
+    CallResult *callResult = [[CallResult alloc]init];
+    
+    success = [Marshaller marshallObject:callResult dictionary:callResultDictionary error:error];
+    
+    if (!success) {
+        return NO;
+    }
+    
+    //Create an error from the call Result - This maybe success or not
+    *error = [Helper createNSError:callResult];
+    
+    if ([callResult.code isEqualToString:@"ERROR"]) {
+        return NO;
+    }
+    return YES;
+}
+
+
+
+
+
 + (void)retrieveUnassignedRidesInServedArea:(void (^)(NSMutableArray *, NSError *))handler{
     
     NSURL *url = unassignedRidesUrl;

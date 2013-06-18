@@ -65,7 +65,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     [UserServerController retrieveLoggedUserDetails:^(User *user, NSError *error) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (!error) {
+            if (error.code == 0) {
                 
                 self.user = user;
             
@@ -149,9 +149,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     
     [UserServerController updateLoggedUserDetails:self.user completionHandler:^(User *user, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (!error) {
+
                 [Helper showMessage:error];
-            }
+         
         });
 
     }];
