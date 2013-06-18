@@ -67,6 +67,11 @@
 }
 
 
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"PassengerDetail"]){
+        PassengerDetailViewController *passengerDetailViewController = segue.destinationViewController;
+        passengerDetailViewController.user = self.ride.passenger;
+    }
+}
 
 @end

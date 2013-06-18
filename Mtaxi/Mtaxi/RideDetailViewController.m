@@ -130,8 +130,12 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     if ([segue.identifier isEqualToString:@"RateRide"]) {
         RateRideViewController *viewController = (RateRideViewController *) segue.destinationViewController;
         viewController.ride = self.ride;
+    }else if([segue.identifier isEqualToString:@"DriverDetail"]){
+        DriverDetailViewController *driverDetailViewController = segue.destinationViewController;
+        driverDetailViewController.user = self.ride.driver;
     }
 }
+
 
  
 

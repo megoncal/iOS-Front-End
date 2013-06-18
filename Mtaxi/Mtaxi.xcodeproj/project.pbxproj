@@ -19,6 +19,10 @@
 		2F50CED4175D7B1700DF9B47 /* LocationServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F50CED3175D7B1700DF9B47 /* LocationServerController.m */; };
 		2F5E2899176ABB9D00FD2BB8 /* RateRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5E2898176ABB9D00FD2BB8 /* RateRideViewController.m */; };
 		2F62307517710DE400B51505 /* PassengerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F62307417710DE400B51505 /* PassengerDetailViewController.m */; };
+		2F62307B1771123C00B51505 /* DriverDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F62307A1771123C00B51505 /* DriverDetailViewController.m */; };
+		2F62307D17711BFB00B51505 /* id-card.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F62307C17711BFB00B51505 /* id-card.png */; };
+		2F62307F17711DEE00B51505 /* car-side.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F62307E17711DEE00B51505 /* car-side.png */; };
+		2F62308117711E7000B51505 /* arrow-big-04.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F62308017711E7000B51505 /* arrow-big-04.png */; };
 		2F70E579176FE8E3004819AE /* DriverRideDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F70E578176FE8E2004819AE /* DriverRideDetailViewController.m */; };
 		2F70E57C176FED8B004819AE /* AssignRideToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F70E57B176FED8B004819AE /* AssignRideToken.m */; };
 		2F9372751759748100F2DDC2 /* UserServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F692061755B36A000F9434 /* UserServerController.m */; };
@@ -95,6 +99,11 @@
 		2F5E2898176ABB9D00FD2BB8 /* RateRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateRideViewController.m; sourceTree = "<group>"; };
 		2F62307317710DE400B51505 /* PassengerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassengerDetailViewController.h; sourceTree = "<group>"; };
 		2F62307417710DE400B51505 /* PassengerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassengerDetailViewController.m; sourceTree = "<group>"; };
+		2F6230791771123C00B51505 /* DriverDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverDetailViewController.h; sourceTree = "<group>"; };
+		2F62307A1771123C00B51505 /* DriverDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverDetailViewController.m; sourceTree = "<group>"; };
+		2F62307C17711BFB00B51505 /* id-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "id-card.png"; sourceTree = "<group>"; };
+		2F62307E17711DEE00B51505 /* car-side.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "car-side.png"; sourceTree = "<group>"; };
+		2F62308017711E7000B51505 /* arrow-big-04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-big-04.png"; sourceTree = "<group>"; };
 		2F70E577176FE8E2004819AE /* DriverRideDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverRideDetailViewController.h; sourceTree = "<group>"; };
 		2F70E578176FE8E2004819AE /* DriverRideDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverRideDetailViewController.m; sourceTree = "<group>"; };
 		2F70E57A176FED8A004819AE /* AssignRideToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignRideToken.h; sourceTree = "<group>"; };
@@ -220,6 +229,8 @@
 				76C5EC8D17482E7A00F87A75 /* DriverInfoViewController.m */,
 				76C5EC8E17482E7A00F87A75 /* DriverSignUpViewController.h */,
 				76C5EC8F17482E7A00F87A75 /* DriverSignUpViewController.m */,
+				2F6230791771123C00B51505 /* DriverDetailViewController.h */,
+				2F62307A1771123C00B51505 /* DriverDetailViewController.m */,
 			);
 			name = Driver;
 			sourceTree = "<group>";
@@ -294,20 +305,36 @@
 				2F4071B217483EC900D429FE /* Ride.m */,
 				2F93727A17599D0300F2DDC2 /* RideServerController.h */,
 				2F93727B17599D0300F2DDC2 /* RideServerController.m */,
+				2F38393B1752E25100DF3E25 /* RideStatus.h */,
+				2F38393C1752E25200DF3E25 /* RideStatus.m */,
+				2F6230781771116A00B51505 /* RideDriver */,
+				2F6230771771116200B51505 /* RidePassenger */,
+			);
+			name = Ride;
+			sourceTree = "<group>";
+		};
+		2F6230771771116200B51505 /* RidePassenger */ = {
+			isa = PBXGroup;
+			children = (
+				2F4071B41748410C00D429FE /* CreateRideViewController.h */,
+				2F4071B51748410C00D429FE /* CreateRideViewController.m */,
 				2F383937175148F700DF3E25 /* RidesListViewController.h */,
 				2F383938175148F700DF3E25 /* RidesListViewController.m */,
 				2F37C3DE175585C20033D552 /* RideDetailViewController.h */,
 				2F37C3DF175585C20033D552 /* RideDetailViewController.m */,
-				2F4071B41748410C00D429FE /* CreateRideViewController.h */,
-				2F4071B51748410C00D429FE /* CreateRideViewController.m */,
 				2F383935175148F700DF3E25 /* ConfirmRideViewController.h */,
 				2F383936175148F700DF3E25 /* ConfirmRideViewController.m */,
 				2F5E2897176ABB9D00FD2BB8 /* RateRideViewController.h */,
 				2F5E2898176ABB9D00FD2BB8 /* RateRideViewController.m */,
-				2F38393B1752E25100DF3E25 /* RideStatus.h */,
-				2F38393C1752E25200DF3E25 /* RideStatus.m */,
 				2F20C3A9176D498A004E953C /* RateRideToken.h */,
 				2F20C3AA176D498A004E953C /* RateRideToken.m */,
+			);
+			name = RidePassenger;
+			sourceTree = "<group>";
+		};
+		2F6230781771116A00B51505 /* RideDriver */ = {
+			isa = PBXGroup;
+			children = (
 				2FB89ABB176E5B080036F101 /* UnassignedRidesViewController.h */,
 				2FB89ABC176E5B080036F101 /* UnassignedRidesViewController.m */,
 				2F70E577176FE8E2004819AE /* DriverRideDetailViewController.h */,
@@ -315,7 +342,7 @@
 				2F70E57A176FED8A004819AE /* AssignRideToken.h */,
 				2F70E57B176FED8B004819AE /* AssignRideToken.m */,
 			);
-			name = Ride;
+			name = RideDriver;
 			sourceTree = "<group>";
 		};
 		76E88595174827DB00694D65 = {
@@ -353,15 +380,15 @@
 		76E885A7174827DB00694D65 /* Mtaxi */ = {
 			isa = PBXGroup;
 			children = (
+				76C5EC8217482E7A00F87A75 /* AppDelegate.h */,
+				76C5EC8317482E7A00F87A75 /* AppDelegate.m */,
 				76C5EC9117482E7A00F87A75 /* InfoPlist.strings */,
 				2F02E807176150BD007ACDB6 /* MainStoryboard.storyboard */,
 				2F02E809176150BD007ACDB6 /* pt-BR.lproj */,
-				76C5EC8217482E7A00F87A75 /* AppDelegate.h */,
-				76C5EC8317482E7A00F87A75 /* AppDelegate.m */,
-				2F4071AF174835D900D429FE /* User */,
-				2F4071AE174835B400D429FE /* Commom */,
-				2F4071AD1748359400D429FE /* Passenger */,
 				2F4071AB1748353D00D429FE /* Utils */,
+				2F4071AE174835B400D429FE /* Commom */,
+				2F4071AF174835D900D429FE /* User */,
+				2F4071AD1748359400D429FE /* Passenger */,
 				2F4071AA1748317B00D429FE /* Driver */,
 				2F4071B017483E9D00D429FE /* Ride */,
 				76E885A8174827DB00694D65 /* Supporting Files */,
@@ -379,6 +406,9 @@
 				76E885B3174827DB00694D65 /* Default.png */,
 				76E885B5174827DB00694D65 /* Default@2x.png */,
 				76E885B7174827DB00694D65 /* Default-568h@2x.png */,
+				2F62307C17711BFB00B51505 /* id-card.png */,
+				2F62307E17711DEE00B51505 /* car-side.png */,
+				2F62308017711E7000B51505 /* arrow-big-04.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -481,6 +511,9 @@
 				76C5ECAD17482E7B00F87A75 /* InfoPlist.strings in Resources */,
 				2F02E80E176150BD007ACDB6 /* MainStoryboard.storyboard in Resources */,
 				2F02E810176150BD007ACDB6 /* MainStoryboard.storyboard in Resources */,
+				2F62307D17711BFB00B51505 /* id-card.png in Resources */,
+				2F62307F17711DEE00B51505 /* car-side.png in Resources */,
+				2F62308117711E7000B51505 /* arrow-big-04.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,6 +586,7 @@
 				2F70E579176FE8E3004819AE /* DriverRideDetailViewController.m in Sources */,
 				2F70E57C176FED8B004819AE /* AssignRideToken.m in Sources */,
 				2F62307517710DE400B51505 /* PassengerDetailViewController.m in Sources */,
+				2F62307B1771123C00B51505 /* DriverDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

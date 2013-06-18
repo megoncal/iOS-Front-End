@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="IgA-NK-a9b">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="IgA-NK-a9b">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -491,7 +491,7 @@
         <scene sceneID="9NJ-MI-rp0">
             <objects>
                 <navigationController definesPresentationContext="YES" id="gQ0-7u-JGW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Info" id="tGY-vf-Eun"/>
+                    <tabBarItem key="tabBarItem" title="My Info" image="id-card.png" id="tGY-vf-Eun"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NgL-Xi-hAz">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1310,7 +1310,7 @@
         <scene sceneID="dG1-Sf-0fK">
             <objects>
                 <navigationController definesPresentationContext="YES" id="U0D-7n-utb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Rides" id="mIY-I9-0WO"/>
+                    <tabBarItem key="tabBarItem" title="My Rides" image="car-side.png" id="mIY-I9-0WO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="o6n-Ec-NdE">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1661,7 +1661,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <scene sceneID="UCI-vx-zue">
             <objects>
                 <navigationController restorationIdentifier="Driver Info" storyboardIdentifier="Driver Info" definesPresentationContext="YES" id="w6T-FY-Tkk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Info" id="8wn-nR-REG"/>
+                    <tabBarItem key="tabBarItem" title="My Info" image="id-card.png" id="8wn-nR-REG"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AVN-5F-xi5">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1763,11 +1763,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="-982" y="-2562"/>
         </scene>
-        <!--Navigation Controller - Unassigned-->
+        <!--Navigation Controller - New Rides-->
         <scene sceneID="7bc-xF-NN7">
             <objects>
                 <navigationController definesPresentationContext="YES" id="Ooz-N4-gui" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Unassigned" id="N4O-QD-eQr"/>
+                    <tabBarItem key="tabBarItem" title="New Rides" image="arrow-big-04.png" id="N4O-QD-eQr"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WZq-MP-oag">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1809,7 +1809,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <scene sceneID="F0Q-cZ-MLh">
             <objects>
                 <navigationController definesPresentationContext="YES" id="1Vk-ej-yq8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Rides" id="JVs-Zu-KBV"/>
+                    <tabBarItem key="tabBarItem" title="My Rides" image="car-side.png" id="JVs-Zu-KBV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="49d-mC-iYm">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2271,7 +2271,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="eS3-VC-40A" detailTextLabel="VYQ-j5-bsK" style="IBUITableViewCellStyleValue1" id="nCr-dc-a3H">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="eS3-VC-40A" detailTextLabel="VYQ-j5-bsK" style="IBUITableViewCellStyleValue1" id="nCr-dc-a3H">
                                         <rect key="frame" x="0.0" y="223" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -2295,6 +2295,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <segue destination="Jau-aZ-GDe" kind="push" identifier="DriverDetail" id="aNX-dC-uok"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -2576,7 +2579,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <segue destination="gp6-F3-OQF" kind="push" trigger="accessoryAction" id="UN4-H6-faE"/>
+                                            <segue destination="gp6-F3-OQF" kind="push" identifier="PassengerDetail" id="WxW-Tz-YRm"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -2760,7 +2763,362 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="55" y="-2562"/>
         </scene>
+        <!--Driver Detail View Controller - Driver-->
+        <scene sceneID="Vyk-uV-s9l">
+            <objects>
+                <tableViewController restorationIdentifier="" storyboardIdentifier="" id="Jau-aZ-GDe" customClass="DriverDetailViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="cKm-Py-Pfj">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Info" id="AXd-oo-BqB">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="6tT-I4-Mna" detailTextLabel="zrk-nn-AKe" style="IBUITableViewCellStyleValue1" id="gJm-py-5wB">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="First Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tT-I4-Mna">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrk-nn-AKe">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="dAo-UB-bpc" detailTextLabel="Vie-MX-r13" style="IBUITableViewCellStyleValue1" id="XEU-cH-bxE">
+                                        <rect key="frame" x="0.0" y="91" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Last Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAo-UB-bpc">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vie-MX-r13">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="vI6-tA-AvO" detailTextLabel="RFw-2g-Z3T" style="IBUITableViewCellStyleValue1" id="jN2-Oe-4lL">
+                                        <rect key="frame" x="0.0" y="135" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vI6-tA-AvO">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFw-2g-Z3T">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Wn2-6Z-Lmb" detailTextLabel="Shn-la-qeQ" style="IBUITableViewCellStyleValue1" id="yop-w5-zfk">
+                                        <rect key="frame" x="0.0" y="179" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wn2-6Z-Lmb">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Shn-la-qeQ">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Taxi" id="eJw-KQ-1cI">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="vO4-qk-aPc" detailTextLabel="zfn-Qw-jNC" style="IBUITableViewCellStyleValue1" id="XTC-4F-GSd">
+                                        <rect key="frame" x="0.0" y="269" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Car" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vO4-qk-aPc">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfn-Qw-jNC">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="pQh-PW-gjA" detailTextLabel="yv9-p8-bDF" style="IBUITableViewCellStyleValue1" id="3Ih-ei-F0J">
+                                        <rect key="frame" x="0.0" y="314" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Stand Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQh-PW-gjA">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yv9-p8-bDF">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="FmE-Sn-e1y" detailTextLabel="kyI-Ph-tv0" style="IBUITableViewCellStyleValue1" id="ydg-x5-5Se">
+                                        <rect key="frame" x="0.0" y="358" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Active" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FmE-Sn-e1y">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyI-Ph-tv0">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Jau-aZ-GDe" id="uTP-RX-ayQ"/>
+                            <outlet property="delegate" destination="Jau-aZ-GDe" id="7jn-y6-lKq"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Driver" id="Pd8-7L-wTW"/>
+                    <connections>
+                        <outlet property="activeStatus" destination="ydg-x5-5Se" id="DII-gm-QP5"/>
+                        <outlet property="carType" destination="XTC-4F-GSd" id="djc-Du-D4d"/>
+                        <outlet property="email" destination="yop-w5-zfk" id="mKv-xO-6ur"/>
+                        <outlet property="firstName" destination="gJm-py-5wB" id="OwD-HS-tDx"/>
+                        <outlet property="lastName" destination="XEU-cH-bxE" id="DJ9-7e-l8Y"/>
+                        <outlet property="phone" destination="jN2-Oe-4lL" id="JxX-ad-jmu"/>
+                        <outlet property="taxiStand" destination="3Ih-ei-F0J" id="6UJ-LZ-4OR"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n4b-QR-hRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="135" y="-1149"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="arrow-big-04.png" width="30" height="30"/>
+        <image name="car-side.png" width="30" height="30"/>
+        <image name="id-card.png" width="30" height="30"/>
+    </resources>
+    <classes>
+        <class className="CarTypeViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CarTypeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelPressed:"/>
+            </relationships>
+        </class>
+        <class className="ConfirmRideViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConfirmRideViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="carType" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="dropOffLocation" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="messageToTheDriver" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="pickUpDate" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="pickUpLocation" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="pickUpLocationComplement" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CreateRideViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CreateRideViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelPressed:"/>
+                <relationship kind="outlet" name="carType" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="dropOffLocation" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="pickUpLocation" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="DriverDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DriverDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activeStatus" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="carType" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="email" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="firstName" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="phone" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="taxiStand" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="DriverInfoViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DriverInfoViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activeStatus" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="addedNavigationItem" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="carCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="carDescription" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="phone" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="servedLocation" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="servedLocationCell" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="DriverRideDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DriverRideDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="takePressed:"/>
+                <relationship kind="outlet" name="date" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="from" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="message" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="passenger" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="pickUpLocationComplement" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="to" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="DriverSignUpViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DriverSignUpViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelPressed:"/>
+                <relationship kind="outlet" name="activeStatus" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="carCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="carDescription" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="phoneNumber" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="signUpCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="taxiStand" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="taxiStandCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="LocationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LocationViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelPressed:"/>
+                <relationship kind="outlet" name="mainTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="LogInViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LogInViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="userName" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="PassengerDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PassengerDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="email" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="firstName" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="phone" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="PassengerInfoViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PassengerInfoViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="phone" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="PassengerSignUpViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PassengerSignUpViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelPressed:"/>
+                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="phoneNumber" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="RateRideViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RateRideViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="savePressed:"/>
+                <relationship kind="outlet" name="comment" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="rating" candidateClass="UISlider"/>
+            </relationships>
+        </class>
+        <class className="RideDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RideDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="date" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="driver" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="from" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="message" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="pickUpLocationComplement" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="status" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="to" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="RidesListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RidesListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addRidePressed:"/>
+            </relationships>
+        </class>
+        <class className="UnassignedRidesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UnassignedRidesViewController.h"/>
+        </class>
+        <class className="UserViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

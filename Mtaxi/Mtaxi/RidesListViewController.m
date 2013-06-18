@@ -20,7 +20,6 @@
 @implementation RidesListViewController
 
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -51,7 +50,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
         
     // Return the number of sections.
     return self.sectionedRides.count;
@@ -75,31 +73,6 @@
     return sectionHeader;
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-//    // create the parent view that will hold header Label
-//	UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 300.0, 44.0)];
-//	
-//	// create the button object
-//	UILabel * headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-//	headerLabel.backgroundColor = [UIColor clearColor];
-//	headerLabel.opaque = NO;
-//	headerLabel.textColor = [UIColor blackColor];
-//	headerLabel.highlightedTextColor = [UIColor whiteColor];
-//	headerLabel.font = [UIFont boldSystemFontOfSize:15];
-//	headerLabel.frame = CGRectMake(0.0, 0.0, 300.0, 44.0);
-//    headerLabel.textAlignment = NSTextAlignmentRight;
-//    
-//	// If you want to align the header text as centered
-//	// headerLabel.frame = CGRectMake(150.0, 0.0, 300.0, 44.0);
-//    
-//    NSDictionary *ridesDictionary = [self.sectionedRides objectAtIndex:section];
-//    NSString *sectionHeaderText = [[ridesDictionary allKeys] objectAtIndex:0];
-//    
-//	headerLabel.text = sectionHeaderText; // i.e. array element
-//	[customView addSubview:headerLabel];
-//    
-//	return customView;
-//}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -192,30 +165,6 @@
 }
 
 
-#pragma mark - Integration with Server
-
-- (void) retrievePassengerRides{
-    
-    
-    [RideServerController retrievePassengerRides:^(NSMutableArray *rides, NSError *error) {
-         dispatch_async(dispatch_get_main_queue(), ^{
-    
-             if (error.code == 0) {
-                 self.rides = rides;
-                 
-                 [self splitRidesInSections];
-                 
-                 [self.tableView reloadData];
-             }else{
-                 [Helper showMessage:error];
-             }
-
-         });
-
-    }];
- 
-}
-
 
 - (void) splitRidesInSections{
 
@@ -268,25 +217,11 @@
         
     }
     
-    
-//    //get all keys (status) from the sectionsDictionary
-//    NSArray *allKeysFromSectionsDictionary = [sectionsDictionary allKeys];
-//    
-//    //populate the sectionedRides;
-//    for (NSString *key in allKeysFromSectionsDictionary) {
-//        
-//        NSMutableDictionary *tempDictionary = [[NSMutableDictionary alloc]init];
-//        
-//        [tempDictionary setValue:[sectionsDictionary objectForKey:key] forKey:key];
-//        
-//        [self.sectionedRides addObject:tempDictionary];
-//    
-//    }
+
 
     
     
 }
-
 
 #pragma mark retrieve ride from sectioned rides using indexPath
 
@@ -296,5 +231,31 @@
     NSArray *ridesArray = [[ridesDictionary allValues] objectAtIndex:0];
     return [ridesArray objectAtIndex:indexPath.row];
 }
+
+#pragma mark - Integration with Server
+
+- (void) retrievePassengerRides{
+    
+    
+    [RideServerController retrievePassengerRides:^(NSMutableArray *rides, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if (error.code == 0) {
+                self.rides = rides;
+                
+                [self splitRidesInSections];
+                
+                [self.tableView reloadData];
+            }else{
+                [Helper showMessage:error];
+            }
+            
+        });
+        
+    }];
+    
+}
+
+
 
 @end
