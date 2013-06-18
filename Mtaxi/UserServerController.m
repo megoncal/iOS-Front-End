@@ -65,7 +65,7 @@
 + (BOOL)signUpUser:(User *) user error:(NSError **) error {
 
     NSMutableDictionary *userDictionary = [[NSMutableDictionary alloc] init];
-    NSDictionary *callResultDictionary;
+    NSDictionary *outputDictionary;
     
     BOOL success = [Marshaller marshallDictionary:userDictionary object:user error:error];
     
@@ -73,7 +73,7 @@
         return NO;
     }
     
-    success = [Helper callServerWithURLSync:signUpURL inputDictionary:userDictionary outputDictionary:&callResultDictionary error:error];
+    success = [Helper callServerWithURLSync:signUpURL inputDictionary:userDictionary outputDictionary:&outputDictionary error:error];
     
     if (!success) {
         //error has been assigned already, just return NO
@@ -82,7 +82,10 @@
     
     //Marshal the objects
     CallResult *callResult=[[CallResult alloc] init];
-    
+
+    //Obtain result dictionary from the outputDictionary
+    NSDictionary *callResultDictionary = [outputDictionary objectForKey:@"result"];
+
     success = [Marshaller marshallObject:callResult dictionary:callResultDictionary error:error];
     
     if (!success) {
@@ -94,6 +97,13 @@
     if ([callResult.code isEqualToString:@"ERROR"]){
         return NO;
     }
+    CurrentSession *currentSession = [[CurrentSession alloc] init];
+    
+    //Obtain additionalInfo from the outputDictionary
+    NSDictionary *additionalInfoDictionary = [outputDictionary objectForKey:@"additionalInfo"];
+    currentSession.jsessionID = [additionalInfoDictionary objectForKey:@"JSESSIONID"];
+    [CurrentSession writeCurrentSessionInformationToPlistFile:currentSession];
+    *error = [Helper createNSError:callResult];
     
     return YES;
 }
