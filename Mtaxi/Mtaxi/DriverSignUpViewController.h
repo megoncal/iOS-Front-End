@@ -16,7 +16,7 @@
 #import "Location.h"
 #import "UserServerController.h"
 
-@protocol DriverSignUpViewControllerDelegate;
+//@protocol DriverSignUpViewControllerDelegate;
 
 @interface DriverSignUpViewController : UITableViewController <UITextFieldDelegate,CarTypeViewControllerDelegate, LocationViewControllerDelegate>
 
@@ -40,16 +40,16 @@
 @property (strong,nonatomic) CarType *car;
 @property (strong,nonatomic) Radius *radius; //radius served
 
-@property (nonatomic, assign) id<DriverSignUpViewControllerDelegate>delegate;
+//@property (nonatomic, assign) id<DriverSignUpViewControllerDelegate>delegate;
 
-- (IBAction)cancelPressed:(id)sender;
+
 
 
 @end
 
 
-@protocol DriverSignUpViewControllerDelegate <NSObject>
-
-- (void) driverSignUpViewControllerHasDone: (DriverSignUpViewController *) viewController;
-
-@end
+//@protocol DriverSignUpViewControllerDelegate <NSObject>
+//
+//- (void) driverSignUpViewControllerHasDone: (DriverSignUpViewController *) viewController;
+//
+//@end

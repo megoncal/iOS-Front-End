@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "User.h"
 #import "UserServerController.h"
+#import "CurrentSession.h"
 
 @interface PassengerInfoViewController : UITableViewController <UITextFieldDelegate>
 
@@ -24,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *phone;
 
 
+- (IBAction)logoutPressed:(id)sender;
 
 - (void)retrievePassengerInformation;
 - (void)updatePassengerInformation;

@@ -11,7 +11,7 @@
 #import "UserServerController.h"
 
 
-@protocol PassengerSignUpViewControllerDelegate;
+//@protocol PassengerSignUpViewControllerDelegate;
 
 @interface PassengerSignUpViewController : UITableViewController <UITextFieldDelegate>
 
@@ -23,17 +23,17 @@
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumber;
 
 
-@property (nonatomic, assign) id<PassengerSignUpViewControllerDelegate>delegate;
+//@property (nonatomic, assign) id<PassengerSignUpViewControllerDelegate>delegate;
 
-- (IBAction)cancelPressed:(id)sender;
+
 
 
 
 @end
 
 
-@protocol PassengerSignUpViewControllerDelegate <NSObject>
+//@protocol PassengerSignUpViewControllerDelegate <NSObject>
 
-- (void) passengerSignUpViewControllerHasDone: (PassengerSignUpViewController *) viewController;
+//- (void) passengerSignUpViewControllerHasDone: (PassengerSignUpViewController *) viewController;
 
-@end
+//@end

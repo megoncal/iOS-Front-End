@@ -15,7 +15,7 @@
 
 
 
-@interface LogInViewController : UITableViewController <UITextFieldDelegate, UIAlertViewDelegate, PassengerSignUpViewControllerDelegate, DriverSignUpViewControllerDelegate>
+@interface LogInViewController : UITableViewController <UITextFieldDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *userName;
 @property (weak, nonatomic) IBOutlet UITextField *password;

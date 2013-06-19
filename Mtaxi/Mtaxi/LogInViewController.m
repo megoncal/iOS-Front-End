@@ -66,7 +66,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1) {
-        
+        //TODO: implement fucntionality that sends an email with the retrieved password
         NSString *email = (NSString*)[alertView textFieldAtIndex:0].text;
 
 //        if (!error) {
@@ -161,14 +161,14 @@
 }
 
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([segue.identifier isEqualToString:@"SignUpPassenger"]) {
-        PassengerSignUpViewController *destViewControler = segue.destinationViewController;
-        destViewControler.delegate = self;
-    }else if([segue.identifier isEqualToString:@"SignUpDriver"]){
-        DriverSignUpViewController *destViewControler = segue.destinationViewController;
-        destViewControler.delegate = self;
-    }
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+//    if ([segue.identifier isEqualToString:@"SignUpPassenger"]) {
+//        PassengerSignUpViewController *destViewControler = segue.destinationViewController;
+//        destViewControler.delegate = self;
+//    }else if([segue.identifier isEqualToString:@"SignUpDriver"]){
+//        DriverSignUpViewController *destViewControler = segue.destinationViewController;
+//        destViewControler.delegate = self;
+//    }
+//}
 
 @end

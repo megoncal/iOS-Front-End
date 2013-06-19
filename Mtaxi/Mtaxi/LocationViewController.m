@@ -34,7 +34,12 @@
     
     //self.bookmark = [[NSMutableArray alloc] initWithObjects:@"rua gabriel santos 151", @"rua major lopes 55", nil];
     
-    [self retrieveMostFrequentLocations];
+    CurrentSession *currentSession = [CurrentSession currentSessionInformation];
+    
+    if ([currentSession.userType isEqualToString:@"PASSENGER"]) {
+        [self retrieveMostFrequentLocations];
+        
+    }
     
     [self prepareSearchedLocationsArray];
 

@@ -8,6 +8,8 @@
 
 #import "CurrentSession.h"
 
+NSString * const FILENAME = @"CurrentSession.plist";
+
 @implementation CurrentSession
 
 
@@ -18,12 +20,13 @@
     CurrentSession *currentSession;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *path = [documentsDirectory stringByAppendingPathComponent:@"CurrentSession.plist"];
+    NSString *path = [documentsDirectory stringByAppendingPathComponent:FILENAME];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if ([fileManager fileExistsAtPath:path]) {
         NSDictionary *currentSessionPlistfile = [[NSDictionary alloc] initWithContentsOfFile:path];
         currentSession = [[CurrentSession alloc] init];
         currentSession.jsessionID = [currentSessionPlistfile objectForKey:@"jsessionid"];
+        currentSession.userType = [currentSessionPlistfile objectForKey:@"userType"];
     }
     return currentSession;
 }
@@ -31,17 +34,38 @@
 
 #pragma mark - PlistFile
 
-+ (void) writeCurrentSessionInformationToPlistFile: (CurrentSession *)currentSession{
+- (BOOL) writeCurrentSessionInformationToPlistFile{
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *path = [documentsDirectory stringByAppendingPathComponent:@"CurrentSession.plist"];
-    
+    NSString *path = [documentsDirectory stringByAppendingPathComponent:FILENAME];
     
     NSDictionary *currentSessionDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                              currentSession.jsessionID, @"jsessionid",
+                                              self.jsessionID, @"jsessionid",
+                                              self.userType, @"userType",
                                               nil];
-    [currentSessionDictionary writeToFile:path atomically:YES];
+    
+    NSLog(@"About to write currentSession Info to file ->%@<-", FILENAME);
+    
+    return [currentSessionDictionary writeToFile:path atomically:YES];
+}
+
+- (BOOL)logoutFromCurrentSession{
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *path = [documentsDirectory stringByAppendingPathComponent:FILENAME];
+    
+    NSError *error;
+    
+    NSLog(@"About to delete currentSession file ->%@<-", FILENAME);
+    
+    if(![[NSFileManager defaultManager] removeItemAtPath:path error:&error])
+    {
+        return NO;
+    }
+    
+    return YES;
 }
 
 @end

@@ -52,9 +52,20 @@
     
     //Obtain additionalInfo from the outputDictionary
     NSDictionary *additionalInfoDictionary = [outputDictionary objectForKey:@"additionalInfo"];
-    currentSession.jsessionID = [additionalInfoDictionary objectForKey:@"JSESSIONID"];
     *userType = [additionalInfoDictionary objectForKey:@"userType"];
-    [CurrentSession writeCurrentSessionInformationToPlistFile:currentSession];
+    currentSession.jsessionID = [additionalInfoDictionary objectForKey:@"JSESSIONID"];
+    currentSession.userType = *userType;
+    
+
+    success = [currentSession writeCurrentSessionInformationToPlistFile];
+    
+    if (!success) {
+        //TODO: add unexpected error message to the error object
+        return NO;
+        
+    }
+    
+    //    [CurrentSession writeCurrentSessionInformationToPlistFile:currentSession];
     *error = [Helper createNSError:callResult];
     
     return YES;
@@ -102,7 +113,20 @@
     //Obtain additionalInfo from the outputDictionary
     NSDictionary *additionalInfoDictionary = [outputDictionary objectForKey:@"additionalInfo"];
     currentSession.jsessionID = [additionalInfoDictionary objectForKey:@"JSESSIONID"];
-    [CurrentSession writeCurrentSessionInformationToPlistFile:currentSession];
+    currentSession.userType = @"PASSENGER";
+    if (user.driver) {
+        currentSession.userType = [additionalInfoDictionary objectForKey:@"DRIVER"];
+    }
+    
+
+    success = [currentSession writeCurrentSessionInformationToPlistFile];
+    
+    if (!success) {
+        //TODO: add unexpected error message to the object error;
+        return NO;
+    }
+    
+//  [CurrentSession writeCurrentSessionInformationToPlistFile:currentSession];
     *error = [Helper createNSError:callResult];
     
     return YES;

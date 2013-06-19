@@ -8,14 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const FILENAME;
+
 @interface CurrentSession : NSObject
 
 @property (strong,nonatomic) NSString *jsessionID;
 @property (strong, nonatomic) NSDate *signInDate;
+@property (strong,nonatomic) NSString *userType; //driver or passenger
 
 
 
 + (CurrentSession *)currentSessionInformation;
-+ (void) writeCurrentSessionInformationToPlistFile: (CurrentSession *)currentSession;
+
+- (BOOL)writeCurrentSessionInformationToPlistFile;
+
+- (BOOL)logoutFromCurrentSession;
 
 @end

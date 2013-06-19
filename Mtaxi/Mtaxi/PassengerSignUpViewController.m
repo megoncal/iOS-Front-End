@@ -77,9 +77,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 }
 
 
-- (IBAction)cancelPressed:(id)sender {
-    [[self delegate] passengerSignUpViewControllerHasDone:self];
-}
+
 
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
