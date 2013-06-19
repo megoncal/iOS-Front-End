@@ -2101,7 +2101,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Driver" id="065-7O-ook">
-                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="aFp-v3-mqe"/>
+                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="aFp-v3-mqe">
+                            <connections>
+                                <action selector="signOutPressed:" destination="8iW-em-Udm" id="hYf-IZ-xPJ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activeStatus" destination="7Bb-21-VOT" id="0Rb-SR-sQN"/>
@@ -2913,7 +2917,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="FmE-Sn-e1y" detailTextLabel="kyI-Ph-tv0" style="IBUITableViewCellStyleValue1" id="ydg-x5-5Se">
-                                        <rect key="frame" x="0.0" y="358" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="358" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -2962,6 +2966,171 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="car-side.png" width="30" height="30"/>
         <image name="id-card.png" width="30" height="30"/>
     </resources>
+    <classes>
+        <class className="CarTypeViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CarTypeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelPressed:"/>
+            </relationships>
+        </class>
+        <class className="ConfirmRideViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConfirmRideViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="carType" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="dropOffLocation" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="messageToTheDriver" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="pickUpDate" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="pickUpLocation" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="pickUpLocationComplement" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CreateRideViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CreateRideViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelPressed:"/>
+                <relationship kind="outlet" name="carType" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="dropOffLocation" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="pickUpLocation" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="DriverDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DriverDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activeStatus" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="carType" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="email" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="firstName" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="phone" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="taxiStand" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="DriverInfoViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DriverInfoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="signOutPressed:"/>
+                <relationship kind="outlet" name="activeStatus" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="addedNavigationItem" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="carCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="carDescription" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="phone" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="servedLocation" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="servedLocationCell" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="DriverRideDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DriverRideDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="takePressed:"/>
+                <relationship kind="outlet" name="date" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="from" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="message" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="passenger" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="pickUpLocationComplement" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="to" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="DriverSignUpViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DriverSignUpViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activeStatus" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="carCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="carDescription" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="phoneNumber" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="signUpCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="taxiStand" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="taxiStandCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="LocationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LocationViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelPressed:"/>
+                <relationship kind="outlet" name="mainTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="LogInViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LogInViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="userName" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="PassengerDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PassengerDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="email" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="firstName" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="phone" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="PassengerInfoViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PassengerInfoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="logoutPressed:"/>
+                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="phone" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="PassengerSignUpViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PassengerSignUpViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="phoneNumber" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="RateRideViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RateRideViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="savePressed:"/>
+                <relationship kind="outlet" name="comment" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="rating" candidateClass="UISlider"/>
+            </relationships>
+        </class>
+        <class className="RideDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RideDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="date" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="driver" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="from" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="message" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="pickUpLocationComplement" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="status" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="to" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="RidesListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RidesListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addRidePressed:"/>
+            </relationships>
+        </class>
+        <class className="UnassignedRidesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UnassignedRidesViewController.h"/>
+        </class>
+        <class className="UserViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

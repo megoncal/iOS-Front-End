@@ -60,6 +60,12 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 }
 
 #pragma mark - retrieveData
+- (IBAction)signOutPressed:(id)sender {
+    CurrentSession *currentSession = [CurrentSession currentSessionInformation];
+    [currentSession logoutFromCurrentSession];
+    [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
+}
+
 - (void)retrieveDriverInformation{
     
     [UserServerController retrieveLoggedUserDetails:^(User *user, NSError *error) {

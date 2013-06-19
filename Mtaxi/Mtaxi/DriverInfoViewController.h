@@ -37,6 +37,7 @@
 @property (strong, nonatomic)   CarType *car;
 @property (strong, nonatomic)   Location *location;
 
+- (IBAction)signOutPressed:(id)sender;
 
 - (void)retrieveDriverInformation;
 - (void) cancelPressed;
