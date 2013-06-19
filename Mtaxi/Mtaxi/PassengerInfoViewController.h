@@ -24,8 +24,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *lastName;
 @property (weak, nonatomic) IBOutlet UITextField *phone;
 
+@property (strong, nonatomic) UIBarButtonItem *signout;
 
-- (IBAction)logoutPressed:(id)sender;
+- (IBAction)signOutPressed:(id)sender;
+
 
 - (void)retrievePassengerInformation;
 - (void)updatePassengerInformation;

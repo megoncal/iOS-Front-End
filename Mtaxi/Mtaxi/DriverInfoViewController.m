@@ -291,6 +291,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         self.servedLocationCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
         //add cancel button to the navigation bar
+        self.signOut = self.navigationItem.leftBarButtonItem;
         self.addedNavigationItem.leftBarButtonItem = self.cancelLeftBarButton;
         
         //TODO: add some look n feel into the edit mode screen
@@ -318,7 +319,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
             [self updateDriverInformation];
         }
         
-        self.addedNavigationItem.leftBarButtonItem = self.menuLeftBarButton;
+        self.addedNavigationItem.leftBarButtonItem = self.signOut;
         cancelPressed = NO;
     }
 }

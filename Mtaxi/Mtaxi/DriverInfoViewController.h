@@ -37,6 +37,9 @@
 @property (strong, nonatomic)   CarType *car;
 @property (strong, nonatomic)   Location *location;
 
+
+@property (strong,nonatomic) UIBarButtonItem *signOut;
+
 - (IBAction)signOutPressed:(id)sender;
 
 - (void)retrieveDriverInformation;

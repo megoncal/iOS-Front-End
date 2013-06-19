@@ -65,7 +65,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 }
 
 
-- (IBAction)logoutPressed:(id)sender {
+- (IBAction)signOutPressed:(id)sender {
     CurrentSession *currentSession = [CurrentSession currentSessionInformation];
     [currentSession logoutFromCurrentSession];
     [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
@@ -237,6 +237,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         
         
         //add cancel button to the navigation bar
+        self.signout = self.navigationItem.leftBarButtonItem;
         self.navigationItem.leftBarButtonItem = self.cancelLeftBarButton;
         
         //to-do
@@ -261,7 +262,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
             [self updatePassengerInformation];
         }
         
-        self.navigationItem.leftBarButtonItem = self.menuLeftBarButton;
+        self.navigationItem.leftBarButtonItem = self.signout;
         cancelPressed = NO;
     }
   
