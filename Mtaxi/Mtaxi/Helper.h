@@ -11,7 +11,8 @@
 #import "CarType.h"
 #import "ActiveStatus.h"
 #import "CallResult.h"
-#import "CurrentSession.h"
+#import "CurrentSessionController.h"
+#import "CurrentSessionToken.h"
 
 @class Car;
 @class Radius;

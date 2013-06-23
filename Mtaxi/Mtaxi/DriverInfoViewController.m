@@ -61,8 +61,14 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 #pragma mark - retrieveData
 - (IBAction)signOutPressed:(id)sender {
-    CurrentSession *currentSession = [CurrentSession currentSessionInformation];
-    [currentSession logoutFromCurrentSession];
+//    CurrentSession *currentSession = [CurrentSession currentSessionInformation];
+//    [currentSession logoutFromCurrentSession];
+    
+    //return the authentication navigation controller to the root VC, in this case it means the LogIn VC.
+    [(UINavigationController *)self.tabBarController.presentingViewController popToRootViewControllerAnimated:NO];
+    
+    //erase the current session information from disk
+    [CurrentSessionController resetCurrentSession];
     [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
 }
 

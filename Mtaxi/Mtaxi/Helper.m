@@ -1,4 +1,4 @@
-//
+ //
 //  Helper.m
 //  BackendProject
 //
@@ -109,8 +109,11 @@
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:bodyData];
     [request setValue:@"application/json" forHTTPHeaderField:@"content-type"];
-    NSString *jsessiond = [CurrentSession currentSessionInformation].jsessionID;
-    [request setValue:[NSString stringWithFormat:@"JSESSIONID=%@",jsessiond] forHTTPHeaderField:@"Cookie"];
+
+    CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
+    NSString *jsessionID = currentSessionToken.jsessionID;
+    //    NSString *jsessiond = [CurrentSession currentSessionInformation].jsessionID;
+    [request setValue:[NSString stringWithFormat:@"JSESSIONID=%@",jsessionID] forHTTPHeaderField:@"Cookie"];
     
     NSHTTPURLResponse *responseCode = NULL;
     NSError *callError = NULL;
@@ -164,8 +167,13 @@
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:bodyData];
     [request setValue:@"application/json" forHTTPHeaderField:@"content-type"];
-    NSString *jsessiond = [CurrentSession currentSessionInformation].jsessionID;
-    [request setValue:[NSString stringWithFormat:@"JSESSIONID=%@",jsessiond] forHTTPHeaderField:@"Cookie"];
+    
+    CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
+    NSString *jsessionID = currentSessionToken.jsessionID;
+    
+    
+    //NSString *jsessiond = [CurrentSession currentSessionInformation].jsessionID;
+    [request setValue:[NSString stringWithFormat:@"JSESSIONID=%@",jsessionID] forHTTPHeaderField:@"Cookie"];
     
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
@@ -203,6 +211,7 @@
              return;
          }
          
+                  
          //TODO:Handle 403 error (NOT AUTHORIZED)
          
          outputDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&serializationError];

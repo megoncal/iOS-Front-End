@@ -31,6 +31,12 @@
 		2F937279175974D600F2DDC2 /* Passenger.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A04ED01756FAD80012481B /* Passenger.m */; };
 		2F93727C17599D0400F2DDC2 /* RideServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F93727B17599D0300F2DDC2 /* RideServerController.m */; };
 		2F93727F17599D6800F2DDC2 /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F93727E17599D6800F2DDC2 /* DateHelper.m */; };
+		2FAFA03B177733D100ACC3B4 /* PDKeychainBindings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAFA038177733D100ACC3B4 /* PDKeychainBindings.m */; };
+		2FAFA03C177733D100ACC3B4 /* PDKeychainBindingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAFA03A177733D100ACC3B4 /* PDKeychainBindingsController.m */; };
+		2FAFA03E177733FB00ACC3B4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAFA03D177733FB00ACC3B4 /* Security.framework */; };
+		2FAFA0421777353F00ACC3B4 /* CurrentSessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAFA0411777353F00ACC3B4 /* CurrentSessionController.m */; };
+		2FAFA0441777401E00ACC3B4 /* PDKeychainBindings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAFA038177733D100ACC3B4 /* PDKeychainBindings.m */; };
+		2FAFA0461777401E00ACC3B4 /* PDKeychainBindingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAFA03A177733D100ACC3B4 /* PDKeychainBindingsController.m */; };
 		2FB89ABD176E5B090036F101 /* UnassignedRidesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB89ABC176E5B080036F101 /* UnassignedRidesViewController.m */; };
 		7665CA6F175EE8CD00784090 /* CarTypeServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7665CA6E175EE8CD00784090 /* CarTypeServerController.m */; };
 		76A0E33917544689009D18CB /* Marshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A0E33817544689009D18CB /* Marshaller.m */; };
@@ -39,7 +45,7 @@
 		76C5ECA717482E7B00F87A75 /* CallResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8517482E7A00F87A75 /* CallResult.m */; };
 		76C5ECA817482E7B00F87A75 /* CarType.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8717482E7A00F87A75 /* CarType.m */; };
 		76C5ECA917482E7B00F87A75 /* CarTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8917482E7A00F87A75 /* CarTypeViewController.m */; };
-		76C5ECAA17482E7B00F87A75 /* CurrentSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8B17482E7A00F87A75 /* CurrentSession.m */; };
+		76C5ECAA17482E7B00F87A75 /* CurrentSessionToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8B17482E7A00F87A75 /* CurrentSessionToken.m */; };
 		76C5ECAB17482E7B00F87A75 /* DriverInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8D17482E7A00F87A75 /* DriverInfoViewController.m */; };
 		76C5ECAC17482E7B00F87A75 /* DriverSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8F17482E7A00F87A75 /* DriverSignUpViewController.m */; };
 		76C5ECAD17482E7B00F87A75 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 76C5EC9117482E7A00F87A75 /* InfoPlist.strings */; };
@@ -112,6 +118,13 @@
 		2F93727B17599D0300F2DDC2 /* RideServerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RideServerController.m; sourceTree = "<group>"; };
 		2F93727D17599D6800F2DDC2 /* DateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateHelper.h; sourceTree = "<group>"; };
 		2F93727E17599D6800F2DDC2 /* DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
+		2FAFA037177733D100ACC3B4 /* PDKeychainBindings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDKeychainBindings.h; sourceTree = "<group>"; };
+		2FAFA038177733D100ACC3B4 /* PDKeychainBindings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDKeychainBindings.m; sourceTree = "<group>"; };
+		2FAFA039177733D100ACC3B4 /* PDKeychainBindingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDKeychainBindingsController.h; sourceTree = "<group>"; };
+		2FAFA03A177733D100ACC3B4 /* PDKeychainBindingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDKeychainBindingsController.m; sourceTree = "<group>"; };
+		2FAFA03D177733FB00ACC3B4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		2FAFA0401777353F00ACC3B4 /* CurrentSessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentSessionController.h; sourceTree = "<group>"; };
+		2FAFA0411777353F00ACC3B4 /* CurrentSessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentSessionController.m; sourceTree = "<group>"; };
 		2FB89ABB176E5B080036F101 /* UnassignedRidesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnassignedRidesViewController.h; sourceTree = "<group>"; };
 		2FB89ABC176E5B080036F101 /* UnassignedRidesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnassignedRidesViewController.m; sourceTree = "<group>"; };
 		7665CA6D175EE8CD00784090 /* CarTypeServerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarTypeServerController.h; sourceTree = "<group>"; };
@@ -137,8 +150,8 @@
 		76C5EC8717482E7A00F87A75 /* CarType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarType.m; sourceTree = "<group>"; };
 		76C5EC8817482E7A00F87A75 /* CarTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarTypeViewController.h; sourceTree = "<group>"; };
 		76C5EC8917482E7A00F87A75 /* CarTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarTypeViewController.m; sourceTree = "<group>"; };
-		76C5EC8A17482E7A00F87A75 /* CurrentSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentSession.h; sourceTree = "<group>"; };
-		76C5EC8B17482E7A00F87A75 /* CurrentSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentSession.m; sourceTree = "<group>"; };
+		76C5EC8A17482E7A00F87A75 /* CurrentSessionToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentSessionToken.h; sourceTree = "<group>"; };
+		76C5EC8B17482E7A00F87A75 /* CurrentSessionToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentSessionToken.m; sourceTree = "<group>"; };
 		76C5EC8C17482E7A00F87A75 /* DriverInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverInfoViewController.h; sourceTree = "<group>"; };
 		76C5EC8D17482E7A00F87A75 /* DriverInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverInfoViewController.m; sourceTree = "<group>"; };
 		76C5EC8E17482E7A00F87A75 /* DriverSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverSignUpViewController.h; sourceTree = "<group>"; };
@@ -186,6 +199,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FAFA03E177733FB00ACC3B4 /* Security.framework in Frameworks */,
 				76E885A2174827DB00694D65 /* UIKit.framework in Frameworks */,
 				76E885A4174827DB00694D65 /* Foundation.framework in Frameworks */,
 				76E885A6174827DB00694D65 /* CoreGraphics.framework in Frameworks */,
@@ -238,8 +252,6 @@
 		2F4071AB1748353D00D429FE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				76C5EC8A17482E7A00F87A75 /* CurrentSession.h */,
-				76C5EC8B17482E7A00F87A75 /* CurrentSession.m */,
 				76C5EC8417482E7A00F87A75 /* CallResult.h */,
 				76C5EC8517482E7A00F87A75 /* CallResult.m */,
 				76C5EC9517482E7A00F87A75 /* Helper.h */,
@@ -345,6 +357,29 @@
 			name = RideDriver;
 			sourceTree = "<group>";
 		};
+		2FAFA0361777339000ACC3B4 /* PDFKeychainBindingsController */ = {
+			isa = PBXGroup;
+			children = (
+				2FAFA037177733D100ACC3B4 /* PDKeychainBindings.h */,
+				2FAFA038177733D100ACC3B4 /* PDKeychainBindings.m */,
+				2FAFA039177733D100ACC3B4 /* PDKeychainBindingsController.h */,
+				2FAFA03A177733D100ACC3B4 /* PDKeychainBindingsController.m */,
+			);
+			name = PDFKeychainBindingsController;
+			sourceTree = "<group>";
+		};
+		2FAFA03F1777350D00ACC3B4 /* CurrentSession */ = {
+			isa = PBXGroup;
+			children = (
+				76C5EC8A17482E7A00F87A75 /* CurrentSessionToken.h */,
+				76C5EC8B17482E7A00F87A75 /* CurrentSessionToken.m */,
+				2FAFA0401777353F00ACC3B4 /* CurrentSessionController.h */,
+				2FAFA0411777353F00ACC3B4 /* CurrentSessionController.m */,
+				2FAFA0361777339000ACC3B4 /* PDFKeychainBindingsController */,
+			);
+			name = CurrentSession;
+			sourceTree = "<group>";
+		};
 		76E88595174827DB00694D65 = {
 			isa = PBXGroup;
 			children = (
@@ -369,6 +404,7 @@
 		76E885A0174827DB00694D65 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2FAFA03D177733FB00ACC3B4 /* Security.framework */,
 				76E885A1174827DB00694D65 /* UIKit.framework */,
 				76E885A3174827DB00694D65 /* Foundation.framework */,
 				76E885A5174827DB00694D65 /* CoreGraphics.framework */,
@@ -385,6 +421,7 @@
 				76C5EC9117482E7A00F87A75 /* InfoPlist.strings */,
 				2F02E807176150BD007ACDB6 /* MainStoryboard.storyboard */,
 				2F02E809176150BD007ACDB6 /* pt-BR.lproj */,
+				2FAFA03F1777350D00ACC3B4 /* CurrentSession */,
 				2F4071AB1748353D00D429FE /* Utils */,
 				2F4071AE174835B400D429FE /* Commom */,
 				2F4071AF174835D900D429FE /* User */,
@@ -548,6 +585,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FAFA0441777401E00ACC3B4 /* PDKeychainBindings.m in Sources */,
+				2FAFA0461777401E00ACC3B4 /* PDKeychainBindingsController.m in Sources */,
 				2F937279175974D600F2DDC2 /* Passenger.m in Sources */,
 				2F937278175974B000F2DDC2 /* Driver.m in Sources */,
 				2F937276175974A600F2DDC2 /* SignInToken.m in Sources */,
@@ -559,7 +598,7 @@
 				76C5ECA717482E7B00F87A75 /* CallResult.m in Sources */,
 				76C5ECA817482E7B00F87A75 /* CarType.m in Sources */,
 				76C5ECA917482E7B00F87A75 /* CarTypeViewController.m in Sources */,
-				76C5ECAA17482E7B00F87A75 /* CurrentSession.m in Sources */,
+				76C5ECAA17482E7B00F87A75 /* CurrentSessionToken.m in Sources */,
 				76C5ECAB17482E7B00F87A75 /* DriverInfoViewController.m in Sources */,
 				76C5ECAC17482E7B00F87A75 /* DriverSignUpViewController.m in Sources */,
 				76C5ECAF17482E7B00F87A75 /* Helper.m in Sources */,
@@ -587,6 +626,7 @@
 				2F70E57C176FED8B004819AE /* AssignRideToken.m in Sources */,
 				2F62307517710DE400B51505 /* PassengerDetailViewController.m in Sources */,
 				2F62307B1771123C00B51505 /* DriverDetailViewController.m in Sources */,
+				2FAFA0421777353F00ACC3B4 /* CurrentSessionController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,6 +635,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				76E885D3174827DB00694D65 /* MtaxiTests.m in Sources */,
+				2FAFA03B177733D100ACC3B4 /* PDKeychainBindings.m in Sources */,
+				2FAFA03C177733D100ACC3B4 /* PDKeychainBindingsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

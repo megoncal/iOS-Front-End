@@ -48,16 +48,24 @@
     }
     
     
-    CurrentSession *currentSession = [[CurrentSession alloc] init];
+//    CurrentSession *currentSession = [[CurrentSession alloc] init];
+    
+    CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
+    
     
     //Obtain additionalInfo from the outputDictionary
     NSDictionary *additionalInfoDictionary = [outputDictionary objectForKey:@"additionalInfo"];
     *userType = [additionalInfoDictionary objectForKey:@"userType"];
-    currentSession.jsessionID = [additionalInfoDictionary objectForKey:@"JSESSIONID"];
-    currentSession.userType = *userType;
+    currentSessionToken.jsessionID = [additionalInfoDictionary objectForKey:@"JSESSIONID"];
+    currentSessionToken.userType = *userType;
+    
+    // currentSession.jsessionID = [additionalInfoDictionary objectForKey:@"JSESSIONID"];
+   // currentSession.userType = *userType;
     
 
-    success = [currentSession writeCurrentSessionInformationToPlistFile];
+  //  success = [currentSession writeCurrentSessionInformationToPlistFile];
+    
+    success = [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
     
     if (!success) {
         //TODO: add unexpected error message to the error object
@@ -108,18 +116,22 @@
     if ([callResult.code isEqualToString:@"ERROR"]){
         return NO;
     }
-    CurrentSession *currentSession = [[CurrentSession alloc] init];
+//    CurrentSession *currentSession = [[CurrentSession alloc] init];
+    
+    
+    CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
     
     //Obtain additionalInfo from the outputDictionary
     NSDictionary *additionalInfoDictionary = [outputDictionary objectForKey:@"additionalInfo"];
-    currentSession.jsessionID = [additionalInfoDictionary objectForKey:@"JSESSIONID"];
-    currentSession.userType = @"PASSENGER";
+    currentSessionToken.jsessionID = [additionalInfoDictionary objectForKey:@"JSESSIONID"];
     if (user.driver) {
-        currentSession.userType = [additionalInfoDictionary objectForKey:@"DRIVER"];
+        currentSessionToken.userType = [additionalInfoDictionary objectForKey:@"DRIVER"];
+    }else{
+        currentSessionToken.userType = @"PASSENGER";
     }
     
 
-    success = [currentSession writeCurrentSessionInformationToPlistFile];
+    success = [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
     
     if (!success) {
         //TODO: add unexpected error message to the object error;

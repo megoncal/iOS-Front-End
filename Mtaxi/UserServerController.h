@@ -20,7 +20,7 @@
 #import <Foundation/Foundation.h>
 #import "Helper.h"
 #import "CarType.h"
-#import "CurrentSession.h"
+#import "CurrentSessionController.h"
 #import "Location.h"
 #import "ActiveStatus.h"
 #import "CallResult.h"

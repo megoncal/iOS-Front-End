@@ -167,7 +167,19 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
             if (!success) {
                 [Helper showMessage: error];
             } else {
+                
+                
+                //save username, password and usertype (encrypted)
+                CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
+                currentSessionToken.username = self.username.text;
+                currentSessionToken.password = self.password.text;
+                currentSessionToken.userType = @"PASSENGER";
+                [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
+                
                 UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"InitDriver" ];
+                
+                [(UINavigationController *)self.tabBarController.presentingViewController popToRootViewControllerAnimated:NO];
+                
                 [self presentViewController:controller animated:YES completion:nil];
             }
             
@@ -178,6 +190,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
             CarTypeViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CarTypeList"];
             controller.delegate = self;
             [self presentViewController:controller animated:YES completion:nil];
+            
             
         } else if ([self.tableView cellForRowAtIndexPath:indexPath] == self.taxiStandCell){
             LocationViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Location"];

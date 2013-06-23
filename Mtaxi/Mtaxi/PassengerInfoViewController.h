@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "User.h"
 #import "UserServerController.h"
-#import "CurrentSession.h"
+#import "CurrentSessionController.h"
+#import "CurrentSessionToken.h"
 
 @interface PassengerInfoViewController : UITableViewController <UITextFieldDelegate>
 
