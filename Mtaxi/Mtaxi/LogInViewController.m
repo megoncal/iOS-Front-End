@@ -18,7 +18,7 @@
 @implementation LogInViewController
 
 - (void)viewWillAppear:(BOOL)animated{
-    self.userName.text = @"jgoodarm";
+    self.userName.text = @"jgoodrider";
     self.password.text = @"Welcome!1";
 }
 
@@ -30,11 +30,7 @@
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     gestureRecognizer.cancelsTouchesInView = NO;
     [self.tableView addGestureRecognizer:gestureRecognizer];
-    
-    self.userName.text = @"jgoodarm";
-    self.password.text = @"Welcome!1";
    
-
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -84,7 +80,39 @@
     
 }
 
-
+- (void) signIn{
+    
+    NSError *error;
+    NSString *returnedUser;
+    
+    SignInToken *token = [[SignInToken alloc] initWithUsername:self.userName.text andPassword:self.password.text];
+    
+    BOOL success = [UserServerController signIn:token userType:&returnedUser error: &error];
+    
+    
+    if (!success) {
+        [Helper showMessage:error];
+    } else {
+        
+        //save username, password and usertype (encrypted)
+        CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
+        currentSessionToken.username = token.username;
+        currentSessionToken.password = token.password;
+        currentSessionToken.userType = returnedUser;
+        [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
+        
+        if ([returnedUser isEqualToString:@"PASSENGER"]) {
+            UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"InitPassenger"];
+            [self presentViewController:controller animated:YES completion:nil];
+        }else{
+            UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"InitDriver"];
+            [self presentViewController:controller animated:YES completion:nil];
+            
+        }
+    }
+    
+    
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
@@ -93,35 +121,19 @@
     if (indexPath.section == 1 &&
         indexPath.row == 0) {
         
-        NSError *error;
-        NSString *returnedUser;
         
-        SignInToken *token = [[SignInToken alloc] initWithUsername:self.userName.text andPassword:self.password.text];
-        
-        BOOL success = [UserServerController signIn:token userType:&returnedUser error: &error];
-        
-        if (!success) {
-         [Helper showMessage:error];
-        } else {
+        MBProgressHUD *mbProgressHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        mbProgressHud.labelText = @"Signing in...";
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
             
-            //save username, password and usertype (encrypted)
-            CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
-            currentSessionToken.username = token.username;
-            currentSessionToken.password = token.password;
-            currentSessionToken.userType = returnedUser;
-            [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
+            [self signIn];
             
-            if ([returnedUser isEqualToString:@"PASSENGER"]) {
-                UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"InitPassenger"];
-                [self presentViewController:controller animated:YES completion:nil];
-            }else{
-                UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"InitDriver"];
-                [self presentViewController:controller animated:YES completion:nil];
-                
-            }
-        }
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+       
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        });
         
     }
     

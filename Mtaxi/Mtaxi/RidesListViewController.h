@@ -11,6 +11,7 @@
 #import "RideDetailViewController.h"
 #import "RideServerController.h"
 #import "DateHelper.h"
+#import "MBProgressHUD.h"
 
 @interface RidesListViewController : UITableViewController
 

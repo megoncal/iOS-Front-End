@@ -236,9 +236,12 @@
 
 - (void) retrievePassengerRides{
     
-    
+    MBProgressHUD *mbProgressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    mbProgressHUD.labelText = @"Loading rides...";
     [RideServerController retrievePassengerRides:^(NSMutableArray *rides, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             
             if (error.code == 0) {
                 self.rides = rides;
@@ -246,9 +249,11 @@
                 [self splitRidesInSections];
                 
                 [self.tableView reloadData];
+                
             }else{
                 [Helper showMessage:error];
             }
+            
             
         });
         

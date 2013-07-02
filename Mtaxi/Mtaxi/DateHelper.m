@@ -52,12 +52,23 @@
 
 + (NSString *)descriptionDate: (NSDate *) date{
     NSString *dateDescription;
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+//    [dateFormatter setTimeZone:gmt];
+//    [dateFormatter setDateStyle:NSDateFormatterFullStyle];
+//    
+//    dateDescription = [dateFormatter stringFromDate:date];
+//    
+//    NSLog(@"%@", dateDescription);
+    
+    NSString *fullMinusYear = [NSDateFormatter dateFormatFromTemplate:@"EEEE, MMMM dd" options:0 locale:[NSLocale currentLocale]];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:fullMinusYear];
     NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
     [dateFormatter setTimeZone:gmt];
-    [dateFormatter setDateStyle:NSDateFormatterFullStyle];
-    
+
     dateDescription = [dateFormatter stringFromDate:date];
+    
     
     return dateDescription;
 }

@@ -22,10 +22,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *dropOffLocation;
 
-
 @property (weak, nonatomic) IBOutlet UITableViewCell *carType;
-
-
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 

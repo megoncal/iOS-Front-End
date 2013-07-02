@@ -38,6 +38,8 @@
 		2FAFA0441777401E00ACC3B4 /* PDKeychainBindings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAFA038177733D100ACC3B4 /* PDKeychainBindings.m */; };
 		2FAFA0461777401E00ACC3B4 /* PDKeychainBindingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAFA03A177733D100ACC3B4 /* PDKeychainBindingsController.m */; };
 		2FB89ABD176E5B090036F101 /* UnassignedRidesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB89ABC176E5B080036F101 /* UnassignedRidesViewController.m */; };
+		2FFDDCE21782687C00F23BD1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFDDCE11782687C00F23BD1 /* MBProgressHUD.m */; };
+		2FFDDCE317826AED00F23BD1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFDDCE11782687C00F23BD1 /* MBProgressHUD.m */; };
 		7665CA6F175EE8CD00784090 /* CarTypeServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7665CA6E175EE8CD00784090 /* CarTypeServerController.m */; };
 		76A0E33917544689009D18CB /* Marshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A0E33817544689009D18CB /* Marshaller.m */; };
 		76C5ECA517482E7B00F87A75 /* ActiveStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C5EC8117482E7A00F87A75 /* ActiveStatus.m */; };
@@ -81,6 +83,18 @@
 			remoteInfo = Mtaxi;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2FFDDCDD1782669F00F23BD1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2F02E808176150BD007ACDB6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
@@ -127,6 +141,8 @@
 		2FAFA0411777353F00ACC3B4 /* CurrentSessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentSessionController.m; sourceTree = "<group>"; };
 		2FB89ABB176E5B080036F101 /* UnassignedRidesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnassignedRidesViewController.h; sourceTree = "<group>"; };
 		2FB89ABC176E5B080036F101 /* UnassignedRidesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnassignedRidesViewController.m; sourceTree = "<group>"; };
+		2FFDDCE01782687C00F23BD1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		2FFDDCE11782687C00F23BD1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		7665CA6D175EE8CD00784090 /* CarTypeServerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarTypeServerController.h; sourceTree = "<group>"; };
 		7665CA6E175EE8CD00784090 /* CarTypeServerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarTypeServerController.m; sourceTree = "<group>"; };
 		7696CE6F174FE8DA00AB736A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -380,6 +396,15 @@
 			name = CurrentSession;
 			sourceTree = "<group>";
 		};
+		2FFDDCDF1782685200F23BD1 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				2FFDDCE01782687C00F23BD1 /* MBProgressHUD.h */,
+				2FFDDCE11782687C00F23BD1 /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		76E88595174827DB00694D65 = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +429,7 @@
 		76E885A0174827DB00694D65 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2FFDDCDF1782685200F23BD1 /* MBProgressHUD */,
 				2FAFA03D177733FB00ACC3B4 /* Security.framework */,
 				76E885A1174827DB00694D65 /* UIKit.framework */,
 				76E885A3174827DB00694D65 /* Foundation.framework */,
@@ -479,6 +505,7 @@
 				76E8859A174827DB00694D65 /* Sources */,
 				76E8859B174827DB00694D65 /* Frameworks */,
 				76E8859C174827DB00694D65 /* Resources */,
+				2FFDDCDD1782669F00F23BD1 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -585,6 +612,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FFDDCE317826AED00F23BD1 /* MBProgressHUD.m in Sources */,
 				2FAFA0441777401E00ACC3B4 /* PDKeychainBindings.m in Sources */,
 				2FAFA0461777401E00ACC3B4 /* PDKeychainBindingsController.m in Sources */,
 				2F937279175974D600F2DDC2 /* Passenger.m in Sources */,
@@ -637,6 +665,7 @@
 				76E885D3174827DB00694D65 /* MtaxiTests.m in Sources */,
 				2FAFA03B177733D100ACC3B4 /* PDKeychainBindings.m in Sources */,
 				2FAFA03C177733D100ACC3B4 /* PDKeychainBindingsController.m in Sources */,
+				2FFDDCE21782687C00F23BD1 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
