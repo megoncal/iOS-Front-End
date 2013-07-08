@@ -64,7 +64,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 //    CurrentSession *currentSession = [CurrentSession currentSessionInformation];
 //    [currentSession logoutFromCurrentSession];
     
-    //return the authentication navigation controller to the root VC, in this case it means the LogIn VC.
+    //return the authentication navigation controller to the root VC, in this case the LogIn VC.
     [(UINavigationController *)self.tabBarController.presentingViewController popToRootViewControllerAnimated:NO];
     
     //erase the current session information from disk
