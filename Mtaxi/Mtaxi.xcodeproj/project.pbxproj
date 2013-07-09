@@ -17,6 +17,7 @@
 		2F4071B317483EC900D429FE /* Ride.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4071B217483EC900D429FE /* Ride.m */; };
 		2F4071B71748526200D429FE /* CreateRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4071B51748410C00D429FE /* CreateRideViewController.m */; };
 		2F50CED4175D7B1700DF9B47 /* LocationServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F50CED3175D7B1700DF9B47 /* LocationServerController.m */; };
+		2F5A12F9178B96800098D307 /* ScreenValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5A12F8178B96800098D307 /* ScreenValidation.m */; };
 		2F5E2899176ABB9D00FD2BB8 /* RateRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5E2898176ABB9D00FD2BB8 /* RateRideViewController.m */; };
 		2F62307517710DE400B51505 /* PassengerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F62307417710DE400B51505 /* PassengerDetailViewController.m */; };
 		2F62307B1771123C00B51505 /* DriverDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F62307A1771123C00B51505 /* DriverDetailViewController.m */; };
@@ -115,6 +116,8 @@
 		2F4071B51748410C00D429FE /* CreateRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateRideViewController.m; sourceTree = "<group>"; };
 		2F50CED2175D7B1700DF9B47 /* LocationServerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationServerController.h; sourceTree = "<group>"; };
 		2F50CED3175D7B1700DF9B47 /* LocationServerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationServerController.m; sourceTree = "<group>"; };
+		2F5A12F7178B96800098D307 /* ScreenValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenValidation.h; sourceTree = "<group>"; };
+		2F5A12F8178B96800098D307 /* ScreenValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenValidation.m; sourceTree = "<group>"; };
 		2F5E2897176ABB9D00FD2BB8 /* RateRideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateRideViewController.h; sourceTree = "<group>"; };
 		2F5E2898176ABB9D00FD2BB8 /* RateRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateRideViewController.m; sourceTree = "<group>"; };
 		2F62307317710DE400B51505 /* PassengerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassengerDetailViewController.h; sourceTree = "<group>"; };
@@ -276,6 +279,8 @@
 				2F93727E17599D6800F2DDC2 /* DateHelper.m */,
 				76A0E33717544689009D18CB /* Marshaller.h */,
 				76A0E33817544689009D18CB /* Marshaller.m */,
+				2F5A12F7178B96800098D307 /* ScreenValidation.h */,
+				2F5A12F8178B96800098D307 /* ScreenValidation.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -655,6 +660,7 @@
 				2F62307517710DE400B51505 /* PassengerDetailViewController.m in Sources */,
 				2F62307B1771123C00B51505 /* DriverDetailViewController.m in Sources */,
 				2FAFA0421777353F00ACC3B4 /* CurrentSessionController.m in Sources */,
+				2F5A12F9178B96800098D307 /* ScreenValidation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -32,22 +32,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    //self.bookmark = [[NSMutableArray alloc] initWithObjects:@"rua gabriel santos 151", @"rua major lopes 55", nil];
-//    
-//    CurrentSession *currentSession = [CurrentSession currentSessionInformation];
-//    
-//    if ([currentSession.userType isEqualToString:@"PASSENGER"]) {
-//        [self retrieveMostFrequentLocations];
-//        
-//    }
-    
-    
     CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
     
     if ([currentSessionToken.userType isEqualToString:@"PASSENGER"]) {
         [self retrieveMostFrequentLocations];
     }
-    
     
     [self prepareSearchedLocationsArray];
 

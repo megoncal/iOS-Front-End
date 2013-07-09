@@ -32,6 +32,10 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     gestureRecognizer.cancelsTouchesInView = NO;
     [self.tableView addGestureRecognizer:gestureRecognizer];
     
+    
+    self.uitextfields = @[self.username, self.password,self.email,self.firstName,self.lastName,self.phoneNumber, self.carDescription, self.taxiStand];
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -81,9 +85,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     [self.taxiStand resignFirstResponder];
 }
 
-
-
-
+#pragma mark - uitextfield delegate methods
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     
@@ -130,6 +132,21 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
+
+    //validate email
+    if (textField == self.email) {
+        UIAlertView *alert;
+        if (![self validateEmailWithString:textField.text]){
+            NSString *message = @"Please add a valid e-mail.";
+            alert = [[UIAlertView alloc] initWithTitle:@"Validation" message:message  delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert show];
+            self.email.text = @"";
+
+        }
+    }
+    
+    
+    //keyboard dismiss configuration
     CGRect viewFrame = self.view.frame;
     viewFrame.origin.y += animatedDistance;
     
@@ -140,6 +157,139 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     [self.view setFrame:viewFrame];
     
     [UIView commitAnimations];
+    
+
+    
+}
+
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    
+    //accept backspace anytime
+    if ([string isEqualToString:@""]) {
+        return YES;
+    }
+    
+    // @[@"username", @"password",@"email",@"firstname",@"lastName",@"phoneNumber", @"carDescription", @"taxiStand"
+    
+    if(textField == self.username){
+        
+        NSCharacterSet *alphanumericCharacterSet = [NSCharacterSet alphanumericCharacterSet];
+        NSCharacterSet *customPunctuationCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@"_-."];
+        NSScanner *scanner = [NSScanner scannerWithString:string];
+        UIAlertView *alert;
+        if (![scanner scanCharactersFromSet:alphanumericCharacterSet intoString:NULL] &&
+            ![scanner scanCharactersFromSet:customPunctuationCharacterSet intoString:NULL]){
+            NSString *message = @"You can only use letters and punctuation marks.";
+            alert = [[UIAlertView alloc] initWithTitle:@"Validation" message:message  delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert show];
+            return NO;
+        
+        }
+        
+    }
+    
+    else if (textField == self.firstName){
+        NSCharacterSet *letterCharacterSet = [NSCharacterSet letterCharacterSet];
+        NSCharacterSet *whitespaceCharacterSet = [NSCharacterSet whitespaceCharacterSet];
+        NSScanner *scanner = [NSScanner scannerWithString:string];
+        UIAlertView *alert;
+        if (![scanner scanCharactersFromSet:letterCharacterSet intoString:NULL]&&
+            ![scanner scanCharactersFromSet:whitespaceCharacterSet intoString:NULL]){
+            NSString *message = @"You can only use letters and whitespace.";
+            alert = [[UIAlertView alloc] initWithTitle:@"Validation" message:message  delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert show];
+            return NO;
+            
+        }
+    }
+    
+    else if (textField == self.lastName){
+        NSCharacterSet *letterCharacterSet = [NSCharacterSet letterCharacterSet];
+        NSCharacterSet *whitespaceCharacterSet = [NSCharacterSet whitespaceCharacterSet];
+        NSScanner *scanner = [NSScanner scannerWithString:string];
+        UIAlertView *alert;
+        if (![scanner scanCharactersFromSet:letterCharacterSet intoString:NULL]&&
+            ![scanner scanCharactersFromSet:whitespaceCharacterSet intoString:NULL]){
+            NSString *message = @"You can only use letters and whitespace.";
+            alert = [[UIAlertView alloc] initWithTitle:@"Validation" message:message  delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert show];
+            return NO;
+            
+        }
+    }
+    
+    else if (textField == self.phoneNumber){
+        
+        int length = [self getLength:textField.text];
+        if(length == 10) {
+            if(range.length == 0)
+                return NO;
+        }
+        
+        if(length == 3) {
+            NSString *num = [self formatNumber:textField.text];
+            textField.text = [NSString stringWithFormat:@"(%@) ",num];
+            if(range.length > 0)
+                textField.text = [NSString stringWithFormat:@"%@",[num substringToIndex:3]];
+        }
+        else if(length == 6) {
+            NSString *num = [self formatNumber:textField.text];
+            textField.text = [NSString stringWithFormat:@"(%@) %@-",[num  substringToIndex:3],[num substringFromIndex:3]];
+            if(range.length > 0)
+                textField.text = [NSString stringWithFormat:@"(%@) %@",[num substringToIndex:3],[num substringFromIndex:3]];
+        }
+    }
+
+    return YES;
+}
+
+-(NSString*)formatNumber:(NSString*)mobileNumber
+{
+    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"(" withString:@""];
+    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@")" withString:@""];
+    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
+    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"+" withString:@""];
+    
+    int length = [mobileNumber length];
+    if(length > 10) {
+        mobileNumber = [mobileNumber substringFromIndex: length-10];
+    }
+    return mobileNumber;
+}
+
+
+-(int)getLength:(NSString*)mobileNumber
+{
+    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"(" withString:@""];
+    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@")" withString:@""];
+    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
+    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"+" withString:@""];
+    
+    int length = [mobileNumber length];
+    return length;
+}
+
+- (BOOL)validateEmailWithString:(NSString*)email
+{
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:email];
+}
+
+- (BOOL) checkForEmptyUITextField: (NSArray*)array
+{
+   
+    for (UITextField *uitextfield in array) {
+        if([uitextfield.text isEqualToString:@""]){
+            return YES;
+        }
+    }
+    
+    return NO;
 }
 
 
@@ -147,59 +297,66 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-       
-        if ([self.tableView cellForRowAtIndexPath:indexPath] == self.signUpCell) {
-            
-            NSError *error;
-            ActiveStatus *activeStatus = [[ActiveStatus alloc]init];
-            if (self.activeStatus.on) {
-                activeStatus = [activeStatus initWithCode:@"ENABLED"];
-            }else{
-                activeStatus = [activeStatus initWithCode:@"ENABLED"];
-            }
-            
-            Driver *driver = [[Driver alloc] initWithStatus:activeStatus andCarType:self.car andServedLocation: self.taxiStandLocation];
-            
-            User *user = [[User alloc] initWithUsername:self.username.text andPassword: self.password.text andFirstName: self.firstName.text andLastName: self.lastName.text andPhone: self.phoneNumber.text andEmail: self.email.text andDriver: driver andPassenger: nil];
-            
-            BOOL success = [UserServerController signUpUser:user error:&error];
-            
-            if (!success) {
-                [Helper showMessage: error];
-            } else {
-                
-                
-                //save username, password and usertype (encrypted)
-                CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
-                currentSessionToken.username = self.username.text;
-                currentSessionToken.password = self.password.text;
-                currentSessionToken.userType = @"PASSENGER";
-                [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
-                
-                UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"InitDriver" ];
-                
-                [(UINavigationController *)self.tabBarController.presentingViewController popToRootViewControllerAnimated:NO];
-                
-                [self presentViewController:controller animated:YES completion:nil];
-            }
-            
-            [tableView deselectRowAtIndexPath:indexPath animated:YES];
-            
-        } else if ([self.tableView cellForRowAtIndexPath:indexPath] == self.carCell){
-            
-            CarTypeViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CarTypeList"];
-            controller.delegate = self;
-            [self presentViewController:controller animated:YES completion:nil];
+    
+    if ([self.tableView cellForRowAtIndexPath:indexPath] == self.signUpCell) {
+        
+        //check if the user left empty information
+        if ([self checkForEmptyUITextField:self.uitextfields]) {
+            NSString *message = @"Please fill up empty information before sign up.";
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Validation" message:message  delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert show];
+            return;
+        };
+        
+        NSError *error;
+        ActiveStatus *activeStatus = [[ActiveStatus alloc]init];
+        if (self.activeStatus.on) {
+            activeStatus = [activeStatus initWithCode:@"ENABLED"];
+        }else{
+            activeStatus = [activeStatus initWithCode:@"ENABLED"];
+        }
+        
+        Driver *driver = [[Driver alloc] initWithStatus:activeStatus andCarType:self.car andServedLocation: self.taxiStandLocation];
+        
+        User *user = [[User alloc] initWithUsername:self.username.text andPassword: self.password.text andFirstName: self.firstName.text andLastName: self.lastName.text andPhone: self.phoneNumber.text andEmail: self.email.text andDriver: driver andPassenger: nil];
+        
+        BOOL success = [UserServerController signUpUser:user error:&error];
+        
+        if (!success) {
+            [Helper showMessage: error];
+        } else {
             
             
-        } else if ([self.tableView cellForRowAtIndexPath:indexPath] == self.taxiStandCell){
-            LocationViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Location"];
-            controller.delegate = self;
+            //save username, password and usertype (encrypted)
+            CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
+            currentSessionToken.username = self.username.text;
+            currentSessionToken.password = self.password.text;
+            currentSessionToken.userType = @"PASSENGER";
+            [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
+            
+            UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"InitDriver" ];
+            
+            [(UINavigationController *)self.tabBarController.presentingViewController popToRootViewControllerAnimated:NO];
+            
             [self presentViewController:controller animated:YES completion:nil];
         }
         
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+    } else if ([self.tableView cellForRowAtIndexPath:indexPath] == self.carCell){
+        
+        CarTypeViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"CarTypeList"];
+        controller.delegate = self;
+        [self presentViewController:controller animated:YES completion:nil];
+        
+        
+    } else if ([self.tableView cellForRowAtIndexPath:indexPath] == self.taxiStandCell){
+        LocationViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Location"];
+        controller.delegate = self;
+        [self presentViewController:controller animated:YES completion:nil];
+    }
+    
 }
-
 
 
 #pragma mark - implemented protocols

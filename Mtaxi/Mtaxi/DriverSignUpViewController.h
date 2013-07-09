@@ -42,7 +42,7 @@
 
 //@property (nonatomic, assign) id<DriverSignUpViewControllerDelegate>delegate;
 
-
+@property (strong,nonatomic) NSArray *uitextfields;
 
 
 @end
