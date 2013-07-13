@@ -44,11 +44,13 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 {
     [super viewDidLoad];
     
-    
     //capture every time the tableView is touched and call method hideKeyboard
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     gestureRecognizer.cancelsTouchesInView = NO;
     [self.tableView addGestureRecognizer:gestureRecognizer];
+    
+    //all uitextfields.
+    self.uitextfields = @[self.email,self.firstName,self.lastName,self.phoneNumber, self.carDescription, self.taxiStand];
     
 }
 
@@ -56,13 +58,13 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     //retrieve logged driver info
     [self retrieveDriverInformation];
     
-
+    
 }
 
 #pragma mark - retrieveData
 - (IBAction)signOutPressed:(id)sender {
-//    CurrentSession *currentSession = [CurrentSession currentSessionInformation];
-//    [currentSession logoutFromCurrentSession];
+    //    CurrentSession *currentSession = [CurrentSession currentSessionInformation];
+    //    [currentSession logoutFromCurrentSession];
     
     //return the authentication navigation controller to the root VC, in this case the LogIn VC.
     [(UINavigationController *)self.tabBarController.presentingViewController popToRootViewControllerAnimated:NO];
@@ -79,24 +81,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error.code == 0) {
                 
-                self.user = user;
-            
-                self.email.text = user.email;
-                self.firstName.text = user.firstName;
-                self.lastName.text = user.lastName;
-                self.phone.text = user.phone;
+                self.latestUserVersion = user;
                 
-                //driver
-                self.servedLocation.text = user.driver.servedLocation.locationName;
-                
-                if ([user.driver.activeStatus.code isEqualToString:@"ENABLED"]) {
-                    self.activeStatus.on = TRUE;
-                }else{
-                    self.activeStatus.on = FALSE;
-                }
-                
-                self.carDescription.text = user.driver.carType.description;
- 
+                [self populateScreenFields:user];
                 
                 //logged user info is displayed so prepare navigattion bar buttons
                 
@@ -118,57 +105,63 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     }];
 }
 
+- (void) populateScreenFields: (User *) user{
+    self.email.text = user.email;
+    self.firstName.text = user.firstName;
+    self.lastName.text = user.lastName;
+    self.phoneNumber.text = user.phone;
+    
+    //driver
+    self.taxiStand.text = user.driver.servedLocation.locationName;
+    
+    if ([user.driver.activeStatus.code isEqualToString:@"ENABLED"]) {
+        self.activeStatus.on = TRUE;
+    }else{
+        self.activeStatus.on = FALSE;
+    }
+    
+    self.carDescription.text = user.driver.carType.description;
+    
+}
+
 #pragma mark - updateData
 
 - (void)updateDriverInformation{
     
-
     if (self.email.text) {
-        self.user.email = self.email.text;
+        self.latestUserVersion.email = self.email.text;
     }
-    
     if (self.firstName.text) {
-        self.user.firstName = self.firstName.text;
+        self.latestUserVersion.firstName = self.firstName.text;
     }
-    
     if( self.lastName.text){
-        self.user.lastName = self.lastName.text;
+        self.latestUserVersion.lastName = self.lastName.text;
     }
-    
-    
-    if(self.phone.text){
-        self.user.phone = self.phone.text;
+    if(self.phoneNumber.text){
+        self.latestUserVersion.phone = self.phoneNumber.text;
     }
-    
     if (self.car) {
-        self.user.driver.carType = self.car;
+        self.latestUserVersion.driver.carType = self.car;
     }
-    
     if (self.location) {
-        self.user.driver.servedLocation = self.location;
+        self.latestUserVersion.driver.servedLocation = self.location;
     }
-    
-    
-    //to-do
-    //self.user.servedLocation = self.location;
-    
-    
     if(self.activeStatus.on)
-        self.user.driver.activeStatus.code = @"ENABLED";
+        self.latestUserVersion.driver.activeStatus.code = @"ENABLED";
     else
-        self.user.driver.activeStatus.code = @"DISABLED";
-
+        self.latestUserVersion.driver.activeStatus.code = @"DISABLED";
     
-    [UserServerController updateLoggedUserDetails:self.user completionHandler:^(User *user, NSError *error) {
+    [UserServerController updateLoggedUserDetails:self.latestUserVersion completionHandler:^(User *user, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-
-                [Helper showMessage:error];
-         
+            [Helper showMessage:error];
+            if (error.code == 1) {
+                self.latestUserVersion = self.tempUserVersion;
+                [self populateScreenFields:self.latestUserVersion];
+            }
         });
-
+        
     }];
 }
-
 
 #pragma mark - configure textField
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
@@ -188,7 +181,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     {
         heightFraction = 1.0;
     }
-    
     UIInterfaceOrientation orientation =
     [[UIApplication sharedApplication] statusBarOrientation];
     if (orientation == UIInterfaceOrientationPortrait ||
@@ -211,7 +203,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     [self.view setFrame:viewFrame];
     
     [UIView commitAnimations];
-    
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -234,15 +225,54 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    [self.firstName resignFirstResponder];
-    [self.lastName resignFirstResponder];
-    [self.phone resignFirstResponder];
+    [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
 }
 - (void)hideKeyboard{
-    [self.firstName resignFirstResponder];
-    [self.lastName resignFirstResponder];
-    [self.phone resignFirstResponder];
+    [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
 }
+
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    
+    //accept backspace anytime
+    if ([string isEqualToString:@""]) {
+        return YES;
+    }
+    else if (textField == self.firstName){
+        
+        NSError *error;
+        if (![ScreenValidation validateNameInputString:string error:&error]) {
+            [ScreenValidation showScreenValidationError:error];
+            return NO;
+        }
+        
+    }
+    
+    else if (textField == self.lastName){
+        
+        NSError *error;
+        if (![ScreenValidation validateNameInputString:string error:&error]) {
+            [ScreenValidation showScreenValidationError:error];
+            return NO;
+        }
+        
+    }
+    
+    else if (textField == self.phoneNumber){
+        
+        NSString *phoneNumberText = textField.text;
+        
+        if ([ScreenValidation maskedPhoneNumber:&phoneNumberText withRange:range]) {
+            textField.text = phoneNumberText;
+        }else{
+            return NO;
+        }
+    }
+    
+    return YES;
+}
+
 
 
 #pragma mark - table view delegate
@@ -276,6 +306,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 // cancel pressed fired method
 - (void)cancelPressed{
     cancelPressed = YES;
+    self.latestUserVersion = self.tempUserVersion;
+    [self populateScreenFields:self.latestUserVersion];
     [self setEditing:NO animated:YES];
 }
 
@@ -283,15 +315,21 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void)setEditing:(BOOL)flag animated:(BOOL)animated{
     
-    [super setEditing:flag animated:animated];
+    
     if (flag == YES){
+        
         // Change views to edit mode.
         self.firstName.enabled = YES;
         self.lastName.enabled = YES;
-        self.phone.enabled = YES;
+        self.phoneNumber.enabled = YES;
+        self.taxiStand.enabled = YES;
+        self.carDescription.enabled = YES;
+        self.activeStatus.enabled = YES;
+        self.activeStatusLabel.enabled = YES;
         
         self.tableView.allowsSelectionDuringEditing = YES;
         
+        self.tempUserVersion = self.latestUserVersion;
         
         self.carCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         self.servedLocationCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -301,33 +339,39 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         self.addedNavigationItem.leftBarButtonItem = self.cancelLeftBarButton;
         
         //TODO: add some look n feel into the edit mode screen
-      
+        
     }
     else {
+        
+        NSError *error;
+        if ([ScreenValidation checkForEmptyUITextField:self.uitextfields error:&error]) {
+            [ScreenValidation showScreenValidationError:error];
+            return;
+        }
+        
         self.firstName.enabled = NO;
-        [self.firstName resignFirstResponder];
         self.lastName.enabled = NO;
-        [self.lastName resignFirstResponder];
-        self.phone.enabled = NO;
-        [self.phone resignFirstResponder];
+        self.phoneNumber.enabled = NO;
+        self.taxiStand.enabled = NO;
+        self.carDescription.enabled = NO;
+        self.activeStatus.enabled = NO;
+        self.activeStatusLabel.enabled = NO;
         
         self.carCell.accessoryType = UITableViewCellAccessoryNone;
         self.servedLocationCell.accessoryType = UITableViewCellAccessoryNone;
         
+        [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
         
         if (!cancelPressed) {
-            
-            
-            
-            //to-do
             // Save the changes on the server
-            
             [self updateDriverInformation];
         }
-        
         self.addedNavigationItem.leftBarButtonItem = self.signOut;
         cancelPressed = NO;
     }
+    
+    [super setEditing:flag animated:animated];
+    
 }
 
 #pragma mark - CarTypeList View Controller delegate methods
@@ -349,7 +393,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void)locationSelected:(Location *)location atViewControler:(LocationViewController *)viewController{
     self.location = location;
-    self.servedLocation.text = location.locationName;
+    self.taxiStand.text = location.locationName;
     [viewController dismissViewControllerAnimated:YES completion:nil];
 }
 

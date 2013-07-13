@@ -2000,15 +2000,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </navigationItem>
                     <connections>
                         <outlet property="activeStatus" destination="7Bb-21-VOT" id="0Rb-SR-sQN"/>
+                        <outlet property="activeStatusLabel" destination="Tx1-yA-StP" id="4dO-Eg-ZGR"/>
                         <outlet property="addedNavigationItem" destination="065-7O-ook" id="xco-Ja-fcq"/>
                         <outlet property="carCell" destination="jG9-Gw-5K8" id="WPb-Fb-ldw"/>
                         <outlet property="carDescription" destination="THY-oX-QpM" id="emv-Qo-k6n"/>
                         <outlet property="email" destination="caU-OB-fnC" id="BzW-Ie-U35"/>
                         <outlet property="firstName" destination="dp2-uJ-0lR" id="dZw-w8-sjO"/>
                         <outlet property="lastName" destination="kpM-hD-YVv" id="pwX-Hr-d38"/>
-                        <outlet property="phone" destination="dUg-BR-NaT" id="yDn-ah-eGY"/>
-                        <outlet property="servedLocation" destination="euI-rs-Mth" id="GUU-bg-XCm"/>
+                        <outlet property="phoneNumber" destination="dUg-BR-NaT" id="PFR-mq-g2j"/>
                         <outlet property="servedLocationCell" destination="Dg8-yo-WFq" id="oKm-fd-TuG"/>
+                        <outlet property="taxiStand" destination="euI-rs-Mth" id="eGX-kB-rsC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="elA-4s-HcI" userLabel="First Responder" sceneMemberID="firstResponder"/>

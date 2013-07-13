@@ -262,8 +262,8 @@
 				76C5EC8D17482E7A00F87A75 /* DriverInfoViewController.m */,
 				76C5EC8E17482E7A00F87A75 /* DriverSignUpViewController.h */,
 				76C5EC8F17482E7A00F87A75 /* DriverSignUpViewController.m */,
-				2F6230791771123C00B51505 /* DriverDetailViewController.h */,
-				2F62307A1771123C00B51505 /* DriverDetailViewController.m */,
+				2F62307317710DE400B51505 /* PassengerDetailViewController.h */,
+				2F62307417710DE400B51505 /* PassengerDetailViewController.m */,
 			);
 			name = Driver;
 			sourceTree = "<group>";
@@ -292,8 +292,8 @@
 				76C5ECA017482E7B00F87A75 /* PassengerInfoViewController.m */,
 				76C5ECA317482E7B00F87A75 /* PassengerSignUpViewController.h */,
 				76C5ECA417482E7B00F87A75 /* PassengerSignUpViewController.m */,
-				2F62307317710DE400B51505 /* PassengerDetailViewController.h */,
-				2F62307417710DE400B51505 /* PassengerDetailViewController.m */,
+				2F6230791771123C00B51505 /* DriverDetailViewController.h */,
+				2F62307A1771123C00B51505 /* DriverDetailViewController.m */,
 			);
 			name = Passenger;
 			sourceTree = "<group>";

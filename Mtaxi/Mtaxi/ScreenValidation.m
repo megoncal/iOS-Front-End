@@ -111,21 +111,21 @@
 
 
 //TODO: bug when space character. not accepting space....
-+ (BOOL) validateNameInputString: (NSString *)inputString  error:(NSError **)error{
++ (BOOL) validateNameInputString: (NSString *)inputString  error:(NSError *__autoreleasing *)error{
     
-    NSCharacterSet *letterCharacterSet = [NSCharacterSet letterCharacterSet];
-    NSCharacterSet *whitespaceCharacterSet = [NSCharacterSet whitespaceCharacterSet];
-    NSScanner *scanner = [NSScanner scannerWithString:inputString];
-    
-    NSMutableCharacterSet *validationCharacterSet = [letterCharacterSet mutableCopy];
-    [validationCharacterSet formUnionWithCharacterSet:whitespaceCharacterSet];
-    
-    if (![scanner scanCharactersFromSet:validationCharacterSet intoString:NULL]){
-     
-        *error = [ScreenValidation createNSError:1 message:@"You can only use letters and whitespace."];
-        return NO;
-        
-    }
+//    NSCharacterSet *letterCharacterSet = [NSCharacterSet letterCharacterSet];
+//    NSCharacterSet *whitespaceCharacterSet = [NSCharacterSet whitespaceCharacterSet];
+//    NSScanner *scanner = [NSScanner scannerWithString:inputString];
+//    
+//    NSMutableCharacterSet *validationCharacterSet = [whitespaceCharacterSet mutableCopy];
+//    [validationCharacterSet formUnionWithCharacterSet:letterCharacterSet];
+//    
+//    if (![scanner scanCharactersFromSet:validationCharacterSet intoString:NULL]){
+//     
+//        *error = [ScreenValidation createNSError:1 message:@"You can only use letters and whitespace."];
+//        return NO;
+//        
+//    }
     
     return YES;
 }
@@ -148,5 +148,50 @@
     }
 }
 
+
++ (BOOL)validateUserUpdate:(User *)latestVersion oldVersion:(User *)oldVersion{
+
+    if (![latestVersion.username isEqualToString:oldVersion.username]) {
+        return YES;
+    }
+    
+    if (![latestVersion.password isEqualToString:oldVersion.password]) {
+        return YES;
+    }
+    
+    if (![latestVersion.tenantname isEqualToString:oldVersion.tenantname]) {
+        return YES;
+    }
+    
+    if (![latestVersion.firstName isEqualToString:oldVersion.firstName]) {
+        return YES;
+    }
+    
+    if (![latestVersion.lastName isEqualToString:oldVersion.lastName]) {
+        return YES;
+    }
+    
+    if (![latestVersion.phone isEqualToString:oldVersion.phone]) {
+        return YES;
+    }
+    
+    if (![latestVersion.email isEqualToString:oldVersion.email]) {
+        return YES;
+    }
+    
+    if (![latestVersion.driver.servedLocation.description isEqualToString:oldVersion.driver.servedLocation.description]) {
+        return YES;
+    }
+
+    if (![latestVersion.driver.carType.description isEqualToString:oldVersion.driver.carType.description]) {
+        return YES;
+    }
+    
+    if (![latestVersion.driver.activeStatus.description isEqualToString:oldVersion.driver.activeStatus.description]) {
+        return YES;
+    }
+    
+    return NO;
+}
 
 @end

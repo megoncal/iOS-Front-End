@@ -235,8 +235,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         if (!success) {
             [Helper showMessage: error];
         } else {
-            
-            
             //save username, password and usertype (encrypted)
             CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
             currentSessionToken.username = self.username.text;

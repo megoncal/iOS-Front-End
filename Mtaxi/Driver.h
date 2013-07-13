@@ -20,4 +20,5 @@
 
 
 - (id) initWithStatus: (ActiveStatus *)activeStatus andCarType: (CarType *) carType andServedLocation: (Location *)servedLocation;
+
 @end

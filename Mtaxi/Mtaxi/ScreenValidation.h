@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "User.h"
 
 @interface ScreenValidation : NSObject
  
@@ -26,8 +27,8 @@
 
 + (BOOL) validateNameInputString: (NSString *)inputString  error:(NSError **)error;
 
-+ (void)showScreenValidationError:(NSError *)error;
++ (void) showScreenValidationError:(NSError *)error;
 
-
++ (BOOL) validateUserUpdate: (User *)latestVersion oldVersion: (User *)oldVersion;
 
 @end

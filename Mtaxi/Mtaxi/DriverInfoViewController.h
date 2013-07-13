@@ -13,6 +13,7 @@
 #import "CarType.h"
 #import "Location.h"
 #import "UserServerController.h"
+#import "ScreenValidation.h"
 
 @interface DriverInfoViewController : UITableViewController <UITextFieldDelegate, CarTypeViewControllerDelegate,LocationViewControllerDelegate, UIGestureRecognizerDelegate>
 
@@ -21,24 +22,29 @@
 @property (weak, nonatomic) IBOutlet UITextField *email;
 @property (weak, nonatomic) IBOutlet UITextField *firstName;
 @property (weak, nonatomic) IBOutlet UITextField *lastName;
-@property (weak, nonatomic) IBOutlet UITextField *phone;
+@property (weak, nonatomic) IBOutlet UITextField *phoneNumber;
 @property (weak, nonatomic) IBOutlet UITextField *carDescription;
-@property (weak, nonatomic) IBOutlet UITextField *servedLocation;
+@property (weak, nonatomic) IBOutlet UITextField *taxiStand;
 
 
 @property (weak, nonatomic) IBOutlet UISwitch *activeStatus;
+@property (weak, nonatomic) IBOutlet UILabel *activeStatusLabel;
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *carCell;
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *servedLocationCell;
 
-@property (strong, nonatomic) User *user;
+@property (strong, nonatomic) User *latestUserVersion;
+@property (strong, nonatomic) User *tempUserVersion;
 
-@property (strong, nonatomic)   CarType *car;
-@property (strong, nonatomic)   Location *location;
+@property (strong, nonatomic) CarType *car;
+@property (strong, nonatomic) Location *location;
 
 
 @property (strong,nonatomic) UIBarButtonItem *signOut;
+
+
+@property (strong, nonatomic) NSArray *uitextfields;
 
 - (IBAction)signOutPressed:(id)sender;
 
