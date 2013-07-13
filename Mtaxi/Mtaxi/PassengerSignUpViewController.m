@@ -33,16 +33,24 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     gestureRecognizer.cancelsTouchesInView = NO;
     [self.tableView addGestureRecognizer:gestureRecognizer];
+    
+    //all uitextfields.
+    self.uitextfields = @[self.username, self.password,self.email,self.firstName,self.lastName,self.phoneNumber];
 
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    self.username.text = @"";
-    self.password.text = @"";
-    self.email.text = @"";
-    self.firstName.text = @"";
-    self.lastName.text = @"";
-    self.phoneNumber.text = @"";
+//    self.username.text = @"";
+//    self.password.text = @"";
+//    self.email.text = @"";
+//    self.firstName.text = @"";
+//    self.lastName.text = @"";
+//    self.phoneNumber.text = @"";
+    
+    for (UITextField *uitextfield in self.uitextfields) {
+        uitextfield.text = @"";
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,7 +60,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
  
 }
 
-#pragma mark - Configuration
+#pragma mark - Configurationn
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
@@ -60,24 +68,11 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    [self.password resignFirstResponder];
-    [self.username resignFirstResponder];
-    [self.email resignFirstResponder];
-    [self.phoneNumber resignFirstResponder];
-    [self.firstName resignFirstResponder];
-    [self.lastName resignFirstResponder];
+    [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
 }
 - (void)hideKeyboard{
-    [self.password resignFirstResponder];
-    [self.username resignFirstResponder];
-    [self.email resignFirstResponder];
-    [self.phoneNumber resignFirstResponder];
-    [self.firstName resignFirstResponder];
-    [self.lastName resignFirstResponder];
+    [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
 }
-
-
-
 
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
@@ -125,6 +120,19 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
+    
+    
+    //email validation
+    if (textField == self.email) {
+        //UIAlertView *alert;
+        NSError *error;
+        if (![ScreenValidation validateEmailWithString:textField.text error:&error]){
+            [ScreenValidation showScreenValidationError:error];
+            self.email.text = @"";
+            
+        }
+    }
+    
     CGRect viewFrame = self.view.frame;
     viewFrame.origin.y += animatedDistance;
     
@@ -137,6 +145,60 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     [UIView commitAnimations];
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    
+    //accept backspace anytime
+    if ([string isEqualToString:@""]) {
+        return YES;
+    }
+    
+    if(textField == self.username){
+        
+        NSError *error;
+        
+        if (![ScreenValidation validateUsernameInputString:string error:&error]) {
+            [ScreenValidation showScreenValidationError:error];
+            return NO;
+        }
+        
+    }
+    
+    else if (textField == self.firstName){
+        
+        NSError *error;
+        if (![ScreenValidation validateNameInputString:string error:&error]) {
+            [ScreenValidation showScreenValidationError:error];
+            return NO;
+        }
+        
+    }
+    
+    else if (textField == self.lastName){
+        
+        NSError *error;
+        if (![ScreenValidation validateNameInputString:string error:&error]) {
+            [ScreenValidation showScreenValidationError:error];
+            return NO;
+        }
+        
+    }
+    
+    else if (textField == self.phoneNumber){
+        
+        NSString *phoneNumberText = textField.text;
+        
+        if ([ScreenValidation maskedPhoneNumber:&phoneNumberText withRange:range]) {
+            textField.text = phoneNumberText;
+        }else{
+            return NO;
+        }
+    }
+    
+    return YES;
+}
+
+
 
 #pragma mark - tableView
 
@@ -147,6 +209,13 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         indexPath.row == 0) {
         
         NSError * error;
+
+        //check if the user left empty information
+        if ([ScreenValidation checkForEmptyUITextField:self.uitextfields error:&error]) {
+            [ScreenValidation showScreenValidationError:error];
+            return;
+        };
+        
         
         Passenger *passenger = [[Passenger alloc] init];
         User *user = [[User alloc] initWithUsername:self.username.text andPassword: self.password.text andFirstName: self.firstName.text andLastName: self.lastName.text andPhone: self.phoneNumber.text andEmail: self.email.text andDriver: nil andPassenger: passenger];

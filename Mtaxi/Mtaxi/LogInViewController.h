@@ -15,13 +15,15 @@
 #import "CurrentSessionToken.h"
 #import "CurrentSessionController.h"
 #import "MBProgressHUD.h"
-
+#import "ScreenValidation.h"
 
 
 @interface LogInViewController : UITableViewController <UITextFieldDelegate, UIAlertViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *userName;
+@property (weak, nonatomic) IBOutlet UITextField *username;
 @property (weak, nonatomic) IBOutlet UITextField *password;
+
+@property (strong,nonatomic) NSArray *uitextfields;
 
 @end
 

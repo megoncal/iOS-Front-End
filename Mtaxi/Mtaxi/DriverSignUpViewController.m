@@ -32,7 +32,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     gestureRecognizer.cancelsTouchesInView = NO;
     [self.tableView addGestureRecognizer:gestureRecognizer];
     
-    
+    //all uitextfields.
     self.uitextfields = @[self.username, self.password,self.email,self.firstName,self.lastName,self.phoneNumber, self.carDescription, self.taxiStand];
     
     
@@ -64,25 +64,11 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    [self.password resignFirstResponder];
-    [self.username resignFirstResponder];
-    [self.email resignFirstResponder];
-    [self.phoneNumber resignFirstResponder];
-    [self.firstName resignFirstResponder];
-    [self.lastName resignFirstResponder];
-    [self.carDescription resignFirstResponder];
-    [self.taxiStand resignFirstResponder];
+    [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
 }
 
 - (void)hideKeyboard{
-    [self.password resignFirstResponder];
-    [self.username resignFirstResponder];
-    [self.email resignFirstResponder];
-    [self.phoneNumber resignFirstResponder];
-    [self.firstName resignFirstResponder];
-    [self.lastName resignFirstResponder];
-    [self.carDescription resignFirstResponder];
-    [self.taxiStand resignFirstResponder];
+    [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
 }
 
 #pragma mark - uitextfield delegate methods
@@ -133,13 +119,12 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
 
-    //validate email
+    //email validation
     if (textField == self.email) {
-        UIAlertView *alert;
-        if (![self validateEmailWithString:textField.text]){
-            NSString *message = @"Please add a valid e-mail.";
-            alert = [[UIAlertView alloc] initWithTitle:@"Validation" message:message  delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            [alert show];
+        //UIAlertView *alert;
+        NSError *error;
+        if (![ScreenValidation validateEmailWithString:textField.text error:&error]){
+            [ScreenValidation showScreenValidationError:error];
             self.email.text = @"";
 
         }
@@ -171,126 +156,52 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         return YES;
     }
     
-    // @[@"username", @"password",@"email",@"firstname",@"lastName",@"phoneNumber", @"carDescription", @"taxiStand"
-    
     if(textField == self.username){
         
-        NSCharacterSet *alphanumericCharacterSet = [NSCharacterSet alphanumericCharacterSet];
-        NSCharacterSet *customPunctuationCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@"_-."];
-        NSScanner *scanner = [NSScanner scannerWithString:string];
-        UIAlertView *alert;
-        if (![scanner scanCharactersFromSet:alphanumericCharacterSet intoString:NULL] &&
-            ![scanner scanCharactersFromSet:customPunctuationCharacterSet intoString:NULL]){
-            NSString *message = @"You can only use letters and punctuation marks.";
-            alert = [[UIAlertView alloc] initWithTitle:@"Validation" message:message  delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            [alert show];
-            return NO;
+        NSError *error;
         
+        if (![ScreenValidation validateUsernameInputString:string error:&error]) {
+            [ScreenValidation showScreenValidationError:error];
+            return NO;
         }
         
     }
     
     else if (textField == self.firstName){
-        NSCharacterSet *letterCharacterSet = [NSCharacterSet letterCharacterSet];
-        NSCharacterSet *whitespaceCharacterSet = [NSCharacterSet whitespaceCharacterSet];
-        NSScanner *scanner = [NSScanner scannerWithString:string];
-        UIAlertView *alert;
-        if (![scanner scanCharactersFromSet:letterCharacterSet intoString:NULL]&&
-            ![scanner scanCharactersFromSet:whitespaceCharacterSet intoString:NULL]){
-            NSString *message = @"You can only use letters and whitespace.";
-            alert = [[UIAlertView alloc] initWithTitle:@"Validation" message:message  delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            [alert show];
+
+        NSError *error;
+        if (![ScreenValidation validateNameInputString:string error:&error]) {
+            [ScreenValidation showScreenValidationError:error];
             return NO;
-            
         }
+    
     }
     
     else if (textField == self.lastName){
-        NSCharacterSet *letterCharacterSet = [NSCharacterSet letterCharacterSet];
-        NSCharacterSet *whitespaceCharacterSet = [NSCharacterSet whitespaceCharacterSet];
-        NSScanner *scanner = [NSScanner scannerWithString:string];
-        UIAlertView *alert;
-        if (![scanner scanCharactersFromSet:letterCharacterSet intoString:NULL]&&
-            ![scanner scanCharactersFromSet:whitespaceCharacterSet intoString:NULL]){
-            NSString *message = @"You can only use letters and whitespace.";
-            alert = [[UIAlertView alloc] initWithTitle:@"Validation" message:message  delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            [alert show];
+        
+        NSError *error;
+        if (![ScreenValidation validateNameInputString:string error:&error]) {
+            [ScreenValidation showScreenValidationError:error];
             return NO;
-            
         }
+    
     }
     
     else if (textField == self.phoneNumber){
         
-        int length = [self getLength:textField.text];
-        if(length == 10) {
-            if(range.length == 0)
-                return NO;
-        }
-        
-        if(length == 3) {
-            NSString *num = [self formatNumber:textField.text];
-            textField.text = [NSString stringWithFormat:@"(%@) ",num];
-            if(range.length > 0)
-                textField.text = [NSString stringWithFormat:@"%@",[num substringToIndex:3]];
-        }
-        else if(length == 6) {
-            NSString *num = [self formatNumber:textField.text];
-            textField.text = [NSString stringWithFormat:@"(%@) %@-",[num  substringToIndex:3],[num substringFromIndex:3]];
-            if(range.length > 0)
-                textField.text = [NSString stringWithFormat:@"(%@) %@",[num substringToIndex:3],[num substringFromIndex:3]];
+        NSString *phoneNumberText = textField.text;
+    
+        if ([ScreenValidation maskedPhoneNumber:&phoneNumberText withRange:range]) {
+            textField.text = phoneNumberText;
+        }else{
+            return NO;
         }
     }
 
     return YES;
 }
 
--(NSString*)formatNumber:(NSString*)mobileNumber
-{
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"(" withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@")" withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"-" withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"+" withString:@""];
-    
-    int length = [mobileNumber length];
-    if(length > 10) {
-        mobileNumber = [mobileNumber substringFromIndex: length-10];
-    }
-    return mobileNumber;
-}
 
-
--(int)getLength:(NSString*)mobileNumber
-{
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"(" withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@")" withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"-" withString:@""];
-    mobileNumber = [mobileNumber stringByReplacingOccurrencesOfString:@"+" withString:@""];
-    
-    int length = [mobileNumber length];
-    return length;
-}
-
-- (BOOL)validateEmailWithString:(NSString*)email
-{
-    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
-    return [emailTest evaluateWithObject:email];
-}
-
-- (BOOL) checkForEmptyUITextField: (NSArray*)array
-{
-   
-    for (UITextField *uitextfield in array) {
-        if([uitextfield.text isEqualToString:@""]){
-            return YES;
-        }
-    }
-    
-    return NO;
-}
 
 
 #pragma mark - tableView
@@ -300,15 +211,14 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     
     if ([self.tableView cellForRowAtIndexPath:indexPath] == self.signUpCell) {
         
+        NSError *error;
         //check if the user left empty information
-        if ([self checkForEmptyUITextField:self.uitextfields]) {
-            NSString *message = @"Please fill up empty information before sign up.";
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Validation" message:message  delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            [alert show];
+        if ([ScreenValidation checkForEmptyUITextField:self.uitextfields error:&error]) {
+            [ScreenValidation showScreenValidationError:error];
             return;
         };
         
-        NSError *error;
+
         ActiveStatus *activeStatus = [[ActiveStatus alloc]init];
         if (self.activeStatus.on) {
             activeStatus = [activeStatus initWithCode:@"ENABLED"];

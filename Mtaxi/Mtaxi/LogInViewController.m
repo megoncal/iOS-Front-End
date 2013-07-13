@@ -18,7 +18,7 @@
 @implementation LogInViewController
 
 - (void)viewWillAppear:(BOOL)animated{
-    self.userName.text = @"jgoodrider";
+    self.username.text = @"jgoodrider";
     self.password.text = @"Welcome!1";
 }
 
@@ -30,6 +30,9 @@
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     gestureRecognizer.cancelsTouchesInView = NO;
     [self.tableView addGestureRecognizer:gestureRecognizer];
+    
+    //all uitextfields.
+    self.uitextfields = @[self.username, self.password];
    
 }
 
@@ -39,14 +42,15 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    [self.userName resignFirstResponder];
-    [self.password resignFirstResponder];
+    
+    [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
+
 }
 
 //hide the keyboard from UITextField every time tableView is touched
 - (void)hideKeyboard{
-    [self.userName resignFirstResponder];
-    [self.password resignFirstResponder];
+    [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
+
 }
 
 
@@ -85,7 +89,7 @@
     NSError *error;
     NSString *returnedUser;
     
-    SignInToken *token = [[SignInToken alloc] initWithUsername:self.userName.text andPassword:self.password.text];
+    SignInToken *token = [[SignInToken alloc] initWithUsername:self.username.text andPassword:self.password.text];
     
     BOOL success = [UserServerController signIn:token userType:&returnedUser error: &error];
     
@@ -120,6 +124,13 @@
     //SignIn
     if (indexPath.section == 1 &&
         indexPath.row == 0) {
+        
+        NSError *error;
+        //validate empty fields
+        if([ScreenValidation checkForEmptyUITextField:self.uitextfields error:&error]){
+            [ScreenValidation showScreenValidationError:error];
+            return;
+        }
         
         
         MBProgressHUD *mbProgressHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];

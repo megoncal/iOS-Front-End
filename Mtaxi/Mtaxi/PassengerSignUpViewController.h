@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "User.h"
 #import "UserServerController.h"
-
+#import "ScreenValidation.h";
 
 //@protocol PassengerSignUpViewControllerDelegate;
 
@@ -26,7 +26,7 @@
 //@property (nonatomic, assign) id<PassengerSignUpViewControllerDelegate>delegate;
 
 
-
+@property (strong, nonatomic) NSArray *uitextfields;
 
 
 @end

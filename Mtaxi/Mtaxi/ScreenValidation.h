@@ -9,5 +9,25 @@
 #import <Foundation/Foundation.h>
 
 @interface ScreenValidation : NSObject
+ 
++ (NSString*) formatNumber:(NSString*)mobileNumber;
+
++ (int) getLength:(NSString*)mobileNumber;
+
++ (BOOL) validateEmailWithString:(NSString*)email error:(NSError **)error;
+
++ (BOOL) checkForEmptyUITextField: (NSArray*)uiTextFieldsArray error:(NSError **)error;
+
++ (void) uitextFieldsResignFirstResponder: (NSArray *)uiTextFieldsArray;
+
++ (BOOL) maskedPhoneNumber: (NSString **)phoneNumberTextField withRange: (NSRange) range;
+
++ (BOOL) validateUsernameInputString: (NSString *)inputString  error:(NSError **)error;
+
++ (BOOL) validateNameInputString: (NSString *)inputString  error:(NSError **)error;
+
++ (void)showScreenValidationError:(NSError *)error;
+
+
 
 @end
