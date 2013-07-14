@@ -92,17 +92,19 @@
             //Check if the type is an class, obtain the sub dictionary, and if the subdictionary exists marshal the object.
             
             id subDictionary = [dictionary objectForKey:propertyName];
-   
-            if (![subDictionary isKindOfClass:[NSNull class]] ) {
-                
-                id innerObject = [[NSClassFromString(typeAttribute) alloc] init];
-                if (innerObject){
-                    NSLog(@"About to set the property %@ with the value %@",propertyName, innerObject);
-                    [self marshallObject:innerObject dictionary:subDictionary error:error];
-                    [object setValue:innerObject forKey:propertyName];
+            
+            //verificar com o Eduardo.. adicionei esse if pois estava marshalling object quando subdicitonary == null;
+            if (subDictionary) {
+                if (![subDictionary isKindOfClass:[NSNull class]] ) {
+                    
+                    id innerObject = [[NSClassFromString(typeAttribute) alloc] init];
+                    if (innerObject){
+                        NSLog(@"About to set the property %@ with the value %@",propertyName, innerObject);
+                        [self marshallObject:innerObject dictionary:subDictionary error:error];
+                        [object setValue:innerObject forKey:propertyName];
+                    }
+                    
                 }
-                
-                
             }
         }
     }

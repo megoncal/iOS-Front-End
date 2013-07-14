@@ -316,14 +316,14 @@
 			children = (
 				76C5EC9D17482E7A00F87A75 /* User.h */,
 				76C5EC9E17482E7A00F87A75 /* User.m */,
+				76F692051755B36A000F9434 /* UserServerController.h */,
+				76F692061755B36A000F9434 /* UserServerController.m */,
 				76A04ED51756FDE10012481B /* SignInToken.h */,
 				76A04ED61756FDE10012481B /* SignInToken.m */,
 				76A04ED21756FB020012481B /* Driver.h */,
 				76A04ED31756FB020012481B /* Driver.m */,
 				76A04ECF1756FAD80012481B /* Passenger.h */,
 				76A04ED01756FAD80012481B /* Passenger.m */,
-				76F692051755B36A000F9434 /* UserServerController.h */,
-				76F692061755B36A000F9434 /* UserServerController.m */,
 				76C5EC9B17482E7A00F87A75 /* LogInViewController.h */,
 				76C5EC9C17482E7A00F87A75 /* LogInViewController.m */,
 			);

@@ -33,7 +33,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     [self.tableView addGestureRecognizer:gestureRecognizer];
     
     //all uitextfields.
-    self.uitextfields = @[self.username, self.password,self.email,self.firstName,self.lastName,self.phoneNumber, self.carDescription, self.taxiStand];
+    self.uitextfields = @[self.username, self.password,self.email,self.firstName,self.lastName,self.phone, self.carDescription, self.taxiStand];
     
     
 }
@@ -187,7 +187,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     
     }
     
-    else if (textField == self.phoneNumber){
+    else if (textField == self.phone){
         
         NSString *phoneNumberText = textField.text;
     
@@ -228,7 +228,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         
         Driver *driver = [[Driver alloc] initWithStatus:activeStatus andCarType:self.car andServedLocation: self.taxiStandLocation];
         
-        User *user = [[User alloc] initWithUsername:self.username.text andPassword: self.password.text andFirstName: self.firstName.text andLastName: self.lastName.text andPhone: self.phoneNumber.text andEmail: self.email.text andDriver: driver andPassenger: nil];
+        User *user = [[User alloc] initWithUsername:self.username.text andPassword: self.password.text andFirstName: self.firstName.text andLastName: self.lastName.text andPhone: self.phone.text andEmail: self.email.text andDriver: driver andPassenger: nil];
         
         BOOL success = [UserServerController signUpUser:user error:&error];
         

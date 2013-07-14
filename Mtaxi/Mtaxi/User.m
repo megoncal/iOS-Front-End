@@ -29,7 +29,7 @@
 - (id) initWithUid: (int) uid andVersion: (int) version andFirstName: (NSString *) firstName andLastName: (NSString *) lastName andPhone: (NSString *) phone andEmail: (NSString *) email  {
     if (self == [super init]) {
         self.uid = uid;
-        self.version = uid;
+        self.version = version;
         self.username = nil;
         self.password = nil;
         self.firstName = firstName;
@@ -41,6 +41,25 @@
         self.passenger = nil;
     }
     return self;
+}
+
+- (id)copy{
+    
+    User *user = [[User alloc] init];
+    
+    user.uid = self.uid;
+    user.version = self.version;
+    user.username = self.username;
+    user.password = self.password;
+    user.firstName = self.firstName;
+    user.lastName = self.lastName;
+    user.phone = self.phone;
+    user.email = self.email;
+    user.tenantname = self.tenantname;
+    user.driver = self.driver;
+    user.passenger = self.passenger;
+    
+    return user;
 }
 
 @end

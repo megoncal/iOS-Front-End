@@ -48,6 +48,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     gestureRecognizer.cancelsTouchesInView = NO;
     [self.tableView addGestureRecognizer:gestureRecognizer];
     
+    //all uitextfields.
+    self.uitextfields = @[self.email,self.firstName,self.lastName,self.phone];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -55,21 +58,15 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 }
 
 - (void)populateScreenFields:(User *)user {
-    self.uid = user.uid;
-    self.version = user.version;
     self.email.text = user.email;
     self.firstName.text = user.firstName;
     self.lastName.text = user.lastName;
     self.phone.text = user.phone;
-    self.user = user;
 }
 
 
 - (IBAction)signOutPressed:(id)sender {
-//    CurrentSession *currentSession = [CurrentSession currentSessionInformation];
-//    
-//    [currentSession logoutFromCurrentSession];
-
+    
     [CurrentSessionController resetCurrentSession];
     [(UINavigationController *)self.tabBarController.presentingViewController popToRootViewControllerAnimated:NO];
     [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
@@ -82,7 +79,10 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error.code == 0) {
+                
+                self.latestUserVersion = user;
                 [self populateScreenFields:user];
+                
                 //logged user info is displayed so prepare navigattion bar buttons
                 //prepare navigation bar button
                 self.cancelLeftBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelPressed)];
@@ -91,7 +91,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
                 self.navigationItem.rightBarButtonItem = self.editButtonItem;
                 
             }else{
-                
                 [Helper showMessage:error];
             }
             
@@ -101,31 +100,41 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 }
 
 
-
-- (void)populateUser {
-    self.user = [self.user initWithUid:self.uid
-                andVersion:self.version
-              andFirstName:self.firstName.text
-               andLastName:self.lastName.text
-                  andPhone:self.phone.text
-                  andEmail:self.email.text];
-}
-
 - (void)updatePassengerInformation{
     
-    [self populateUser];
+    bool flag_update_on_server = NO;
     
-    [UserServerController updateLoggedUserDetails:self.user completionHandler:^(User *user, NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            if (error.code == 0) {
-                [self populateScreenFields:user];
-            }
-            [Helper showMessage:error];
-            
-        });
-    }];
+    if (![self.latestUserVersion.firstName isEqualToString:self.firstName.text]) {
+        self.latestUserVersion.firstName = self.firstName.text;
+        flag_update_on_server = YES;
+    }
     
+    if (![self.latestUserVersion.lastName isEqualToString:self.lastName.text]) {
+        self.latestUserVersion.lastName = self.lastName.text;
+        flag_update_on_server = YES;
+    }
+
+    if (![self.latestUserVersion.phone isEqualToString:self.phone.text]) {
+        self.latestUserVersion.phone = self.phone.text;
+        flag_update_on_server = YES;
+    }
+
+    if (flag_update_on_server) {
+        [UserServerController updateLoggedUserDetails:self.latestUserVersion completionHandler:^(User *user, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (error.code == 0) {
+                    self.latestUserVersion = user;
+                    [self populateScreenFields:user];
+                }else if (error.code == 1){
+                    self.latestUserVersion = self.tempUserVersion;
+                    [self populateScreenFields:self.latestUserVersion];
+                }
+                [Helper showMessage:error];
+
+            });
+        }];
+    }
+
 }
 
 
@@ -193,29 +202,59 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    [self.firstName resignFirstResponder];
-    
-    [self.lastName resignFirstResponder];
-    [self.phone resignFirstResponder];
+    [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
 }
 - (void)hideKeyboard{
-    [self.firstName resignFirstResponder];
-    
-    [self.lastName resignFirstResponder];
-    [self.phone resignFirstResponder];
+    [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    
+    //accept backspace anytime
+    if ([string isEqualToString:@""]) {
+        return YES;
+    }
+    else if (textField == self.firstName){
+        
+        NSError *error;
+        if (![ScreenValidation validateNameInputString:string error:&error]) {
+            [ScreenValidation showScreenValidationError:error];
+            return NO;
+        }
+        
+    }
+    
+    else if (textField == self.lastName){
+        
+        NSError *error;
+        if (![ScreenValidation validateNameInputString:string error:&error]) {
+            [ScreenValidation showScreenValidationError:error];
+            return NO;
+        }
+        
+    }
+    
+    else if (textField == self.phone){
+        
+        NSString *phoneNumberText = textField.text;
+        
+        if ([ScreenValidation maskedPhoneNumber:&phoneNumberText withRange:range]) {
+            textField.text = phoneNumberText;
+        }else{
+            return NO;
+        }
+    }
+    
+    return YES;
+}
 
 #pragma mark - configure table view
 
-
-//
 //////set all table rows to a non editable state
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     return NO;
 }
-
-
 
 
 #pragma mark - fired actions
@@ -223,22 +262,23 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 // cancel pressed fired method
 - (void)cancelPressed{
     cancelPressed = YES;
+    self.latestUserVersion = self.tempUserVersion;
+    [self populateScreenFields:self.latestUserVersion];
     [self setEditing:NO animated:YES];
 }
 
 
 - (void)setEditing:(BOOL)flag animated:(BOOL)animated{
-    
-    [super setEditing:flag animated:animated];
-    
 
     if (flag == YES){
+        
         // Change views to edit mode.
         self.firstName.enabled = YES;
         self.lastName.enabled = YES;
         self.phone.enabled = YES;
+
         
-        
+        self.tempUserVersion = [self.latestUserVersion copy];
         
         //add cancel button to the navigation bar
         self.signout = self.navigationItem.leftBarButtonItem;
@@ -249,28 +289,28 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         
     }
     else {
+        
+        NSError *error;
+        if ([ScreenValidation checkForEmptyUITextField:self.uitextfields error:&error]) {
+            [ScreenValidation showScreenValidationError:error];
+            return;
+        }
+        
         self.firstName.enabled = NO;
-        [self.firstName resignFirstResponder];
         self.lastName.enabled = NO;
-        [self.lastName resignFirstResponder];
         self.phone.enabled = NO;
-        [self.phone resignFirstResponder];
         
-        
-        
+        [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
         
         if (!cancelPressed) {
-            
-            //to-do
-            // Save the changes on the server
             [self updatePassengerInformation];
         }
         
         self.navigationItem.leftBarButtonItem = self.signout;
         cancelPressed = NO;
     }
-  
     
+    [super setEditing:flag animated:animated];
 }
 
 

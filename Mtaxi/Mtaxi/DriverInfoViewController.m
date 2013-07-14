@@ -50,9 +50,11 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     [self.tableView addGestureRecognizer:gestureRecognizer];
     
     //all uitextfields.
-    self.uitextfields = @[self.email,self.firstName,self.lastName,self.phoneNumber, self.carDescription, self.taxiStand];
+    self.uitextfields = @[self.email,self.firstName,self.lastName,self.phone, self.carDescription, self.taxiStand];
+
     
 }
+
 
 - (void)viewWillAppear:(BOOL)animated{
     //retrieve logged driver info
@@ -109,7 +111,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     self.email.text = user.email;
     self.firstName.text = user.firstName;
     self.lastName.text = user.lastName;
-    self.phoneNumber.text = user.phone;
+    self.phone.text = user.phone;
     
     //driver
     self.taxiStand.text = user.driver.servedLocation.locationName;
@@ -137,8 +139,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     if( self.lastName.text){
         self.latestUserVersion.lastName = self.lastName.text;
     }
-    if(self.phoneNumber.text){
-        self.latestUserVersion.phone = self.phoneNumber.text;
+    if(self.phone.text){
+        self.latestUserVersion.phone = self.phone.text;
     }
     if (self.car) {
         self.latestUserVersion.driver.carType = self.car;
@@ -259,7 +261,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         
     }
     
-    else if (textField == self.phoneNumber){
+    else if (textField == self.phone){
         
         NSString *phoneNumberText = textField.text;
         
@@ -321,7 +323,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         // Change views to edit mode.
         self.firstName.enabled = YES;
         self.lastName.enabled = YES;
-        self.phoneNumber.enabled = YES;
+        self.phone.enabled = YES;
         self.taxiStand.enabled = YES;
         self.carDescription.enabled = YES;
         self.activeStatus.enabled = YES;
@@ -329,7 +331,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         
         self.tableView.allowsSelectionDuringEditing = YES;
         
-        self.tempUserVersion = self.latestUserVersion;
+        self.tempUserVersion = [self.latestUserVersion copy];
         
         self.carCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         self.servedLocationCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -351,7 +353,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         
         self.firstName.enabled = NO;
         self.lastName.enabled = NO;
-        self.phoneNumber.enabled = NO;
+        self.phone.enabled = NO;
         self.taxiStand.enabled = NO;
         self.carDescription.enabled = NO;
         self.activeStatus.enabled = NO;

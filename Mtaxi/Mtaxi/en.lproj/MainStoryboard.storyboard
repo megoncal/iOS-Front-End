@@ -479,7 +479,7 @@
                         <outlet property="firstName" destination="Y2Y-k8-emX" id="4Wb-KU-WJ9"/>
                         <outlet property="lastName" destination="OD3-iN-Tet" id="hZ9-cM-gLz"/>
                         <outlet property="password" destination="gbT-IT-oGj" id="DLm-eq-ocU"/>
-                        <outlet property="phoneNumber" destination="Urd-AG-r3Q" id="048-4H-770"/>
+                        <outlet property="phone" destination="Urd-AG-r3Q" id="CXi-WO-nIW"/>
                         <outlet property="username" destination="Uag-N9-xzJ" id="ibH-Qc-1sC"/>
                     </connections>
                 </tableViewController>
@@ -817,7 +817,7 @@
                         <outlet property="firstName" destination="Heb-6d-Y53" id="ckw-PS-M6M"/>
                         <outlet property="lastName" destination="keS-Kj-W2f" id="EKT-ca-4P0"/>
                         <outlet property="password" destination="GTS-Rs-4Dr" id="oyM-Lh-aSJ"/>
-                        <outlet property="phoneNumber" destination="cKF-Q0-2K4" id="zmY-ft-dzU"/>
+                        <outlet property="phone" destination="cKF-Q0-2K4" id="RD3-wh-D30"/>
                         <outlet property="signUpCell" destination="UBq-ZG-euf" id="wwD-do-1Js"/>
                         <outlet property="taxiStand" destination="rTO-KQ-eRc" id="HeL-pX-kMx"/>
                         <outlet property="taxiStandCell" destination="8Rf-NK-ZsC" id="sBP-dN-2Xd"/>
@@ -1170,7 +1170,7 @@
                         <outlet property="email" destination="Fw0-dD-CVh" id="cuC-9N-44c"/>
                         <outlet property="firstName" destination="rh7-32-HwZ" id="AgP-LN-hv0"/>
                         <outlet property="lastName" destination="R0F-1G-g3D" id="mD0-F2-tDF"/>
-                        <outlet property="phone" destination="k84-hZ-bG8" id="6n1-RL-VdE"/>
+                        <outlet property="phone" destination="k84-hZ-bG8" id="bEF-Io-Kde"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7xr-Dn-NFN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2007,7 +2007,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="email" destination="caU-OB-fnC" id="BzW-Ie-U35"/>
                         <outlet property="firstName" destination="dp2-uJ-0lR" id="dZw-w8-sjO"/>
                         <outlet property="lastName" destination="kpM-hD-YVv" id="pwX-Hr-d38"/>
-                        <outlet property="phoneNumber" destination="dUg-BR-NaT" id="PFR-mq-g2j"/>
+                        <outlet property="phone" destination="dUg-BR-NaT" id="L9a-zT-3uv"/>
                         <outlet property="servedLocationCell" destination="Dg8-yo-WFq" id="oKm-fd-TuG"/>
                         <outlet property="taxiStand" destination="euI-rs-Mth" id="eGX-kB-rsC"/>
                     </connections>

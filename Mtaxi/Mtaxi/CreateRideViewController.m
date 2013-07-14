@@ -28,11 +28,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
@@ -53,7 +53,7 @@
     selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     
     if ( selectedCell == self.pickUpLocation ||
-         selectedCell == self.dropOffLocation) {
+        selectedCell == self.dropOffLocation) {
         
         LocationViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Location"];
         controller.delegate = self;
@@ -84,7 +84,7 @@
 
 
 - (void)locationSelected:(Location *)location atViewControler:(LocationViewController *)viewController{
-   
+    
     //do something
     if (selectedCell == self.pickUpLocation){
         
@@ -103,12 +103,27 @@
 }
 
 
-   
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    
+    if([identifier isEqualToString:@"RideConfirmation"]){
+     
+        if ([self.pickUpLocation.detailTextLabel.text isEqual:@""]||
+            [self.dropOffLocation.detailTextLabel.text isEqual:@""]||
+            [self.carType.detailTextLabel.text isEqual:@""]) {
+            
+            NSString *screenValidationError =  @"Please fill up empty information before proceed";
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Input Validation" message:screenValidationError  delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert show];
+            
+            return NO;
+        }
+    }
+    return YES;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
-    
     if([segue.identifier isEqualToString:@"RideConfirmation"]){
-        
         self.ride.pickUpDateTime = self.datePicker.date;
         ConfirmRideViewController *confirmRideViewController = segue.destinationViewController;
         confirmRideViewController.ride = self.ride;

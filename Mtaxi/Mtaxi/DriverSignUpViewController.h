@@ -28,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *email;
 @property (weak, nonatomic) IBOutlet UITextField *firstName;
 @property (weak, nonatomic) IBOutlet UITextField *lastName;
-@property (weak, nonatomic) IBOutlet UITextField *phoneNumber;
+@property (weak, nonatomic) IBOutlet UITextField *phone;
 @property (weak, nonatomic) IBOutlet UITextField *carDescription;
 @property (weak, nonatomic) IBOutlet UITextField *taxiStand;
 @property (weak, nonatomic) IBOutlet UISwitch *activeStatus;
