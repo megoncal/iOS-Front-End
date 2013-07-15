@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="IgA-NK-a9b">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="IgA-NK-a9b">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -289,6 +289,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uag-N9-xzJ">
+                                                    <accessibility key="accessibilityConfiguration" label="username"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="260" id="6ul-rl-UzF"/>
                                                         <constraint firstAttribute="height" constant="30" id="WhZ-nM-lcq"/>
@@ -302,6 +303,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <accessibility key="accessibilityConfiguration" label="username"/>
                                         <constraints>
                                             <constraint firstItem="Uag-N9-xzJ" firstAttribute="centerX" secondItem="1I8-AV-Ayw" secondAttribute="centerX" type="default" id="Jmw-oZ-Fbt"/>
                                             <constraint firstItem="Uag-N9-xzJ" firstAttribute="top" secondItem="1I8-AV-Ayw" secondAttribute="top" constant="8" id="iJq-Kn-lDi"/>
@@ -315,6 +317,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gbT-IT-oGj">
+                                                    <accessibility key="accessibilityConfiguration" label="password"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="260" id="Byf-j3-zp1"/>
                                                         <constraint firstAttribute="height" constant="30" id="CUy-il-6td"/>
@@ -328,6 +331,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <accessibility key="accessibilityConfiguration" label="password"/>
                                         <constraints>
                                             <constraint firstItem="gbT-IT-oGj" firstAttribute="centerX" secondItem="zCq-z4-L3M" secondAttribute="centerX" type="default" id="b0N-u5-85B"/>
                                             <constraint firstItem="gbT-IT-oGj" firstAttribute="centerY" secondItem="zCq-z4-L3M" secondAttribute="centerY" type="default" id="zov-rn-ySF"/>
@@ -341,6 +345,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KIy-dm-Hp5">
+                                                    <accessibility key="accessibilityConfiguration" label="email"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="260" id="Ccz-l7-GE6"/>
                                                         <constraint firstAttribute="height" constant="30" id="eMM-TQ-VWi"/>
@@ -354,6 +359,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <accessibility key="accessibilityConfiguration" label="email"/>
                                         <constraints>
                                             <constraint firstItem="KIy-dm-Hp5" firstAttribute="centerX" secondItem="Hi1-Ft-XSq" secondAttribute="centerX" type="default" id="Bx3-CI-u1i"/>
                                             <constraint firstItem="KIy-dm-Hp5" firstAttribute="top" secondItem="Hi1-Ft-XSq" secondAttribute="top" constant="8" id="X77-n6-nfF"/>
@@ -385,6 +391,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <accessibility key="accessibilityConfiguration" label="firstName"/>
                                         <constraints>
                                             <constraint firstItem="Y2Y-k8-emX" firstAttribute="top" secondItem="sLu-ES-Tbu" secondAttribute="top" constant="8" id="QLL-ZV-oAM"/>
                                             <constraint firstItem="Y2Y-k8-emX" firstAttribute="centerX" secondItem="sLu-ES-Tbu" secondAttribute="centerX" type="default" id="b82-Wk-3HP"/>
@@ -398,6 +405,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OD3-iN-Tet">
+                                                    <accessibility key="accessibilityConfiguration" label="lastName"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="260" id="1Qa-Tw-4ZH"/>
                                                         <constraint firstAttribute="height" constant="30" id="sW9-n5-fVZ"/>
@@ -411,6 +419,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <accessibility key="accessibilityConfiguration" label="lastName"/>
                                         <constraints>
                                             <constraint firstItem="OD3-iN-Tet" firstAttribute="centerY" secondItem="gDT-i6-EPy" secondAttribute="centerY" type="default" id="BND-LN-hCL"/>
                                             <constraint firstItem="OD3-iN-Tet" firstAttribute="centerX" secondItem="gDT-i6-EPy" secondAttribute="centerX" type="default" id="klN-7k-i12"/>
@@ -424,6 +433,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Urd-AG-r3Q">
+                                                    <accessibility key="accessibilityConfiguration" label="phoneNumber"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="260" id="THB-Lk-ujd"/>
                                                         <constraint firstAttribute="height" constant="30" id="oEt-Wv-ARh"/>
@@ -437,6 +447,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <accessibility key="accessibilityConfiguration" label="phoneNumber"/>
                                         <constraints>
                                             <constraint firstItem="Urd-AG-r3Q" firstAttribute="top" secondItem="65T-jF-2R4" secondAttribute="top" constant="8" id="FeQ-g3-AOf"/>
                                             <constraint firstItem="Urd-AG-r3Q" firstAttribute="centerX" secondItem="65T-jF-2R4" secondAttribute="centerX" type="default" id="hXf-YH-9xg"/>
@@ -541,6 +552,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lec-3i-F0J">
+                                                    <accessibility key="accessibilityConfiguration" label="username"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="CvA-Kt-smv"/>
                                                         <constraint firstAttribute="width" constant="260" id="b1U-he-SrN"/>
@@ -554,6 +566,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <accessibility key="accessibilityConfiguration" label="username"/>
                                         <constraints>
                                             <constraint firstItem="lec-3i-F0J" firstAttribute="top" secondItem="QYh-jt-UJL" secondAttribute="top" constant="8" id="abJ-lT-Ely"/>
                                             <constraint firstItem="lec-3i-F0J" firstAttribute="centerX" secondItem="QYh-jt-UJL" secondAttribute="centerX" type="default" id="bb7-dc-8U3"/>
@@ -567,6 +580,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GTS-Rs-4Dr">
+                                                    <accessibility key="accessibilityConfiguration" label="password"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="260" id="EoO-W5-qPo"/>
                                                         <constraint firstAttribute="height" constant="30" id="ais-9o-ldL"/>
@@ -580,6 +594,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <accessibility key="accessibilityConfiguration" label="password"/>
                                         <constraints>
                                             <constraint firstItem="GTS-Rs-4Dr" firstAttribute="centerX" secondItem="vIg-y3-f60" secondAttribute="centerX" type="default" id="3Qs-ne-vzy"/>
                                             <constraint firstItem="GTS-Rs-4Dr" firstAttribute="centerY" secondItem="vIg-y3-f60" secondAttribute="centerY" type="default" id="xuz-Dd-Dfk"/>
@@ -593,6 +608,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IJd-4n-yoW">
+                                                    <accessibility key="accessibilityConfiguration" label="email"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="260" id="3Kj-Zm-CJg"/>
                                                         <constraint firstAttribute="height" constant="30" id="MIp-ZW-38u"/>
@@ -606,6 +622,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <accessibility key="accessibilityConfiguration" label="email"/>
                                         <constraints>
                                             <constraint firstItem="IJd-4n-yoW" firstAttribute="top" secondItem="Kma-t1-HEK" secondAttribute="top" constant="8" id="55j-du-paQ"/>
                                             <constraint firstItem="IJd-4n-yoW" firstAttribute="centerX" secondItem="Kma-t1-HEK" secondAttribute="centerX" type="default" id="Fyf-Ub-bUX"/>
@@ -623,7 +640,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Heb-6d-Y53">
-                                                    <accessibility key="accessibilityConfiguration" hint="firstNameTextField3" label="firstNameTextField2"/>
+                                                    <accessibility key="accessibilityConfiguration" hint="" label="firstName"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="260" id="QOa-SB-D5q"/>
                                                         <constraint firstAttribute="height" constant="30" id="V09-oE-NJC"/>
@@ -637,6 +654,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <accessibility key="accessibilityConfiguration" label="firstName"/>
                                         <constraints>
                                             <constraint firstItem="Heb-6d-Y53" firstAttribute="centerX" secondItem="dPC-dc-ELh" secondAttribute="centerX" type="default" id="1Yj-wn-KiP"/>
                                             <constraint firstItem="Heb-6d-Y53" firstAttribute="top" secondItem="dPC-dc-ELh" secondAttribute="top" constant="8" id="pSm-qX-qfr"/>
@@ -650,6 +668,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="keS-Kj-W2f">
+                                                    <accessibility key="accessibilityConfiguration" label="lastName"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="Wcp-Lg-vfE"/>
                                                         <constraint firstAttribute="width" constant="260" id="Ww1-b2-AkX"/>
@@ -663,6 +682,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <accessibility key="accessibilityConfiguration" label="lastName"/>
                                         <constraints>
                                             <constraint firstItem="keS-Kj-W2f" firstAttribute="centerY" secondItem="YTg-DC-tIl" secondAttribute="centerY" type="default" id="Mtc-qY-yXj"/>
                                             <constraint firstItem="keS-Kj-W2f" firstAttribute="centerX" secondItem="YTg-DC-tIl" secondAttribute="centerX" type="default" id="r9l-AB-9NL"/>
@@ -676,6 +696,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cKF-Q0-2K4">
+                                                    <accessibility key="accessibilityConfiguration" label="phoneNumber"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="eYT-0b-nnX"/>
                                                         <constraint firstAttribute="width" constant="260" id="iwX-y2-787"/>
@@ -689,6 +710,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <accessibility key="accessibilityConfiguration" label="phoneNumber"/>
                                         <constraints>
                                             <constraint firstItem="cKF-Q0-2K4" firstAttribute="centerX" secondItem="ZZg-D7-byk" secondAttribute="centerX" type="default" id="L3W-Mp-Q78"/>
                                             <constraint firstItem="cKF-Q0-2K4" firstAttribute="top" secondItem="ZZg-D7-byk" secondAttribute="top" constant="8" id="mzb-Qs-eHz"/>
@@ -706,6 +728,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Car Type" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I99-jQ-JcE">
+                                                    <accessibility key="accessibilityConfiguration" label="carType"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="T7n-sP-B4p"/>
                                                         <constraint firstAttribute="width" constant="260" id="gpc-ZV-aIS"/>
@@ -719,6 +742,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <accessibility key="accessibilityConfiguration" label="carType"/>
                                         <constraints>
                                             <constraint firstItem="I99-jQ-JcE" firstAttribute="top" secondItem="jWK-aa-sKw" secondAttribute="top" constant="9" id="H8i-IO-IQY"/>
                                             <constraint firstItem="I99-jQ-JcE" firstAttribute="centerX" secondItem="jWK-aa-sKw" secondAttribute="centerX" type="default" id="inF-s8-GDl"/>
@@ -732,6 +756,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Taxi Stand" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rTO-KQ-eRc">
+                                                    <accessibility key="accessibilityConfiguration" label="location"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="260" id="DYs-Df-MhV"/>
                                                         <constraint firstAttribute="height" constant="30" id="wQD-Yu-Urr"/>
@@ -745,6 +770,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <accessibility key="accessibilityConfiguration" label="location"/>
                                         <constraints>
                                             <constraint firstItem="rTO-KQ-eRc" firstAttribute="centerX" secondItem="8Rf-NK-ZsC" secondAttribute="centerX" type="default" id="bcJ-La-lKA"/>
                                             <constraint firstItem="rTO-KQ-eRc" firstAttribute="top" secondItem="8Rf-NK-ZsC" secondAttribute="top" constant="8" id="kTg-hx-jH9"/>
@@ -1083,7 +1109,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="rh7-32-HwZ">
-                                                    <accessibility key="accessibilityConfiguration" label="firstNameTextField1"/>
+                                                    <accessibility key="accessibilityConfiguration" label="firstName"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="9fg-Qw-ldQ"/>
                                                         <constraint firstAttribute="width" constant="260" id="o5p-LF-Rkd"/>
@@ -1097,6 +1123,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <accessibility key="accessibilityConfiguration" label="firstName"/>
                                         <constraints>
                                             <constraint firstItem="rh7-32-HwZ" firstAttribute="centerX" secondItem="acx-ig-7R6" secondAttribute="centerX" type="default" id="Alz-1A-ivE"/>
                                             <constraint firstItem="rh7-32-HwZ" firstAttribute="top" secondItem="acx-ig-7R6" secondAttribute="top" constant="8" id="ZMn-ou-O4Y"/>
@@ -1110,6 +1137,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="R0F-1G-g3D">
+                                                    <accessibility key="accessibilityConfiguration" label="lastName"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="260" id="1Mc-ib-V6k"/>
                                                         <constraint firstAttribute="height" constant="30" id="eup-9t-DNZ"/>
@@ -1123,6 +1151,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <accessibility key="accessibilityConfiguration" label="lastName"/>
                                         <constraints>
                                             <constraint firstItem="R0F-1G-g3D" firstAttribute="centerY" secondItem="90R-YN-Ffx" secondAttribute="centerY" type="default" id="XBA-cA-d73"/>
                                             <constraint firstItem="R0F-1G-g3D" firstAttribute="centerX" secondItem="90R-YN-Ffx" secondAttribute="centerX" type="default" id="stM-1a-Nsa"/>
@@ -1136,6 +1165,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="k84-hZ-bG8">
+                                                    <accessibility key="accessibilityConfiguration" label="phoneNumber"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="260" id="Pob-Xr-Cxh"/>
                                                         <constraint firstAttribute="height" constant="30" id="XYf-i6-Q4o"/>
@@ -1831,6 +1861,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="dp2-uJ-0lR">
+                                                    <accessibility key="accessibilityConfiguration" label="firstName"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="260" id="1iA-8s-lqA"/>
                                                         <constraint firstAttribute="height" constant="30" id="iZl-uf-nwQ"/>
@@ -1844,6 +1875,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <accessibility key="accessibilityConfiguration" label="firstName"/>
                                         <constraints>
                                             <constraint firstItem="dp2-uJ-0lR" firstAttribute="centerX" secondItem="VUM-KT-lcZ" secondAttribute="centerX" type="default" id="1ol-5V-baf"/>
                                             <constraint firstItem="dp2-uJ-0lR" firstAttribute="top" secondItem="VUM-KT-lcZ" secondAttribute="top" constant="8" id="Usz-Jo-B4I"/>
@@ -1857,6 +1889,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="kpM-hD-YVv">
+                                                    <accessibility key="accessibilityConfiguration" label="lastName"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="B8b-5p-wST"/>
                                                         <constraint firstAttribute="width" constant="260" id="mp0-lH-kdt"/>
@@ -1870,6 +1903,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <accessibility key="accessibilityConfiguration" label="lastName"/>
                                         <constraints>
                                             <constraint firstItem="kpM-hD-YVv" firstAttribute="centerY" secondItem="Plx-2J-wVG" secondAttribute="centerY" type="default" id="iRu-gN-Nbz"/>
                                             <constraint firstItem="kpM-hD-YVv" firstAttribute="centerX" secondItem="Plx-2J-wVG" secondAttribute="centerX" type="default" id="sZf-ZX-hHZ"/>
@@ -1883,6 +1917,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="dUg-BR-NaT">
+                                                    <accessibility key="accessibilityConfiguration" label="phoneNumber"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="260" id="r2d-lv-BMt"/>
                                                         <constraint firstAttribute="height" constant="30" id="vXu-j6-JNO"/>
@@ -1896,6 +1931,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <accessibility key="accessibilityConfiguration" label="phoneNumber"/>
                                         <constraints>
                                             <constraint firstItem="dUg-BR-NaT" firstAttribute="centerX" secondItem="6MZ-JU-AU1" secondAttribute="centerX" type="default" id="B8E-tk-aQH"/>
                                             <constraint firstItem="dUg-BR-NaT" firstAttribute="centerY" secondItem="6MZ-JU-AU1" secondAttribute="centerY" type="default" id="xI3-oR-lp8"/>
@@ -1913,6 +1949,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Car Type" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="THY-oX-QpM">
+                                                    <accessibility key="accessibilityConfiguration" label="carType"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="9J2-4Q-Uvs"/>
                                                         <constraint firstAttribute="width" constant="260" id="pHJ-Ml-qWY"/>
@@ -1926,6 +1963,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <accessibility key="accessibilityConfiguration" label="carType"/>
                                         <constraints>
                                             <constraint firstItem="THY-oX-QpM" firstAttribute="top" secondItem="jG9-Gw-5K8" secondAttribute="top" constant="8" id="Zan-TL-khI"/>
                                             <constraint firstItem="THY-oX-QpM" firstAttribute="centerX" secondItem="jG9-Gw-5K8" secondAttribute="centerX" type="default" id="jMy-3s-G73"/>
@@ -1939,6 +1977,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Taxi Stand" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="euI-rs-Mth">
+                                                    <accessibility key="accessibilityConfiguration" label="location"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="J6v-dY-0bc"/>
                                                         <constraint firstAttribute="width" constant="260" id="PQp-De-RZq"/>
@@ -1952,6 +1991,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <accessibility key="accessibilityConfiguration" label="location"/>
                                         <constraints>
                                             <constraint firstItem="euI-rs-Mth" firstAttribute="centerX" secondItem="Dg8-yo-WFq" secondAttribute="centerX" type="default" id="XR9-3j-7li"/>
                                             <constraint firstItem="euI-rs-Mth" firstAttribute="centerY" secondItem="Dg8-yo-WFq" secondAttribute="centerY" type="default" id="xgE-iU-AWn"/>
@@ -2858,6 +2898,173 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="car-side.png" width="30" height="30"/>
         <image name="id-card.png" width="30" height="30"/>
     </resources>
+    <classes>
+        <class className="CarTypeViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CarTypeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelPressed:"/>
+            </relationships>
+        </class>
+        <class className="ConfirmRideViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConfirmRideViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="donePressed:"/>
+                <relationship kind="outlet" name="carType" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="dropOffLocation" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="messageToTheDriver" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="pickUpDate" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="pickUpLocation" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="pickUpLocationComplement" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CreateRideViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CreateRideViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelPressed:"/>
+                <relationship kind="outlet" name="carType" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="dropOffLocation" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="pickUpLocation" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="DriverDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DriverDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activeStatus" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="carType" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="email" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="firstName" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="phone" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="taxiStand" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="DriverInfoViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DriverInfoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="signOutPressed:"/>
+                <relationship kind="outlet" name="activeStatus" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="activeStatusLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="addedNavigationItem" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="carCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="carDescription" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="phone" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="servedLocationCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="taxiStand" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="DriverRideDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DriverRideDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="takePressed:"/>
+                <relationship kind="outlet" name="date" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="from" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="message" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="passenger" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="pickUpLocationComplement" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="to" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="DriverSignUpViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DriverSignUpViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activeStatus" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="carCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="carDescription" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="phone" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="signUpCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="taxiStand" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="taxiStandCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="LocationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LocationViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelPressed:"/>
+                <relationship kind="outlet" name="mainTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="LogInViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LogInViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="PassengerDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PassengerDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="email" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="firstName" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="phone" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="PassengerInfoViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PassengerInfoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="signOutPressed:"/>
+                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="phone" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="PassengerSignUpViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PassengerSignUpViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="phone" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="RateRideViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RateRideViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="savePressed:"/>
+                <relationship kind="outlet" name="comment" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="rating" candidateClass="UISlider"/>
+            </relationships>
+        </class>
+        <class className="RideDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RideDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="date" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="driver" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="from" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="message" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="pickUpLocationComplement" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="status" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="to" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="RidesListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RidesListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addRidePressed:"/>
+            </relationships>
+        </class>
+        <class className="UnassignedRidesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UnassignedRidesViewController.h"/>
+        </class>
+        <class className="UserViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
