@@ -34,11 +34,13 @@
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *servedLocationCell;
 
-@property (strong, nonatomic) User *latestUserVersion;
-@property (strong, nonatomic) User *tempUserVersion;
+//@property (assign, nonatomic) int uid;
+//@property (assign, nonatomic) int version;
 
-@property (strong, nonatomic) CarType *car;
-@property (strong, nonatomic) Location *location;
+@property (strong, nonatomic) User *user;
+
+//@property (strong, nonatomic) CarType *carType;
+//@property (strong, nonatomic) Location *location;
 
 
 @property (strong,nonatomic) UIBarButtonItem *signOut;

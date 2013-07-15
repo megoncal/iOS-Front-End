@@ -26,8 +26,7 @@
 
 @property (strong, nonatomic) UIBarButtonItem *signout;
 
-@property (strong, nonatomic) User *latestUserVersion;
-@property (strong, nonatomic) User *tempUserVersion;
+@property (strong, nonatomic) User *user;
 
 @property (strong, nonatomic) NSArray *uitextfields;
 

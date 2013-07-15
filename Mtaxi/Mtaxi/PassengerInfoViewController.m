@@ -64,6 +64,16 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     self.phone.text = user.phone;
 }
 
+- (User *) createUserFromUI {
+    
+    User *user = [[User alloc] initWithUid:self.user.uid
+                            andVersion:self.user.version
+                          andFirstName:self.firstName.text
+                           andLastName:self.lastName.text
+                              andPhone:self.phone.text
+                              andEmail:self.email.text];
+    return user;
+}
 
 - (IBAction)signOutPressed:(id)sender {
     
@@ -75,13 +85,13 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void)retrievePassengerInformation{
     
-    [UserServerController retrieveLoggedUserDetails:^(User *user, NSError *error) {
+    [UserServerController retrieveLoggedUserDetails:^(User *userFromServer, NSError *error) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error.code == 0) {
                 
-                self.latestUserVersion = user;
-                [self populateScreenFields:user];
+                self.user = userFromServer;
+                [self populateScreenFields:userFromServer];
                 
                 //logged user info is displayed so prepare navigattion bar buttons
                 //prepare navigation bar button
@@ -102,32 +112,21 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void)updatePassengerInformation{
     
-    bool flag_update_on_server = NO;
     
-    if (![self.latestUserVersion.firstName isEqualToString:self.firstName.text]) {
-        self.latestUserVersion.firstName = self.firstName.text;
-        flag_update_on_server = YES;
-    }
-    
-    if (![self.latestUserVersion.lastName isEqualToString:self.lastName.text]) {
-        self.latestUserVersion.lastName = self.lastName.text;
-        flag_update_on_server = YES;
+    //No need to update if nothing changed
+    if ([self.user.firstName isEqualToString:self.firstName.text] &&
+        [self.user.lastName isEqualToString:self.lastName.text] &&
+        [self.user.phone isEqualToString:self.phone.text] ) {
+        return;
     }
 
-    if (![self.latestUserVersion.phone isEqualToString:self.phone.text]) {
-        self.latestUserVersion.phone = self.phone.text;
-        flag_update_on_server = YES;
-    }
-
-    if (flag_update_on_server) {
-        [UserServerController updateLoggedUserDetails:self.latestUserVersion completionHandler:^(User *user, NSError *error) {
+    User *userFromUI = [self createUserFromUI];
+    
+    [UserServerController updateLoggedUserDetails:userFromUI completionHandler:^(User *userFromServer, NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (error.code == 0) {
-                    self.latestUserVersion = user;
-                    [self populateScreenFields:user];
-                }else if (error.code == 1){
-                    self.latestUserVersion = self.tempUserVersion;
-                    [self populateScreenFields:self.latestUserVersion];
+                    self.user = userFromServer;
+                    [self populateScreenFields:userFromServer];
                 }
                 [Helper showMessage:error];
 
@@ -135,7 +134,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         }];
     }
 
-}
 
 
 #pragma mark - configure textField
@@ -262,8 +260,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 // cancel pressed fired method
 - (void)cancelPressed{
     cancelPressed = YES;
-    self.latestUserVersion = self.tempUserVersion;
-    [self populateScreenFields:self.latestUserVersion];
+    [self populateScreenFields:self.user];
     [self setEditing:NO animated:YES];
 }
 
@@ -277,9 +274,6 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         self.lastName.enabled = YES;
         self.phone.enabled = YES;
 
-        
-        self.tempUserVersion = [self.latestUserVersion copy];
-        
         //add cancel button to the navigation bar
         self.signout = self.navigationItem.leftBarButtonItem;
         self.navigationItem.leftBarButtonItem = self.cancelLeftBarButton;

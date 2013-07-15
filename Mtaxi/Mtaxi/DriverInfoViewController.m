@@ -78,14 +78,14 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void)retrieveDriverInformation{
     
-    [UserServerController retrieveLoggedUserDetails:^(User *user, NSError *error) {
+    [UserServerController retrieveLoggedUserDetails:^(User *userFromServer, NSError *error) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error.code == 0) {
                 
-                self.latestUserVersion = user;
+                self.user = userFromServer;
                 
-                [self populateScreenFields:user];
+                [self populateScreenFields:userFromServer];
                 
                 //logged user info is displayed so prepare navigattion bar buttons
                 
@@ -124,42 +124,50 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     
     self.carDescription.text = user.driver.carType.description;
     
+    
 }
+
+
+- (User *)createUserFromUI {
+    
+    
+    
+    ActiveStatus *activeStatus = [[ActiveStatus alloc] init];
+    if(self.activeStatus.on) {
+        activeStatus.code = @"ENABLED";
+    } else {
+        activeStatus.code = @"DISABLED";
+    }
+    
+
+    Driver *driver = [[Driver alloc] initWithStatus:activeStatus andCarType:self.user.driver.carType andServedLocation:self.user.driver.servedLocation];
+    
+    //Create a user using the same uid and version already in the "reference" user
+    User *user = [[User alloc] initWithUid:self.user.uid
+                            andVersion:self.user.version
+                          andFirstName:self.firstName.text
+                           andLastName:self.lastName.text
+                              andPhone:self.phone.text
+                              andEmail:self.email.text
+                             andDriver:driver
+                          andPassenger:nil];
+    return user;
+}
+
 
 #pragma mark - updateData
 
 - (void)updateDriverInformation{
     
-    if (self.email.text) {
-        self.latestUserVersion.email = self.email.text;
-    }
-    if (self.firstName.text) {
-        self.latestUserVersion.firstName = self.firstName.text;
-    }
-    if( self.lastName.text){
-        self.latestUserVersion.lastName = self.lastName.text;
-    }
-    if(self.phone.text){
-        self.latestUserVersion.phone = self.phone.text;
-    }
-    if (self.car) {
-        self.latestUserVersion.driver.carType = self.car;
-    }
-    if (self.location) {
-        self.latestUserVersion.driver.servedLocation = self.location;
-    }
-    if(self.activeStatus.on)
-        self.latestUserVersion.driver.activeStatus.code = @"ENABLED";
-    else
-        self.latestUserVersion.driver.activeStatus.code = @"DISABLED";
+    User *userFromUI = self.createUserFromUI;
     
-    [UserServerController updateLoggedUserDetails:self.latestUserVersion completionHandler:^(User *user, NSError *error) {
+    [UserServerController updateLoggedUserDetails:userFromUI completionHandler:^(User *userFromServer, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [Helper showMessage:error];
-            if (error.code == 1) {
-                self.latestUserVersion = self.tempUserVersion;
-                [self populateScreenFields:self.latestUserVersion];
+            if (error.code == 0) {
+                self.user = userFromServer;
+                [self populateScreenFields:userFromServer];
             }
+            [Helper showMessage:error];
         });
         
     }];
@@ -308,8 +316,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 // cancel pressed fired method
 - (void)cancelPressed{
     cancelPressed = YES;
-    self.latestUserVersion = self.tempUserVersion;
-    [self populateScreenFields:self.latestUserVersion];
+    [self populateScreenFields:self.user];
     [self setEditing:NO animated:YES];
 }
 
@@ -330,9 +337,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         self.activeStatusLabel.enabled = YES;
         
         self.tableView.allowsSelectionDuringEditing = YES;
-        
-        self.tempUserVersion = [self.latestUserVersion copy];
-        
+       
         self.carCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         self.servedLocationCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
@@ -382,9 +387,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     [viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)carTypeSelected:(CarType *)car AtViewController:(CarTypeViewController *)viewController{
-    self.car = car;
-    self.carDescription.text = car.description;
+- (void)carTypeSelected:(CarType *)carType AtViewController:(CarTypeViewController *)viewController{
+    self.user.driver.carType = carType;
+    self.carDescription.text = carType.description;
     [viewController dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -394,7 +399,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 #pragma mark - Location View Controller delegate methods
 
 - (void)locationSelected:(Location *)location atViewControler:(LocationViewController *)viewController{
-    self.location = location;
+    self.user.driver.servedLocation = location;
     self.taxiStand.text = location.locationName;
     [viewController dismissViewControllerAnimated:YES completion:nil];
 }

@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSString *password;
 @property (strong, nonatomic) NSString *tenantname;
 
+
 @property (strong, nonatomic) NSString *firstName;
 @property (strong, nonatomic) NSString *lastName;
 @property (strong, nonatomic) NSString *phone;
@@ -35,4 +36,7 @@
 
 - (id) initWithUid: (int) uid andVersion: (int) version andFirstName: (NSString *) firstName andLastName: (NSString *) lastName andPhone: (NSString *) phone andEmail: (NSString *) email;
 
+- (id) initWithUid: (int) uid andVersion: (int) version andFirstName: (NSString *) firstName andLastName: (NSString *) lastName andPhone: (NSString *) phone andEmail: (NSString *) email andDriver: (Driver *) driver andPassenger: (Passenger *) passenger;
+
+- (id) copy;
 @end
