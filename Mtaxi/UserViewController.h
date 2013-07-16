@@ -10,7 +10,7 @@ lembretes
  
  3 - precisamos adicionar o código para autenticar o usuário automaticamente quando receber o erro 403 (Eduardo)
  
- 4 - CarType Fix (Eduardo) - DONE
+ 4 - CarType Fix (Eduardo) - When editing driver info
  
  5 - Mask for Passenger Phone (Marcos) - DONE
  
@@ -32,7 +32,25 @@ lembretes
  
  14 - Rationalize keyboard on UI (Eduardo)
  
- 15 -
+ 15 - Fazer as chamadas de email a partir do servidor de forma assincrona (Eduardo)
+ 
+ 16 - Quando a aplicação abrir verificar se os dados de login estão no keychain e pular a login screen (Marcos)
+ 
+ 17 - Signing up wheel - sign up driver screen - sign up with empty field (Marcos)
+ 
+ 18 - taking ride instead of creating ride (Marcos)
+ 
+ 19 - remove keyboard as soons as the wheel is presented (Marcos)
+ 
+ 20 - remove success messagem when ride is completed (Marcos)
+ 
+ 21 - segmented rides (status) for my rides (Marcos)
+ 
+ 22 - add status to ride detail view controller and then add comments and rating (Eduardo)
+ 
+ 
+ 
+ 
  
  
  */
