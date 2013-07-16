@@ -10,7 +10,7 @@ lembretes
  
  3 - precisamos adicionar o código para autenticar o usuário automaticamente quando receber o erro 403 (Eduardo)
  
- 4 - CarType Fix (Eduardo)
+ 4 - CarType Fix (Eduardo) - DONE
  
  5 - Mask for Passenger Phone (Marcos) - DONE
  
@@ -31,6 +31,8 @@ lembretes
  13 - Generic Audit Fields (version, lastUpdated, etc) (Eduardo)
  
  14 - Rationalize keyboard on UI (Eduardo)
+ 
+ 15 -
  
  
  */
