@@ -12,21 +12,21 @@ lembretes
  
  4 - CarType Fix (Eduardo)
  
- 5 - Mask for Passenger Phone (Marcos)
+ 5 - Mask for Passenger Phone (Marcos) - DONE
  
- 6 - MyRides (Marcos)
+ 6 - MyRides (Marcos) - DONE
  
- 7 - Wait time indicator (Marcos)
+ 7 - Wait time indicator (Marcos) - DONE
  
  8 - Create Ride, Take Ride, Complete Ride Test (Eduardo)
  
- 9 - As Passenger, Retrieve Driver assigned to the Ride (Marcos)
+ 9 - As Passenger, Retrieve Driver assigned to the Ride (Marcos) - DONE
  
  10 - PickupAddress and Complement (Eduardo)
  
- 11 - Can't Complete twice (Marcos)
+ 11 - Can't Complete twice (Marcos) - DONE
  
- 12 - Keyboard over in Passenger (Marcos)
+ 12 - Keyboard over in Passenger (Marcos) - DONE
  
  13 - Generic Audit Fields (version, lastUpdated, etc) (Eduardo)
  

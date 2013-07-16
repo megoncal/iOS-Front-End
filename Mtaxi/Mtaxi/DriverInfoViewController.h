@@ -14,6 +14,7 @@
 #import "Location.h"
 #import "UserServerController.h"
 #import "ScreenValidation.h"
+#import "MBProgressHUD.h"
 
 @interface DriverInfoViewController : UITableViewController <UITextFieldDelegate, CarTypeViewControllerDelegate,LocationViewControllerDelegate, UIGestureRecognizerDelegate>
 

@@ -22,6 +22,10 @@
     self.password.text = @"Welcome!1";
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

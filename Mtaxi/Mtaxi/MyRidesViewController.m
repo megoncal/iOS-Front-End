@@ -1,20 +1,18 @@
 //
-//  AvailableRidesViewController.m
+//  MyRidesViewController.m
 //  Mtaxi
 //
-//  Created by Marcos Vilela on 16/06/13.
+//  Created by Marcos Vilela on 15/07/13.
 //  Copyright (c) 2013 Moovt. All rights reserved.
 //
 
-#import "UnassignedRidesViewController.h"
+#import "MyRidesViewController.h"
 
-@interface UnassignedRidesViewController ()
+@interface MyRidesViewController ()
 
 @end
 
-@implementation UnassignedRidesViewController
-
-
+@implementation MyRidesViewController
 
 - (void)viewDidLoad
 {
@@ -33,20 +31,21 @@
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
+
 - (void)viewWillAppear:(BOOL)animated{
-    [self retrieveUnassignedRidesInServedArea];
+    [self retrieveMyRides];
 }
 
 #pragma mark - Integration with Server
-- (void)retrieveUnassignedRidesInServedArea{
+- (void)retrieveMyRides{
     
     MBProgressHUD *mbProgressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     mbProgressHUD.labelText = @"Loading rides...";
-    [RideServerController retrieveUnassignedRidesInServedArea:^(NSMutableArray *rides, NSError *error) {
+    [RideServerController retrieveDriverRides:^(NSMutableArray *rides, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
             
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             if (error.code == 0) {
                 
                 NSArray *sorteArray = [rides sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
@@ -58,7 +57,7 @@
                     
                 }];
                 
-                self.unassignedRides =  [sorteArray mutableCopy];
+                self.myRides =  [sorteArray mutableCopy];
                 
                 [self.tableView reloadData];
                 
@@ -90,7 +89,7 @@
 {
     
     // Return the number of rows in the section.
-    return self.unassignedRides.count;
+    return self.myRides.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -113,7 +112,7 @@
     UILabel *date = (UILabel *)[cell viewWithTag:103];
     
     
-    Ride *ride = [self.unassignedRides objectAtIndex:indexPath.row];
+    Ride *ride = [self.myRides objectAtIndex:indexPath.row];
     
     from.text = ride.pickUpLocation.locationName;
     to.text = ride.dropOffLocation.locationName;
@@ -123,51 +122,14 @@
     return cell;
 }
 
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
 
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    Ride *ride = [self.unassignedRides objectAtIndex:indexPath.row];
+    Ride *ride = [self.myRides objectAtIndex:indexPath.row];
     
     DriverRideDetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DriverRideDetailView"];
     

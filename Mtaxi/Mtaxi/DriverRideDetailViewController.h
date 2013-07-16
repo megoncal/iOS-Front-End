@@ -11,15 +11,13 @@
 #import "DateHelper.h"
 #import "RideServerController.h"
 #import "PassengerDetailViewController.h"
+#import "MBProgressHUD.h"
+
 
 @interface DriverRideDetailViewController : UITableViewController
 
 
 @property (strong,nonatomic) Ride *ride;
-
-
-
-
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *from;
 @property (weak, nonatomic) IBOutlet UITableViewCell *to;

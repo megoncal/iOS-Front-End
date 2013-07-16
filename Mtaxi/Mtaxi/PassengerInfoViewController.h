@@ -12,6 +12,7 @@
 #import "CurrentSessionController.h"
 #import "CurrentSessionToken.h"
 #import "ScreenValidation.h"
+#import "MBProgressHUD.h"
 
 @interface PassengerInfoViewController : UITableViewController <UITextFieldDelegate>
 

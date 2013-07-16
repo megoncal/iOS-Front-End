@@ -46,11 +46,16 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     //capture every time the tableView is touched and call method hideKeyboard
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     gestureRecognizer.cancelsTouchesInView = NO;
+    
     [self.tableView addGestureRecognizer:gestureRecognizer];
     
     //all uitextfields.
     self.uitextfields = @[self.email,self.firstName,self.lastName,self.phone];
     
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -67,11 +72,11 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 - (User *) createUserFromUI {
     
     User *user = [[User alloc] initWithUid:self.user.uid
-                            andVersion:self.user.version
-                          andFirstName:self.firstName.text
-                           andLastName:self.lastName.text
-                              andPhone:self.phone.text
-                              andEmail:self.email.text];
+                                andVersion:self.user.version
+                              andFirstName:self.firstName.text
+                               andLastName:self.lastName.text
+                                  andPhone:self.phone.text
+                                  andEmail:self.email.text];
     return user;
 }
 
@@ -85,11 +90,13 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void)retrievePassengerInformation{
     
+    
+    MBProgressHUD *mbProgressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    mbProgressHUD.labelText = @"Retrieving my info...";
     [UserServerController retrieveLoggedUserDetails:^(User *userFromServer, NSError *error) {
-        
         dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             if (error.code == 0) {
-                
                 self.user = userFromServer;
                 [self populateScreenFields:userFromServer];
                 
@@ -119,20 +126,23 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         [self.user.phone isEqualToString:self.phone.text] ) {
         return;
     }
-
+    
     User *userFromUI = [self createUserFromUI];
     
+    MBProgressHUD *mbProgressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    mbProgressHUD.labelText = @"Updating my info...";
     [UserServerController updateLoggedUserDetails:userFromUI completionHandler:^(User *userFromServer, NSError *error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (error.code == 0) {
-                    self.user = userFromServer;
-                    [self populateScreenFields:userFromServer];
-                }
-                [Helper showMessage:error];
-
-            });
-        }];
-    }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            if (error.code == 0) {
+                self.user = userFromServer;
+                [self populateScreenFields:userFromServer];
+            }
+            [Helper showMessage:error];
+            
+        });
+    }];
+}
 
 
 
@@ -266,14 +276,14 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 
 - (void)setEditing:(BOOL)flag animated:(BOOL)animated{
-
+    
     if (flag == YES){
         
         // Change views to edit mode.
         self.firstName.enabled = YES;
         self.lastName.enabled = YES;
         self.phone.enabled = YES;
-
+        
         //add cancel button to the navigation bar
         self.signout = self.navigationItem.leftBarButtonItem;
         self.navigationItem.leftBarButtonItem = self.cancelLeftBarButton;

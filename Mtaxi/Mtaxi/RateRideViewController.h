@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Ride.h"
 #import "RideServerController.h"
+#import "MBProgressHUD.h"
 
 
 @interface RateRideViewController : UITableViewController

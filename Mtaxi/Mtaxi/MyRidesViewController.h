@@ -1,8 +1,8 @@
 //
-//  AvailableRidesViewController.h
+//  MyRidesViewController.h
 //  Mtaxi
 //
-//  Created by Marcos Vilela on 16/06/13.
+//  Created by Marcos Vilela on 15/07/13.
 //  Copyright (c) 2013 Moovt. All rights reserved.
 //
 
@@ -12,9 +12,10 @@
 #import "DriverRideDetailViewController.h"
 #import "MBProgressHUD.h"
 
-@interface UnassignedRidesViewController : UITableViewController
+@interface MyRidesViewController : UITableViewController
 
 
-@property (strong, nonatomic) NSMutableArray *unassignedRides;
+@property (strong, nonatomic) NSMutableArray *myRides;
+
 
 @end

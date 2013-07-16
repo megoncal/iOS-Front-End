@@ -38,6 +38,10 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
+
 - (void)viewWillAppear:(BOOL)animated{
     //    self.username.text = @"";
     //    self.password.text = @"";
@@ -118,7 +122,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-
+    
     //email validation
     if (textField == self.email) {
         //UIAlertView *alert;
@@ -126,7 +130,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         if (![ScreenValidation validateEmailWithString:textField.text error:&error]){
             [ScreenValidation showScreenValidationError:error];
             self.email.text = @"";
-
+            
         }
     }
     
@@ -143,7 +147,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     
     [UIView commitAnimations];
     
-
+    
     
 }
 
@@ -168,13 +172,13 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     }
     
     else if (textField == self.firstName){
-
+        
         NSError *error;
         if (![ScreenValidation validateNameInputString:string error:&error]) {
             [ScreenValidation showScreenValidationError:error];
             return NO;
         }
-    
+        
     }
     
     else if (textField == self.lastName){
@@ -184,20 +188,20 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
             [ScreenValidation showScreenValidationError:error];
             return NO;
         }
-    
+        
     }
     
     else if (textField == self.phone){
         
         NSString *phoneNumberText = textField.text;
-    
+        
         if ([ScreenValidation maskedPhoneNumber:&phoneNumberText withRange:range]) {
             textField.text = phoneNumberText;
         }else{
             return NO;
         }
     }
-
+    
     return YES;
 }
 
@@ -209,47 +213,59 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
+    
+    
     if ([self.tableView cellForRowAtIndexPath:indexPath] == self.signUpCell) {
         
-        NSError *error;
-        //check if the user left empty information
-        if ([ScreenValidation checkForEmptyUITextField:self.uitextfields error:&error]) {
-            [ScreenValidation showScreenValidationError:error];
-            return;
-        };
-        
-
-        ActiveStatus *activeStatus = [[ActiveStatus alloc]init];
-        if (self.activeStatus.on) {
-            activeStatus = [activeStatus initWithCode:@"ENABLED"];
-        }else{
-            activeStatus = [activeStatus initWithCode:@"ENABLED"];
-        }
-        
-        Driver *driver = [[Driver alloc] initWithStatus:activeStatus andCarType:self.car andServedLocation: self.taxiStandLocation];
-        
-        User *user = [[User alloc] initWithUsername:self.username.text andPassword: self.password.text andFirstName: self.firstName.text andLastName: self.lastName.text andPhone: self.phone.text andEmail: self.email.text andDriver: driver andPassenger: nil];
-        
-        BOOL success = [UserServerController signUpUser:user error:&error];
-        
-        if (!success) {
-            [Helper showMessage: error];
-        } else {
-            //save username, password and usertype (encrypted)
-            CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
-            currentSessionToken.username = self.username.text;
-            currentSessionToken.password = self.password.text;
-            currentSessionToken.userType = @"PASSENGER";
-            [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"Signing up...";
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
             
-            UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"InitDriver" ];
             
-            [(UINavigationController *)self.tabBarController.presentingViewController popToRootViewControllerAnimated:NO];
+            NSError *error;
+            //check if the user left empty information
+            if ([ScreenValidation checkForEmptyUITextField:self.uitextfields error:&error]) {
+                [ScreenValidation showScreenValidationError:error];
+                return;
+            };
             
-            [self presentViewController:controller animated:YES completion:nil];
-        }
-        
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            
+            ActiveStatus *activeStatus = [[ActiveStatus alloc]init];
+            if (self.activeStatus.on) {
+                activeStatus = [activeStatus initWithCode:@"ENABLED"];
+            }else{
+                activeStatus = [activeStatus initWithCode:@"DISABLED"];
+            }
+            
+            Driver *driver = [[Driver alloc] initWithStatus:activeStatus andCarType:self.car andServedLocation: self.taxiStandLocation];
+            
+            User *user = [[User alloc] initWithUsername:self.username.text andPassword: self.password.text andFirstName: self.firstName.text andLastName: self.lastName.text andPhone: self.phone.text andEmail: self.email.text andDriver: driver andPassenger: nil];
+            
+            
+            BOOL success = [UserServerController signUpUser:user error:&error];
+            
+            if (!success) {
+                [Helper showMessage: error];
+            } else {
+                //save username, password and usertype (encrypted)
+                CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
+                currentSessionToken.username = self.username.text;
+                currentSessionToken.password = self.password.text;
+                currentSessionToken.userType = @"PASSENGER";
+                [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
+                
+                UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"InitDriver" ];
+                
+                [(UINavigationController *)self.tabBarController.presentingViewController popToRootViewControllerAnimated:NO];
+                
+                [self presentViewController:controller animated:YES completion:nil];
+            }
+            
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+        });
         
     } else if ([self.tableView cellForRowAtIndexPath:indexPath] == self.carCell){
         
@@ -259,10 +275,14 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         
         
     } else if ([self.tableView cellForRowAtIndexPath:indexPath] == self.taxiStandCell){
+        
+        
         LocationViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Location"];
         controller.delegate = self;
         [self presentViewController:controller animated:YES completion:nil];
     }
+    
+    
     
 }
 

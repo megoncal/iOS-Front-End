@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "User.h"
 #import "UserServerController.h"
-#import "ScreenValidation.h";
+#import "ScreenValidation.h"
+#import "MBProgressHUD.h"
 
 //@protocol PassengerSignUpViewControllerDelegate;
 

@@ -10,7 +10,7 @@
 #import "Ride.h"
 #import "DateHelper.h"
 #import "RideServerController.h"
-
+#import "MBProgressHUD.h"
 
 
 @interface ConfirmRideViewController : UITableViewController

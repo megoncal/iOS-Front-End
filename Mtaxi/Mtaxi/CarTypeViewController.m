@@ -20,8 +20,13 @@
 {
     [super viewDidLoad];
     
+    MBProgressHUD *mbProgressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    mbProgressHUD.labelText = @"Loading rides...";
     [CarTypeServerController retrieverCarTypes:^(NSArray *carTypes, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            
             if (error.code == 0) {
                 self.carTypeArray = carTypes;
                 [self.tableView reloadData];
@@ -29,6 +34,7 @@
                 [Helper showMessage:error];
             }
             
+       
         });
 
     }];
@@ -43,6 +49,11 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

@@ -15,7 +15,7 @@
 @implementation PassengerSignUpViewController{
     
     CGFloat animatedDistance;
-
+    
 }
 
 static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
@@ -28,7 +28,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     //capture every time the tableView is touched and call method hideKeyboard
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     gestureRecognizer.cancelsTouchesInView = NO;
@@ -36,16 +36,20 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     
     //all uitextfields.
     self.uitextfields = @[self.username, self.password,self.email,self.firstName,self.lastName,self.phone];
+    
+}
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-//    self.username.text = @"";
-//    self.password.text = @"";
-//    self.email.text = @"";
-//    self.firstName.text = @"";
-//    self.lastName.text = @"";
-//    self.phoneNumber.text = @"";
+    //    self.username.text = @"";
+    //    self.password.text = @"";
+    //    self.email.text = @"";
+    //    self.firstName.text = @"";
+    //    self.lastName.text = @"";
+    //    self.phoneNumber.text = @"";
     
     for (UITextField *uitextfield in self.uitextfields) {
         uitextfield.text = @"";
@@ -57,7 +61,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
- 
+    
 }
 
 #pragma mark - Configurationn
@@ -208,36 +212,48 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     if (indexPath.section == 2 &&
         indexPath.row == 0) {
         
-        NSError * error;
-
-        //check if the user left empty information
-        if ([ScreenValidation checkForEmptyUITextField:self.uitextfields error:&error]) {
-            [ScreenValidation showScreenValidationError:error];
-            return;
-        };
         
         
-        Passenger *passenger = [[Passenger alloc] init];
-        User *user = [[User alloc] initWithUsername:self.username.text andPassword: self.password.text andFirstName: self.firstName.text andLastName: self.lastName.text andPhone: self.phone.text andEmail: self.email.text andDriver: nil andPassenger: passenger];
         
-        BOOL success = [UserServerController signUpUser:user error:&error];
-        
-        if (!success) {
-            [Helper showMessage:error];
-        } else {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"Signing up...";
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
             
-            //save username, password and usertype (encrypted)
-            CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
-            currentSessionToken.username = self.username.text;
-            currentSessionToken.password = self.password.text;
-            currentSessionToken.userType = @"PASSENGER";
-            [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
+            NSError * error;
             
-            UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"InitPassenger"];
-            [self presentViewController:controller animated:YES completion:nil];
-        }
-     
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            //check if the user left empty information
+            if ([ScreenValidation checkForEmptyUITextField:self.uitextfields error:&error]) {
+                [ScreenValidation showScreenValidationError:error];
+                return;
+            };
+            
+            Passenger *passenger = [[Passenger alloc] init];
+            User *user = [[User alloc] initWithUsername:self.username.text andPassword: self.password.text andFirstName: self.firstName.text andLastName: self.lastName.text andPhone: self.phone.text andEmail: self.email.text andDriver: nil andPassenger: passenger];
+            
+            BOOL success = [UserServerController signUpUser:user error:&error];
+            
+            if (!success) {
+                [Helper showMessage:error];
+            } else {
+                
+                //save username, password and usertype (encrypted)
+                CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
+                currentSessionToken.username = self.username.text;
+                currentSessionToken.password = self.password.text;
+                currentSessionToken.userType = @"PASSENGER";
+                [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
+                
+                UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"InitPassenger"];
+                [self presentViewController:controller animated:YES completion:nil];
+            }
+            
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            
+            
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+        });
         
     }
 }

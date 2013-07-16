@@ -10,6 +10,7 @@
 #import "CarType.h"
 #import "CarTypeServerController.h"
 #import "Helper.h"
+#import "MBProgressHUD.h"
 
 
 @protocol CarTypeViewControllerDelegate;

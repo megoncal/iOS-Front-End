@@ -40,7 +40,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
     [self populateScreenFields];
 
+    [self checkCompletedRide];
 
+    
 }
 
 - (void) populateScreenFields{
@@ -54,6 +56,18 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     self.message.detailTextLabel.text = self.ride.messageToTheDriver;
 
 }
+
+
+- (void) checkCompletedRide{
+
+    if([self.ride.rideStatus.code isEqual:@"COMPLETED"]){
+        self.navigationItem.rightBarButtonItem = NULL;
+    }
+    
+    
+    
+}
+
 
 #pragma mark - configure textField
 - (void)textFieldDidBeginEditing:(UITextField *)textField{

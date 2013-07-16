@@ -55,6 +55,10 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
+
 
 - (void)viewWillAppear:(BOOL)animated{
     //retrieve logged driver info
@@ -79,8 +83,10 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 - (void)retrieveDriverInformation{
     
     [UserServerController retrieveLoggedUserDetails:^(User *userFromServer, NSError *error) {
-        
+        MBProgressHUD *mbProgressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        mbProgressHUD.labelText = @"Retrieving my info...";
         dispatch_async(dispatch_get_main_queue(), ^{
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
             if (error.code == 0) {
                 
                 self.user = userFromServer;
@@ -162,7 +168,11 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     User *userFromUI = self.createUserFromUI;
     
     [UserServerController updateLoggedUserDetails:userFromUI completionHandler:^(User *userFromServer, NSError *error) {
+        
+        MBProgressHUD *mbProgressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        mbProgressHUD.labelText = @"Updating my info...";
         dispatch_async(dispatch_get_main_queue(), ^{
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
             if (error.code == 0) {
                 self.user = userFromServer;
                 [self populateScreenFields:userFromServer];

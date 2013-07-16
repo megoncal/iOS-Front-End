@@ -47,6 +47,11 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
+
+
 - (void) populateInitialFields{
     
     self.pickUpLocation.detailTextLabel.text = self.ride.pickUpLocation.locationName;
@@ -140,10 +145,19 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (IBAction)donePressed:(id)sender {
     
-    NSError *error;
-    [RideServerController createRide:self.ride error:&error];
-    [Helper showMessage:error];
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Creating your ride...";
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        
+        NSError *error;        
+        [RideServerController createRide:self.ride error:&error];
+        [Helper showMessage:error];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+  
+    });
+    
     
 }
 

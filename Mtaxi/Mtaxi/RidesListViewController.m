@@ -35,6 +35,9 @@
     //self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
 
 - (void) viewWillAppear:(BOOL)animated{
     [self retrievePassengerRides];

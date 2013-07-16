@@ -39,6 +39,7 @@
 		2FAFA0441777401E00ACC3B4 /* PDKeychainBindings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAFA038177733D100ACC3B4 /* PDKeychainBindings.m */; };
 		2FAFA0461777401E00ACC3B4 /* PDKeychainBindingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAFA03A177733D100ACC3B4 /* PDKeychainBindingsController.m */; };
 		2FB89ABD176E5B090036F101 /* UnassignedRidesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB89ABC176E5B080036F101 /* UnassignedRidesViewController.m */; };
+		2FD5EC6B1794E11C00EA85DC /* MyRidesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD5EC6A1794E11C00EA85DC /* MyRidesViewController.m */; };
 		2FFDDCE21782687C00F23BD1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFDDCE11782687C00F23BD1 /* MBProgressHUD.m */; };
 		2FFDDCE317826AED00F23BD1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFDDCE11782687C00F23BD1 /* MBProgressHUD.m */; };
 		7665CA6F175EE8CD00784090 /* CarTypeServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7665CA6E175EE8CD00784090 /* CarTypeServerController.m */; };
@@ -144,6 +145,8 @@
 		2FAFA0411777353F00ACC3B4 /* CurrentSessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentSessionController.m; sourceTree = "<group>"; };
 		2FB89ABB176E5B080036F101 /* UnassignedRidesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnassignedRidesViewController.h; sourceTree = "<group>"; };
 		2FB89ABC176E5B080036F101 /* UnassignedRidesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnassignedRidesViewController.m; sourceTree = "<group>"; };
+		2FD5EC691794E11C00EA85DC /* MyRidesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRidesViewController.h; sourceTree = "<group>"; };
+		2FD5EC6A1794E11C00EA85DC /* MyRidesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRidesViewController.m; sourceTree = "<group>"; };
 		2FFDDCE01782687C00F23BD1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		2FFDDCE11782687C00F23BD1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		7665CA6D175EE8CD00784090 /* CarTypeServerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarTypeServerController.h; sourceTree = "<group>"; };
@@ -374,6 +377,8 @@
 				2F70E578176FE8E2004819AE /* DriverRideDetailViewController.m */,
 				2F70E57A176FED8A004819AE /* AssignRideToken.h */,
 				2F70E57B176FED8B004819AE /* AssignRideToken.m */,
+				2FD5EC691794E11C00EA85DC /* MyRidesViewController.h */,
+				2FD5EC6A1794E11C00EA85DC /* MyRidesViewController.m */,
 			);
 			name = RideDriver;
 			sourceTree = "<group>";
@@ -661,6 +666,7 @@
 				2F62307B1771123C00B51505 /* DriverDetailViewController.m in Sources */,
 				2FAFA0421777353F00ACC3B4 /* CurrentSessionController.m in Sources */,
 				2F5A12F9178B96800098D307 /* ScreenValidation.m in Sources */,
+				2FD5EC6B1794E11C00EA85DC /* MyRidesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
