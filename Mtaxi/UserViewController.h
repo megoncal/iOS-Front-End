@@ -4,7 +4,7 @@
 lembretes
  
  
- 1 - falar com eduardo sobre o if que adicionei na classe marshaller... pode gerar efeito colateral.. (Marcos)
+ 1 - falar com eduardo sobre o if que adicionei na classe marshaller... pode gerar efeito colateral.. (Marcos) - DONE
  
  2 - continuam os erros apos o update do driver info e do passenger info... o update funciona, mas posteriormente o usuário e senha ficam invalidos - DONE
  
