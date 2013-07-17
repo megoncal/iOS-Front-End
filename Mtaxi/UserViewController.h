@@ -50,9 +50,6 @@ lembretes
  
  
  
- 
- 
- 
  */
 
 #import <UIKit/UIKit.h>
