@@ -85,6 +85,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     [UserServerController retrieveLoggedUserDetails:^(User *userFromServer, NSError *error) {
         MBProgressHUD *mbProgressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         mbProgressHUD.labelText = @"Retrieving my info...";
+        [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
         dispatch_async(dispatch_get_main_queue(), ^{
              [MBProgressHUD hideHUDForView:self.view animated:YES];
             if (error.code == 0) {
@@ -171,6 +172,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         
         MBProgressHUD *mbProgressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         mbProgressHUD.labelText = @"Updating my info...";
+        [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
         dispatch_async(dispatch_get_main_queue(), ^{
              [MBProgressHUD hideHUDForView:self.view animated:YES];
             if (error.code == 0) {

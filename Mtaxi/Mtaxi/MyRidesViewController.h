@@ -15,7 +15,8 @@
 @interface MyRidesViewController : UITableViewController
 
 
-@property (strong, nonatomic) NSMutableArray *myRides;
-
+@property (strong, nonatomic) NSMutableArray *rides;
+@property (strong, nonatomic) NSMutableArray *sectionedRides;
+@property (strong, nonatomic) NSArray *listOfStatusCode;
 
 @end

@@ -7,6 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CurrentSessionController.h"
+#import "CurrentSessionToken.h"
+#import "SignInToken.h"
+#import "UserServerController.h"
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

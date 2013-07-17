@@ -11,8 +11,6 @@
 @implementation DateHelper
 
 
-
-
 + (NSString *) descriptionFormatOfLocalDateAndTime: (NSDate *)date{
     
     NSString *stringDate;

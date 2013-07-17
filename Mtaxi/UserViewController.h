@@ -34,19 +34,21 @@ lembretes
  
  15 - Fazer as chamadas de email a partir do servidor de forma assincrona (Eduardo)
  
- 16 - Quando a aplicação abrir verificar se os dados de login estão no keychain e pular a login screen (Marcos)
+ 16 - Quando a aplicação abrir verificar se os dados de login estão no keychain e pular a login screen (Marcos) - DONE
  
- 17 - Signing up wheel - sign up driver screen - sign up with empty field (Marcos)
+ 17 - Signing up wheel - sign up driver screen - sign up with empty field (Marcos) - DONE
  
- 18 - taking ride instead of creating ride (Marcos)
+ 18 - taking ride instead of creating ride (Marcos) - DONE
  
- 19 - remove keyboard as soons as the wheel is presented (Marcos)
+ 19 - remove keyboard as soons as the wheel is presented (Marcos) - DONE
  
- 20 - remove success messagem when ride is completed (Marcos)
+ 20 - remove success messagem when ride is completed (Marcos) - DONE
  
- 21 - segmented rides (status) for my rides (Marcos)
+ 21 - segmented rides (status) for my rides (Marcos) - DONE
  
  22 - add status to ride detail view controller and then add comments and rating (Eduardo)
+ 
+ 23 - Sign out command has broken after implementation of item 17.... (Marcos)  
  
  
  

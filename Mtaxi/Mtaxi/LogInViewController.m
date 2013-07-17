@@ -139,13 +139,11 @@
         
         MBProgressHUD *mbProgressHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         mbProgressHud.labelText = @"Signing in...";
+        [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            
             [self signIn];
-            
             [MBProgressHUD hideHUDForView:self.view animated:YES];
-       
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
         });

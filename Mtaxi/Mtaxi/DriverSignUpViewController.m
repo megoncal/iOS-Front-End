@@ -217,20 +217,21 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     
     if ([self.tableView cellForRowAtIndexPath:indexPath] == self.signUpCell) {
         
+        NSError *error;
+        //check if the user left empty information
+        if ([ScreenValidation checkForEmptyUITextField:self.uitextfields error:&error]) {
+            [ScreenValidation showScreenValidationError:error];
+            return;
+        };
+        
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.labelText = @"Signing up...";
+        [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
             
-            
             NSError *error;
-            //check if the user left empty information
-            if ([ScreenValidation checkForEmptyUITextField:self.uitextfields error:&error]) {
-                [ScreenValidation showScreenValidationError:error];
-                return;
-            };
-            
-            
+
             ActiveStatus *activeStatus = [[ActiveStatus alloc]init];
             if (self.activeStatus.on) {
                 activeStatus = [activeStatus initWithCode:@"ENABLED"];

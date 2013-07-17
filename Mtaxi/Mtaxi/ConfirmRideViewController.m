@@ -132,13 +132,11 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     [self.messageToTheDriver resignFirstResponder];
-    
     [self.pickUpLocationComplement resignFirstResponder];
     
 }
 - (void)hideKeyboard{
     [self.messageToTheDriver resignFirstResponder];
-    
     [self.pickUpLocationComplement resignFirstResponder];
     
 }
@@ -147,13 +145,18 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Creating your ride...";
+    [self hideKeyboard];
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         
         NSError *error;        
         [RideServerController createRide:self.ride error:&error];
-        [Helper showMessage:error];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if (error.code==1) {
+            [Helper showMessage:error];
+        }
+        
         [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
   
     });

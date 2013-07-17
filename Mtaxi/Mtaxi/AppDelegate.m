@@ -18,6 +18,38 @@
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:
      (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     
+    //search for login details in the keychain
+    CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
+    if (currentSessionToken.username &&
+        currentSessionToken.password) {
+        
+        
+        
+        
+        NSError *error;
+        NSString *returnedUser;
+        NSString *segueId;
+        
+        SignInToken *token = [[SignInToken alloc] initWithUsername:currentSessionToken.username andPassword:currentSessionToken.password];
+        
+        BOOL success = [UserServerController signIn:token userType:&returnedUser error: &error];
+        
+        if (!success) {
+            segueId = @"LogInNavigationController";
+            [CurrentSessionController resetCurrentSession];
+        } else {
+            if ([returnedUser isEqualToString:@"PASSENGER"]) {
+                segueId = @"InitPassenger";
+            }else{
+                segueId = @"InitDriver";
+
+            }
+        }
+
+        self.window.rootViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:segueId];
+        
+    }
+    
     return YES;
 }
 
@@ -39,7 +71,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 

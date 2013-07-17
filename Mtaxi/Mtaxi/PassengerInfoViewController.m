@@ -83,7 +83,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 - (IBAction)signOutPressed:(id)sender {
     
     [CurrentSessionController resetCurrentSession];
+
     [(UINavigationController *)self.tabBarController.presentingViewController popToRootViewControllerAnimated:NO];
+    
     [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
     
 }
@@ -93,6 +95,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     
     MBProgressHUD *mbProgressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     mbProgressHUD.labelText = @"Retrieving my info...";
+    [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
     [UserServerController retrieveLoggedUserDetails:^(User *userFromServer, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -131,6 +134,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     
     MBProgressHUD *mbProgressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     mbProgressHUD.labelText = @"Updating my info...";
+    [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
+    [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
     [UserServerController updateLoggedUserDetails:userFromUI completionHandler:^(User *userFromServer, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.view animated:YES];
