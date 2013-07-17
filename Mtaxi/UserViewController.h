@@ -10,7 +10,7 @@ lembretes
  
  3 - precisamos adicionar o código para autenticar o usuário automaticamente quando receber o erro 403 (Eduardo)
  
- 4 - CarType Fix (Eduardo) - When editing driver info
+ 4 - CarType Fix (Eduardo) - When editing driver info - DONE
  
  5 - Mask for Passenger Phone (Marcos) - DONE
  
