@@ -18,11 +18,11 @@ lembretes
  
  7 - Wait time indicator (Marcos) - DONE
  
- 8 - Create Ride, Take Ride, Complete Ride Test (Eduardo)
+ 8 - Create Ride, Take Ride, Complete Ride Test (Eduardo) - DONE
  
  9 - As Passenger, Retrieve Driver assigned to the Ride (Marcos) - DONE
  
- 10 - PickupAddress and Complement (Eduardo)
+ 10 - PickupAddress and Complement (Eduardo) - DONE
  
  11 - Can't Complete twice (Marcos) - DONE
  
@@ -50,7 +50,9 @@ lembretes
  
  23 - Sign out command has broken after implementation of item 17.... (Marcos)  
  
+ 24 - Cancel functionality for unassigned Rides (Eduardo)
  
+ 25 - Get most frequent addresses is returning multiple
  
  */
 

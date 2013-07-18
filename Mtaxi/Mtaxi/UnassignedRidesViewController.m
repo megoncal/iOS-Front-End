@@ -166,7 +166,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    NSLog(@"HERE %d",indexPath.row);
     Ride *ride = [self.unassignedRides objectAtIndex:indexPath.row];
     
     DriverRideDetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DriverRideDetailView"];
