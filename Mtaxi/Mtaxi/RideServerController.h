@@ -6,15 +6,21 @@
 //  Copyright (c) 2013 Moovt. All rights reserved.
 //
 
-#define createRideURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/ride/createRide"]
-#define allRidesURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/ride/retrievePassengerRides"]
-#define rateRideURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/ride/closeRide"]
-#define unassignedRidesUrl [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/ride/retrieveUnassignedRideInServedArea"]
-#define driverRidesUrl [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/ride/RetrieveAssignedRides"]
-#define assignRideUrl [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/ride/assignRideToDriver"]
+//#define createRideURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/ride/createRide"]
+//#define allRidesURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/ride/retrievePassengerRides"]
+//#define rateRideURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/ride/closeRide"]
+//#define unassignedRidesUrl [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/ride/retrieveUnassignedRideInServedArea"]
+//#define driverRidesUrl [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/ride/RetrieveAssignedRides"]
+//#define assignRideUrl [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/ride/assignRideToDriver"]
 
-//#define createRideURL [NSURL URLWithString:@"http://localhost:8080/moovt/ride/createRide"]
-//#define retrieveAllRidesURL [NSURL URLWithString:@"http://localhost:8080/moovt/ride/retrievePassengerRides"]
+
+#define createRideURL [NSURL URLWithString:@"http://localhost:8080/moovt/ride/createRide"]
+#define allRidesURL [NSURL URLWithString:@"http://localhost:8080/moovt/ride/retrievePassengerRides"]
+#define rateRideURL [NSURL URLWithString:@"http://localhost:8080/moovt/ride/closeRide"]
+#define unassignedRidesUrl [NSURL URLWithString:@"http://localhost:8080/moovt/ride/retrieveUnassignedRideInServedArea"]
+#define driverRidesUrl [NSURL URLWithString:@"http://localhost:8080/moovt/ride/RetrieveAssignedRides"]
+#define assignRideUrl [NSURL URLWithString:@"http://localhost:8080/moovt/ride/assignRideToDriver"]
+
 
 #import <Foundation/Foundation.h>
 #import "Ride.h"    
