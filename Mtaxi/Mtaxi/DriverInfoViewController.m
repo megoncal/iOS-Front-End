@@ -62,8 +62,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void)viewWillAppear:(BOOL)animated{
     //retrieve logged driver info
-    [self retrieveDriverInformation];
-    
+    if (!self.isEditing) {
+            [self retrieveDriverInformation];
+        }
     
 }
 

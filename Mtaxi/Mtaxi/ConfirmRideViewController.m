@@ -143,6 +143,10 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (IBAction)donePressed:(id)sender {
     
+    //Make sure the two Ride fields from this screen are populated
+    self.ride.pickUpLocationComplement = self.pickUpLocationComplement.text;
+    self.ride.messageToTheDriver = self.messageToTheDriver.text;
+    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Creating your ride...";
     [self hideKeyboard];

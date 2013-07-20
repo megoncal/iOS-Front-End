@@ -7,6 +7,8 @@
 //
 
 #define carTypeURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/driver/getCarTypeEnum"]
+
+
 //#define carTypeURL [NSURL URLWithString:@"http://localhost:8080/moovt/driver/getCarTypeEnum"]
 
 #import <Foundation/Foundation.h>

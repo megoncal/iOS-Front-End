@@ -47,7 +47,7 @@
         
         if ([typeAttribute isEqualToString:@"NSString"]) {
             NSString * value;
-            if (dictValue == nil) {
+            if ( (dictValue == nil) || ([dictValue isKindOfClass:[NSNull class]]) ){
                 value = [[NSString alloc] init];
             } else {
                 value = dictValue;
@@ -56,7 +56,7 @@
             [object setValue:value forKey:propertyName];
         } else if ([typeAttribute isEqualToString:@"NSDate"]) {
             NSDate *value;
-            if (dictValue == nil) {
+            if ( (dictValue == nil) || ([dictValue isKindOfClass:[NSNull class]]) )  {
                 value = [[NSDate alloc] init];
             } else {
                 NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -80,7 +80,7 @@
             
         } else if ([typeAttribute isEqualToString:@"d"]) {
             float floatValue;
-            if (dictValue == nil) {
+            if ( (dictValue == nil) || ([dictValue isKindOfClass:[NSNull class]]) ) {
                 floatValue = 0;
             } else {
                 floatValue = [dictValue floatValue];

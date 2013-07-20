@@ -415,6 +415,20 @@
 			name = MBProgressHUD;
 			sourceTree = "<group>";
 		};
+		761B40C517988E7300988C68 /* ServerController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ServerController;
+			sourceTree = "<group>";
+		};
+		761B40C617988E8B00988C68 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Domain;
+			sourceTree = "<group>";
+		};
 		76E88595174827DB00694D65 = {
 			isa = PBXGroup;
 			children = (
@@ -452,6 +466,8 @@
 		76E885A7174827DB00694D65 /* Mtaxi */ = {
 			isa = PBXGroup;
 			children = (
+				761B40C617988E8B00988C68 /* Domain */,
+				761B40C517988E7300988C68 /* ServerController */,
 				76C5EC8217482E7A00F87A75 /* AppDelegate.h */,
 				76C5EC8317482E7A00F87A75 /* AppDelegate.m */,
 				76C5EC9117482E7A00F87A75 /* InfoPlist.strings */,

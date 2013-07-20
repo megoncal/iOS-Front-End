@@ -59,8 +59,10 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    [self retrievePassengerInformation];
-}
+        if (!self.editing) {
+            [self retrievePassengerInformation];
+        }
+    }
 
 - (void)populateScreenFields:(User *)user {
     self.email.text = user.email;

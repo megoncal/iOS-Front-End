@@ -43,8 +43,11 @@
     self.passenger.detailTextLabel.text = self.ride.passenger.firstName;
     self.date.detailTextLabel.text = [DateHelper descriptionFullFormatOfLocalDateAndTime:self.ride.pickUpDateTime];
     
-    self.pickUpLocationComplement.detailTextLabel.text = self.ride.pickUpLocationComplement;
-    self.message.detailTextLabel.text = self.ride.messageToTheDriver;
+    self.pickUpLocationComplement.textLabel.text = self.ride.pickUpLocationComplement;
+    
+    NSLog(@"HEREEEEE %@",self.ride.messageToTheDriver);
+    
+    self.message.textLabel.text = self.ride.messageToTheDriver;
     
 }
 
