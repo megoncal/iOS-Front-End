@@ -238,12 +238,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
                 [Helper showMessage:error];
             } else {
                 
-                //save username, password and usertype (encrypted)
-                CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
-                currentSessionToken.username = self.username.text;
-                currentSessionToken.password = self.password.text;
-                currentSessionToken.userType = @"PASSENGER";
-                [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
+               
                 
                 UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"InitPassenger"];
                 [self presentViewController:controller animated:YES completion:nil];

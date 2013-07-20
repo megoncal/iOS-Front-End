@@ -19,6 +19,7 @@
 
 @property (strong,nonatomic) Ride *ride;
 
+@property (weak, nonatomic) IBOutlet UITableViewCell *status;
 @property (weak, nonatomic) IBOutlet UITableViewCell *from;
 @property (weak, nonatomic) IBOutlet UITableViewCell *to;
 @property (weak, nonatomic) IBOutlet UITableViewCell *date;

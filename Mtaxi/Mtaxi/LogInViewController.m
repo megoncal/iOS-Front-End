@@ -102,13 +102,6 @@
         [Helper showMessage:error];
     } else {
         
-        //save username, password and usertype (encrypted)
-        CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
-        currentSessionToken.username = token.username;
-        currentSessionToken.password = token.password;
-        currentSessionToken.userType = returnedUser;
-        [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
-        
         if ([returnedUser isEqualToString:@"PASSENGER"]) {
             UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"InitPassenger"];
             [self presentViewController:controller animated:YES completion:nil];

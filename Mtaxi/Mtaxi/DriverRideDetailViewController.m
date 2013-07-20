@@ -38,17 +38,16 @@
 
 - (void) populateScreenFields{
     
+    self.status.detailTextLabel.text = self.ride.rideStatus.description;
     self.from.detailTextLabel.text = self.ride.pickUpLocation.locationName;
     self.to.detailTextLabel.text = self.ride.dropOffLocation.locationName;
     self.passenger.detailTextLabel.text = self.ride.passenger.firstName;
     self.date.detailTextLabel.text = [DateHelper descriptionFullFormatOfLocalDateAndTime:self.ride.pickUpDateTime];
-    
     self.pickUpLocationComplement.textLabel.text = self.ride.pickUpLocationComplement;
-    
-    NSLog(@"HEREEEEE %@",self.ride.messageToTheDriver);
-    
     self.message.textLabel.text = self.ride.messageToTheDriver;
     
+//    NSLog(@"HEREEEEE %@",self.ride.messageToTheDriver);
+        
 }
 
 

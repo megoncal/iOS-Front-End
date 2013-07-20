@@ -6,6 +6,9 @@
 //  Copyright (c) 2013 Marcos Vilela. All rights reserved.
 //
 
+
+#define signInURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/login/authenticateUser"]
+
 #import <Foundation/Foundation.h>
 #import "Location.h"
 #import "CarType.h"
@@ -13,6 +16,9 @@
 #import "CallResult.h"
 #import "CurrentSessionController.h"
 #import "CurrentSessionToken.h"
+#import "SignInToken.h"
+#import "Marshaller.h"
+
 
 @class Car;
 @class Radius;
@@ -28,7 +34,6 @@
 
 +(void)showSuccessMEUser: (NSString *) message;
 
-
 +(void)showSuccessMessage: (NSString *) message;
 +(void)showErrorMessage: (NSString *) message;
 +(void)showMessage: (NSError *) error;
@@ -39,5 +44,12 @@
 + (BOOL)callServerWithURLSync:(NSURL *) url inputDictionary:(NSMutableDictionary *) inputDictionary outputDictionary:(NSDictionary**) outputDictionary error:(NSError **)error;
 
 //TODO: When not connected, the message says Input Serialization Error
+
++(BOOL)signIn: (SignInToken *) token
+     userType: (NSString **) userType
+        error: (NSError **) error;
+
+
++(void) handleServerReturn: (NSError *)error showMessageOnSuccess: (BOOL) showMessageOnSuccess viewController:(UIViewController *)viewController;
 
 @end

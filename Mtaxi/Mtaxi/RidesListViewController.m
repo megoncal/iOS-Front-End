@@ -248,11 +248,8 @@
             
             if (error.code == 0) {
                 self.rides = rides;
-                
                 [self splitRidesInSections];
-                
                 [self.tableView reloadData];
-                
             }else{
                 [Helper showMessage:error];
             }

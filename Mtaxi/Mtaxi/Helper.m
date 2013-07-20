@@ -58,6 +58,31 @@
     }
 }
 
++ (void)handleServerReturn:(NSError *)error showMessageOnSuccess:(BOOL)showMessageOnSuccess viewController:(UIViewController *)viewController {
+    
+    if (error.code == 0 && showMessageOnSuccess) {
+        [self showSuccessMessage:error.localizedDescription];
+        return;
+    }
+    
+    if (error.code == 1) {
+        [self showErrorMessage:error.localizedDescription];
+        return;
+    }
+    
+    if (error.code == 100) {
+        
+        UIViewController *signInController = [viewController.storyboard instantiateViewControllerWithIdentifier:@"LogInNavigationController"];
+        [viewController presentViewController:signInController animated:YES completion:nil];
+        
+        return;
+    }
+    
+    
+    
+    
+}
+
 +(NSError *)createNSError:(int) code message:(NSString *) message{
     NSMutableDictionary* details = [[NSMutableDictionary alloc] initWithCapacity:1];
     [details setValue:message forKey:NSLocalizedDescriptionKey];
@@ -116,18 +141,49 @@
     [request setValue:[NSString stringWithFormat:@"JSESSIONID=%@",jsessionID] forHTTPHeaderField:@"Cookie"];
     
     NSHTTPURLResponse *responseCode = NULL;
-    NSError *callError = NULL;
+ //   NSError *callError = NULL;
     
     NSLog(@"Input String: %@", [[NSString alloc] initWithData:bodyData encoding:NSUTF8StringEncoding]);
     
-    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&callError];
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:error];
     //[NSThread sleepForTimeInterval:5];
     NSLog(@"Returned String: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     
     //TODO: correct
-    if ((callError) || ([data length] == 0)) {
-        *error = [Helper createNSError:1 message:callError.localizedDescription] ;
+    if ((*error) || ([data length] == 0)) {
+        *error = [Helper createNSError:1 message:(*error).localizedDescription] ;
         return NO;
+    }
+    
+    if (responseCode.statusCode == 403) {
+        //search for login details in the keychain and then try to sigin
+        CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
+        if (currentSessionToken.username &&
+            currentSessionToken.password) {
+            
+            NSString *returnedUser;
+            
+            SignInToken *token = [[SignInToken alloc] initWithUsername:currentSessionToken.username andPassword:currentSessionToken.password];
+           
+            BOOL success = [self signIn:token userType:&returnedUser error:error];
+             //NOTE: if the sign in function returned yes but does not logged the user in.. then a infinite loop could happen. the sign in functional has been reviewd to make sure that only returns yes if the user has been succeed log in.
+            
+            
+            if (!success) {
+                *error = [Helper createNSError:100 message:(*error).localizedDescription];
+                [CurrentSessionController resetCurrentSession];
+                return NO;
+            }else{
+                
+                success = [self callServerWithURLSync:url inputDictionary:inputDictionary outputDictionary:outputDictionary error:error];
+                if (!success) {
+                    *error = [Helper createNSError:110 message:(*error).localizedDescription];
+                    return NO;
+                }
+            }
+            
+        }
+
     }
     
     if (responseCode.statusCode != 200) {
@@ -230,5 +286,72 @@
          
      }];
 }
+
+
++(BOOL)signIn: (SignInToken *) token
+     userType: (NSString **) userType
+        error: (NSError **) error {
+    
+    NSMutableDictionary *signInTokenDictionary = [[NSMutableDictionary alloc] init];
+    NSDictionary *outputDictionary;
+    
+    BOOL success = [Marshaller marshallDictionary:signInTokenDictionary object:token error:error];
+    
+    if (!success) {
+        return NO;
+    }
+    
+    success = [Helper callServerWithURLSync:signInURL inputDictionary:signInTokenDictionary outputDictionary:&outputDictionary error:error];
+    
+    if (!success) {
+        return NO;
+    }
+    
+    //Marshal the objects
+    CallResult *callResult=[[CallResult alloc] init];
+    
+    //Obtain result dictionary from the outputDictionary
+    NSDictionary *callResultDictionary = [outputDictionary objectForKey:@"result"];
+    
+    
+    success = [Marshaller marshallObject:callResult dictionary:callResultDictionary error:error];
+    
+    if (!success) {
+        return NO;
+    }
+    
+    if ([callResult.code isEqualToString:@"ERROR"]){
+        *error = [Helper createNSError:callResult];
+        return NO;
+    }
+    
+    
+    //    CurrentSession *currentSession = [[CurrentSession alloc] init];
+    
+    CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
+    
+    
+    //Obtain additionalInfo from the outputDictionary
+    NSDictionary *additionalInfoDictionary = [outputDictionary objectForKey:@"additionalInfo"];
+    *userType = [additionalInfoDictionary objectForKey:@"userType"];
+    currentSessionToken.jsessionID = [additionalInfoDictionary objectForKey:@"JSESSIONID"];
+    currentSessionToken.userType = *userType;
+    currentSessionToken.username = token.username;
+    currentSessionToken.password = token.password;
+    
+    success = [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
+    
+    if (!success) {
+        *error = [Helper createNSError:120 message:@"Unable to write to keychain."];
+        return NO;
+    }
+    
+
+    *error = [Helper createNSError:callResult];
+    
+    return YES;
+}
+
+
 
 @end

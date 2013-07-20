@@ -13,70 +13,73 @@
 +(BOOL)signIn: (SignInToken *) token
      userType: (NSString **) userType
         error: (NSError **) error {
-    
-    NSMutableDictionary *signInTokenDictionary = [[NSMutableDictionary alloc] init];
-    NSDictionary *outputDictionary;
-    
-    BOOL success = [Marshaller marshallDictionary:signInTokenDictionary object:token error:error];
 
-    if (!success) {
-        return NO;
-    }
-
-    success = [Helper callServerWithURLSync:signInURL inputDictionary:signInTokenDictionary outputDictionary:&outputDictionary error:error];
     
-    if (!success) {
-        return NO;
-    }
+    return [Helper signIn:token userType:userType error:error];
     
-    //Marshal the objects
-    CallResult *callResult=[[CallResult alloc] init];
-    
-    //Obtain result dictionary from the outputDictionary
-    NSDictionary *callResultDictionary = [outputDictionary objectForKey:@"result"];
-    
-    
-    success = [Marshaller marshallObject:callResult dictionary:callResultDictionary error:error];
-
-    if (!success) {
-        return NO;
-    }
-    
-    if ([callResult.code isEqualToString:@"ERROR"]){
-        *error = [Helper createNSError:callResult];
-        return NO;
-    }
-    
-    
-//    CurrentSession *currentSession = [[CurrentSession alloc] init];
-    
-    CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
-    
-    
-    //Obtain additionalInfo from the outputDictionary
-    NSDictionary *additionalInfoDictionary = [outputDictionary objectForKey:@"additionalInfo"];
-    *userType = [additionalInfoDictionary objectForKey:@"userType"];
-    currentSessionToken.jsessionID = [additionalInfoDictionary objectForKey:@"JSESSIONID"];
-    currentSessionToken.userType = *userType;
-    
-    // currentSession.jsessionID = [additionalInfoDictionary objectForKey:@"JSESSIONID"];
-   // currentSession.userType = *userType;
-    
-
-  //  success = [currentSession writeCurrentSessionInformationToPlistFile];
-    
-    success = [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
-    
-    if (!success) {
-        //TODO: add unexpected error message to the error object
-        return NO;
-        
-    }
-    
-    //    [CurrentSession writeCurrentSessionInformationToPlistFile:currentSession];
-    *error = [Helper createNSError:callResult];
-    
-    return YES;
+//    NSMutableDictionary *signInTokenDictionary = [[NSMutableDictionary alloc] init];
+//    NSDictionary *outputDictionary;
+//    
+//    BOOL success = [Marshaller marshallDictionary:signInTokenDictionary object:token error:error];
+//
+//    if (!success) {
+//        return NO;
+//    }
+//
+//    success = [Helper callServerWithURLSync:signInURL inputDictionary:signInTokenDictionary outputDictionary:&outputDictionary error:error];
+//    
+//    if (!success) {
+//        return NO;
+//    }
+//    
+//    //Marshal the objects
+//    CallResult *callResult=[[CallResult alloc] init];
+//    
+//    //Obtain result dictionary from the outputDictionary
+//    NSDictionary *callResultDictionary = [outputDictionary objectForKey:@"result"];
+//    
+//    
+//    success = [Marshaller marshallObject:callResult dictionary:callResultDictionary error:error];
+//
+//    if (!success) {
+//        return NO;
+//    }
+//    
+//    if ([callResult.code isEqualToString:@"ERROR"]){
+//        *error = [Helper createNSError:callResult];
+//        return NO;
+//    }
+//    
+//    
+////    CurrentSession *currentSession = [[CurrentSession alloc] init];
+//    
+//    CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
+//    
+//    
+//    //Obtain additionalInfo from the outputDictionary
+//    NSDictionary *additionalInfoDictionary = [outputDictionary objectForKey:@"additionalInfo"];
+//    *userType = [additionalInfoDictionary objectForKey:@"userType"];
+//    currentSessionToken.jsessionID = [additionalInfoDictionary objectForKey:@"JSESSIONID"];
+//    currentSessionToken.userType = *userType;
+//    
+//    // currentSession.jsessionID = [additionalInfoDictionary objectForKey:@"JSESSIONID"];
+//   // currentSession.userType = *userType;
+//    
+//
+//  //  success = [currentSession writeCurrentSessionInformationToPlistFile];
+//    
+//    success = [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
+//    
+//    if (!success) {
+//        //TODO: add unexpected error message to the error object
+//        return NO;
+//        
+//    }
+//    
+//    //    [CurrentSession writeCurrentSessionInformationToPlistFile:currentSession];
+//    *error = [Helper createNSError:callResult];
+//    
+//    return YES;
 }
 
 #pragma mark - SignUp
@@ -129,12 +132,13 @@
     }else{
         currentSessionToken.userType = @"PASSENGER";
     }
-    
+    currentSessionToken.username = user.username;
+    currentSessionToken.password = user.password;
 
     success = [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
     
     if (!success) {
-        //TODO: add unexpected error message to the object error;
+        *error = [Helper createNSError:120 message:@"Unable to write to keychain."];
         return NO;
     }
     
