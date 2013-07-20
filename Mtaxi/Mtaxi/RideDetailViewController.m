@@ -40,7 +40,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
     [self populateScreenFields];
 
-    [self checkCompletedRide];
+    [self enableRideActions];
 
     
 }
@@ -58,13 +58,20 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 }
 
 
-- (void) checkCompletedRide{
+- (void) enableRideActions{
 
     if([self.ride.rideStatus.code isEqual:@"COMPLETED"]){
         self.navigationItem.rightBarButtonItem = NULL;
+    }else if ([self.ride.rideStatus.code isEqual:@"UNASSIGNED"]){
+        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelPressed)];
+        self.navigationItem.rightBarButtonItem = cancelButton;
     }
     
     
+    
+}
+
+- (void) cancelPressed{
     
 }
 

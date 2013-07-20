@@ -48,9 +48,9 @@ lembretes
  
  22 - add status to ride detail view controller and then add comments and rating (Eduardo)
  
- 23 - Sign out command has broken after implementation of item 17.... (Marcos)  
+ 23 - Sign out command has broken after implementation of item 17.... (Marcos)  - DONE
  
- 24 - Cancel functionality for unassigned Rides (Eduardo)
+ 24 - Cancel functionality for unassigned Rides (Marcos)
  
  25 - Get most frequent addresses is returning multiple
  
