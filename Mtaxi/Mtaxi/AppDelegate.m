@@ -18,14 +18,12 @@
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:
      (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     
-    //search for login details in the keychain
+    //search for login details in the keychain and then try to sigin
     CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
     if (currentSessionToken.username &&
         currentSessionToken.password) {
         
-        
-        
-        
+
         NSError *error;
         NSString *returnedUser;
         NSString *segueId;
@@ -47,7 +45,7 @@
         }
 
         self.window.rootViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:segueId];
-        
+
     }
     
     return YES;

@@ -84,9 +84,16 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     
     [CurrentSessionController resetCurrentSession];
 
-    [(UINavigationController *)self.tabBarController.presentingViewController popToRootViewControllerAnimated:NO];
+    UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"LogInNavigationController"];
     
-    [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
+    [self presentViewController:controller animated:YES completion:nil];
+    
+    
+    
+//  [(UINavigationController *)self.tabBarController.presentingViewController popToRootViewControllerAnimated:NO];
+    
+    
+//    [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
     
 }
 
