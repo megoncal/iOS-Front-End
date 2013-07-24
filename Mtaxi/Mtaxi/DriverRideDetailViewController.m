@@ -77,7 +77,7 @@
         NSError *error;
         [RideServerController assignRide:self.ride error:&error];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [Helper showMessage:error];
+        [Helper handleServerReturn:error showMessageOnSuccess:NO viewController:self];
         [self.navigationController popToRootViewControllerAnimated:YES];
     });
     

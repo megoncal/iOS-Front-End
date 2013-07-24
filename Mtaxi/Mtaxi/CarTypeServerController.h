@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 Moovt. All rights reserved.
 //
 
-#define carTypeURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/driver/getCarTypeEnum"]
+//#define carTypeURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/driver/getCarTypeEnum"]
 
 
-//#define carTypeURL [NSURL URLWithString:@"http://localhost:8080/moovt/driver/getCarTypeEnum"]
+#define carTypeURL [NSURL URLWithString:@"http://localhost:8080/moovt/driver/getCarTypeEnum"]
 
 #import <Foundation/Foundation.h>
 #import "Helper.h"

@@ -62,9 +62,9 @@
                 
                 [self.tableView reloadData];
                 
-            }else{
-                [Helper showMessage:error];
             }
+            
+            [Helper handleServerReturn:error showMessageOnSuccess:NO viewController:self];
             
         });
         

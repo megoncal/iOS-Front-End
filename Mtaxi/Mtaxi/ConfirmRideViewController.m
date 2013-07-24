@@ -157,7 +157,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         [RideServerController createRide:self.ride error:&error];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
-        [Helper handleServerReturn:error showMessageOnSuccess:NO viewController:self];
+        [Helper handleServerReturn:error showMessageOnSuccess:YES viewController:self];
         
 //        if (error.code==1) {
 //            [Helper showMessage:error];

@@ -245,10 +245,10 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
             
             
             BOOL success = [UserServerController signUpUser:user error:&error];
+           
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             
-            if (!success) {
-                [Helper showMessage: error];
-            } else {
+            if (success) {
                 //save username, password and usertype (encrypted)
                 CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
                 currentSessionToken.username = self.username.text;
@@ -264,7 +264,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
             }
             
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [Helper handleServerReturn:error showMessageOnSuccess:NO viewController:self];
+            
             
         });
         

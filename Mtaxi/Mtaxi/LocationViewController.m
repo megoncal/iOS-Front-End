@@ -61,9 +61,9 @@
             if (error.code == 0) {
                 self.bookmark = locations;
                 [self.mainTableView reloadData];
-            }else{
-                [Helper showMessage:error];
             }
+            
+            [Helper handleServerReturn:error showMessageOnSuccess:NO viewController:self];
             
         });
 
@@ -189,9 +189,9 @@
                     searchingLocation = NO;
                     [self.searchDisplayController.searchResultsTableView reloadData];
                 }
-            }else{
-                [Helper showMessage:error];
             }
+            
+            [Helper handleServerReturn:error showMessageOnSuccess:NO viewController:self];
             
         });
 

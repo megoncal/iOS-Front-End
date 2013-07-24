@@ -234,20 +234,17 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
             
             BOOL success = [UserServerController signUpUser:user error:&error];
             
-            if (!success) {
-                [Helper showMessage:error];
-            } else {
-                
-               
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+
+            if (success) {
                 
                 UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"InitPassenger"];
                 [self presentViewController:controller animated:YES completion:nil];
             }
+
+            [Helper handleServerReturn:error showMessageOnSuccess:NO viewController:self];
             
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
-            
-            
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
             
         });
         

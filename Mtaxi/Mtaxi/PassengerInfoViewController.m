@@ -119,9 +119,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
                 //add buttons to the navigation bar
                 self.navigationItem.rightBarButtonItem = self.editButtonItem;
                 
-            }else{
-                [Helper showMessage:error];
             }
+            
+            [Helper handleServerReturn:error showMessageOnSuccess:NO viewController:self];
             
         });
         
@@ -152,7 +152,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
                 self.user = userFromServer;
                 [self populateScreenFields:userFromServer];
             }
-            [Helper showMessage:error];
+            [Helper handleServerReturn:error showMessageOnSuccess:NO viewController:self];
             
         });
     }];

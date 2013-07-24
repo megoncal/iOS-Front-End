@@ -1,4 +1,4 @@
- //
+//
 //  Helper.m
 //  BackendProject
 //
@@ -110,7 +110,45 @@
     callResult.message = message;
     callResult.code = code;
     return [self createNSError:callResult];
- 
+    
+}
+
++ (BOOL)retrySync:(NSURL *) url outputDictionary:(NSDictionary **)outputDictionary inputDictionary:(NSMutableDictionary *)inputDictionary error:(NSError **)error  {
+    
+    //search for login details in the keychain and then try to sigin
+    CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
+    if (currentSessionToken.username &&
+        currentSessionToken.password) {
+        
+        NSString *returnedUser;
+        
+        SignInToken *token = [[SignInToken alloc] initWithUsername:currentSessionToken.username andPassword:currentSessionToken.password];
+        
+        BOOL success = [self signIn:token userType:&returnedUser error:error];
+        //NOTE: if the sign in function returned yes but does not logged the user in.. then a infinite loop could happen. the sign in functional has been reviewd to make sure that only returns yes if the user has been succeed log in.
+        
+        
+        if (!success) {
+            *error = [Helper createNSError:100 message:(*error).localizedDescription];
+            [CurrentSessionController resetCurrentSession];
+            return NO;
+        }else{
+            *error = nil;
+            success = [self callServerWithURLSync:url inputDictionary:inputDictionary outputDictionary:outputDictionary error:error];
+            if (!success) {   
+                *error = [Helper createNSError:100 message:@"Unauthorized"];
+                return NO;
+            }
+            
+            *error = [Helper createNSError:0 message:@"Synchronous call to server was successful"] ;
+            return YES;
+            
+        }
+        
+    } else {
+        *error = [Helper createNSError:100 message:@"Unauthorized"];
+        return NO;
+    }
 }
 
 //Calls a REST/JSON service with a dictionary and returns a dictionar
@@ -134,14 +172,14 @@
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:bodyData];
     [request setValue:@"application/json" forHTTPHeaderField:@"content-type"];
-
+    
     CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
     NSString *jsessionID = currentSessionToken.jsessionID;
     //    NSString *jsessiond = [CurrentSession currentSessionInformation].jsessionID;
     [request setValue:[NSString stringWithFormat:@"JSESSIONID=%@",jsessionID] forHTTPHeaderField:@"Cookie"];
     
     NSHTTPURLResponse *responseCode = NULL;
- //   NSError *callError = NULL;
+    //   NSError *callError = NULL;
     
     NSLog(@"Input String: %@", [[NSString alloc] initWithData:bodyData encoding:NSUTF8StringEncoding]);
     
@@ -156,34 +194,8 @@
     }
     
     if (responseCode.statusCode == 403) {
-        //search for login details in the keychain and then try to sigin
-        CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
-        if (currentSessionToken.username &&
-            currentSessionToken.password) {
-            
-            NSString *returnedUser;
-            
-            SignInToken *token = [[SignInToken alloc] initWithUsername:currentSessionToken.username andPassword:currentSessionToken.password];
-           
-            BOOL success = [self signIn:token userType:&returnedUser error:error];
-             //NOTE: if the sign in function returned yes but does not logged the user in.. then a infinite loop could happen. the sign in functional has been reviewd to make sure that only returns yes if the user has been succeed log in.
-            
-            
-            if (!success) {
-                *error = [Helper createNSError:100 message:(*error).localizedDescription];
-                [CurrentSessionController resetCurrentSession];
-                return NO;
-            }else{
-                
-                success = [self callServerWithURLSync:url inputDictionary:inputDictionary outputDictionary:outputDictionary error:error];
-                if (!success) {
-                    *error = [Helper createNSError:110 message:(*error).localizedDescription];
-                    return NO;
-                }
-            }
-            
-        }
-
+        (*error) = nil;
+        return [self retrySync:url outputDictionary:outputDictionary inputDictionary:inputDictionary error:error];
     }
     
     if (responseCode.statusCode != 200) {
@@ -252,23 +264,24 @@
          
          if ((callError) || ([data length] == 0)) {
              error = [Helper createNSError:1 message:callError.localizedDescription] ;
-             
              handler(outputDictionary, error);
-             
              return;
              
+         }
+
+         
+         if (httpResponse.statusCode == 403) {
+             error = nil;
+             [self retrySync:url outputDictionary:&outputDictionary inputDictionary:inputDictionary error:&error];
+             handler(outputDictionary, error);
+             return;
          }
          
          if (httpResponse.statusCode != 200) {
              error = [Helper createNSError:1 message:[NSString stringWithFormat:@"Server returned an unexpected status code (%d)", httpResponse.statusCode]];
-             
              handler(outputDictionary, error);
-             
              return;
          }
-         
-                  
-         //TODO:Handle 403 error (NOT AUTHORIZED)
          
          outputDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&serializationError];
          
@@ -346,7 +359,7 @@
         return NO;
     }
     
-
+    
     *error = [Helper createNSError:callResult];
     
     return YES;
