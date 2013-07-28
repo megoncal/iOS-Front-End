@@ -229,6 +229,50 @@
 }
 
 
++(BOOL)cancelRide:(Ride *)ride error:(NSError *__autoreleasing *)error{
+    
+    NSURL *url = cancelRideUrl;
+    
+    NSMutableDictionary *cancelRideDictionary = [[NSMutableDictionary alloc] init];
+    
+    CancelRideToken *cancelRideToken = [[CancelRideToken alloc] initWithUid:ride.uid version:ride.version];
+    
+    BOOL success = [Marshaller marshallDictionary:cancelRideDictionary object:cancelRideToken error:error];
+    
+    
+    if (!success) {
+        return NO;
+    }
+    
+    NSMutableDictionary *callResultDictionary;
+    NSMutableDictionary *outputDictionary;
+    
+    
+    //call server sync passing the rideDictionary
+    success = [Helper callServerWithURLSync:url inputDictionary:cancelRideDictionary outputDictionary:&outputDictionary error:error];
+    
+    if (!success) {
+        return NO;
+    }
+    
+    callResultDictionary = [outputDictionary objectForKey:@"result"];
+    
+    CallResult *callResult = [[CallResult alloc]init];
+    
+    success = [Marshaller marshallObject:callResult dictionary:callResultDictionary error:error];
+    
+    if (!success) {
+        return NO;
+    }
+    
+    //Create an error from the call Result - This maybe success or not
+    *error = [Helper createNSError:callResult];
+    
+    if ([callResult.code isEqualToString:@"ERROR"]) {
+        return NO;
+    }
+    return YES;
+}
 
 
 

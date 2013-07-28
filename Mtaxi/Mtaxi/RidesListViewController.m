@@ -24,9 +24,9 @@
 {
     [super viewDidLoad];
     
-    self.listOfStatusCode = [[NSArray alloc] initWithObjects:@"UNASSIGNED", @"ASSIGNED", @"COMPLETED", nil];
+    self.listOfStatusCode = [[NSArray alloc] initWithObjects:@"UNASSIGNED", @"ASSIGNED", @"COMPLETED", @"CANCELED", nil];
     
-    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector: @selector(removeRide:) name:@"removeRide" object: nil];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -149,9 +149,7 @@
 {
     //instantiate the navigationController
     RideDetailViewController *rideDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RideDetailView"];
-    
     rideDetailViewController.ride = [self retrieveRideFrom:self.sectionedRides atPosition:indexPath];
-    
     [self.navigationController pushViewController:rideDetailViewController animated:YES];
 }
 
@@ -166,7 +164,6 @@
     
     
 }
-
 
 
 - (void) splitRidesInSections{
@@ -200,11 +197,11 @@
     for (NSString *statusCode in self.listOfStatusCode) {
         
         
-        NSArray *tempArray = [sectionsDictionary objectForKey:statusCode];
+        NSArray *sectionArray = [sectionsDictionary objectForKey:statusCode];
        
-        if (tempArray) {
+        if (sectionArray) {
             
-            tempArray = [tempArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            sectionArray = [sectionArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
                 
                 NSDate *date1 = [(Ride *)obj1 pickUpDateTime];
                 NSDate *date2 = [(Ride *) obj2 pickUpDateTime];
@@ -213,17 +210,17 @@
             }];
             
             NSMutableDictionary *tempDictionary = [[NSMutableDictionary alloc] init];
-            NSString *tempKey = [(Ride *)[tempArray objectAtIndex:0] rideStatus].description;
-            [tempDictionary setObject:tempArray forKey:tempKey];
+            
+            NSString *tempKey = [(Ride *)[sectionArray objectAtIndex:0] rideStatus].description;
+            
+            NSMutableArray *sectionMutableArray = [sectionArray mutableCopy];
+            
+            [tempDictionary setObject:sectionMutableArray forKey:tempKey];
+            
             [self.sectionedRides addObject:tempDictionary];
         }
         
     }
-    
-
-
-    
-    
 }
 
 #pragma mark retrieve ride from sectioned rides using indexPath
@@ -231,9 +228,24 @@
 -  (Ride *)retrieveRideFrom: (NSArray *)sectionedRides atPosition:(NSIndexPath *)indexPath{
    
     NSDictionary *ridesDictionary = [sectionedRides objectAtIndex:indexPath.section];
+    
     NSArray *ridesArray = [[ridesDictionary allValues] objectAtIndex:0];
+    
     return [ridesArray objectAtIndex:indexPath.row];
 }
+
+//-  (void)removeRide: (NSNotification *)notification{
+//
+//    NSDictionary *dictionary = [notification userInfo];
+//    
+//    NSIndexPath *indexPath = [dictionary objectForKey:@"indexpath"];
+//    
+//    NSDictionary *ridesDictionary = [self.sectionedRides objectAtIndex:indexPath.section];
+//    
+//    NSMutableArray *sectionRides = [[ridesDictionary allValues] objectAtIndex:0];
+//
+//    [sectionRides removeObjectAtIndex:indexPath.row];
+//}
 
 #pragma mark - Integration with Server
 

@@ -59,19 +59,32 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 
 - (void) enableRideActions{
-
     if([self.ride.rideStatus.code isEqual:@"COMPLETED"]){
         self.navigationItem.rightBarButtonItem = NULL;
     }else if ([self.ride.rideStatus.code isEqual:@"UNASSIGNED"]){
         UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelPressed)];
         self.navigationItem.rightBarButtonItem = cancelButton;
     }
-    
-    
-    
 }
 
 - (void) cancelPressed{
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Canceling your ride...";
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        NSError *error;
+        
+        [RideServerController cancelRide:self.ride error:&error];
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        [Helper handleServerReturn:error showMessageOnSuccess:YES viewController:self];
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    });
+    
     
 }
 
