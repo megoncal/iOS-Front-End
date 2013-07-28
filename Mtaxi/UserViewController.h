@@ -3,7 +3,7 @@
  
  Lembretes
  
-
+server - mandatory - cancelRide is returning 404
  
  client/server - mandatory - precisamos adicionar o código para autenticar o usuário automaticamente quando receber o erro 403 (Eduardo)
  
