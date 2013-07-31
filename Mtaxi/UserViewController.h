@@ -3,7 +3,8 @@
  
  Lembretes
  
-
+server - mandatory - cancelRide is returning 404
+ 
  client/server - mandatory - precisamos adicionar o código para autenticar o usuário automaticamente quando receber o erro 403 (Eduardo)
  
  server - nice to have - refactory - Generic Audit Fields (version, lastUpdated, etc) (Eduardo)
@@ -25,6 +26,9 @@
 
  
  concluido
+ 
+ 
+ 
  
  1 - falar com eduardo sobre o if que adicionei na classe marshaller... pode gerar efeito colateral.. (Marcos) - DONE
  
