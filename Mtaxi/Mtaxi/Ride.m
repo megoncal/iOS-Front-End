@@ -9,9 +9,9 @@
 
 #import "Ride.h"
 
-//#define createRideURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/ride/createRide"]
+#define createRideURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/ride/createRide"]
 //#define createRideURL [NSURL URLWithString:@"http://localhost:8080/moovt/ride/createRide"]
-#define createRideURL [NSURL URLWithString:@"http://10.0.0.13:8080/moovt/ride/createRide"]
+//#define createRideURL [NSURL URLWithString:@"http://10.0.0.13:8080/moovt/ride/createRide"]
 
 
 @implementation Ride
