@@ -28,7 +28,7 @@
         NSString *returnedUser;
         NSString *segueId;
         
-        SignInToken *token = [[SignInToken alloc] initWithUsername:currentSessionToken.username andPassword:currentSessionToken.password];
+        SignInToken *token = [[SignInToken alloc] initWithUsername:currentSessionToken.username andPassword:currentSessionToken.password andApnsToken:currentSessionToken.apnsToken];
         
         BOOL success = [UserServerController signIn:token userType:&returnedUser error: &error];
         
@@ -54,11 +54,19 @@
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
 {
 	NSLog(@"My token is: %@", deviceToken);
+    CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
+    currentSessionToken.apnsToken = [deviceToken description] ;
+    [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
+
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
 {
 	NSLog(@"Failed to get token, error: %@", error);
+    //Generic Token
+    CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
+    currentSessionToken.apnsToken = @"9a1cd758 47e20f1a 27132790 dfe1a0cb 4107f42d a1a39c01 9dd1a082 0fc5c504";
+    [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

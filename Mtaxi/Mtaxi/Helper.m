@@ -134,7 +134,7 @@
             return NO;
         }else{
             *error = nil;
-            success = [self callServerWithURLSync:url inputDictionary:inputDictionary outputDictionary:outputDictionary error:error];
+            success = [self callServerWithURLSync:url inputDictionary:inputDictionary outputDictionary:outputDictionary error:error isRetry:YES];
             if (!success) {   
                 *error = [Helper createNSError:100 message:@"Unauthorized"];
                 return NO;
@@ -151,10 +151,13 @@
     }
 }
 
-//Calls a REST/JSON service with a dictionary and returns a dictionar
-
-
 + (BOOL)callServerWithURLSync:(NSURL *) url inputDictionary:(NSMutableDictionary *) inputDictionary outputDictionary:(NSDictionary**) outputDictionary error:(NSError **)error {
+    return [self callServerWithURLSync:url inputDictionary:inputDictionary outputDictionary:outputDictionary error:error isRetry:NO];
+}
+
+
+//Calls a REST/JSON service with a dictionary and returns a dictionar
++ (BOOL)callServerWithURLSync:(NSURL *) url inputDictionary:(NSMutableDictionary *) inputDictionary outputDictionary:(NSDictionary**) outputDictionary error:(NSError **)error isRetry: (BOOL) isRetry {
     
     //Convert the Dictionary to the data that will go into the body of the message
     NSError *serializationError = NULL;
@@ -195,7 +198,12 @@
     
     if (responseCode.statusCode == 403) {
         (*error) = nil;
-        return [self retrySync:url outputDictionary:outputDictionary inputDictionary:inputDictionary error:error];
+        //We only retry once
+        if (isRetry) {
+            return NO;
+        } else {
+            return [self retrySync:url outputDictionary:outputDictionary inputDictionary:inputDictionary error:error];
+        }
     }
     
     if (responseCode.statusCode != 200) {
@@ -301,14 +309,19 @@
 }
 
 
-+(BOOL)signIn: (SignInToken *) token
++(BOOL)signIn: (SignInToken *) signInToken
      userType: (NSString **) userType
         error: (NSError **) error {
     
     NSMutableDictionary *signInTokenDictionary = [[NSMutableDictionary alloc] init];
     NSDictionary *outputDictionary;
     
-    BOOL success = [Marshaller marshallDictionary:signInTokenDictionary object:token error:error];
+    CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
+    
+    //Apend the apnsToken from the currentSessionToken to the signInToken
+    signInToken.apnsToken = currentSessionToken.apnsToken;
+    
+    BOOL success = [Marshaller marshallDictionary:signInTokenDictionary object:signInToken error:error];
     
     if (!success) {
         return NO;
@@ -339,18 +352,14 @@
     }
     
     
-    //    CurrentSession *currentSession = [[CurrentSession alloc] init];
-    
-    CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
-    
     
     //Obtain additionalInfo from the outputDictionary
     NSDictionary *additionalInfoDictionary = [outputDictionary objectForKey:@"additionalInfo"];
     *userType = [additionalInfoDictionary objectForKey:@"userType"];
     currentSessionToken.jsessionID = [additionalInfoDictionary objectForKey:@"JSESSIONID"];
     currentSessionToken.userType = *userType;
-    currentSessionToken.username = token.username;
-    currentSessionToken.password = token.password;
+    currentSessionToken.username = signInToken.username;
+    currentSessionToken.password = signInToken.password;
     
     success = [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
     

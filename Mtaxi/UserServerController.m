@@ -88,6 +88,10 @@
 
     NSMutableDictionary *userDictionary = [[NSMutableDictionary alloc] init];
     NSDictionary *outputDictionary;
+
+    CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
+    //Append the user with the apnsToken inside the currentSessionToken
+    user.apnsToken = currentSessionToken.apnsToken;
     
     BOOL success = [Marshaller marshallDictionary:userDictionary object:user error:error];
     
@@ -119,11 +123,7 @@
     if ([callResult.code isEqualToString:@"ERROR"]){
         return NO;
     }
-//    CurrentSession *currentSession = [[CurrentSession alloc] init];
-    
-    
-    CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
-    
+
     //Obtain additionalInfo from the outputDictionary
     NSDictionary *additionalInfoDictionary = [outputDictionary objectForKey:@"additionalInfo"];
     currentSessionToken.jsessionID = [additionalInfoDictionary objectForKey:@"JSESSIONID"];

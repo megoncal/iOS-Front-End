@@ -93,9 +93,9 @@
     NSError *error;
     NSString *returnedUser;
     
-    SignInToken *token = [[SignInToken alloc] initWithUsername:self.username.text andPassword:self.password.text];
+    SignInToken *signInToken = [[SignInToken alloc] initWithUsername:self.username.text andPassword:self.password.text];
     
-    BOOL success = [UserServerController signIn:token userType:&returnedUser error: &error];
+    BOOL success = [UserServerController signIn:signInToken userType:&returnedUser error: &error];
     
     
     if (success) {

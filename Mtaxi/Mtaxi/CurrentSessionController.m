@@ -18,9 +18,10 @@
     NSString *password = [pdKeychainBindings stringForKey:@"password"];
     NSString *userType = [pdKeychainBindings stringForKey:@"userType"];
     NSString *jsessionID = [pdKeychainBindings stringForKey:@"jsessionID"];
+    NSData *apnsToken = [pdKeychainBindings stringForKey:@"apnsToken"];
     
     
-    CurrentSessionToken *currentSessionToken = [[CurrentSessionToken alloc]initWithUsername:username password:password userType:userType andJsessionID:jsessionID];
+    CurrentSessionToken *currentSessionToken = [[CurrentSessionToken alloc]initWithUsername:username password:password userType:userType andJsessionID:jsessionID andApnsToken:apnsToken];
     
     return currentSessionToken;
     
@@ -36,15 +37,26 @@
     [pdKeychainBindings setObject:currentSessionToken.password forKey:@"password"];
     [pdKeychainBindings setObject:currentSessionToken.userType forKey:@"userType"];
     [pdKeychainBindings setObject:currentSessionToken.jsessionID forKey:@"jsessionID"];
+    [pdKeychainBindings setObject:currentSessionToken.apnsToken forKey:@"apnsToken"];
     
     return YES;
 }
 
+
 + (BOOL)resetCurrentSession{
     
-    CurrentSessionToken *emptyCurrentSessionToken = [[CurrentSessionToken alloc]init];
+    PDKeychainBindings *pdKeychainBindings = [PDKeychainBindings sharedKeychainBindings];
+
+    [pdKeychainBindings removeObjectForKey:@"username"];
+    [pdKeychainBindings removeObjectForKey:@"password"];
+    [pdKeychainBindings removeObjectForKey:@"userType"];
+    [pdKeychainBindings removeObjectForKey:@"jsessionID"];
+    //Leave the token
     
-    [CurrentSessionController writeCurrentSessionToken:emptyCurrentSessionToken];
+    
+//    CurrentSessionToken *emptyCurrentSessionToken = [[CurrentSessionToken alloc]init];
+//    
+//    [CurrentSessionController writeCurrentSessionToken:emptyCurrentSessionToken];
     
     return YES;
 }

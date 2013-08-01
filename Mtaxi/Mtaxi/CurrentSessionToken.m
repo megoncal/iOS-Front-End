@@ -15,13 +15,14 @@
 
 
 
-- (id)initWithUsername:(NSString *)username password:(NSString *)password userType:(NSString *)userType andJsessionID:(NSString *)jsessionID{
+- (id)initWithUsername:(NSString *)username password:(NSString *)password userType:(NSString *)userType andJsessionID:(NSString *)jsessionID andApnsToken:(NSString *)apnsToken{
     
     if (self = [super init]) {
         self.username = username;
         self.userType = userType;
         self.password = password;
         self.jsessionID = jsessionID;
+        self.apnsToken = apnsToken;
     }
     return self;
 }

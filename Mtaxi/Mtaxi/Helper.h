@@ -7,9 +7,11 @@
 //
 
 
-#define signInURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/login/authenticateUser"]
+//#define signInURL [NSURL URLWithString:@"http://ec2-54-235-108-25.compute-1.amazonaws.com:8080/moovt/login/authenticateUser"]
 
 //#define signInURL [NSURL URLWithString:@"http://localhost:8080/moovt/login/authenticateUser"]
+
+#define signInURL [NSURL URLWithString:@"http://10.0.0.13:8080/moovt/login/authenticateUser"]
 
 #import <Foundation/Foundation.h>
 #import "Location.h"
@@ -42,12 +44,16 @@
 +(NSError *)createNSError:(int) code message:(NSString *) message;
 +(NSError *)createNSError:(NSString *) code type:(NSString *) type message:(NSString *) message;
 +(NSError *)createNSError:(CallResult *)callResultObject;
+
 + (void)callServerWithURLAsync:(NSURL *) url inputDictionary:(NSMutableDictionary *) inputDictionary completionHandler:(void (^)(NSDictionary *, NSError *))handler;
+
 + (BOOL)callServerWithURLSync:(NSURL *) url inputDictionary:(NSMutableDictionary *) inputDictionary outputDictionary:(NSDictionary**) outputDictionary error:(NSError **)error;
+
++ (BOOL)callServerWithURLSync:(NSURL *) url inputDictionary:(NSMutableDictionary *) inputDictionary outputDictionary:(NSDictionary**) outputDictionary error:(NSError **)error isRetry: (BOOL) isRetry;
 
 //TODO: When not connected, the message says Input Serialization Error
 
-+(BOOL)signIn: (SignInToken *) token
++(BOOL)signIn: (SignInToken *) signInToken
      userType: (NSString **) userType
         error: (NSError **) error;
 

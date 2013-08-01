@@ -14,7 +14,9 @@
 @property (strong, nonatomic) NSString *tenantname;
 @property (strong, nonatomic) NSString *username;
 @property (strong, nonatomic) NSString *password;
+@property (strong, nonatomic) NSString *apnsToken;
 
 -(id) initWithUsername: (NSString *)username andPassword:(NSString *)password;
 
+-(id) initWithUsername: (NSString *)username andPassword:(NSString *)password andApnsToken:(NSString *)apnsToken;
 @end

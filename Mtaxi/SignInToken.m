@@ -20,4 +20,15 @@
     return self;
 }
 
+
+-(id) initWithUsername: (NSString *)username andPassword:(NSString *)password andApnsToken:(NSString *)apnsToken {
+    if (self = [super init]) {
+        self.type = @"Self";
+        self.tenantname = @"WorldTaxi";
+        self.username = username;
+        self.password = password;
+        self.apnsToken = apnsToken;
+    }
+    return self;
+}
 @end
