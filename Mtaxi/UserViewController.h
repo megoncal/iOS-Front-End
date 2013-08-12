@@ -3,32 +3,41 @@
  
  Lembretes
  
-server - mandatory - cancelRide is returning 404
+
+ server - mandatory - complete ride sending two messagens (Eduardo)
  
- client/server - mandatory - precisamos adicionar o código para autenticar o usuário automaticamente quando receber o erro 403 (Eduardo)
+ client - mandatory - app crashing after editing driver details (Marcos)
  
+ client - mandatory - Rate ride view controller long text.... check for a place holder... (Marcos)
+ 
+ client - mandatory - Design app icon and app launch screen (Marcos)
+ 
+ server - mandatory - redundance and test enviroment (Eduardo)
+ 
+ server - mandatory - stop sending cancel email (Eduardo)
+ 
+ client / server - mandatory - test locations... ibis savassi... (Marcos/Eduardo)
+ 
+ client / server - mandatory - test push notification... (Marcos / Eduardo)
+ 
+ client - mandatory - prepare app to be deployed at apple store.. (Marcos)
+ 
+ client - secondary - add status to ride detail view controller and then add comments and rating (Marcos)
+ 
+ server - secondary - deactivate driver (Eduardo)
+ 
+ server - secondary - notification one hour prior to scheduled ride (Marcos / Eduardo)
+
  server - nice to have - refactory - Generic Audit Fields (version, lastUpdated, etc) (Eduardo)
  
  client - nice to have - refactory - Rationalize keyboard on UI (Eduardo)
  
- server - mandatory - Fazer as chamadas de email a partir do servidor de forma assincrona (Eduardo)
+ client - nice to have - automatic update when scroll down
  
- client - secondary - add status to ride detail view controller and then add comments and rating (Eduardo)
- 
- client - mandatory - Cancel functionality for unassigned Rides (Marcos)
-
- server - mandatory - Get most frequent addresses is returning multiple (Eduardo)
- 
- server - secondary - Mensagem enviada pelo servidor quando take ride... message 1 updted.. (Eduardo)
- 
- client - secondary - Rate ride view controller long text.... check for a place holder... (Marcos) 
+ client - nice to have - after take ride present my rides list
  
 
- 
  concluido
- 
- 
- 
  
  1 - falar com eduardo sobre o if que adicionei na classe marshaller... pode gerar efeito colateral.. (Marcos) - DONE
  
@@ -66,7 +75,17 @@ server - mandatory - cancelRide is returning 404
  
  23 - Sign out command has broken after implementation of item 17.... (Marcos)  - DONE
  
+ 24 - server - mandatory - cancelRide is returning 404 (eduardo) - DONE
  
+ 25  -  client/server - mandatory - precisamos adicionar o código para autenticar o usuário automaticamente quando receber o erro 403 (Eduardo) - DONE
+ 
+ 26 -  server - mandatory - Fazer as chamadas de email a partir do servidor de forma assincrona (Eduardo) - DONE
+ 
+ 27 - client - mandatory - Cancel functionality for unassigned Rides (Marcos)
+ 
+ 28 -  server - mandatory - Get most frequent addresses is returning multiple (Eduardo)
+ 
+ 29 -  server - secondary - Mensagem enviada pelo servidor quando take ride... message 1 updted.. (Eduardo)
  
  */
 
