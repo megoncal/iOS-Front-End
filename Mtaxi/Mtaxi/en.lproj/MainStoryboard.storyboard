@@ -506,7 +506,7 @@
         <scene sceneID="9NJ-MI-rp0">
             <objects>
                 <navigationController definesPresentationContext="YES" id="gQ0-7u-JGW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Info" image="id-card.png" id="tGY-vf-Eun"/>
+                    <tabBarItem key="tabBarItem" title="My Info" image="icons_03.png" id="tGY-vf-Eun"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NgL-Xi-hAz">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1326,7 +1326,7 @@
         <scene sceneID="dG1-Sf-0fK">
             <objects>
                 <navigationController definesPresentationContext="YES" id="U0D-7n-utb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Rides" image="car-side.png" id="mIY-I9-0WO"/>
+                    <tabBarItem key="tabBarItem" title="My Rides" image="icons_02.png" id="mIY-I9-0WO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="o6n-Ec-NdE">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1678,7 +1678,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <scene sceneID="UCI-vx-zue">
             <objects>
                 <navigationController restorationIdentifier="Driver Info" storyboardIdentifier="Driver Info" definesPresentationContext="YES" id="w6T-FY-Tkk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Info" image="id-card.png" id="8wn-nR-REG"/>
+                    <tabBarItem key="tabBarItem" title="My Info" image="icons_03.png" id="8wn-nR-REG"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AVN-5F-xi5">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1801,7 +1801,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <scene sceneID="7bc-xF-NN7">
             <objects>
                 <navigationController definesPresentationContext="YES" id="Ooz-N4-gui" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="New Rides" image="arrow-big-04.png" id="N4O-QD-eQr"/>
+                    <tabBarItem key="tabBarItem" title="New Rides" image="icons_01.png" id="N4O-QD-eQr"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WZq-MP-oag">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1921,7 +1921,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <scene sceneID="F0Q-cZ-MLh">
             <objects>
                 <navigationController definesPresentationContext="YES" id="1Vk-ej-yq8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Rides" image="car-side.png" id="JVs-Zu-KBV"/>
+                    <tabBarItem key="tabBarItem" title="My Rides" image="icons_02.png" id="JVs-Zu-KBV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="49d-mC-iYm">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3047,9 +3047,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </scene>
     </scenes>
     <resources>
-        <image name="arrow-big-04.png" width="30" height="30"/>
-        <image name="car-side.png" width="30" height="30"/>
-        <image name="id-card.png" width="30" height="30"/>
+        <image name="icons_01.png" width="30" height="30"/>
+        <image name="icons_02.png" width="30" height="30"/>
+        <image name="icons_03.png" width="30" height="30"/>
     </resources>
     <classes>
         <class className="CarTypeViewController" superclassName="UITableViewController">
