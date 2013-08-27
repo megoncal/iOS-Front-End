@@ -16,9 +16,12 @@
 			<array>
 				<string>iphone_icon.png</string>
 				<string>highresolution_icon@2x.png</string>
+				<string>original_114.png</string>
+				<string>original_57.png</string>
+				<string>original_1024.png</string>
+				<string>114.png</string>
+				<string>57.png</string>
 			</array>
-			<key>UIPrerenderedIcon</key>
-			<true/>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
@@ -37,8 +40,6 @@
 	<string>1.0</string>
 	<key>UIMainStoryboardFile</key>
 	<string>MainStoryboard</string>
-	<key>UIPrerenderedIcon</key>
-	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
