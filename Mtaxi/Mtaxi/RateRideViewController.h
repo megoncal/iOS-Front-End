@@ -10,9 +10,10 @@
 #import "Ride.h"
 #import "RideServerController.h"
 #import "MBProgressHUD.h"
+#import "ScreenValidation.h"
 
 
-@interface RateRideViewController : UITableViewController
+@interface RateRideViewController : UITableViewController <UITextViewDelegate>
 
 @property (strong,nonatomic) Ride *ride;
 

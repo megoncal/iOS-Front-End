@@ -24,6 +24,14 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    //capture every time the tableView is touched and call method hideKeyboard
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    gestureRecognizer.cancelsTouchesInView = NO;
+    [self.tableView addGestureRecognizer:gestureRecognizer];
+    
+    self.comment.text = @"Insert your comments here...";
+    self.comment.textColor = [UIColor lightGrayColor]; //optional
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,7 +47,10 @@
 - (IBAction)savePressed:(id)sender {
     
     self.ride.rating = self.rating.value;
-    self.ride.comment = self.comment.text;
+    
+    if (![self.comment.text isEqualToString:@"Insert your comments here..."]){
+         self.ride.comment = self.comment.text;
+    }
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Rating your ride...";
@@ -54,6 +65,37 @@
     });
     
     
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:@"Insert your comments here..."]) {
+        textView.text = @"";
+        textView.textColor = [UIColor blackColor]; //optional
+    }
+    [textView becomeFirstResponder];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:@""]) {
+        textView.text = @"Insert your comments here...";
+        textView.textColor = [UIColor lightGrayColor]; //optional
+    }
+    [textView resignFirstResponder];
+}
+
+- (BOOL) textView: (UITextView*) textView shouldChangeTextInRange: (NSRange) range replacementText: (NSString*) text
+{
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
+- (void)hideKeyboard{
+    [self.comment resignFirstResponder];
 }
 
 

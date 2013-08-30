@@ -81,12 +81,15 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void)retrieveDriverInformation{
     
-    [UserServerController retrieveLoggedUserDetails:^(User *userFromServer, NSError *error) {
-        MBProgressHUD *mbProgressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        mbProgressHUD.labelText = @"Retrieving my info...";
-        [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
+    
+    MBProgressHUD *mbProgressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    mbProgressHUD.labelText = @"Retrieving contact...";
+   [UserServerController retrieveLoggedUserDetails:^(User *userFromServer, NSError *error) {
+        
         dispatch_async(dispatch_get_main_queue(), ^{
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
             if (error.code == 0) {
                 
                 self.user = userFromServer;
@@ -104,12 +107,46 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
                 
                 
             }
+
             
             [Helper handleServerReturn:error showMessageOnSuccess:NO viewController:self];
+            
+            
             
         });
         
     }];
+    
+    
+//    [UserServerController retrieveLoggedUserDetails:^(User *userFromServer, NSError *error) {
+//        MBProgressHUD *mbProgressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//        mbProgressHUD.labelText = @"Retrieving my info...";
+//        [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//             [MBProgressHUD hideHUDForView:self.view animated:YES];
+//            if (error.code == 0) {
+//                
+//                self.user = userFromServer;
+//                
+//                [self populateScreenFields:userFromServer];
+//                
+//                //logged user info is displayed so prepare navigattion bar buttons
+//                
+//                //prepare navigation bar button
+//                self.cancelLeftBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelPressed)];
+//                
+//                
+//                //add buttons to the navigation bar
+//                self.addedNavigationItem.rightBarButtonItem = self.editButtonItem;
+//                
+//                
+//            }
+//            
+//            [Helper handleServerReturn:error showMessageOnSuccess:NO viewController:self];
+//            
+//        });
+//        
+//    }];
 }
 
 - (void) populateScreenFields: (User *) user{
@@ -166,21 +203,47 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     
     User *userFromUI = self.createUserFromUI;
     
+//    [UserServerController updateLoggedUserDetails:userFromUI completionHandler:^(User *userFromServer, NSError *error) {
+//        
+//        MBProgressHUD *mbProgressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//        mbProgressHUD.labelText = @"Updating my info...";
+//        [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//             [MBProgressHUD hideHUDForView:self.view animated:YES];
+//            if (error.code == 0) {
+//                self.user = userFromServer;
+//                [self populateScreenFields:userFromServer];
+//            }
+//            [Helper handleServerReturn:error showMessageOnSuccess:NO viewController:self];
+//        });
+//        
+//    }];
+    
+    
+    MBProgressHUD *mbProgressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    mbProgressHUD.labelText = @"Updating contact...";
     [UserServerController updateLoggedUserDetails:userFromUI completionHandler:^(User *userFromServer, NSError *error) {
-        
-        MBProgressHUD *mbProgressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        mbProgressHUD.labelText = @"Updating my info...";
-        [ScreenValidation uitextFieldsResignFirstResponder:self.uitextfields];
+
         dispatch_async(dispatch_get_main_queue(), ^{
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
             if (error.code == 0) {
                 self.user = userFromServer;
                 [self populateScreenFields:userFromServer];
             }
+            
             [Helper handleServerReturn:error showMessageOnSuccess:NO viewController:self];
+            
+            
+            
         });
         
     }];
+
+    
+    
+    
 }
 
 #pragma mark - configure textField
@@ -341,8 +404,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         self.firstName.enabled = YES;
         self.lastName.enabled = YES;
         self.phone.enabled = YES;
-        self.taxiStand.enabled = YES;
-        self.carDescription.enabled = YES;
+   //     self.taxiStand.enabled = YES;
+  //      self.carDescription.enabled = YES;
         self.activeStatus.enabled = YES;
         self.activeStatusLabel.enabled = YES;
         
@@ -369,8 +432,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
         self.firstName.enabled = NO;
         self.lastName.enabled = NO;
         self.phone.enabled = NO;
-        self.taxiStand.enabled = NO;
-        self.carDescription.enabled = NO;
+       // self.taxiStand.enabled = NO;
+      //  self.carDescription.enabled = NO;
         self.activeStatus.enabled = NO;
         self.activeStatusLabel.enabled = NO;
         
