@@ -34,9 +34,6 @@
 		2F937279175974D600F2DDC2 /* Passenger.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A04ED01756FAD80012481B /* Passenger.m */; };
 		2F93727C17599D0400F2DDC2 /* RideServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F93727B17599D0300F2DDC2 /* RideServerController.m */; };
 		2F93727F17599D6800F2DDC2 /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F93727E17599D6800F2DDC2 /* DateHelper.m */; };
-		2F93C70B17C6D3E100F38940 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F93C70A17C6D3E100F38940 /* Default.png */; };
-		2F93C70D17C6D3F700F38940 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F93C70C17C6D3F700F38940 /* Default@2x.png */; };
-		2F93C70F17C6D40A00F38940 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F93C70E17C6D40A00F38940 /* Default-568h@2x.png */; };
 		2F94B77517D0143C0064981D /* icons_01_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F93C71017C6D46C00F38940 /* icons_01_highlight.png */; };
 		2F94B77617D0143C0064981D /* icons_01_highlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F93C71117C6D46C00F38940 /* icons_01_highlight@2x.png */; };
 		2F94B77717D0143C0064981D /* icons_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F93C71217C6D46C00F38940 /* icons_01.png */; };
@@ -658,9 +655,6 @@
 				76C5ECAD17482E7B00F87A75 /* InfoPlist.strings in Resources */,
 				2F02E80E176150BD007ACDB6 /* MainStoryboard.storyboard in Resources */,
 				2F62307D17711BFB00B51505 /* id-card.png in Resources */,
-				2F93C70B17C6D3E100F38940 /* Default.png in Resources */,
-				2F93C70D17C6D3F700F38940 /* Default@2x.png in Resources */,
-				2F93C70F17C6D40A00F38940 /* Default-568h@2x.png in Resources */,
 				2F64BE7617C836B500BA4C3C /* icons_03_highlight.png in Resources */,
 				2F64BE7717C836B500BA4C3C /* icons_03_highlight@2x.png in Resources */,
 				2F64BE7817C836B500BA4C3C /* icons_03.png in Resources */,

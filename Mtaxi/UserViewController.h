@@ -3,14 +3,9 @@
  
  Lembretes
  
-
+ client - mandatory - input serialization error after rating ride....
+ 
  server - mandatory - complete ride sending two messagens (Eduardo)
- 
- client - mandatory - app crashing after editing driver details (Marcos)
- 
- client - mandatory - Rate ride view controller long text.... check for a place holder... (Marcos)
- 
- client - mandatory - Design app icon and app launch screen (Marcos)
  
  server - mandatory - redundance and test enviroment (Eduardo)
  
@@ -86,6 +81,14 @@
  28 -  server - mandatory - Get most frequent addresses is returning multiple (Eduardo)
  
  29 -  server - secondary - Mensagem enviada pelo servidor quando take ride... message 1 updted.. (Eduardo)
+ 
+ 30 -  client - mandatory - app crashing after editing driver details (Marcos)
+ 
+ 31 - client - mandatory - Design app icon and app launch screen (Marcos);
+ 
+ 32 -  client - mandatory - Rate ride view controller long text.... check for a place holder... (Marcos)
+ 
+ 
  
  */
 
