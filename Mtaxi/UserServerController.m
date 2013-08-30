@@ -180,7 +180,7 @@
 //TODO: Make this synchronous starting at the ViewController?
 +(void)updateLoggedUserDetails:(User *)user completionHandler:(void (^)(User *, NSError *))handler{
     
-    NSError *error = [[NSError alloc] init];
+    NSError *error = nil;
     NSMutableDictionary *userDictionary = [[NSMutableDictionary alloc] init];
     NSDictionary *callResultDictionary;
     NSDictionary *outputDictionary;

@@ -24,7 +24,7 @@
         currentSessionToken.password) {
         
 
-        NSError *error;
+        NSError *error = nil;
         NSString *returnedUser;
         NSString *segueId;
         
