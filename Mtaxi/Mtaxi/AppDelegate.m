@@ -65,7 +65,7 @@
 	NSLog(@"Failed to get token, error: %@", error);
     //Generic Token
     CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
-    currentSessionToken.apnsToken = @"9a1cd758 47e20f1a 27132790 dfe1a0cb 4107f42d a1a39c01 9dd1a082 0fc5c504";
+    currentSessionToken.apnsToken = @"9a1cd758 47e20f1a 27132790 dfe1a0cb 4107f42d a1a39c01 9dd1a082 aaaaaaaa";
     [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
 }
 

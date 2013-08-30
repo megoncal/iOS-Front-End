@@ -13,7 +13,7 @@
 -(id) initWithUsername: (NSString *)username andPassword:(NSString *)password {
     if (self = [super init]) {
         self.type = @"Self";
-        self.tenantname = @"WorldTaxi";
+        self.tenantname = @"MTaxi";
         self.username = username;
         self.password = password;
     }
@@ -24,7 +24,7 @@
 -(id) initWithUsername: (NSString *)username andPassword:(NSString *)password andApnsToken:(NSString *)apnsToken {
     if (self = [super init]) {
         self.type = @"Self";
-        self.tenantname = @"WorldTaxi";
+        self.tenantname = @"MTaxi";
         self.username = username;
         self.password = password;
         self.apnsToken = apnsToken;
