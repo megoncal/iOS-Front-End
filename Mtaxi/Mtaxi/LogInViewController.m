@@ -18,8 +18,8 @@
 @implementation LogInViewController
 
 - (void)viewWillAppear:(BOOL)animated{
-    self.username.text = @"jgoodrider";
-    self.password.text = @"Welcome!1";
+//    self.username.text = @"jgoodrider";
+//    self.password.text = @"Welcome!1";
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
