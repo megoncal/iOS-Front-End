@@ -19,7 +19,7 @@
         self.lastName = lastName;
         self.phone = phone;
         self.email = email;
-        self.tenantname = @"WorldTaxi";
+        self.tenantname = @"MTaxi";
         self.driver = driver;
         self.passenger = passenger;
     }

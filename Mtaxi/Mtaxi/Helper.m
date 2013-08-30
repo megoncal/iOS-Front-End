@@ -163,6 +163,7 @@
     NSError *serializationError = NULL;
     NSData *bodyData = [NSJSONSerialization dataWithJSONObject:inputDictionary options:NSJSONWritingPrettyPrinted error:&serializationError];
     
+    NSLog(@"Error: %@", (*error));
     //Checks if the bodyData was generated successfully
     if (serializationError) {
         *error = [Helper createNSError:1 message:@"Input Searilization Error"] ;
