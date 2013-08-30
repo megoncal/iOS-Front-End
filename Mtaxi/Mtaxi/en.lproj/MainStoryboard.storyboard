@@ -502,11 +502,11 @@
             </objects>
             <point key="canvasLocation" x="-2553" y="-1793"/>
         </scene>
-        <!--Navigation Controller - My Info-->
+        <!--Navigation Controller - Contact-->
         <scene sceneID="9NJ-MI-rp0">
             <objects>
                 <navigationController definesPresentationContext="YES" id="gQ0-7u-JGW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Info" image="icons_03.png" id="tGY-vf-Eun"/>
+                    <tabBarItem key="tabBarItem" title="Contact" image="icons_03.png" id="tGY-vf-Eun"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NgL-Xi-hAz">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -529,7 +529,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="U0D-7n-utb" kind="relationship" relationship="viewControllers" id="vI6-1R-NTz"/>
+                        <segue destination="U0D-7n-utb" kind="relationship" relationship="viewControllers" id="G9r-4P-8F3"/>
                         <segue destination="gQ0-7u-JGW" kind="relationship" relationship="viewControllers" id="aFG-oR-1hc"/>
                     </connections>
                 </tabBarController>
@@ -1260,7 +1260,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
-                                                <segue destination="lfa-Ar-Kk4" kind="push" id="u1R-pg-xPF"/>
+                                                <segue destination="lfa-Ar-Kk4" kind="push" identifier="detailedRide" id="u1R-pg-xPF"/>
                                             </connections>
                                         </textField>
                                         <textField opaque="NO" clipsSubviews="YES" tag="102" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1lH-ZZ-q1Q">
@@ -1322,14 +1322,18 @@
             </objects>
             <point key="canvasLocation" x="-892" y="-592"/>
         </scene>
-        <!--Navigation Controller - My Rides-->
+        <!--Navigation Controller - Rides-->
         <scene sceneID="dG1-Sf-0fK">
             <objects>
                 <navigationController definesPresentationContext="YES" id="U0D-7n-utb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Rides" image="icons_02.png" id="mIY-I9-0WO"/>
+                    <tabBarItem key="tabBarItem" title="Rides" image="icons_02.png" id="mIY-I9-0WO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="o6n-Ec-NdE">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="kiz-9M-JD9">
+                        <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="uRU-Fv-lzt" kind="relationship" relationship="rootViewController" id="kRn-Rl-U6w"/>
                     </connections>
@@ -1461,7 +1465,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="5r0-15-ybY">
                             <connections>
-                                <segue destination="iXI-vu-uSg" kind="push" identifier="RideConfirmation" id="FEE-bu-fE1"/>
+                                <segue destination="iXI-vu-uSg" kind="push" identifier="RideConfirmation" id="9IF-Cx-IYl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1674,11 +1678,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="131" y="16"/>
         </scene>
-        <!--Navigation Controller - My Info-->
+        <!--Navigation Controller - Contact-->
         <scene sceneID="UCI-vx-zue">
             <objects>
                 <navigationController restorationIdentifier="Driver Info" storyboardIdentifier="Driver Info" definesPresentationContext="YES" id="w6T-FY-Tkk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Info" image="icons_03.png" id="8wn-nR-REG"/>
+                    <tabBarItem key="tabBarItem" title="Contact" image="icons_03.png" id="8wn-nR-REG"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AVN-5F-xi5">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1797,11 +1801,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="-982" y="-2562"/>
         </scene>
-        <!--Navigation Controller - New Rides-->
+        <!--Navigation Controller - Unassigned-->
         <scene sceneID="7bc-xF-NN7">
             <objects>
                 <navigationController definesPresentationContext="YES" id="Ooz-N4-gui" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="New Rides" image="icons_01.png" id="N4O-QD-eQr"/>
+                    <tabBarItem key="tabBarItem" title="Unassigned" image="icons_01.png" id="N4O-QD-eQr"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WZq-MP-oag">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1910,18 +1914,18 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </tableView>
                     <navigationItem key="navigationItem" title="My Rides" id="Cri-Pc-w0y"/>
                     <connections>
-                        <segue destination="79X-Cj-fBS" kind="push" id="xbM-9N-T9t"/>
+                        <segue destination="79X-Cj-fBS" kind="push" identifier="detailedRide" id="xbM-9N-T9t"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dzc-2s-va5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-979" y="-1934"/>
         </scene>
-        <!--Navigation Controller - My Rides-->
+        <!--Navigation Controller - Rides-->
         <scene sceneID="F0Q-cZ-MLh">
             <objects>
                 <navigationController definesPresentationContext="YES" id="1Vk-ej-yq8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Rides" image="icons_02.png" id="JVs-Zu-KBV"/>
+                    <tabBarItem key="tabBarItem" title="Rides" image="icons_02.png" id="JVs-Zu-KBV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="49d-mC-iYm">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1945,7 +1949,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <tableViewSection headerTitle="Account" id="Ufh-o0-SPC">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="LEw-EF-0OU">
-                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="46" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -2038,7 +2042,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="6MZ-JU-AU1">
-                                        <rect key="frame" x="0.0" y="226" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="226" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -2126,7 +2130,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="fOx-Hf-h7V">
-                                        <rect key="frame" x="0.0" y="405" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="405" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -2499,7 +2503,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ten-84-aaG">
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="169" id="2rW-9Z-tXN"/>
                                                         <constraint firstAttribute="width" constant="290" id="QVf-yL-nbW"/>
@@ -2935,7 +2938,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Wn2-6Z-Lmb" detailTextLabel="Shn-la-qeQ" style="IBUITableViewCellStyleValue1" id="yop-w5-zfk">
-                                        <rect key="frame" x="0.0" y="179" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="179" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -3002,7 +3005,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="FmE-Sn-e1y" detailTextLabel="kyI-Ph-tv0" style="IBUITableViewCellStyleValue1" id="ydg-x5-5Se">
-                                        <rect key="frame" x="0.0" y="358" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="358" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -3051,176 +3054,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="icons_02.png" width="30" height="30"/>
         <image name="icons_03.png" width="43" height="30"/>
     </resources>
-    <classes>
-        <class className="CarTypeViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CarTypeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancelPressed:"/>
-            </relationships>
-        </class>
-        <class className="ConfirmRideViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConfirmRideViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="carType" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="dropOffLocation" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="messageToTheDriver" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="pickUpDate" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="pickUpLocation" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="pickUpLocationComplement" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="CreateRideViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CreateRideViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancelPressed:"/>
-                <relationship kind="outlet" name="carType" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
-                <relationship kind="outlet" name="dropOffLocation" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="pickUpLocation" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="DriverDetailViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DriverDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="activeStatus" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="carType" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="email" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="firstName" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="lastName" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="phone" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="taxiStand" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="DriverInfoViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DriverInfoViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="signOutPressed:"/>
-                <relationship kind="outlet" name="activeStatus" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="activeStatusLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="addedNavigationItem" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="carCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="carDescription" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="firstName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="phone" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="servedLocationCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="taxiStand" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="DriverRideDetailViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DriverRideDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="takePressed:"/>
-                <relationship kind="outlet" name="date" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="from" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="message" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="passenger" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="pickUpLocationComplement" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="status" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="to" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="DriverSignUpViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DriverSignUpViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="activeStatus" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="carCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="carDescription" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="firstName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="phone" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="signUpCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="taxiStand" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="taxiStandCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="LocationViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LocationViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancelPressed:"/>
-                <relationship kind="outlet" name="mainTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="LogInViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LogInViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="MyRidesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyRidesViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="PassengerDetailViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PassengerDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="email" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="firstName" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="lastName" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="phone" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="PassengerInfoViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PassengerInfoViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="signOutPressed:"/>
-                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="firstName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="phone" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="PassengerSignUpViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PassengerSignUpViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="firstName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="phone" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="RateRideViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RateRideViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="savePressed:"/>
-                <relationship kind="outlet" name="comment" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="rating" candidateClass="UISlider"/>
-            </relationships>
-        </class>
-        <class className="RideDetailViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RideDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="date" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="driver" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="from" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="message" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="pickUpLocationComplement" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="status" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="to" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="RidesListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RidesListViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addRidePressed:"/>
-            </relationships>
-        </class>
-        <class className="UnassignedRidesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UnassignedRidesViewController.h"/>
-        </class>
-        <class className="UserViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
