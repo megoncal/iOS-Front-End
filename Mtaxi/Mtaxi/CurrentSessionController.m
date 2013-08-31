@@ -18,7 +18,7 @@
     NSString *password = [pdKeychainBindings stringForKey:@"password"];
     NSString *userType = [pdKeychainBindings stringForKey:@"userType"];
     NSString *jsessionID = [pdKeychainBindings stringForKey:@"jsessionID"];
-    NSData *apnsToken = [pdKeychainBindings stringForKey:@"apnsToken"];
+    NSString *apnsToken = [pdKeychainBindings stringForKey:@"apnsToken"];
     
     
     CurrentSessionToken *currentSessionToken = [[CurrentSessionToken alloc]initWithUsername:username password:password userType:userType andJsessionID:jsessionID andApnsToken:apnsToken];

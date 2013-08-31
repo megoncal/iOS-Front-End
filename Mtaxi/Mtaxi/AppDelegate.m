@@ -53,7 +53,7 @@
 
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
 {
-	NSLog(@"My token is: %@", deviceToken);
+	NSLog(@"My token is: %@", [deviceToken description]);
     CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
     currentSessionToken.apnsToken = [deviceToken description] ;
     [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
