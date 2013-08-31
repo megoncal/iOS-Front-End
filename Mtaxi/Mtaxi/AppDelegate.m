@@ -55,7 +55,12 @@
 {
 	NSLog(@"My token is: %@", [deviceToken description]);
     CurrentSessionToken *currentSessionToken = [CurrentSessionController currentSessionToken];
-    currentSessionToken.apnsToken = [deviceToken description] ;
+    currentSessionToken.apnsToken = [[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""]
+                                      stringByReplacingOccurrencesOfString: @">" withString: @""]
+                                     stringByReplacingOccurrencesOfString: @" " withString: @""];
+    
+    NSLog(@"My token is: %@", currentSessionToken.apnsToken);
+    
     [CurrentSessionController writeCurrentSessionToken:currentSessionToken];
 
 }
