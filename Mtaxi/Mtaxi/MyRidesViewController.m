@@ -28,8 +28,6 @@
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc]init];
     
-    refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"Refreshing rides..."];
-    
     [refreshControl addTarget:self action:@selector(refreshTableView) forControlEvents:UIControlEventValueChanged];
     
     self.refreshControl = refreshControl;

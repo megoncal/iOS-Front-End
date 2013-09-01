@@ -15,6 +15,9 @@
 #import "UserServerController.h"
 #import "ScreenValidation.h"
 #import "MBProgressHUD.h"
+#import "CarType.h"
+#import "Location.h"
+#import "ActiveStatus.h"
 
 @interface DriverInfoViewController : UITableViewController <UITextFieldDelegate, CarTypeViewControllerDelegate,LocationViewControllerDelegate, UIGestureRecognizerDelegate>
 
@@ -39,6 +42,12 @@
 //@property (assign, nonatomic) int version;
 
 @property (strong, nonatomic) User *user;
+
+//driver information
+@property (strong, nonatomic) Location *servedLocation;
+@property (strong, nonatomic) ActiveStatus *activeStatusObject;
+@property (strong, nonatomic) CarType *carType;
+
 
 //@property (strong, nonatomic) CarType *carType;
 //@property (strong, nonatomic) Location *location;

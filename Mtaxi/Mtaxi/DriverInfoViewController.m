@@ -156,6 +156,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     self.phone.text = user.phone;
     
     //driver
+    self.servedLocation = user.driver.servedLocation;
     self.taxiStand.text = user.driver.servedLocation.locationName;
     
     if ([user.driver.activeStatus.code isEqualToString:@"ENABLED"]) {
@@ -163,8 +164,13 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     }else{
         self.activeStatus.on = FALSE;
     }
-    
+
+    self.carType = self.user.driver.carType;
     self.carDescription.text = user.driver.carType.description;
+    
+    
+    
+    
     
     
 }
@@ -172,17 +178,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (User *)createUserFromUI {
     
-    
-    
-    ActiveStatus *activeStatus = [[ActiveStatus alloc] init];
-    if(self.activeStatus.on) {
-        activeStatus.code = @"ENABLED";
-    } else {
-        activeStatus.code = @"DISABLED";
-    }
-    
-
-    Driver *driver = [[Driver alloc] initWithStatus:activeStatus andCarType:self.user.driver.carType andServedLocation:self.user.driver.servedLocation];
+    Driver *driver = [[Driver alloc] initWithStatus:self.activeStatusObject
+                                         andCarType:self.carType
+                                  andServedLocation:self.servedLocation];
     
     //Create a user using the same uid and version already in the "reference" user
     User *user = [[User alloc] initWithUid:self.user.uid
@@ -201,18 +199,28 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void)updateDriverInformation{
     
+    self.activeStatusObject = [[ActiveStatus alloc] init];
+    if(self.activeStatus.on) {
+        self.activeStatusObject.code = @"ENABLED";
+    } else {
+        self.activeStatusObject.code = @"DISABLED";
+    }
     
-//    //No need to update if nothing changed
-//    if ([self.user.email isEqualToString:self.email.text] &&
-//        [self.user.firstName isEqualToString:self.firstName.text] &&
-//        [self.user.lastName isEqualToString:self.lastName.text] &&
-//        [self.user.phone isEqualToString:self.phone.text] &&
-//        [self.user.driver.carType.description isEqualToString:self.carDescription.text] &&
-//        [self.user.driver.servedLocation.description isEqualToString:self.taxiStand.text] ){
-//        //TODO: correct
-//        // [self.user.driver.activeStatus.description isEqualToString:self.activeStatus.description]) {
-//        return;
-//    }
+    //No need to update if nothing changed
+    if ([self.user.email isEqualToString:self.email.text] &&
+        [self.user.firstName isEqualToString:self.firstName.text] &&
+        [self.user.lastName isEqualToString:self.lastName.text] &&
+        [self.user.phone isEqualToString:self.phone.text] &&
+        self.user.driver.carType == self.carType &&
+        self.user.driver.servedLocation == self.servedLocation &&
+        [self.user.driver.activeStatus.code isEqualToString:self.activeStatusObject.code]){
+    
+        return;
+    
+    }
+    
+    
+    
     
     User *userFromUI = self.createUserFromUI;
     
@@ -463,7 +471,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 }
 
 - (void)carTypeSelected:(CarType *)carType AtViewController:(CarTypeViewController *)viewController{
-    self.user.driver.carType = carType;
+    self.carType = carType;
     self.carDescription.text = carType.description;
     [viewController dismissViewControllerAnimated:YES completion:nil];
     
@@ -474,7 +482,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 #pragma mark - Location View Controller delegate methods
 
 - (void)locationSelected:(Location *)location atViewControler:(LocationViewController *)viewController{
-    self.user.driver.servedLocation = location;
+    self.servedLocation = location;
     self.taxiStand.text = location.locationName;
     [viewController dismissViewControllerAnimated:YES completion:nil];
 }
