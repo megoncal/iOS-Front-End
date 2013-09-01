@@ -3,33 +3,37 @@
  
  Lembretes
  
- client - mandatory - input serialization error after rating ride....
+ web page - mandatory - create a web page that describes the product.. (Marcos)  8 h
  
- server - mandatory - complete ride sending two messagens (Eduardo)
+ server - mandatory - push notification is not working (Eduardo) 2 h
  
- server - mandatory - redundance and test enviroment (Eduardo)
+ server - mandatory - server side: dns url pointing to amazon (Eduardo) 4 h
  
- server - mandatory - stop sending cancel email (Eduardo)
+ client - rationalize url (Eduardo) 2 h
  
- client / server - mandatory - test locations... ibis savassi... (Marcos/Eduardo)
+ server - mandatory - test rua amalia de noronha pinheiro / ibis savassi (Eduardo) 4h
  
- client / server - mandatory - test push notification... (Marcos / Eduardo)
+ server - mandatory - sign up with an existing user returns a system error (Eduardo); 1h
  
- client - mandatory - prepare app to be deployed at apple store.. (Marcos)
+ server - mandatory - server is crashing during location search (Eduardo); 1h
  
- client - secondary - add status to ride detail view controller and then add comments and rating (Marcos)
+ client - mandatory - server time out and wheel on screen (Marcos); 1h
  
- server - secondary - deactivate driver (Eduardo)
+ client/server - mandatory - tap edit then tap done to see input serialization error. (Eduardo); 2h
  
- server - secondary - notification one hour prior to scheduled ride (Marcos / Eduardo)
-
- server - nice to have - refactory - Generic Audit Fields (version, lastUpdated, etc) (Eduardo)
+ server - mandatory - redundance and test enviroment (Eduardo) 4h
  
- client - nice to have - refactory - Rationalize keyboard on UI (Eduardo)
+ client - mandatory - prepare app to be deployed at apple store.. (Marcos) 8h
  
- client - nice to have - automatic update when scroll down
+ client - secondary - add status to ride detail view controller and then add comments and rating (Marcos) 4h
  
- client - nice to have - after take ride present my rides list
+ server - secondary - deactivate driver (Eduardo) 4h
+ 
+ server - secondary - notification one hour prior to scheduled ride (Eduardo) 8h
+ 
+ client - nice to have - refactory - Rationalize keyboard on UI (Eduardo) 16h
+ 
+ client - nice to have - after take ride present my rides list (Marcos) 1h
  
 
  concluido
@@ -88,7 +92,17 @@
  
  32 -  client - mandatory - Rate ride view controller long text.... check for a place holder... (Marcos)
  
+ 33 -  server - mandatory - stop sending cancel email (Eduardo)
  
+ 34 -  server - mandatory - complete ride sending two messagens (Eduardo)
+ 
+ 35 -  client / server - mandatory - test push notification... (Marcos / Eduardo)
+ 
+ 36 -  client - mandatory - input serialization error after rating ride.... (marcos)
+ 
+ 37 -  server - nice to have - refactory - Generic Audit Fields (version, lastUpdated, etc) (Eduardo)
+ 
+ 38 -  client - nice to have - automatic update when scroll down (Marcos) 2h
  
  */
 

@@ -201,6 +201,19 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (void)updateDriverInformation{
     
+    
+//    //No need to update if nothing changed
+//    if ([self.user.email isEqualToString:self.email.text] &&
+//        [self.user.firstName isEqualToString:self.firstName.text] &&
+//        [self.user.lastName isEqualToString:self.lastName.text] &&
+//        [self.user.phone isEqualToString:self.phone.text] &&
+//        [self.user.driver.carType.description isEqualToString:self.carDescription.text] &&
+//        [self.user.driver.servedLocation.description isEqualToString:self.taxiStand.text] ){
+//        //TODO: correct
+//        // [self.user.driver.activeStatus.description isEqualToString:self.activeStatus.description]) {
+//        return;
+//    }
+    
     User *userFromUI = self.createUserFromUI;
     
 //    [UserServerController updateLoggedUserDetails:userFromUI completionHandler:^(User *userFromServer, NSError *error) {
@@ -223,27 +236,16 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     MBProgressHUD *mbProgressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     mbProgressHUD.labelText = @"Updating contact...";
     [UserServerController updateLoggedUserDetails:userFromUI completionHandler:^(User *userFromServer, NSError *error) {
-
         dispatch_async(dispatch_get_main_queue(), ^{
-            
             [MBProgressHUD hideHUDForView:self.view animated:YES];
-            
             if (error.code == 0) {
                 self.user = userFromServer;
                 [self populateScreenFields:userFromServer];
             }
             
             [Helper handleServerReturn:error showMessageOnSuccess:NO viewController:self];
-            
-            
-            
         });
-        
     }];
-
-    
-    
-    
 }
 
 #pragma mark - configure textField

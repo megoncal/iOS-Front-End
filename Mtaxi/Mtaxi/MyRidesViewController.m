@@ -26,6 +26,14 @@
     
     self.listOfStatusCode = [[NSArray alloc] initWithObjects:@"UNASSIGNED", @"ASSIGNED", @"COMPLETED", nil];
     
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc]init];
+    
+    refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"Refreshing rides..."];
+    
+    [refreshControl addTarget:self action:@selector(refreshTableView) forControlEvents:UIControlEventValueChanged];
+    
+    self.refreshControl = refreshControl;
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -65,6 +73,22 @@
     }];
     
 }
+
+- (void)refreshTableView{
+    [RideServerController retrieveDriverRides:^(NSMutableArray *rides, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.refreshControl endRefreshing];
+            if (error.code == 0) {
+                self.rides = rides;
+                [self splitRidesInSections];
+                [self.tableView reloadData];
+            }
+            [Helper handleServerReturn:error showMessageOnSuccess:NO viewController:self];
+        });
+        
+    }];
+}
+
 
 - (void) splitRidesInSections{
     

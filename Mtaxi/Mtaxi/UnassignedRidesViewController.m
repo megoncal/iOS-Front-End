@@ -26,6 +26,13 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc]init];
+    
+    refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"Refreshing rides..."];
+    
+    [refreshControl addTarget:self action:@selector(refreshTableView) forControlEvents:UIControlEventValueChanged];
+    
+    self.refreshControl = refreshControl;
     
 }
 
@@ -35,6 +42,20 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [self retrieveUnassignedRidesInServedArea];
+}
+
+- (NSMutableArray *)sortedMutableArray: (NSMutableArray *)receivedArray{
+    
+    NSArray *sorteArray = [receivedArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        
+        NSDate *date1 = [(Ride *)obj1 pickUpDateTime];
+        NSDate *date2 = [(Ride *) obj2 pickUpDateTime];
+        return [date1 compare:date2];
+        
+        
+    }];
+    
+    return [sorteArray mutableCopy];
 }
 
 #pragma mark - Integration with Server
@@ -48,22 +69,10 @@
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             
             if (error.code == 0) {
-                
-                NSArray *sorteArray = [rides sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-                    
-                    NSDate *date1 = [(Ride *)obj1 pickUpDateTime];
-                    NSDate *date2 = [(Ride *) obj2 pickUpDateTime];
-                    return [date1 compare:date2];
-                    
-                    
-                }];
-                
-                self.unassignedRides =  [sorteArray mutableCopy];
-                
+                self.unassignedRides =  [self sortedMutableArray:rides];
                 [self.tableView reloadData];
                 
             }
-            
             [Helper handleServerReturn:error showMessageOnSuccess:NO viewController:self];
             
         });
@@ -71,6 +80,25 @@
     }];
     
 }
+
+- (void)refreshTableView{
+    [RideServerController retrieveUnassignedRidesInServedArea:^(NSMutableArray *rides, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self.refreshControl endRefreshing];
+            if (error.code == 0) {
+                self.unassignedRides =  [self sortedMutableArray:rides];
+                [self.tableView reloadData];
+                
+            }
+            [Helper handleServerReturn:error showMessageOnSuccess:NO viewController:self];
+            
+        });
+        
+    }];
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {

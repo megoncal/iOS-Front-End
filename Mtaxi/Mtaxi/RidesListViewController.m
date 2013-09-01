@@ -26,7 +26,15 @@
     
     self.listOfStatusCode = [[NSArray alloc] initWithObjects:@"UNASSIGNED", @"ASSIGNED", @"COMPLETED", @"CANCELED", nil];
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector: @selector(removeRide:) name:@"removeRide" object: nil];
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc]init];
+    
+    refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"Refreshing rides..."];
+    
+    [refreshControl addTarget:self action:@selector(refreshTableView) forControlEvents:UIControlEventValueChanged];
+    
+    self.refreshControl = refreshControl;
+    
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector: @selector(removeRide:) name:@"removeRide" object: nil];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -53,7 +61,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-        
+    
     // Return the number of sections.
     return self.sectionedRides.count;
 }
@@ -87,7 +95,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-
+    
     UITextField *from = (UITextField *)[cell viewWithTag:100];
     UITextField *to = (UITextField *)[cell viewWithTag:101];
     UITextField *time = (UITextField *)[cell viewWithTag:102];
@@ -167,7 +175,7 @@
 
 
 - (void) splitRidesInSections{
-
+    
     self.sectionedRides = [[NSMutableArray alloc]init];
     
     NSMutableDictionary *sectionsDictionary = [[NSMutableDictionary alloc]init];
@@ -175,7 +183,7 @@
     NSMutableArray *ridesForSection;
     
     for (Ride *ride in self.rides) {
-       
+        
         NSString *statusCode = ride.rideStatus.code;
         
         ridesForSection = [sectionsDictionary objectForKey:statusCode];
@@ -198,7 +206,7 @@
         
         
         NSArray *sectionArray = [sectionsDictionary objectForKey:statusCode];
-       
+        
         if (sectionArray) {
             
             sectionArray = [sectionArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
@@ -226,7 +234,7 @@
 #pragma mark retrieve ride from sectioned rides using indexPath
 
 -  (Ride *)retrieveRideFrom: (NSArray *)sectionedRides atPosition:(NSIndexPath *)indexPath{
-   
+    
     NSDictionary *ridesDictionary = [sectionedRides objectAtIndex:indexPath.section];
     
     NSArray *ridesArray = [[ridesDictionary allValues] objectAtIndex:0];
@@ -237,11 +245,11 @@
 //-  (void)removeRide: (NSNotification *)notification{
 //
 //    NSDictionary *dictionary = [notification userInfo];
-//    
+//
 //    NSIndexPath *indexPath = [dictionary objectForKey:@"indexpath"];
-//    
+//
 //    NSDictionary *ridesDictionary = [self.sectionedRides objectAtIndex:indexPath.section];
-//    
+//
 //    NSMutableArray *sectionRides = [[ridesDictionary allValues] objectAtIndex:0];
 //
 //    [sectionRides removeObjectAtIndex:indexPath.row];
@@ -265,13 +273,28 @@
             }
             
             [Helper handleServerReturn:error showMessageOnSuccess:NO viewController:self];
-
+            
             
             
         });
         
     }];
     
+}
+
+- (void)refreshTableView{
+    [RideServerController retrievePassengerRides:^(NSMutableArray *rides, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.refreshControl endRefreshing];
+            if (error.code == 0) {
+                self.rides = rides;
+                [self splitRidesInSections];
+                [self.tableView reloadData];
+            }
+            [Helper handleServerReturn:error showMessageOnSuccess:NO viewController:self];
+        });
+        
+    }];
 }
 
 
