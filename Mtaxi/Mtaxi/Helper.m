@@ -328,7 +328,8 @@
         return NO;
     }
     
-    success = [Helper callServerWithURLSync:signInURL inputDictionary:signInTokenDictionary outputDictionary:&outputDictionary error:error];
+    NSURL *url = [NSURL URLWithString:signInURL];
+    success = [Helper callServerWithURLSync:url inputDictionary:signInTokenDictionary outputDictionary:&outputDictionary error:error];
     
     if (!success) {
         return NO;

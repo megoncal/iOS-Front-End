@@ -5,23 +5,23 @@
  
  web page - mandatory - create a web page that describes the product.. (Marcos)  8 h
  
- server - mandatory - push notification is not working (Eduardo) 2 h
+ server - mandatory - push notification is not working (Eduardo) 2 h - DONE
  
- server - mandatory - server side: dns url pointing to amazon (Eduardo) 4 h
+ server - mandatory - server side: dns url pointing to amazon (Eduardo) 4 h - DONE
  
- client - rationalize url (Eduardo) 2 h
+ client - rationalize url (Eduardo) 2 h - DONE
  
  server - mandatory - test rua amalia de noronha pinheiro / ibis savassi (Eduardo) 4h
  
- server - mandatory - sign up with an existing user returns a system error (Eduardo); 1h
+ server - mandatory - sign up with an existing user returns a system error (Eduardo); 1h - DONE
  
- server - mandatory - server is crashing during location search (Eduardo); 1h
+ server - mandatory - server is crashing during location search (Eduardo); 1h - DONE
  
  client - mandatory - server time out and wheel on screen (Marcos); 1h
  
- client/server - mandatory - tap edit then tap done to see input serialization error. (Eduardo); 2h
+ client/server - mandatory - tap edit then tap done to see input serialization error. (Eduardo); 2h   DONE
  
- server - mandatory - redundance and test enviroment (Eduardo) 4h
+ server - mandatory - redundance and test enviroment (Eduardo) 4h ........
  
  client - mandatory - prepare app to be deployed at apple store.. (Marcos) 8h
  

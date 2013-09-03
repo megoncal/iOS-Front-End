@@ -99,7 +99,8 @@
         return NO;
     }
     
-    success = [Helper callServerWithURLSync:signUpURL inputDictionary:userDictionary outputDictionary:&outputDictionary error:error];
+    NSURL *url = [NSURL URLWithString:signUpURL];
+    success = [Helper callServerWithURLSync:url inputDictionary:userDictionary outputDictionary:&outputDictionary error:error];
     
     if (!success) {
         //error has been assigned already, just return NO
@@ -156,8 +157,10 @@
     
     //The server call to retrieve the logged user details contains a blank message (i.e. {})
     NSMutableDictionary *bodyDictionary = [[NSMutableDictionary alloc] init];
+
+    NSURL *url = [NSURL URLWithString:loggedUserDetailsURL];
     
-    [Helper callServerWithURLAsync:loggedUserDetails inputDictionary:bodyDictionary completionHandler:^(NSDictionary *outputDictionary, NSError *error)
+    [Helper callServerWithURLAsync:url inputDictionary:bodyDictionary completionHandler:^(NSDictionary *outputDictionary, NSError *error)
      {
          //If not error set the handler object
          //TODO: What if there is an error
@@ -193,7 +196,9 @@
         
     }
     
-    success = [Helper callServerWithURLSync:updateLoggedUserURL inputDictionary:userDictionary outputDictionary:&outputDictionary error:&error];
+    NSURL *url = [NSURL URLWithString:updateLoggedUserURL];
+    
+    success = [Helper callServerWithURLSync:url inputDictionary:userDictionary outputDictionary:&outputDictionary error:&error];
     
     if (!success) {
         handler (NULL,error);

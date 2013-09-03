@@ -15,7 +15,7 @@
 
 + (BOOL)createRide:(Ride *)ride error:(NSError *__autoreleasing *)error{
     
-    NSURL *url = createRideURL;
+    NSURL *url = [NSURL URLWithString:createRideURL];
     
     NSMutableDictionary *rideDictionary = [[NSMutableDictionary alloc] init];
     
@@ -60,7 +60,7 @@
 + (void) retrievePassengerRides: (void (^)(NSMutableArray *rides, NSError *error)) handler{
     
     
-    NSURL *url = allRidesURL;
+    NSURL *url = [NSURL URLWithString:allRidesURL];
     
     NSMutableDictionary *inputDictionary = [[NSMutableDictionary alloc]init];
     
@@ -98,7 +98,7 @@
 + (void) retrieveDriverRides: (void (^)(NSMutableArray *rides, NSError *error)) handler{
     
     
-    NSURL *url = driverRidesUrl;
+    NSURL *url = [NSURL URLWithString:driverRidesURL];
     
     NSMutableDictionary *inputDictionary = [[NSMutableDictionary alloc]init];
     
@@ -136,7 +136,7 @@
 
 +(BOOL)rateRide:(Ride *)ride error:(NSError *__autoreleasing *)error{
     
-    NSURL *url = rateRideURL;
+    NSURL *url = [NSURL URLWithString:rateRideURL];
     
     NSMutableDictionary *rateRideDictionary = [[NSMutableDictionary alloc] init];
     
@@ -184,7 +184,7 @@
 
 +(BOOL)assignRide:(Ride *)ride error:(NSError *__autoreleasing *)error{
     
-    NSURL *url = assignRideUrl;
+    NSURL *url = [NSURL URLWithString:assignRideURL];
     
     NSMutableDictionary *assignRideDictionary = [[NSMutableDictionary alloc] init];
     
@@ -231,7 +231,7 @@
 
 +(BOOL)cancelRide:(Ride *)ride error:(NSError *__autoreleasing *)error{
     
-    NSURL *url = cancelRideUrl;
+    NSURL *url = [NSURL URLWithString:cancelRideURL];
     
     NSMutableDictionary *cancelRideDictionary = [[NSMutableDictionary alloc] init];
     
@@ -278,7 +278,7 @@
 
 + (void)retrieveUnassignedRidesInServedArea:(void (^)(NSMutableArray *, NSError *))handler{
     
-    NSURL *url = unassignedRidesUrl;
+    NSURL *url = [NSURL URLWithString:unassignedRidesURL];
     
     NSMutableDictionary *inputDictionary = [[NSMutableDictionary alloc]init];
     

@@ -17,7 +17,8 @@
     //The server call to retrieve the logged user details contains a blank message (i.e. {})
     NSMutableDictionary *bodyDictionary = [[NSMutableDictionary alloc] init];
     
-    [Helper callServerWithURLAsync:carTypeURL inputDictionary:bodyDictionary completionHandler:^(NSDictionary *outputDictionary, NSError *error)
+    NSURL *url = [NSURL URLWithString:carTypeURL];
+    [Helper callServerWithURLAsync:url inputDictionary:bodyDictionary completionHandler:^(NSDictionary *outputDictionary, NSError *error)
      {
          //If not error set the handler object
          if (error.code == 0) {

@@ -70,17 +70,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1) {
-        //TODO: implement fucntionality that sends an email with the retrieved password
-        NSString *email = (NSString*)[alertView textFieldAtIndex:0].text;
-
-//        if (!error) {
-//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Password Reset" message: [NSString stringWithFormat:@"An email with reset instructions has been sent to %@",email] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-//            [alert show];
-//        }else{
-//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Password Reset" message: [NSString stringWithFormat:@"%@",[[error userInfo]objectForKey:@"error"]] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-//            [alert show];
-//        }
-
+        
     }else if (buttonIndex == 0){
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:3];
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];

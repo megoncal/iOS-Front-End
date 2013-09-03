@@ -16,7 +16,7 @@
 + (void) retrieveMostFrequentLocations: (void (^)(NSMutableArray *locations, NSError *error)) handler{
      
     
-    NSURL *url = getMostFrequentLocations;
+    NSURL *url = [NSURL URLWithString:getMostFrequentLocationsURL];
     
     NSMutableDictionary *inputDictionary = [[NSMutableDictionary alloc]init];
     
@@ -56,7 +56,7 @@
 
 + (void)searchLocations:(NSString *)enteredLocation completionHandler:(void (^)(NSArray *, NSError *))handler{
 
-    NSURL *url = locationSearchURL;
+    NSURL *url = [NSURL URLWithString:locationSearchURL];
     
     NSMutableDictionary *inputDictionary = [[NSMutableDictionary alloc] init];
 

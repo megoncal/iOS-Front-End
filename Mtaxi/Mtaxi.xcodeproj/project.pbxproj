@@ -180,6 +180,7 @@
 		2FFDDCE11782687C00F23BD1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		7665CA6D175EE8CD00784090 /* CarTypeServerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarTypeServerController.h; sourceTree = "<group>"; };
 		7665CA6E175EE8CD00784090 /* CarTypeServerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarTypeServerController.m; sourceTree = "<group>"; };
+		76849C8B17D4FE1F005F1A54 /* constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constant.h; sourceTree = "<group>"; };
 		7696CE6F174FE8DA00AB736A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		7696CE71174FE8DA00AB736A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		7696CE72174FE8DA00AB736A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -313,6 +314,7 @@
 				76A0E33817544689009D18CB /* Marshaller.m */,
 				2F5A12F7178B96800098D307 /* ScreenValidation.h */,
 				2F5A12F8178B96800098D307 /* ScreenValidation.m */,
+				76849C8B17D4FE1F005F1A54 /* constant.h */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
