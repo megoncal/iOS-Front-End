@@ -5,23 +5,13 @@
  
  web page - mandatory - create a web page that describes the product.. (Marcos)  8 h
  
- server - mandatory - push notification is not working (Eduardo) 2 h - DONE
- 
- server - mandatory - server side: dns url pointing to amazon (Eduardo) 4 h - DONE
- 
- client - rationalize url (Eduardo) 2 h - DONE
- 
  server - mandatory - test rua amalia de noronha pinheiro / ibis savassi (Eduardo) 4h
  
- server - mandatory - sign up with an existing user returns a system error (Eduardo); 1h - DONE
+ server - nice to have - add sound to the push notification message (Eduardo)
  
- server - mandatory - server is crashing during location search (Eduardo); 1h - DONE
+ client - open the push 
  
- client - mandatory - server time out and wheel on screen (Marcos); 1h
- 
- client/server - mandatory - tap edit then tap done to see input serialization error. (Eduardo); 2h   DONE
- 
- server - mandatory - redundance and test enviroment (Eduardo) 4h ........
+ client - secondary - server time out and wheel on screen (Marcos); 1h
  
  client - mandatory - prepare app to be deployed at apple store.. (Marcos) 8h
  
@@ -103,6 +93,20 @@
  37 -  server - nice to have - refactory - Generic Audit Fields (version, lastUpdated, etc) (Eduardo)
  
  38 -  client - nice to have - automatic update when scroll down (Marcos) 2h
+ 
+ 39 - server - mandatory - push notification is not working (Eduardo) 2 h - DONE
+ 
+ 40 - server - mandatory - server side: dns url pointing to amazon (Eduardo) 4 h - DONE
+ 
+ 41 - client - rationalize url (Eduardo) 2 h - DONE
+ 
+ 42 - server - mandatory - sign up with an existing user returns a system error (Eduardo); 1h - DONE
+ 
+ 43 - server - mandatory - server is crashing during location search (Eduardo); 1h - DONE
+ 
+ 44 - client/server - mandatory - tap edit then tap done to see input serialization error. (Eduardo); 2h   DONE
+ 
+ 45 - server - mandatory - redundance and test enviroment (Eduardo) 4h ........
  
  */
 

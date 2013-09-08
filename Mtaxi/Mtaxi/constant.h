@@ -1,7 +1,7 @@
 //#ifdef DEBUG
-#define cloudBackendURL @"http://localhost:8080/moovt/"
+//#define cloudBackendURL @"http://localhost:8080/moovt/"
 //#else
-//#define cloudBackendURL @"http://cloud-backend.moovt.com:8080/moovt/"
+#define cloudBackendURL @"http://cloud-backend.moovt.com:8080/moovt/"
 //#endif
 
 #define signInURL [cloudBackendURL stringByAppendingString:@"login/authenticateUser"]
