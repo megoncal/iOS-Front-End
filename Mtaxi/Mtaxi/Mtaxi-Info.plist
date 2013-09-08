@@ -14,11 +14,6 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>iphone_icon.png</string>
-				<string>highresolution_icon@2x.png</string>
-				<string>original_114.png</string>
-				<string>original_57.png</string>
-				<string>original_1024.png</string>
 				<string>114.png</string>
 				<string>57.png</string>
 			</array>
@@ -51,8 +46,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 </dict>
 </plist>
