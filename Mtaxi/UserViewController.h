@@ -5,6 +5,8 @@
  
  web page - mandatory - create a web page that describes the product.. (Marcos)  8 h
  
+ client / server - lost password functionality.. (Marcos/Eduardo)
+
  server - mandatory - test rua amalia de noronha pinheiro / ibis savassi (Eduardo) 4h
  
  server - nice to have - add sound to the push notification message (Eduardo)
@@ -24,6 +26,7 @@
  client - nice to have - refactory - Rationalize keyboard on UI (Eduardo) 16h
  
  client - nice to have - after take ride present my rides list (Marcos) 1h
+ 
  
 
  concluido
